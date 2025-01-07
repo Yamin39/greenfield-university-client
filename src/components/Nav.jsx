@@ -1,56 +1,137 @@
+import { useState } from "react";
+import { BsCart2 } from "react-icons/bs";
+import { CgCloseO } from "react-icons/cg";
+import { IoCloseOutline } from "react-icons/io5";
+import { RxHamburgerMenu } from "react-icons/rx";
 import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 
 const Nav = () => {
+  const cartCount = 0;
+  const [card, setCard] = useState(false);
+  const [hamburgerMenu, setHamburgerMenu] = useState(false);
   return (
     <>
-      <nav className="bg-white fixed w-full z-20 top-0 start-0 border-b border-gray-200">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between p-4">
-          <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-            <img src={logo} className="h-8" alt="Flowbite Logo" />
-            <span className="self-center text-2xl font-semibold whitespace-nowrap">Greenfield University</span>
-          </Link>
-          <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-            <button
-              type="button"
-              className="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center"
-            >
-              Get started
-            </button>
-            <button
-              data-collapse-toggle="navbar-sticky"
-              type="button"
-              className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden focus:outline-none focus:ring-2 focus:ring-gray-200"
-              aria-controls="navbar-sticky"
-              aria-expanded="false"
-            >
-              <span className="sr-only">Open main menu</span>
-              <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M1 1h15M1 7h15M1 13h15" />
-              </svg>
-            </button>
+      <nav className="bg-white fixed w-full z-20 top-0 start-0 shadow-box">
+        <div className="max-w-7xl mx-auto flex gap-6 justify-between items-center p-4">
+          <div className="flex justify-center gap-3 items-center">
+            <img src={logo} className="max-w-12" alt="Greenfield University Logo" />
+            <h3 className="text-2xl">
+              <span className="font-semibold">Greenfield</span> University
+            </h3>
           </div>
-          <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
-            <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white ">
-              <li>
-                <Link to="#" className="block py-2 px-3 text-white bg-primary-700 rounded md:bg-transparent md:text-primary-700 md:p-0" aria-current="page">
-                  Home
+
+          <div className="flex gap-10 items-center justify-center">
+            <div className="hidden lg:flex gap-10 items-center justify-center">
+              <Link to="/" className="hover:text-primary-800 duration-300">
+                Home
+              </Link>
+              <Link to="/our-course" className="hover:text-primary-800 duration-300">
+                Courses
+              </Link>
+              <Link to="/blogs" className="hover:text-primary-800 duration-300">
+                Blogs
+              </Link>
+              <Link to="/about" className="hover:text-primary-800 duration-300">
+                About
+              </Link>
+              <Link to="/contact" className="hover:text-primary-800 duration-300">
+                Contact
+              </Link>
+              <div className="inline-block relative">
+                <button onClick={() => setCard(!card)} className="hover:text-primary-800 duration-300">
+                  More
+                </button>
+                <div
+                  className={`text-gray-600 flex-col absolute overflow-y-hidden -right-10 bg-white hidden lg:flex p-6 duration-500 border rounded-lg ${
+                    card ? "top-10 opacity-100" : "-top-[20rem] opacity-0"
+                  }`}
+                >
+                  <button onClick={() => setCard(!card)} className="absolute inline top-2 right-2">
+                    <CgCloseO />
+                  </button>
+                  <Link to="/instructors" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50">
+                    Instructors
+                  </Link>
+                  <Link to="/events" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50">
+                    Events
+                  </Link>
+                  <Link to="/shop" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50">
+                    Shop
+                  </Link>
+                  <Link to="/community" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50">
+                    Community
+                  </Link>
+                  <Link to="/gallery" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50">
+                    Gallery
+                  </Link>
+                  <Link to="/announcements" className="hover:text-primary-800 duration-300 py-2 hover:bg-gray-50">
+                    Announcements
+                  </Link>
+                </div>
+              </div>
+            </div>
+            <ul className="flex gap-10 items-center justify-center lg:border-s border-gray-300 lg:pl-10">
+              <li className="relative inline-block">
+                <Link to="/cart" className="relative text-2xl">
+                  <BsCart2 className="hover:text-primary-800 duration-300" />
+                  <span className="absolute -top-2 -right-2 text-xs flex justify-center items-center size-[18px] rounded-full bg-primary-800 text-white">
+                    {cartCount}
+                  </span>
                 </Link>
               </li>
-              <li>
-                <Link to="#" className="block py-2 px-3 text-gray-900 rounded md:hover:text-primary-700 md:p-0">
-                  About
+              <li className="hidden lg:inline-block">
+                <Link to="/" className="bg-primary-700 text-white pt-1.5 pb-2 px-3 hover:bg-primary-800 rounded-md duration-300">
+                  Login
                 </Link>
               </li>
-              <li>
-                <Link to="/our-course" className="block py-2 px-3 text-gray-900 rounded md:hover:text-primary-700 md:p-0">
-                our course
-                </Link>
-              </li>
-              <li>
-                <Link to="#" className="block py-2 px-3 text-gray-900 rounded md:hover:text-primary-700 md:p-0">
-                  Contact
-                </Link>
+              <li className="lg:hidden">
+                <button onClick={() => setHamburgerMenu(!hamburgerMenu)}>
+                  <RxHamburgerMenu className="text-2xl" />
+                </button>
+
+                {/* hamburgerMenu */}
+                <div className={`absolute h-screen top-0 bg-white p-6 border-l ${hamburgerMenu ? "right-0" : "-right-full"} duration-500`}>
+                  <button onClick={() => setHamburgerMenu(!hamburgerMenu)} className="absolute top-2 right-2">
+                    <IoCloseOutline className="text-2xl" />
+                  </button>
+                  <Link to="/" className="bg-primary-700 text-white text-center pt-1.5 pb-2 px-3 hover:bg-primary-800 rounded-md duration-300 block mt-4">
+                    Login
+                  </Link>
+                  <Link to="/" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50 block">
+                    Home
+                  </Link>
+                  <Link to="/our-course" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50 block">
+                    Courses
+                  </Link>
+                  <Link to="/blogs" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50 block">
+                    Blogs
+                  </Link>
+                  <Link to="/about" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50 block">
+                    About
+                  </Link>
+                  <Link to="/contact" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50 block">
+                    Contact
+                  </Link>
+                  <Link to="/instructors" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50 block">
+                    Instructors
+                  </Link>
+                  <Link to="/events" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50 block">
+                    Events
+                  </Link>
+                  <Link to="/shop" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50 block">
+                    Shop
+                  </Link>
+                  <Link to="/community" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50 block">
+                    Community
+                  </Link>
+                  <Link to="/gallery" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50 block">
+                    Gallery
+                  </Link>
+                  <Link to="/announcements" className="hover:text-primary-800 duration-300 py-2 hover:bg-gray-50 block">
+                    Announcements
+                  </Link>
+                </div>
               </li>
             </ul>
           </div>
