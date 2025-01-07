@@ -43,8 +43,8 @@ const Nav = () => {
                 </Link>
               </li>
               <li>
-                <Link to="#" className="block py-2 px-3 text-gray-900 rounded md:hover:text-primary-700 md:p-0">
-                  Services
+                <Link to="/our-course" className="block py-2 px-3 text-gray-900 rounded md:hover:text-primary-700 md:p-0">
+                our course
                 </Link>
               </li>
               <li>
