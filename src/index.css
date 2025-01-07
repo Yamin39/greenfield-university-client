@@ -9,3 +9,19 @@
 .shadow-box {
     box-shadow: 0px 0px 15px 5px #928f8f2f;
 }
+
+.react-tabs__tab {
+    border: none !important;
+  }
+  
+  .react-tabs__tab-list {
+    border: none !important;
+  }
+  
+  .react-tabs__tab.react-tabs__tab--selected > span {
+    color: #ef4444 !important;
+  }
+
+  .react-tabs__tab.react-tabs__tab--selected > span::after {
+    width: 100%;
+  }

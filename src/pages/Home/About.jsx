@@ -23,9 +23,9 @@ const About = () => {
           <div className="mt-12">
             <Tabs>
               <TabList>
-                <Tab> <span className={'hover:text-red-500 text-xl font-semibold hover:underline hover:underline-offset-4'}>About EduBlink</span></Tab>
-                <Tab><span className={'hover:text-red-500 text-xl font-semibold hover:underline hover:underline-offset-4'}>Our Mission</span></Tab>
-                <Tab><span className={'hover:text-red-500 text-xl font-semibold hover:underline hover:underline-offset-4'}>Our Vision</span></Tab>
+                <Tab> <span className={'hover:text-red-500 text-xl font-semibold duration-300 after:w-0 hover:after:w-full after:duration-300 after:h-0.5 after:absolute after:-bottom-1 after:bg-red-500 after:left-0 relative'}>About EduBlink</span></Tab>
+                <Tab><span className={'hover:text-red-500 text-xl font-semibold duration-300 after:w-0 hover:after:w-full after:duration-300 after:h-0.5 after:absolute after:-bottom-1 after:bg-red-500 after:left-0 relative'}>Our Mission</span></Tab>
+                <Tab><span className={'hover:text-red-500 text-xl font-semibold duration-300 after:w-0 hover:after:w-full after:duration-300 after:h-0.5 after:absolute after:-bottom-1 after:bg-red-500 after:left-0 relative'}>Our Vision</span></Tab>
               </TabList>
 
               <TabPanel>
