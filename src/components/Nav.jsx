@@ -21,7 +21,7 @@ const Nav = () => {
 
   return (
     <>
-      <nav className="bg-white fixed w-full z-20 top-0 start-0 shadow-box">
+      <nav className="bg-white fixed w-full z-[9999] top-0 start-0 shadow-box">
         <div className="max-w-7xl mx-auto flex gap-6 justify-between items-center p-4">
           <div className="flex flex-col justify-center items-center ">
             <img src={logo} className="w-8 h-6 object-contain" alt="Greenfield University Logo" />
