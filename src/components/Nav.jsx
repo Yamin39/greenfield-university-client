@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { BsCart2 } from "react-icons/bs";
-import { CgCloseO } from "react-icons/cg";
+import { IoIosArrowUp } from "react-icons/io";
 import { IoCloseOutline } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Link } from "react-router-dom";
@@ -10,22 +10,26 @@ const Nav = () => {
   const cartCount = 0;
   const [card, setCard] = useState(false);
   const [hamburgerMenu, setHamburgerMenu] = useState(false);
+
+  const handleMouseEnter = () => {
+    setCard(true);
+  };
+
+  const handleMouseLeave = () => {
+    setCard(false);
+  };
+
   return (
     <>
-      <nav className="bg-white fixed w-full z-20 top-0 start-0 shadow-box">
+      <nav className="bg-white fixed w-full z-[9999] top-0 start-0 shadow-box">
         <div className="max-w-7xl mx-auto flex gap-6 justify-between items-center p-4">
-        <div className="flex flex-col justify-center items-center ">
-  <img
-    src={logo}
-    className="w-8 h-6 object-contain"
-    alt="Greenfield University Logo"
-  />
-  <h3 className="text-sm font-bold tracking-tight text-gray-800">
-    <span className="text-[#1AB69D]">Greenfield</span>
-    <span className="text-gray-600 ml-1">University</span>
-  </h3>
-</div>
-
+          <div className="flex flex-col justify-center items-center ">
+            <img src={logo} className="w-8 h-6 object-contain" alt="Greenfield University Logo" />
+            <h3 className="text-sm font-bold tracking-tight text-gray-800">
+              <span className="text-[#1AB69D]">Greenfield</span>
+              <span className="text-gray-600 ml-1">University</span>
+            </h3>
+          </div>
 
           <div className="flex gap-10 items-center justify-center">
             <div className="hidden lg:flex gap-10 items-center justify-center">
@@ -44,18 +48,19 @@ const Nav = () => {
               <Link to="/contact" className="hover:text-primary-800 duration-300">
                 Contact
               </Link>
-              <div className="inline-block relative">
-                <button onClick={() => setCard(!card)} className="hover:text-primary-800 duration-300">
-                  More
+              <div
+                className="inline-block relative after:size-full after:absolute after:-bottom-6"
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+              >
+                <button className="hover:text-primary-800 duration-300 flex items-center justify-center gap-1">
+                  More <IoIosArrowUp className={`duration-300 ${card ? "rotate-180" : ""}`} />
                 </button>
                 <div
-                  className={`text-gray-600 flex-col absolute overflow-y-hidden -right-10 bg-white hidden lg:flex p-6 duration-500 border rounded-lg ${
+                  className={`text-gray-600 flex-col absolute overflow-y-hidden -right-10 bg-white hidden lg:flex p-6 duration-300 border rounded-lg ${
                     card ? "top-10 opacity-100" : "-top-[20rem] opacity-0"
                   }`}
                 >
-                  <button onClick={() => setCard(!card)} className="absolute inline top-2 right-2">
-                    <CgCloseO />
-                  </button>
                   <Link to="/instructors" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50">
                     Instructors
                   </Link>
