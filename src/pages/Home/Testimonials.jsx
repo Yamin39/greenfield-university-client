@@ -64,7 +64,7 @@ const Testimonials = () => {
           {testimonials.map((item, idx) => (
             <SwiperSlide
               key={idx}
-              className="px-8 py-10 mb-8 h-fit max-w-96 bg-white rounded-lg flex flex-col items-center shadow-lg"
+              className="px-8 py-10 cursor-grab mb-8 h-fit max-w-96 bg-white rounded-lg flex flex-col items-center shadow-lg"
             >
               <img
                 src={item.img}
