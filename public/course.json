@@ -1,7 +1,7 @@
 [
     {
       "id": 1,
-      "title": "Introduction to Computer Science",
+      "title": "Computer Science",
       "description": "Learn the basics of computer science, programming, and problem-solving.",
       "instructor": "Dr. Jane Smith",
       "duration": "10 weeks",
@@ -12,7 +12,7 @@
     },
     {
       "id": 2,
-      "title": "Business Management Essentials",
+      "title": "Business Management",
       "description": "Understand the principles of business management and leadership.",
       "instructor": "Prof. John Doe",
       "duration": "8 weeks",

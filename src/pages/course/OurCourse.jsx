@@ -11,10 +11,10 @@ const OurCourse = () => {
 
   return (
     <div className="flex flex-col items-center justify-center  mt-72">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-center  lg:ml-5 justify-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-center  justify-center">
         {courses.map((course) => (
                <div
-               className="group flex bg-[#F7F5F2] flex-col  h-96 border border-gray-200 rounded shadow-md overflow-hidden transition-transform duration-300 hover:shadow-lg hover:scale-105   "
+               className="group flex bg-[#F7F5F2] flex-col  h-96 w-80 border border-gray-200 rounded shadow-md overflow-hidden transition-transform duration-300 hover:shadow-lg hover:scale-105   "
                key={course.id}
              >
                {/* Image Section */}
