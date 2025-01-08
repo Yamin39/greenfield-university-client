@@ -14,12 +14,18 @@ const Nav = () => {
     <>
       <nav className="bg-white fixed w-full z-20 top-0 start-0 shadow-box">
         <div className="max-w-7xl mx-auto flex gap-6 justify-between items-center p-4">
-          <div className="flex justify-center gap-3 items-center">
-            <img src={logo} className="max-w-12" alt="Greenfield University Logo" />
-            <h3 className="text-2xl">
-              <span className="font-semibold">Greenfield</span> University
-            </h3>
-          </div>
+        <div className="flex flex-col justify-center items-center ">
+  <img
+    src={logo}
+    className="w-8 h-6 object-contain"
+    alt="Greenfield University Logo"
+  />
+  <h3 className="text-sm font-bold tracking-tight text-gray-800">
+    <span className="text-[#1AB69D]">Greenfield</span>
+    <span className="text-gray-600 ml-1">University</span>
+  </h3>
+</div>
+
 
           <div className="flex gap-10 items-center justify-center">
             <div className="hidden lg:flex gap-10 items-center justify-center">
