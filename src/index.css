@@ -28,3 +28,14 @@
   .react-tabs__tab.react-tabs__tab--selected > span::after {
     width: 100%;
   }
+
+  /* Custom Swiper pagination bullet styles */
+.swiper-pagination-bullet {
+  background-color: #623323; /* Default color */
+  opacity: 1; /* Ensure full visibility */
+  transition: background-color 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #ee4a62; /* Active color */
+}
