@@ -1,0 +1,67 @@
+import { useEffect, useState } from "react";
+
+const Instructors = () => {
+  const [instructors, setInstructors] = useState([]);
+
+  // Fetch data from the JSON file
+  useEffect(() => {
+    fetch("/instructors.json")
+      .then((res) => res.json())
+      .then((data) => setInstructors(data)) // Set data to state
+      .catch((error) => console.error("Error fetching instructors:", error)); // Add error handling
+  }, []);
+
+  return (
+    <div className="text-center p-6">
+      {/* Heading Section */}
+      <div>
+        <p className="text-lg md:text-xl uppercase text-[#808080] font-semibold">
+          Instructors
+        </p>
+        <h1 className="text-3xl md:text-[42px] text-[#181818] font-bold mt-6 leading-tight">
+          Course <span className="text-[#1AB69D]">Instructors</span>
+        </h1>
+        <img
+          className="w-28 mt-2 mb-7 mx-auto"
+          src="https://i.ibb.co/hH8Jpm2/about-Style.png"
+          alt="style"
+        />
+      </div>
+
+      {/* Instructors Section */}
+      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-10">
+        {instructors.map((instructor) => (
+          <div
+            key={instructor.id}
+            className="w-full bg-white border-2 border-gray-200 rounded-lg shadow-lg hover:shadow-xl transition-transform transform hover:-translate-y-2 cursor-pointer  "
+          >
+            {/* Image Section */}
+            <div className="relative h-96 overflow-hidden rounded-t-lg">
+              <img
+                src={instructor.img}
+                className="w-full  object-cover group-hover:scale-105 transition-transform duration-300"
+                alt={instructor.name}
+              />
+            </div>
+            {/* Hover Overlay Section */}
+            <div className="absolute inset-0 bg-black bg-opacity-70 text-white flex flex-col items-center justify-center   opacity-0 hover:opacity-100 transition-opacity duration-700">
+              <p className="text-sm w-[80%] font-semibold text-start mb-2">{instructor.bio}</p>
+              <p className="text-sm ">Rating: {instructor.rating}/5</p>
+              <div className=" h-full absolute opacity-20 w-full bg-[#1AB69D] "></div>
+            </div>
+
+            {/* Info Section */}
+            <div className="p-4">
+              <h3 className="text-lg font-semibold text-gray-800">
+                {instructor.name}
+              </h3>
+              <p className="text-sm text-gray-600">{instructor.role}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Instructors;

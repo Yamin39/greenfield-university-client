@@ -4,7 +4,7 @@ import { HiOutlineDesktopComputer } from "react-icons/hi";
 
 const CampusLife = () => {
   return (
-    <div className="max-w-7xl mx-auto bg-[#FFFFFF]  mt-48  mb-96 ">
+    <div className="max-w-7xl mx-auto bg-[#FFFFFF] flex justify-center items-center py-20 ">
          <div className="flex flex-col md:flex-row justify-center gap-y-6 lg:justify-between px-3">
             <div className="basis-1/2 relative sm:-top-20 sm:-right-20">
                <img
