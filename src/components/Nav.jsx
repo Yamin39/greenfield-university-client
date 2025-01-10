@@ -8,16 +8,10 @@ import logo from "../assets/images/logo.png";
 
 const Nav = () => {
   const cartCount = 0;
-  const [card, setCard] = useState(false);
+  const [moreCard, setMoreCard] = useState(false);
+  const [admissionCard, setAdmissionCard] = useState(false);
+  const [admissionSubCard, setAdmissionSubCard] = useState(false);
   const [hamburgerMenu, setHamburgerMenu] = useState(false);
-
-  const handleMouseEnter = () => {
-    setCard(true);
-  };
-
-  const handleMouseLeave = () => {
-    setCard(false);
-  };
 
   return (
     <>
@@ -36,29 +30,56 @@ const Nav = () => {
               <Link to="/" className="hover:text-primary-800 duration-300">
                 Home
               </Link>
+              <div
+                className="inline-block relative after:size-full after:absolute after:-bottom-6"
+                onMouseEnter={() => setAdmissionCard(true)}
+                onMouseLeave={() => setAdmissionCard(false)}
+              >
+                <button className="hover:text-primary-800 duration-300 flex items-center justify-center gap-1">
+                  Admission <IoIosArrowUp className={`duration-300 ${admissionCard ? "rotate-180" : ""}`} />
+                </button>
+                <div
+                  className={`text-gray-600 w-max flex-col absolute overflow-y-hidden -right-10 bg-white hidden lg:flex p-6 duration-300 border rounded-lg ${
+                    admissionCard ? "top-10 opacity-100" : "-top-[20rem] opacity-0"
+                  }`}
+                >
+                  <Link to="/university-overview" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50">
+                    Overview
+                  </Link>
+                  <Link to="/university-apply" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50">
+                    How To Apply
+                  </Link>
+                  <Link to="/tuition-fees" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50">
+                    Tuition fees
+                  </Link>
+                  <Link to="/financial-aid" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50">
+                    Financial Aid
+                  </Link>
+                  <Link to="/dates-deadlines" className="hover:text-primary-800 duration-300 py-2 hover:bg-gray-50">
+                    Dates & Deadlines
+                  </Link>
+                </div>
+              </div>
               <Link to="/our-course" className="hover:text-primary-800 duration-300">
                 Courses
               </Link>
               <Link to="/blogs" className="hover:text-primary-800 duration-300">
                 Blogs
               </Link>
-              <Link to="/about" className="hover:text-primary-800 duration-300">
-                About
-              </Link>
               <Link to="/contact" className="hover:text-primary-800 duration-300">
                 Contact
               </Link>
               <div
                 className="inline-block relative after:size-full after:absolute after:-bottom-6"
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
+                onMouseEnter={() => setMoreCard(true)}
+                onMouseLeave={() => setMoreCard(false)}
               >
                 <button className="hover:text-primary-800 duration-300 flex items-center justify-center gap-1">
-                  More <IoIosArrowUp className={`duration-300 ${card ? "rotate-180" : ""}`} />
+                  More <IoIosArrowUp className={`duration-300 ${moreCard ? "rotate-180" : ""}`} />
                 </button>
                 <div
                   className={`text-gray-600 flex-col absolute overflow-y-hidden -right-10 bg-white hidden lg:flex p-6 duration-300 border rounded-lg ${
-                    card ? "top-10 opacity-100" : "-top-[20rem] opacity-0"
+                    moreCard ? "top-10 opacity-100" : "-top-[20rem] opacity-0"
                   }`}
                 >
                   <Link to="/instructors" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50">
@@ -76,8 +97,11 @@ const Nav = () => {
                   <Link to="/gallery" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50">
                     Gallery
                   </Link>
-                  <Link to="/announcements" className="hover:text-primary-800 duration-300 py-2 hover:bg-gray-50">
+                  <Link to="/announcements" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50">
                     Announcements
+                  </Link>
+                  <Link to="/about" className="hover:text-primary-800 duration-300 py-2 hover:bg-gray-50">
+                    About
                   </Link>
                 </div>
               </div>
@@ -102,7 +126,11 @@ const Nav = () => {
                 </button>
 
                 {/* hamburgerMenu */}
-                <div className={`absolute h-screen top-0 bg-white p-6 border-l ${hamburgerMenu ? "right-0" : "-right-full"} duration-500`}>
+                <div
+                  className={`absolute h-screen top-0 bg-white p-6 border-l ${hamburgerMenu ? "right-0" : "-right-full"} duration-500 shadow-lg ${
+                    admissionSubCard ? "overflow-y-scroll" : ""
+                  }`}
+                >
                   <button onClick={() => setHamburgerMenu(!hamburgerMenu)} className="absolute top-2 right-2">
                     <IoCloseOutline className="text-2xl" />
                   </button>
@@ -112,6 +140,32 @@ const Nav = () => {
                   <Link to="/" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50 block">
                     Home
                   </Link>
+                  <div>
+                    <button
+                      className="w-full text-left hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50 flex items-center justify-between"
+                      onClick={() => setAdmissionSubCard(!admissionSubCard)}
+                    >
+                      Admission <IoIosArrowUp className={`duration-300 ${admissionSubCard ? "rotate-180" : ""}`} />
+                    </button>
+
+                    <div className={`pl-5 duration-300 flex flex-col w-max overflow-hidden ${admissionSubCard ? "h-[204px]" : "h-0"}`}>
+                      <Link to="/university-overview" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50">
+                        Overview
+                      </Link>
+                      <Link to="/university-apply" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50">
+                        How To Apply
+                      </Link>
+                      <Link to="/tuition-fees" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50">
+                        Tuition fees
+                      </Link>
+                      <Link to="/financial-aid" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50">
+                        Financial Aid
+                      </Link>
+                      <Link to="/dates-deadlines" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50">
+                        Dates & Deadlines
+                      </Link>
+                    </div>
+                  </div>
                   <Link to="/our-course" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50 block">
                     Courses
                   </Link>
