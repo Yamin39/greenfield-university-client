@@ -127,9 +127,9 @@ const Nav = () => {
 
                 {/* hamburgerMenu */}
                 <div
-                  className={`absolute h-screen top-0 bg-white p-6 border-l ${hamburgerMenu ? "right-0" : "-right-full"} duration-500 shadow-lg ${
-                    admissionSubCard ? "overflow-y-scroll" : ""
-                  }`}
+                  className={`scrollable-card absolute h-screen top-0 bg-white p-6 border-l ${
+                    hamburgerMenu ? "right-0" : "-right-full"
+                  } duration-500 shadow-lg ${admissionSubCard ? "overflow-y-scroll" : ""}`}
                 >
                   <button onClick={() => setHamburgerMenu(!hamburgerMenu)} className="absolute top-2 right-2">
                     <IoCloseOutline className="text-2xl" />
