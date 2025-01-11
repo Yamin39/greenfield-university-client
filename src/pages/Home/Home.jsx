@@ -3,6 +3,7 @@ import Banner from "./Banner";
 import CampusLife from "./CampusLife";
 import HeadingComp from "./HeadingComp";
 import Instructors from "./Instructors ";
+import RecentBlogs from "./RecentBlogs";
 import Testimonials from "./Testimonials";
 
 const Home = () => {
@@ -12,9 +13,10 @@ const Home = () => {
       <About></About>
       <CampusLife></CampusLife>
 
-      <Instructors/>
-      <HeadingComp/>
-      <Testimonials/>
+      <Instructors />
+      <HeadingComp />
+      <RecentBlogs />
+      <Testimonials />
     </div>
   );
 };

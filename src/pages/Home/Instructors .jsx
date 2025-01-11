@@ -12,7 +12,7 @@ const Instructors = () => {
   }, []);
 
   return (
-    <div className="text-center p-6">
+    <div className="max-w-7xl mx-auto bg-[#FFFFFF] p-4 text-center">
       {/* Heading Section */}
       <div>
         <p className="text-lg md:text-xl uppercase text-[#808080] font-semibold">
@@ -44,7 +44,7 @@ const Instructors = () => {
               />
             </div>
             {/* Hover Overlay Section */}
-            <div className="absolute inset-0 bg-black bg-opacity-70 text-white flex flex-col items-center justify-center   opacity-0 hover:opacity-100 transition-opacity duration-700">
+            <div className="absolute  h-96  inset-0 bg-black bg-opacity-70 text-white flex flex-col items-center justify-center   opacity-0 hover:opacity-100 transition-opacity duration-700">
               <p className="text-sm w-[80%] font-semibold text-start mb-2">{instructor.bio}</p>
               <p className="text-sm ">Rating: {instructor.rating}/5</p>
               <div className=" h-full absolute opacity-20 w-full bg-[#1AB69D] "></div>
