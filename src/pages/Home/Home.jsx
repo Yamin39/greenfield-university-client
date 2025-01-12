@@ -2,6 +2,9 @@ import About from "./About";
 import Banner from "./Banner";
 import CampusIntro from "./CampusIntro";
 import CampusLife from "./CampusLife";
+import HeadingComp from "./HeadingComp";
+import Instructors from "./Instructors ";
+import RecentBlogs from "./RecentBlogs";
 import GetTouch from "./GetTouch";
 import Testimonials from "./Testimonials";
 
@@ -11,9 +14,12 @@ const Home = () => {
       <Banner />
       <About></About>
       <CampusLife></CampusLife>
-      <Testimonials/>
+      <Testimonials />
       <CampusIntro></CampusIntro>
       <GetTouch></GetTouch>
+      <Instructors />
+      <HeadingComp />
+      <RecentBlogs />
     </div>
   );
 };
