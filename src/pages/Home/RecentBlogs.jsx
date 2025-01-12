@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { FaLongArrowAltRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const RecentBlogs = () => {
   const [blogs, setBlogs] = useState([]);
@@ -30,7 +31,7 @@ const RecentBlogs = () => {
       {/* Grid Section */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-20 md:gap-8 mt-10 mx-auto">
         {blogs?.map((blog, idx) => (
-          <div className="relative border mx-auto group" key={idx}>
+          <div className="relative md:mb-12 mx-auto group" key={idx}>
             <img
               className="w-72 transition-transform duration-300 group-hover:scale-105 h-64 object-cover rounded"
               src={blog.image}
@@ -38,11 +39,11 @@ const RecentBlogs = () => {
             />
 
             {/* Button with Animation */}
-            <button
+            <Link to={'/'}
               className="z-[99999999] opacity-0 translate-y-[20px] absolute top-20 right-16 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-[-4px] bg-[#1AB69D] text-white w-14 h-14 rounded-full flex items-center justify-center mx-auto"
             >
               <FaLongArrowAltRight className="text-xl" />
-            </button>
+            </Link>
 
             <div className="bg-white shadow-lg rounded-md absolute -bottom-12 z-10 w-64 left-36 transform -translate-x-1/2 p-4">
               <p className="text-sm text-[#808080]">{blog.category}</p>
