@@ -7,6 +7,7 @@ import Instructors from "./Instructors ";
 import RecentBlogs from "./RecentBlogs";
 import GetTouch from "./GetTouch";
 import Testimonials from "./Testimonials";
+import Partners from "./Partners";
 
 const Home = () => {
   return (
@@ -18,6 +19,7 @@ const Home = () => {
       <CampusIntro></CampusIntro>
       <GetTouch></GetTouch>
       <Instructors />
+      <Partners/>
       <HeadingComp />
       <RecentBlogs />
     </div>
