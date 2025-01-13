@@ -28,3 +28,10 @@
   .react-tabs__tab.react-tabs__tab--selected > span::after {
     width: 100%;
   }
+
+  
+
+  /* CourseDetailsTab */
+  .react-tab-css {
+    color: #23B9A1 !important;
+  }
