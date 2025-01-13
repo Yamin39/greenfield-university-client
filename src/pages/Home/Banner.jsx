@@ -2,8 +2,9 @@ import { IoIosArrowRoundForward } from "react-icons/io";
 import { Link } from "react-router-dom";
 import banner from '../../assets/homeImages/banner.webp'
 import shape_1 from '../../assets/homeImages/shape_1.png'
-import { PiGraduationCapLight } from "react-icons/pi";
+import { PiChalkboardTeacherLight, PiGraduationCapLight } from "react-icons/pi";
 import instructor from '../../assets/homeImages/instructor.png'
+import { BsBookmarks } from "react-icons/bs";
 
 const Banner = () => {
   return (
@@ -63,14 +64,14 @@ const Banner = () => {
             </div>
           </div>
           <div className="flex space-x-3 py-16 px-10 hover:bg-pink-50">
-            <PiGraduationCapLight className="text text-[90px] text-pink-500" />
+            <PiChalkboardTeacherLight className="text text-[90px] text-pink-500" />
             <div className="space-y-4">
               <h3 className="font-semibold text-xl">Skilled Lecturers</h3>
               <p className="text-[#aca8a8]">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
             </div>
           </div>
           <div className="flex space-x-3 py-16 px-10 hover:bg-purple-50">
-            <PiGraduationCapLight className="text text-[90px] text-purple-500" />
+            <BsBookmarks className="text text-[90px] text-purple-500" />
             <div className="space-y-4">
               <h3 className="font-semibold text-xl">Book Library & Store</h3>
               <p className="text-[#aca8a8]">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
