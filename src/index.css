@@ -65,6 +65,6 @@
   color: #ef4444 !important;
 }
 
-.react-tabs__tab.react-tabs__tab--selected > span::after {
-  width: 100%;
-}
+  .react-tabs__tab.react-tabs__tab--selected > span::after {
+    width: 100%;
+  }
