@@ -80,10 +80,6 @@ const Banner = () => {
 
         </div>
       </div>
-
-
-
-
     </header>
   );
 };
