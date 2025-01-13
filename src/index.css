@@ -1,41 +1,78 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Outfit:wght@100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Outfit:wght@100..900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
 * {
-    font-family: 'Outfit', sans-serif;
+  font-family: "Outfit", sans-serif;
+}
+
+/* website custom scrollbar */
+::-webkit-scrollbar {
+  width: 0.8rem;
+}
+
+::-webkit-scrollbar-track {
+  background: #dddddd;
+  border-radius: 30rem;
+  margin-block: 0.2rem;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 0.1875rem solid #dddddd;
+  background: #888;
+  border-radius: 30rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Darker thumb color on hover */
+}
+
+/* scrollable-card Scrollbar Styles */
+.scrollable-card::-webkit-scrollbar {
+  width: 8px; /* Adjust the width of the scrollbar */
+}
+
+.scrollable-card::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Light background for the track */
+  border-radius: 10px;
+}
+
+.scrollable-card::-webkit-scrollbar-thumb {
+  background-color: #888; /* Dark thumb color */
+  border-radius: 10px;
+  border: 2px solid #f1f1f1; /* Optional border to make thumb more distinct */
+}
+
+.scrollable-card::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Darker thumb color on hover */
 }
 
 /* about Card */
 .shadow-box {
-    box-shadow: 0px 0px 15px 5px #928f8f2f;
+  box-shadow: 0px 0px 15px 5px #928f8f2f;
 }
 
 .react-tabs__tab {
-    border: none !important;
-  }
-  
-  .react-tabs__tab-list {
-    border: none !important;
-  }
-  
-  .react-tabs__tab.react-tabs__tab--selected > span {
-    color: #ef4444 !important;
-  }
-
-  .react-tabs__tab.react-tabs__tab--selected > span::after {
-    width: 100%;
-  }
-
-  /* Custom Swiper pagination bullet styles */
-.swiper-pagination-bullet {
-  background-color: #623323; /* Default color */
-  opacity: 1; /* Ensure full visibility */
-  transition: background-color 0.3s ease;
+  border: none !important;
 }
 
-.swiper-pagination-bullet-active {
-  background-color: #ee4a62; /* Active color */
+.react-tabs__tab-list {
+  border: none !important;
+}
+
+.react-tabs__tab.react-tabs__tab--selected > span {
+  color: #ef4444 !important;
+}
+
+.react-tabs__tab.react-tabs__tab--selected > span::after {
+  width: 100%;
+}
+.react-tabs__tab.react-tabs__tab--selected > span::after {
+  width: 100%;
+}
+
+/* CourseDetailsTab */
+.react-tab-css {
+  color: #23b9a1 !important;
 }
