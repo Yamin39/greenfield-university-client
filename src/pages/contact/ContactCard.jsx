@@ -1,6 +1,5 @@
 import { CiLocationOn } from "react-icons/ci";
 import { MdOutlineAddIcCall, MdOutlineMail } from "react-icons/md";
-import { Link } from "react-router-dom";
 
 const ContactCard = () => {
    return (
