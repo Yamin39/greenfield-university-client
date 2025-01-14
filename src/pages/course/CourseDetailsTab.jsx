@@ -19,7 +19,7 @@ const CourseDetailsTab = () => {
     setHtmlOpen(!htmlOpen);
   };
   return (
-        <div className="mt-12 ">
+        <div className="mt-12 mb-12 lg:mb-0 lg:min-h-[640px]">
           <Tabs>
             <TabList
               className={"border-b-2 border-gray-200 flex justify-evenly"}
