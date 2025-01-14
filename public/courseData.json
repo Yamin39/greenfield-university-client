@@ -1,0 +1,130 @@
+[
+    {
+      "_id": "1",
+      "title": "Starting SEO as your Home Based Business",
+      "description": "This is a comprehensive course designed to teach you everything you need to know about SEO. From keyword research to advanced link-building strategies, this course covers it all.",
+      "image_url": "https://i.ibb.co.com/RvM0dkK/about-2.webp",
+      "whatYouLearn": [
+        "Learn the basics of SEO",
+        "Understand keyword research and analysis",
+        "Master on-page and off-page SEO techniques",
+        "Learn to use tools like Google Analytics and Search Console",
+        "Develop a complete SEO strategy for your business"
+      ],
+      "curriculum": [
+        {
+          "section": "Basic Introduction",
+          "lessons": [
+            {
+              "title": "Brush up on SEO concepts",
+              "duration": "10:00",
+              "locked": false
+            },
+            {
+              "title": "Setting Up Your SEO Tools",
+              "duration": "15:00",
+              "locked": true
+            }
+          ]
+        },
+        {
+          "section": "Fundamental Concept of HTML",
+          "lessons": [
+            {
+              "title": "A Note on Semantic HTML",
+              "duration": "12:00",
+              "locked": false
+            },
+            {
+              "title": "Centering our Page",
+              "duration": "20:00",
+              "locked": true
+            }
+          ]
+        }
+      ],
+      "instructorDetails": {
+        "name": "Edward Norton",
+        "title": "Design Expert",
+        "bio": "Edward Norton is a senior web developer with over 10 years of experience in the industry. He has worked on numerous projects ranging from small business websites to large-scale web applications."
+      },
+      "reviews": [
+        {
+          "user": "Steve Martin",
+          "rating": 5,
+          "comment": "Excellent Course",
+          "review": "Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        },
+        {
+          "user": "Alice",
+          "rating": 4,
+          "comment": "Good content",
+          "review": "The course content is good, but some sections could be more detailed."
+        }
+      ]
+    },
+    {
+      "_id": "2",
+      "title": "Advanced JavaScript Concepts",
+      "description": "Master advanced JavaScript concepts and build modern web applications.",
+      "image_url": "https://i.ibb.co.com/3c9JHs0/team-1.webp",
+      "whatYouLearn": [
+        "Learn advanced JavaScript concepts",
+        "Understand closures and prototypes",
+        "Master asynchronous programming",
+        "Learn to use modern JavaScript frameworks",
+        "Build real-world applications"
+      ],
+      "curriculum": [
+        {
+          "section": "Introduction to Advanced JavaScript",
+          "lessons": [
+            {
+              "title": "Understanding Closures",
+              "duration": "10:00",
+              "locked": false
+            },
+            {
+              "title": "Prototypes and Inheritance",
+              "duration": "15:00",
+              "locked": true
+            }
+          ]
+        },
+        {
+          "section": "Asynchronous JavaScript",
+          "lessons": [
+            {
+              "title": "Promises and Async/Await",
+              "duration": "12:00",
+              "locked": false
+            },
+            {
+              "title": "Event Loop and Callbacks",
+              "duration": "20:00",
+              "locked": true
+            }
+          ]
+        }
+      ],
+      "instructorDetails": {
+        "name": "John Doe",
+        "title": "Senior JavaScript Developer",
+        "bio": "John Doe is a senior JavaScript developer with over 10 years of experience in building scalable web applications."
+      },
+      "reviews": [
+        {
+          "user": "Bob",
+          "rating": 5,
+          "comment": "Great course!",
+          "review": "This course helped me understand advanced JavaScript concepts clearly."
+        },
+        {
+          "user": "Charlie",
+          "rating": 4,
+          "comment": "Good content",
+          "review": "The course content is well-structured and easy to follow."
+        }
+      ]
+    }
+  ]

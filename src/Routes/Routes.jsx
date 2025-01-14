@@ -23,7 +23,7 @@ const router = createBrowserRouter([
         element: <OurCourse />,
       },
       {
-        path: "/course-details",
+        path: "/course-details/:_id",
         element: <CourseDetails></CourseDetails>,
       },
       {
@@ -35,10 +35,10 @@ const router = createBrowserRouter([
         element: <FinancialAid></FinancialAid>,
       },
       {
-        path: '/university-overview',
-        element: <Overview />
-      } ,
-     
+        path: "/university-overview",
+        element: <Overview />,
+      },
+
       {
         path: '/how-to-Apply',
         element: <HowtoApply />
@@ -46,7 +46,16 @@ const router = createBrowserRouter([
       {
         path: '/contact',
         element: <Contact />
-      }
+      },
+      {
+        path: "/university-overview",
+        element: <Overview />,
+      },
+
+      {
+        path: "/university-apply",
+        element: <HowtoApply/>,
+      },
     ],
   },
 ]);
