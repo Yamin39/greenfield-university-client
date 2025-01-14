@@ -55,18 +55,18 @@ const CourseDetails = () => {
         </div>
       </div>
       <div className="max-w-7xl mx-auto pb-12 px-3">
-        <div className="relative grid grid-cols-1 lg:grid-cols-3 gap-5">
+        <div className="relative grid grid-cols-1 lg:grid-cols-3 gap-10">
           <div className="h-fit lg:col-span-2">
             <CourseDetailsTab></CourseDetailsTab>
           </div>
           {/* Right side */}
-          <div className="lg:col-span-1 lg:absolute lg:top-[-250px] lg:right-0 lg:max-w-sm bg-white p-5 shadow-box rounded-xl">
+          <div className="lg:col-span-1 lg:absolute lg:top-[-250px] lg:right-0 w-full lg:max-w-[22rem] xl:max-w-sm bg-white p-5 shadow-box rounded-xl">
             <div className=" relative ">
               <img className="w-full rounded-xl" src="https://i.ibb.co.com/RvM0dkK/about-2.webp" alt="" />
               <div className="bg-black/50 flex justify-center items-center absolute top-0 left-0 w-full h-full rounded-xl">
                 <div className="">
                   <div className=" relative z-20 group">
-                    <span className="bg-white rounded-full w-16 h-16 transition duration-200 group-hover:bg-[#1AB69D]  flex justify-center items-center">
+                    <span className="bg-white rounded-full w-16 h-16 transition duration-200 group-hover:bg-primary-700  flex justify-center items-center">
                       <FaPlay size={20} className=" text-[#EE4A62] transition duration-200 group-hover:text-white"></FaPlay>
                     </span>
                   </div>
