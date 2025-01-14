@@ -10,7 +10,7 @@ const YourCourses = () => {
     // const [isHover, setIsHover] = useState(false)
 
   return (
-    <div className="max-w-7xl mx-auto   px-5  mt-12 mb-12">
+    <div className="max-w-7xl mx-auto   px-5  mb-12 ">
         <h2 className="text-4xl text-[#181818] font-semibold py-10">Courses You May Like</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-8 items-center  justify-center md:justify-between">
         <div  className=" group relative flex bg-[#F7F5F2] flex-col  group rounded overflow-hidden  shadow-box   ">
