@@ -4,6 +4,7 @@ import Home from "../pages/Home/Home";
 import OurCourse from "../pages/course/OurCourse";
 import CourseDetails from "../pages/course/CourseDetails";
 import Overview from "../pages/overview/Overview";
+import HowtoApply from "../pages/Apply/HowtoApply";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,11 @@ const router = createBrowserRouter([
       {
         path: '/university-overview',
         element: <Overview />
+      } ,
+     
+      {
+        path: '/how-to-Apply',
+        element: <HowtoApply />
       }
     ],
   },
