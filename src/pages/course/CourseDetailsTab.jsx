@@ -22,7 +22,7 @@ const CourseDetailsTab = () => {
         <div className="mt-12 mb-12 lg:mb-0 lg:min-h-[640px]">
           <Tabs>
             <TabList
-              className={"border-b-2 border-gray-200 flex justify-evenly"}
+              className={"border-b-2 border-gray-200 flex justify-evenly overflow-x-scroll overflow-y-hidden sm:overflow-hidden"}
             >
               <Tab>
                 <span
