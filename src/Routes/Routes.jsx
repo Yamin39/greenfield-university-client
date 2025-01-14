@@ -20,18 +20,18 @@ const router = createBrowserRouter([
         element: <OurCourse />,
       },
       {
-        path: "/course-details",
+        path: "/course-details/:_id",
         element: <CourseDetails></CourseDetails>,
       },
       {
-        path: '/university-overview',
-        element: <Overview />
-      } ,
-     
+        path: "/university-overview",
+        element: <Overview />,
+      },
+
       {
-        path: '/how-to-Apply',
-        element: <HowtoApply />
-      }
+        path: "/university-apply",
+        element: <HowtoApply/>,
+      },
     ],
   },
 ]);
