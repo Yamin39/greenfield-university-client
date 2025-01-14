@@ -60,7 +60,7 @@ const CourseDetails = () => {
             <CourseDetailsTab></CourseDetailsTab>
           </div>
           {/* Right side */}
-          <div className="lg:col-span-1 lg:absolute lg:top-[-250px] lg:right-0 max-w-sm bg-white p-5 shadow-box rounded-xl">
+          <div className="lg:col-span-1 lg:absolute lg:top-[-250px] lg:right-0 lg:max-w-sm bg-white p-5 shadow-box rounded-xl">
             <div className=" relative ">
               <img className="w-full rounded-xl" src="https://i.ibb.co.com/RvM0dkK/about-2.webp" alt="" />
               <div className="bg-black/50 flex justify-center items-center absolute top-0 left-0 w-full h-full rounded-xl">
