@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { BsCart2 } from "react-icons/bs";
-import { IoIosArrowUp } from "react-icons/io";
+import { IoIosArrowDown } from "react-icons/io";
 import { IoCloseOutline } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Link } from "react-router-dom";
@@ -36,7 +36,7 @@ const Nav = () => {
                 onMouseLeave={() => setAdmissionCard(false)}
               >
                 <button className="hover:text-primary-800 duration-300 flex items-center justify-center gap-1">
-                  Admission <IoIosArrowUp className={`duration-300 ${admissionCard ? "rotate-180" : ""}`} />
+                  Admission <IoIosArrowDown className={`duration-300 ${admissionCard ? "rotate-180" : ""}`} />
                 </button>
                 <div
                   className={`text-gray-600 w-max flex-col absolute overflow-y-hidden -right-10 bg-white hidden lg:flex p-6 duration-300 border rounded-lg ${
@@ -75,7 +75,7 @@ const Nav = () => {
                 onMouseLeave={() => setMoreCard(false)}
               >
                 <button className="hover:text-primary-800 duration-300 flex items-center justify-center gap-1">
-                  More <IoIosArrowUp className={`duration-300 ${moreCard ? "rotate-180" : ""}`} />
+                  More <IoIosArrowDown className={`duration-300 ${moreCard ? "rotate-180" : ""}`} />
                 </button>
                 <div
                   className={`text-gray-600 flex-col absolute overflow-y-hidden -right-10 bg-white hidden lg:flex p-6 duration-300 border rounded-lg ${
@@ -145,7 +145,7 @@ const Nav = () => {
                       className="w-full text-left hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50 flex items-center justify-between"
                       onClick={() => setAdmissionSubCard(!admissionSubCard)}
                     >
-                      Admission <IoIosArrowUp className={`duration-300 ${admissionSubCard ? "rotate-180" : ""}`} />
+                      Admission <IoIosArrowDown className={`duration-300 ${admissionSubCard ? "rotate-180" : ""}`} />
                     </button>
 
                     <div className={`pl-5 duration-300 flex flex-col w-max overflow-hidden ${admissionSubCard ? "h-[204px]" : "h-0"}`}>
