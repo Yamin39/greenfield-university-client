@@ -142,7 +142,7 @@ const CourseDetailsTab = () => {
                 </button>
 
                 {isOpen && (
-                  <ul className="relative top-[px] left-0 w-full space-y-2  mt-4 rounded-md ">
+                  <ul className="relative top-0 left-0 w-full space-y-2  mt-4 rounded-md ">
                     <li>
                       <Link
                         to={""}
