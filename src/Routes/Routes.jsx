@@ -4,8 +4,10 @@ import Home from "../pages/Home/Home";
 import OurCourse from "../pages/course/OurCourse";
 import CourseDetails from "../pages/course/CourseDetails";
 import Overview from "../pages/overview/Overview";
+import HowtoApply from "../pages/Apply/HowtoApply";
 import TuitionFee from "../pages/tuitionFee/TuitionFee";
 import FinancialAid from "../pages/financialAid/FinancialAid";
+import Contact from "../pages/contact/Contact";
 
 const router = createBrowserRouter([
   {
@@ -21,7 +23,7 @@ const router = createBrowserRouter([
         element: <OurCourse />,
       },
       {
-        path: "/course-details",
+        path: "/course-details/:_id",
         element: <CourseDetails></CourseDetails>,
       },
       {
@@ -33,9 +35,27 @@ const router = createBrowserRouter([
         element: <FinancialAid></FinancialAid>,
       },
       {
-        path: '/university-overview',
-        element: <Overview />
-      }
+        path: "/university-overview",
+        element: <Overview />,
+      },
+
+      {
+        path: '/how-to-Apply',
+        element: <HowtoApply />
+      },
+      {
+        path: '/contact',
+        element: <Contact />
+      },
+      {
+        path: "/university-overview",
+        element: <Overview />,
+      },
+
+      {
+        path: "/university-apply",
+        element: <HowtoApply/>,
+      },
     ],
   },
 ]);

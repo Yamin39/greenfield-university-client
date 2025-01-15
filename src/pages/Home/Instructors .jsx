@@ -33,21 +33,21 @@ const Instructors = () => {
         {instructors.map((instructor) => (
           <div
             key={instructor.id}
-            className="w-full bg-white border-2 border-gray-200 rounded-lg shadow-lg hover:shadow-xl transition-transform transform hover:-translate-y-2 cursor-pointer  "
+            className="w-full bg-white border-2 border-gray-200 rounded-2xl shadow-lg hover:shadow-xl transition-transform transform hover:-translate-y-2   cursor-pointer  "
           >
             {/* Image Section */}
             <div className="relative h-96 overflow-hidden rounded-t-lg">
               <img
                 src={instructor.img}
-                className="w-full  object-cover group-hover:scale-105 transition-transform duration-300"
+                className="w-full  object-cover rounded-2xl group-hover:scale-105 transition-transform duration-300"
                 alt={instructor.name}
               />
             </div>
             {/* Hover Overlay Section */}
-            <div className="absolute  h-96  inset-0 bg-black bg-opacity-70 text-white flex flex-col items-center justify-center   opacity-0 hover:opacity-100 transition-opacity duration-700">
+            <div className="absolute  rounded-2xl  h-96  inset-0 bg-black bg-opacity-70 text-white flex flex-col items-center justify-center   opacity-0 hover:opacity-100 transition-opacity duration-700">
               <p className="text-sm w-[80%] font-semibold text-start mb-2">{instructor.bio}</p>
               <p className="text-sm ">Rating: {instructor.rating}/5</p>
-              <div className=" h-full absolute opacity-20 w-full bg-[#1AB69D] "></div>
+              <div className=" h-full rounded-2xl  absolute opacity-20 w-full bg-[#1AB69D] "></div>
             </div>
 
             {/* Info Section */}
