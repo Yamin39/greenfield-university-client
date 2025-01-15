@@ -1,0 +1,32 @@
+[
+  {
+    "_id": "A1B2C3",
+    "title": "Annual Cultural Fest 2025",
+    "timestamp": 1739594400000,
+    "description": "Join us for the Annual Cultural Fest featuring exciting performances, competitions, and guest speakers. Open to all students and instructors."
+  },
+  {
+    "_id": "D4E5F6",
+    "title": "Library Book Return Deadline",
+    "timestamp": 1737426000000,
+    "description": "Students are reminded to return all borrowed library books by the deadline to avoid late fees. Contact the library staff for queries."
+  },
+  {
+    "_id": "G7H8I9",
+    "title": "Workshop on Career Development",
+    "timestamp": 1737958800000,
+    "description": "A workshop on resume building, interview preparation, and career planning. Register online to secure your spot."
+  },
+  {
+    "_id": "J1K2L3",
+    "title": "Sports Day 2025",
+    "timestamp": 1739154000000,
+    "description": "Participate in our annual Sports Day! Competitions include football, cricket, athletics, and more. Prizes for winners."
+  },
+  {
+    "_id": "M4N5O6",
+    "title": "Mid-Term Exam Schedule Announcement",
+    "timestamp": 1736708400000,
+    "description": "The mid-term exam schedule for all departments has been released. Check the notice board or the university portal for details."
+  }
+]
