@@ -55,8 +55,11 @@ const Nav = () => {
                   <Link to="/financial-aid" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50">
                     Financial Aid
                   </Link>
-                  <Link to="/dates-deadlines" className="hover:text-primary-800 duration-300 py-2 hover:bg-gray-50">
+                  <Link to="/dates-deadlines" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50">
                     Dates & Deadlines
+                  </Link>
+                  <Link to="/schedule-a-tour" className="hover:text-primary-800 duration-300 py-2 hover:bg-gray-50">
+                    Schedule a Tour
                   </Link>
                 </div>
               </div>
@@ -91,8 +94,8 @@ const Nav = () => {
                   <Link to="/shop" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50">
                     Shop
                   </Link>
-                  <Link to="/community" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50">
-                    Community
+                  <Link to="/queries" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50">
+                    Queries
                   </Link>
                   <Link to="/gallery" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50">
                     Gallery
@@ -100,8 +103,11 @@ const Nav = () => {
                   <Link to="/announcements" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50">
                     Announcements
                   </Link>
-                  <Link to="/about" className="hover:text-primary-800 duration-300 py-2 hover:bg-gray-50">
+                  <Link to="/about" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50">
                     About
+                  </Link>
+                  <Link to="/faq" className="hover:text-primary-800 duration-300 py-2 hover:bg-gray-50">
+                    FAQ&apos;s
                   </Link>
                 </div>
               </div>
@@ -148,7 +154,7 @@ const Nav = () => {
                       Admission <IoIosArrowDown className={`duration-300 ${admissionSubCard ? "rotate-180" : ""}`} />
                     </button>
 
-                    <div className={`pl-5 duration-300 flex flex-col w-max overflow-hidden ${admissionSubCard ? "h-[204px]" : "h-0"}`}>
+                    <div className={`pl-5 duration-300 flex flex-col w-max overflow-hidden ${admissionSubCard ? "h-[245px]" : "h-0"}`}>
                       <Link to="/university-overview" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50">
                         Overview
                       </Link>
@@ -163,6 +169,9 @@ const Nav = () => {
                       </Link>
                       <Link to="/dates-deadlines" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50">
                         Dates & Deadlines
+                      </Link>
+                      <Link to="/schedule-a-tour" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50">
+                        Schedule a Tour
                       </Link>
                     </div>
                   </div>
@@ -187,14 +196,17 @@ const Nav = () => {
                   <Link to="/shop" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50 block">
                     Shop
                   </Link>
-                  <Link to="/community" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50 block">
-                    Community
+                  <Link to="/queries" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50 block">
+                    Queries
                   </Link>
                   <Link to="/gallery" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50 block">
                     Gallery
                   </Link>
-                  <Link to="/announcements" className="hover:text-primary-800 duration-300 py-2 hover:bg-gray-50 block">
+                  <Link to="/announcements" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50 block">
                     Announcements
+                  </Link>
+                  <Link to="/faq" className="hover:text-primary-800 duration-300 py-2 hover:bg-gray-50 block">
+                    FAQ&apos;s
                   </Link>
                 </div>
               </li>
