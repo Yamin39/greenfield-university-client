@@ -58,7 +58,7 @@ const AllTuitionFee = () => {
               <ul className="relative transition duration-500 top-0 left-0 w-full space-y-2  mt-4 rounded-md ">
                 <li>
                   <div className=" space-y-3">
-                    <h2 className="flex flex-row justify-between px-5 items-center bg-pink-200 text-[16px] md:text-lg font-medium py-3 rounded-md">
+                    <h2 className="flex flex-row justify-between px-5 items-center bg-primary-700/30 text-[16px] md:text-lg font-medium py-3 rounded-md">
                       <span>Expense</span>
                       <span>Semester</span>
                       <span>Annual</span>
@@ -80,7 +80,7 @@ const AllTuitionFee = () => {
               <ul className="relative transition duration-500 top-0 left-0 w-full space-y-2  mt-4 rounded-md ">
                 <li>
                   <div className=" space-y-3">
-                    <h2 className="flex flex-row justify-between px-5 items-center bg-pink-200 text-[16px] md:text-lg font-medium py-3 rounded-md">
+                    <h2 className="flex flex-row justify-between px-5 items-center bg-primary-700/30 text-[16px] md:text-lg font-medium py-3 rounded-md">
                       <span>Expense</span>
                       <span>Semester</span>
                       <span>Annual</span>
@@ -140,7 +140,7 @@ const AllTuitionFee = () => {
               <ul className="relative transition duration-500 top-0 left-0 w-full space-y-2  mt-4 rounded-md ">
                 <li>
                   <div className=" space-y-3">
-                    <h2 className="flex flex-row justify-between px-5 items-center bg-pink-200 text-[16px] md:text-lg font-medium py-3 rounded-md">
+                    <h2 className="flex flex-row justify-between px-5 items-center bg-primary-700/30 text-[16px] md:text-lg font-medium py-3 rounded-md">
                       <span>Expense</span>
                       <span>Semester</span>
                       <span>Annual</span>
@@ -162,7 +162,7 @@ const AllTuitionFee = () => {
               <ul className="relative transition duration-500 top-0 left-0 w-full space-y-2  mt-4 rounded-md ">
                 <li>
                   <div className=" space-y-3">
-                    <h2 className="flex flex-row justify-between px-5 items-center bg-pink-200 text-[16px] md:text-lg font-medium py-3 rounded-md">
+                    <h2 className="flex flex-row justify-between px-5 items-center bg-primary-700/30 text-[16px] md:text-lg font-medium py-3 rounded-md">
                       <span>Expense</span>
                       <span>Semester</span>
                       <span>Annual</span>
@@ -222,7 +222,7 @@ const AllTuitionFee = () => {
               <ul className="relative transition duration-500 top-0 left-0 w-full space-y-2  mt-4 rounded-md ">
                 <li>
                   <div className=" space-y-3">
-                    <h2 className="flex flex-row justify-between px-5 items-center bg-pink-200 text-[16px] md:text-lg font-medium py-3 rounded-md">
+                    <h2 className="flex flex-row justify-between px-5 items-center bg-primary-700/30 text-[16px] md:text-lg font-medium py-3 rounded-md">
                       <span>Expense</span>
                       <span>Semester</span>
                       <span>Annual</span>
@@ -244,7 +244,7 @@ const AllTuitionFee = () => {
               <ul className="relative transition duration-500 top-0 left-0 w-full space-y-2  mt-4 rounded-md ">
                 <li>
                   <div className=" space-y-3">
-                    <h2 className="flex flex-row justify-between px-5 items-center bg-pink-200 text-[16px] md:text-lg font-medium py-3 rounded-md">
+                    <h2 className="flex flex-row justify-between px-5 items-center bg-primary-700/30 text-[16px] md:text-lg font-medium py-3 rounded-md">
                       <span>Expense</span>
                       <span>Semester</span>
                       <span>Annual</span>
@@ -304,7 +304,7 @@ const AllTuitionFee = () => {
               <ul className="relative transition duration-500 top-0 left-0 w-full space-y-2  mt-4 rounded-md ">
                 <li>
                   <div className=" space-y-3">
-                    <h2 className="flex flex-row justify-between px-5 items-center bg-pink-200 text-[16px] md:text-lg font-medium py-3 rounded-md">
+                    <h2 className="flex flex-row justify-between px-5 items-center bg-primary-700/30 text-[16px] md:text-lg font-medium py-3 rounded-md">
                       <span>Expense</span>
                       <span>Semester</span>
                       <span>Annual</span>
@@ -326,7 +326,7 @@ const AllTuitionFee = () => {
               <ul className="relative transition duration-500 top-0 left-0 w-full space-y-2  mt-4 rounded-md ">
                 <li>
                   <div className=" space-y-3">
-                    <h2 className="flex flex-row justify-between px-5 items-center bg-pink-200 text-[16px] md:text-lg font-medium py-3 rounded-md">
+                    <h2 className="flex flex-row justify-between px-5 items-center bg-primary-700/30 text-[16px] md:text-lg font-medium py-3 rounded-md">
                       <span>Expense</span>
                       <span>Semester</span>
                       <span>Annual</span>
@@ -386,7 +386,7 @@ const AllTuitionFee = () => {
               <ul className="relative transition duration-500 top-0 left-0 w-full space-y-2  mt-4 rounded-md ">
                 <li>
                   <div className=" space-y-3">
-                    <h2 className="flex flex-row justify-between px-5 items-center bg-pink-200 text-[16px] md:text-lg font-medium py-3 rounded-md">
+                    <h2 className="flex flex-row justify-between px-5 items-center bg-primary-700/30 text-[16px] md:text-lg font-medium py-3 rounded-md">
                       <span>Expense</span>
                       <span>Semester</span>
                       <span>Annual</span>
@@ -408,7 +408,7 @@ const AllTuitionFee = () => {
               <ul className="relative transition duration-500 top-0 left-0 w-full space-y-2  mt-4 rounded-md ">
                 <li>
                   <div className=" space-y-3">
-                    <h2 className="flex flex-row justify-between px-5 items-center bg-pink-200 text-[16px] md:text-lg font-medium py-3 rounded-md">
+                    <h2 className="flex flex-row justify-between px-5 items-center bg-primary-700/30 text-[16px] md:text-lg font-medium py-3 rounded-md">
                       <span>Expense</span>
                       <span>Semester</span>
                       <span>Annual</span>
