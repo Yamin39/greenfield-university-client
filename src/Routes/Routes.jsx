@@ -8,6 +8,7 @@ import HowtoApply from "../pages/Apply/HowtoApply";
 import TuitionFee from "../pages/tuitionFee/TuitionFee";
 import FinancialAid from "../pages/financialAid/FinancialAid";
 import Contact from "../pages/contact/Contact";
+import DateDeadline from "../pages/dateDeadline/DateDeadline";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: "/financial-aid",
         element: <FinancialAid></FinancialAid>,
+      },
+      {
+        path: "/dates-deadlines",
+        element: <DateDeadline></DateDeadline>,
       },
       {
         path: "/university-overview",
