@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
-const Steps = ({ currentStep }) => {
+const Steps = ({ props }) => {
+  const { currentStep } = props;
   return (
     <div>
-      <div className="w-11/12 max-w-7xl mx-auto py-12">
+      <div className="w-11/12 max-w-3xl mx-auto py-12">
         <ol className="flex items-center justify-center">
           <li className="relative w-full mb-6">
             <div className="flex items-center">
