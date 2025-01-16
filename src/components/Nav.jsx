@@ -122,7 +122,7 @@ const Nav = () => {
                 </Link>
               </li>
               <li className="hidden lg:inline-block">
-                <Link to="/" className="bg-primary-700 text-white pt-1.5 pb-2 px-3 hover:bg-primary-800 rounded-md duration-300">
+                <Link to="/login" className="bg-primary-700 text-white pt-1.5 pb-2 px-3 hover:bg-primary-800 rounded-md duration-300">
                   Login
                 </Link>
               </li>
@@ -140,7 +140,7 @@ const Nav = () => {
                   <button onClick={() => setHamburgerMenu(!hamburgerMenu)} className="absolute top-2 right-2">
                     <IoCloseOutline className="text-2xl" />
                   </button>
-                  <Link to="/" className="bg-primary-700 text-white text-center pt-1.5 pb-2 px-3 hover:bg-primary-800 rounded-md duration-300 block mt-4">
+                  <Link to="/login" className="bg-primary-700 text-white text-center pt-1.5 pb-2 px-3 hover:bg-primary-800 rounded-md duration-300 block mt-4">
                     Login
                   </Link>
                   <Link to="/" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50 block">
