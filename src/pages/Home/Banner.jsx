@@ -4,6 +4,7 @@ import banner from '../../assets/homeImages/banner.webp'
 import shape_1 from '../../assets/homeImages/shape_1.png'
 import { PiChalkboardTeacherLight, PiGraduationCapLight } from "react-icons/pi";
 import instructor from '../../assets/homeImages/instructor.png'
+import childBanner from '../../assets/images/child.png'
 import { BsBookmarks } from "react-icons/bs";
 
 const Banner = () => {
@@ -21,12 +22,12 @@ const Banner = () => {
           </div>
         </div>
         <div className="basis-[45%]">
-          <img src={banner} alt="banner image" className="w-full" />
+          <img src={childBanner} alt="banner image" className="w-full" />
         </div>
 
         {/* utilities */}
 
-        <img src={shape_1} alt="" className="absolute top-36 -left-16 hidden xl:inline-block" />
+        <img src={shape_1} alt="" className="absolute top-48 -left-16 hidden xl:inline-block" />
 
         {/* instructors */}
 
