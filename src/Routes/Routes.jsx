@@ -9,6 +9,9 @@ import TuitionFee from "../pages/tuitionFee/TuitionFee";
 import FinancialAid from "../pages/financialAid/FinancialAid";
 import Contact from "../pages/contact/Contact";
 import Tour from "../pages/Tour/Tour";
+import DateDeadline from "../pages/dateDeadline/DateDeadline";
+import Login from "../pages/Login/Login";
+import Registration from "../pages/Registration/Registration";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +39,10 @@ const router = createBrowserRouter([
         element: <FinancialAid></FinancialAid>,
       },
       {
+        path: "/dates-deadlines",
+        element: <DateDeadline></DateDeadline>,
+      },
+      {
         path: "/university-overview",
         element: <Overview />,
       },
@@ -60,7 +67,16 @@ const router = createBrowserRouter([
       {
         path: '/tour',
         element: <Tour />
-      }
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/registration",
+        element: <Registration />,
+      },
+
     ],
   },
 ]);

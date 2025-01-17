@@ -31,7 +31,7 @@ const Nav = () => {
                 Home
               </Link>
               <div
-                className="inline-block relative after:size-full after:absolute after:-bottom-6"
+                className="inline-block relative"
                 onMouseEnter={() => setAdmissionCard(true)}
                 onMouseLeave={() => setAdmissionCard(false)}
               >
@@ -39,7 +39,7 @@ const Nav = () => {
                   Admission <IoIosArrowDown className={`duration-300 ${admissionCard ? "rotate-180" : ""}`} />
                 </button>
                 <div
-                  className={`text-gray-600 w-max flex-col absolute overflow-y-hidden -right-10 bg-white hidden lg:flex p-6 duration-300 border rounded-lg ${
+                  className={`text-gray-600 w-max flex-col absolute -right-10 bg-white hidden lg:flex p-6 duration-300 border rounded-lg after:w-full after:h-20 after:absolute after:-top-20 after:left-0 ${
                     admissionCard ? "top-10 opacity-100" : "-top-[20rem] opacity-0"
                   }`}
                 >
@@ -73,7 +73,7 @@ const Nav = () => {
                 Contact
               </Link>
               <div
-                className="inline-block relative after:size-full after:absolute after:-bottom-6"
+                className="inline-block relative"
                 onMouseEnter={() => setMoreCard(true)}
                 onMouseLeave={() => setMoreCard(false)}
               >
@@ -81,8 +81,8 @@ const Nav = () => {
                   More <IoIosArrowDown className={`duration-300 ${moreCard ? "rotate-180" : ""}`} />
                 </button>
                 <div
-                  className={`text-gray-600 flex-col absolute overflow-y-hidden -right-10 bg-white hidden lg:flex p-6 duration-300 border rounded-lg ${
-                    moreCard ? "top-10 opacity-100" : "-top-[20rem] opacity-0"
+                  className={`text-gray-600 flex-col absolute -right-10 bg-white hidden lg:flex p-6 duration-300 border rounded-lg after:w-full after:h-20 after:absolute after:-top-20 after:left-0 ${
+                    moreCard ? "top-10 opacity-100" : "-top-[30rem] opacity-0"
                   }`}
                 >
                   <Link to="/instructors" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50">
@@ -122,7 +122,7 @@ const Nav = () => {
                 </Link>
               </li>
               <li className="hidden lg:inline-block">
-                <Link to="/" className="bg-primary-700 text-white pt-1.5 pb-2 px-3 hover:bg-primary-800 rounded-md duration-300">
+                <Link to="/login" className="bg-primary-700 text-white pt-1.5 pb-2 px-3 hover:bg-primary-800 rounded-md duration-300">
                   Login
                 </Link>
               </li>
@@ -140,7 +140,7 @@ const Nav = () => {
                   <button onClick={() => setHamburgerMenu(!hamburgerMenu)} className="absolute top-2 right-2">
                     <IoCloseOutline className="text-2xl" />
                   </button>
-                  <Link to="/" className="bg-primary-700 text-white text-center pt-1.5 pb-2 px-3 hover:bg-primary-800 rounded-md duration-300 block mt-4">
+                  <Link to="/login" className="bg-primary-700 text-white text-center pt-1.5 pb-2 px-3 hover:bg-primary-800 rounded-md duration-300 block mt-4">
                     Login
                   </Link>
                   <Link to="/" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50 block">
