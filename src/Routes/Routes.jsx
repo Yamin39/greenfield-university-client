@@ -8,6 +8,7 @@ import HowtoApply from "../pages/Apply/HowtoApply";
 import TuitionFee from "../pages/tuitionFee/TuitionFee";
 import FinancialAid from "../pages/financialAid/FinancialAid";
 import Contact from "../pages/contact/Contact";
+import Tour from "../pages/Tour/Tour";
 import DateDeadline from "../pages/dateDeadline/DateDeadline";
 import Login from "../pages/Login/Login";
 import Registration from "../pages/Registration/Registration";
@@ -66,17 +67,21 @@ const router = createBrowserRouter([
 
       {
         path: "/university-apply",
-        element: <HowtoApply/>,
+        element: <HowtoApply />,
+      },
+      {
+        path: '/tour',
+        element: <Tour />
       },
       {
         path: "/login",
-        element: <Login/>,
+        element: <Login />,
       },
       {
         path: "/registration",
-        element: <Registration/>,
+        element: <Registration />,
       },
-      
+
     ],
   },
 ]);
