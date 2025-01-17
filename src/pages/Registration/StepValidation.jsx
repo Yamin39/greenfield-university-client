@@ -1,10 +1,11 @@
-import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { FaSpinner } from "react-icons/fa6";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 /* eslint-disable react/prop-types */
 const StepValidation = ({ props }) => {
+  const axiosPublic = useAxiosPublic();
   const { role, setId, setCurrentStep } = props;
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -14,9 +15,10 @@ const StepValidation = ({ props }) => {
     setIsLoading(true);
     e.preventDefault();
     const id = e.target.id.value;
+    console.log(id);
 
-    axios
-      .post("http://localhost:5000/auth/validate", { id, role })
+    axiosPublic
+      .post("/auth/validate", { id, role })
       .then((res) => {
         if (res.data.success) {
           setId(id);
