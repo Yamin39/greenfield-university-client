@@ -1,0 +1,127 @@
+[
+      {
+        "id": "sem001",
+        "title": "Creative Teaching Methods in Digital Age",
+        "slug": "creative-teaching-methods-digital-age",
+        "category": "Teaching Methodology",
+        "type": "Seminar",
+        "status": "upcoming",
+        "featured": true,
+        "thumbnail": "https://demo.edublink.co/wp-content/uploads/2023/03/course-13.jpg",
+        "date": "2025-02-15",
+        "time": {
+          "start": "09:00 AM",
+          "end": "04:00 PM",
+          "timezone": "EST"
+        },
+        "location": {
+          "type": "hybrid",
+          "venue": "Education Innovation Center",
+          "address": "123 Learning Street, Boston, MA 02108",
+          "virtualPlatform": "Zoom",
+          "virtualLink": "https://zoom.us/j/example"
+        },
+        "price": {
+          "amount": 199,
+          "currency": "USD",
+          "earlyBirdDiscount": true,
+          "earlyBirdDeadline": "2025-01-15"
+        },
+        "speakers": [
+          {
+            "id": "spk001",
+            "name": "Dr. Sarah Johnson",
+            "title": "Education Technology Specialist",
+            "institution": "Harvard Graduate School of Education",
+            "bio": "20+ years experience in educational innovation",
+            "image": "/images/speakers/sarah-johnson.jpg"
+          },
+          {
+            "id": "spk002",
+            "name": "Prof. Michael Chen",
+            "title": "Instructional Design Expert",
+            "institution": "MIT Teaching Excellence Center",
+            "bio": "Pioneer in blended learning methodologies",
+            "image": "https://demo.edublink.co/wp-content/uploads/2023/03/course-13.jpg"
+          }
+        ],
+        "description": "Join us for an intensive one-day seminar exploring innovative teaching methods for the modern classroom. Learn to integrate technology, engage diverse learners, and create interactive learning experiences.",
+        "agenda": [
+          {
+            "time": "09:00 AM",
+            "title": "Registration and Networking Breakfast",
+            "duration": "30 mins"
+          },
+          {
+            "time": "09:30 AM",
+            "title": "Digital Tools for Interactive Learning",
+            "speaker": "Dr. Sarah Johnson",
+            "duration": "90 mins"
+          },
+          {
+            "time": "11:00 AM",
+            "title": "Designing Engaging Online Activities",
+            "speaker": "Prof. Michael Chen",
+            "duration": "90 mins"
+          }
+        ],
+        "learningOutcomes": [
+          "Master digital teaching tools and platforms",
+          "Design interactive learning experiences",
+          "Implement effective hybrid teaching strategies",
+          "Assess student engagement in digital environments"
+        ],
+        "registration": {
+          "status": "open",
+          "capacity": 100,
+          "spotsRemaining": 45,
+          "deadline": "2025-02-10",
+          "requirementsInfo": "Open to all education professionals",
+          "certificateProvided": true
+        },
+        "metadata": {
+          "tags": ["education", "teaching", "digital learning", "professional development"],
+          "seoDescription": "Transform your teaching methods with our innovative seminar on creative teaching in the digital age.",
+          "lastUpdated": "2025-01-10T14:30:00Z"
+        }
+      },
+      {
+        "id": "sem002",
+        "title": "Student-Centered Learning Workshop",
+        "slug": "student-centered-learning-workshop",
+        "category": "Pedagogical Approaches",
+        "type": "Workshop",
+        "status": "upcoming",
+        "featured": false,
+        "thumbnail": "https://demo.edublink.co/wp-content/uploads/2023/03/course-45.jpg",
+        "date": "2025-03-01",
+        "time": {
+          "start": "10:00 AM",
+          "end": "03:00 PM",
+          "timezone": "PST"
+        },
+        "location": {
+          "type": "in-person",
+          "venue": "Western Teaching Center",
+          "address": "456 Education Boulevard, San Francisco, CA 94105"
+        },
+        "price": {
+          "amount": 149,
+          "currency": "USD",
+          "groupDiscount": true,
+          "minimumGroupSize": 3
+        },
+        "speakers": [
+          {
+            "id": "spk003",
+            "name": "Dr. Emily Rodriguez",
+            "title": "Learning Psychology Expert",
+            "institution": "Stanford Education Lab",
+            "bio": "Specialist in student engagement and motivation",
+            "image": "https://demo.edublink.co/wp-content/uploads/2023/03/course-45.jpg"
+          }
+        ],
+        "description": "Discover practical strategies for implementing student-centered learning approaches in your classroom. This workshop focuses on active learning techniques and personalized instruction methods."
+      }
+    ]
+  
