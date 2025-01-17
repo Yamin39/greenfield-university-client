@@ -8,6 +8,7 @@ import HowtoApply from "../pages/Apply/HowtoApply";
 import TuitionFee from "../pages/tuitionFee/TuitionFee";
 import FinancialAid from "../pages/financialAid/FinancialAid";
 import Contact from "../pages/contact/Contact";
+import Tour from "../pages/Tour/Tour";
 
 const router = createBrowserRouter([
   {
@@ -54,8 +55,12 @@ const router = createBrowserRouter([
 
       {
         path: "/university-apply",
-        element: <HowtoApply/>,
+        element: <HowtoApply />,
       },
+      {
+        path: '/tour',
+        element: <Tour />
+      }
     ],
   },
 ]);
