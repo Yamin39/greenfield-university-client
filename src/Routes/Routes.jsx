@@ -11,6 +11,7 @@ import Contact from "../pages/contact/Contact";
 import DateDeadline from "../pages/dateDeadline/DateDeadline";
 import Login from "../pages/Login/Login";
 import Registration from "../pages/Registration/Registration";
+import About from "../pages/about/About";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: "/dates-deadlines",
         element: <DateDeadline></DateDeadline>,
+      },
+      {
+        path: "/about",
+        element: <About></About>,
       },
       {
         path: "/university-overview",
