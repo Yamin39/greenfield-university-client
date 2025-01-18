@@ -15,6 +15,7 @@ import Registration from "../pages/Registration/Registration";
 import About from "../pages/about/About";
 import Faq from "../pages/Faq/Faq";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import Announcements from "../pages/announcements/Announcements";
 
 const router = createBrowserRouter([
   {
@@ -87,6 +88,10 @@ const router = createBrowserRouter([
       {
         path: '/faq',
         element: <Faq />
+      },
+      {
+        path: '/announcements',
+        element: <Announcements />
       }
 
     ],
