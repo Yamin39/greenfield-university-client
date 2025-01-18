@@ -13,6 +13,7 @@ import DateDeadline from "../pages/dateDeadline/DateDeadline";
 import Login from "../pages/Login/Login";
 import Registration from "../pages/Registration/Registration";
 import About from "../pages/about/About";
+import Faq from "../pages/Faq/Faq";
 
 const router = createBrowserRouter([
   {
@@ -81,6 +82,10 @@ const router = createBrowserRouter([
         path: "/registration",
         element: <Registration />,
       },
+      {
+        path: '/faq',
+        element: <Faq />
+      }
 
     ],
   },

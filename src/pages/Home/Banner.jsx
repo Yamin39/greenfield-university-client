@@ -1,6 +1,5 @@
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { Link } from "react-router-dom";
-import banner from '../../assets/homeImages/banner.webp'
 import shape_1 from '../../assets/homeImages/shape_1.png'
 import { PiChalkboardTeacherLight, PiGraduationCapLight } from "react-icons/pi";
 import instructor from '../../assets/homeImages/instructor.png'
