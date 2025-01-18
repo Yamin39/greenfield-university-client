@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Footer from "../components/Footer";
 import Nav from "../components/Nav";
+import ScrollToTop from "../components/ScrollToTop";
 
 const Root = () => {
   return (
@@ -8,6 +9,7 @@ const Root = () => {
       <Nav />
 
       <div>
+        <ScrollToTop />
         <Outlet />
       </div>
 
