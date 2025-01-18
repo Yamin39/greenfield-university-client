@@ -12,6 +12,7 @@ import DateDeadline from "../pages/dateDeadline/DateDeadline";
 import Login from "../pages/Login/Login";
 import Registration from "../pages/Registration/Registration";
 import About from "../pages/about/About";
+import Blogs from "../pages/blog/Blogs";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
       {
         path: "/about",
         element: <About></About>,
+      },
+      {
+        path: "/blogs",
+        element: <Blogs></Blogs>,
       },
       {
         path: "/university-overview",
