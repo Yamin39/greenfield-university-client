@@ -1,5 +1,6 @@
 import SharedBanner from "../../shared/SharedBanner";
 import AboutStatistics from "./AboutStatistics";
+import Campuses from "./Campuses";
 import Coach from "./Coach";
 import Gallery from "./Gallery";
 import History from "./History";
@@ -15,6 +16,7 @@ const About = () => {
             <MissionValues></MissionValues>
             <History></History>
             <Coach></Coach>
+            <Campuses></Campuses>
         </div>
     );
 };

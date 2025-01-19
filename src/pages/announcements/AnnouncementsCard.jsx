@@ -1,16 +1,19 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const AnnouncementsCard = () => {
-   const [announcements, setAnnouncements] = useState([]);
 
-   useEffect(() => {
-      fetch('/announcements.json')
-         .then(res => res.json())
-         .then(data => setAnnouncements(data))
-   }, [])
+   const axiosPublic = useAxiosPublic();
 
+   const { data : announcements = [] } = useQuery({
+      queryKey: ['announcements'],
+      queryFn: async () => {
+         const res = await axiosPublic.get('/announcements')
+         return res.data;
+      }
+   })
 
-   const formatTimestamp = (timestamp) =>{
+   const formatTimestamp = (timestamp) => {
       const data = new Date(timestamp);
       return data.toLocaleString()
    }
@@ -26,12 +29,12 @@ const AnnouncementsCard = () => {
                </div>
                <p className="text-[#8d8b8b] font-light">{item.description}<span className="text-blue-500 cursor-pointer font-semibold text-sm pl-1">Learn more...</span></p>
                <p>{formatTimestamp(item.timestamp)}</p>
-   
+
             </div>)
          }
 
-         
-         
+
+
 
 
       </div>

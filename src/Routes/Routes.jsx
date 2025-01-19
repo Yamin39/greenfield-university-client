@@ -16,6 +16,7 @@ import About from "../pages/about/About";
 import Faq from "../pages/Faq/Faq";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Announcements from "../pages/announcements/Announcements";
+import Blogs from "../pages/blog/Blogs";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
       {
         path: "/about",
         element: <About></About>,
+      },
+      {
+        path: "/blogs",
+        element: <Blogs></Blogs>,
       },
       {
         path: "/university-overview",
