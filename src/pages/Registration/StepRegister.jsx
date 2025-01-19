@@ -1,19 +1,25 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { FaSpinner } from "react-icons/fa6";
 import { FiEye, FiEyeOff } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import { AuthContext } from "../../providers/AuthProvider";
 
 /* eslint-disable react/prop-types */
 const StepRegister = ({ props }) => {
-  const { role, id } = props;
+  const { role, id, setCurrentStep } = props;
   const [isLoading, setIsLoading] = useState(false);
   const [togglePassword, setTogglePassword] = useState(false);
+  const { user, setUser, createUser, updateUserNameAndPhoto } = useContext(AuthContext);
+  const axiosPublic = useAxiosPublic();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsLoading(true);
     const form = e.target;
-    const fullName = form.fullName.value;
+    const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
     const confirmPassword = form.confirmPassword.value;
@@ -37,8 +43,43 @@ const StepRegister = ({ props }) => {
       return;
     }
 
-    console.log({ fullName, email, password, confirmPassword, role, id });
-    setIsLoading(false);
+    console.log({ name, email, password, confirmPassword, role, id });
+
+    createUser(email, password)
+      .then((res) => {
+        updateUserNameAndPhoto(res.user, name, null);
+        setUser({ ...user, displayName: name });
+        const info = {
+          id,
+          name,
+          email,
+          role,
+        };
+
+        axiosPublic
+          .patch("/auth/register", info)
+          .then((res) => {
+            console.log(res.data);
+            if (res.data.modifiedCount) {
+              toast.success(res.data?.message);
+              setCurrentStep(4);
+              setIsLoading(false);
+              navigate("/");
+            }
+          })
+          .catch((err) => {
+            console.error(err);
+            toast.error("Something went wrong! Please try again.");
+            setIsLoading(false);
+          });
+      })
+      .catch((err) => {
+        console.error(err);
+        toast.error("Something went wrong! Please try again.");
+        setIsLoading(false);
+      });
+
+    // setIsLoading(false);
     // setCurrentStep(4);
   };
   return (
@@ -55,7 +96,7 @@ const StepRegister = ({ props }) => {
               className="w-full p-4 border rounded-xl text-lg font-medium border-gray-300 outline-none"
               type="text"
               required
-              name="fullName"
+              name="name"
               placeholder="Enter Name here"
             />
 
