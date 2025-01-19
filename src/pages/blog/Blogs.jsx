@@ -5,7 +5,7 @@ import AllBlogs from "./AllBlogs";
 const Blogs = () => {
     return (
         <div>
-            <SharedBanner title={'Blog'}></SharedBanner>
+            <SharedBanner title={'Blogs'}></SharedBanner>
             <AllBlogs></AllBlogs>
         </div>
     );
