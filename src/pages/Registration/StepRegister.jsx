@@ -1,17 +1,17 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
 import { FaSpinner } from "react-icons/fa6";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
-import { AuthContext } from "../../providers/AuthProvider";
 
 /* eslint-disable react/prop-types */
 const StepRegister = ({ props }) => {
   const { role, id, setCurrentStep } = props;
   const [isLoading, setIsLoading] = useState(false);
   const [togglePassword, setTogglePassword] = useState(false);
-  const { user, setUser, createUser, updateUserNameAndPhoto } = useContext(AuthContext);
+  const { user, setUser, createUser, updateUserNameAndPhoto } = useAuth();
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
 
@@ -78,9 +78,6 @@ const StepRegister = ({ props }) => {
         toast.error("Something went wrong! Please try again.");
         setIsLoading(false);
       });
-
-    // setIsLoading(false);
-    // setCurrentStep(4);
   };
   return (
     <div className="flex flex-col justify-center items-center">
