@@ -16,6 +16,7 @@ import About from "../pages/about/About";
 import Faq from "../pages/Faq/Faq";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Announcements from "../pages/announcements/Announcements";
+import Instructors from "../pages/Instructor/Instructors";
 
 const router = createBrowserRouter([
   {
@@ -92,6 +93,10 @@ const router = createBrowserRouter([
       {
         path: '/announcements',
         element: <Announcements />
+      },
+      {
+        path: '/instructors',
+        element: <Instructors />
       }
 
     ],
