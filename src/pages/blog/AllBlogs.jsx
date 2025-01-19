@@ -37,7 +37,7 @@ const AllBlogs = () => {
                 >
                   <div className="overflow-hidden  group  rounded-t-xl">
                     <Link
-                      to={"#"}
+                      to={"/blog-details"}
                       className="relative block transition-transform duration-500 "
                     >
                       <div className="overflow-hidden">
