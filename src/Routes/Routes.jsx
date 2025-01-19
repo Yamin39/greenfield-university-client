@@ -17,6 +17,7 @@ import Faq from "../pages/Faq/Faq";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Announcements from "../pages/announcements/Announcements";
 import Blogs from "../pages/blog/Blogs";
+import BlogDetails from "../pages/blog/blogDetails/BlogDetails";
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
       {
         path: "/blogs",
         element: <Blogs></Blogs>,
+      },
+      {
+        path: "/blog-details",
+        element: <BlogDetails></BlogDetails>,
       },
       {
         path: "/university-overview",
