@@ -11,7 +11,7 @@ const StepRole = ({ props }) => {
     }
   };
   return (
-    <div className="w-full text-center pt-6 pb-12">
+    <div className="md:w-fit text-center p-10 rounded-xl mx-auto border">
       <div>
         <h2 className="text-3xl font-bold text-gray-900">Role</h2>
         <p className="mt-2 text-sm text-gray-500">What is your role at the university?</p>
