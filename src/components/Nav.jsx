@@ -5,6 +5,7 @@ import { IoCloseOutline } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";
+import useAuth from "../hooks/useAuth";
 
 const Nav = () => {
   const cartCount = 0;
@@ -12,6 +13,7 @@ const Nav = () => {
   const [admissionCard, setAdmissionCard] = useState(false);
   const [admissionSubCard, setAdmissionSubCard] = useState(false);
   const [hamburgerMenu, setHamburgerMenu] = useState(false);
+  const { user } = useAuth();
 
   return (
     <>
@@ -30,11 +32,7 @@ const Nav = () => {
               <Link to="/" className="hover:text-primary-800 duration-300">
                 Home
               </Link>
-              <div
-                className="inline-block relative"
-                onMouseEnter={() => setAdmissionCard(true)}
-                onMouseLeave={() => setAdmissionCard(false)}
-              >
+              <div className="inline-block relative" onMouseEnter={() => setAdmissionCard(true)} onMouseLeave={() => setAdmissionCard(false)}>
                 <button className="hover:text-primary-800 duration-300 flex items-center justify-center gap-1">
                   Admission <IoIosArrowDown className={`duration-300 ${admissionCard ? "rotate-180" : ""}`} />
                 </button>
@@ -72,11 +70,7 @@ const Nav = () => {
               <Link to="/contact" className="hover:text-primary-800 duration-300">
                 Contact
               </Link>
-              <div
-                className="inline-block relative"
-                onMouseEnter={() => setMoreCard(true)}
-                onMouseLeave={() => setMoreCard(false)}
-              >
+              <div className="inline-block relative" onMouseEnter={() => setMoreCard(true)} onMouseLeave={() => setMoreCard(false)}>
                 <button className="hover:text-primary-800 duration-300 flex items-center justify-center gap-1">
                   More <IoIosArrowDown className={`duration-300 ${moreCard ? "rotate-180" : ""}`} />
                 </button>
@@ -122,9 +116,13 @@ const Nav = () => {
                 </Link>
               </li>
               <li className="hidden lg:inline-block">
-                <Link to="/login" className="bg-primary-700 text-white pt-1.5 pb-2 px-3 hover:bg-primary-800 rounded-md duration-300">
-                  Login
-                </Link>
+                {user ? (
+                  <p className="text-gray-600">{user.displayName}</p>
+                ) : (
+                  <Link to="/login" className="bg-primary-700 text-white pt-1.5 pb-2 px-3 hover:bg-primary-800 rounded-md duration-300">
+                    Login
+                  </Link>
+                )}
               </li>
               <li className="lg:hidden">
                 <button onClick={() => setHamburgerMenu(!hamburgerMenu)}>
