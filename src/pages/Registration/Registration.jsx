@@ -1,5 +1,6 @@
 import { useState } from "react";
 import SharedBanner from "../../shared/SharedBanner";
+import StepRegister from "./StepRegister";
 import StepRole from "./StepRole";
 import Steps from "./Steps";
 import StepValidation from "./StepValidation";
@@ -29,7 +30,7 @@ const Registration = () => {
               {
                 1: <StepRole props={props} />,
                 2: <StepValidation props={props} />,
-                3: <div>Details</div>,
+                3: <StepRegister props={props} />,
               }[currentStep]
             }
           </div>
