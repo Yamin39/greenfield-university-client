@@ -69,7 +69,7 @@ const StepValidation = ({ props }) => {
             )}
           </button>
 
-          <p className="text-xs text-gray-600 mt-4 text-center">
+          <p className="text-gray-600 mt-4 text-center">
             Already have an account?{" "}
             <Link to="/login" className="text-primary-700">
               Login

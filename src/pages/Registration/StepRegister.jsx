@@ -142,7 +142,7 @@ const StepRegister = ({ props }) => {
             </button>
           </form>
 
-          <p className="text-xs text-gray-600 mt-4 text-center">
+          <p className="text-sm text-gray-600 mt-4 text-center">
             By registering, you agree to our <span className="text-primary-700">Terms & Conditions</span> and{" "}
             <span className="text-primary-700">Privacy Policy</span>.
           </p>
