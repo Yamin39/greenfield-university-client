@@ -74,3 +74,41 @@
 .react-tabs__tab--selected{
   background-color: transparent !important;
 }
+
+/* user card animation */
+.animate-open-user-card {
+  animation: userCard 250ms ease-in-out;
+}
+
+@keyframes userCard {
+  0% {
+    display: flex;
+    opacity: 0;
+    border-radius: 50%;
+    scale: 0;
+  }
+  100% {
+    opacity: 1;
+    border-radius: 12px;
+    scale: 1;
+  }
+}
+
+.animate-close-user-card {
+  animation: userCardClose 250ms ease-in-out;
+}
+
+@keyframes userCardClose {
+  0% {
+    display: flex;
+    opacity: 1;
+    border-radius: 12px;
+    scale: 1;
+  }
+  100% {
+    display: none;
+    opacity: 0;
+    border-radius: 50%;
+    scale: 0;
+  }
+}

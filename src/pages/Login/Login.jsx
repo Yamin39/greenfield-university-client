@@ -7,10 +7,15 @@ import useAuth from "../../hooks/useAuth";
 import SharedBanner from "../../shared/SharedBanner";
 
 const Login = () => {
+  const { user, logIn } = useAuth();
+  const navigate = useNavigate();
+
+  if (user) {
+    navigate("/");
+  }
+
   const [togglePassword, setTogglePassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
-  const { logIn } = useAuth();
 
   const handleSubmit = (e) => {
     e.preventDefault();

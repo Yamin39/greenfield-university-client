@@ -1,4 +1,5 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { BsCart2 } from "react-icons/bs";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoCloseOutline } from "react-icons/io5";
@@ -12,8 +13,16 @@ const Nav = () => {
   const [moreCard, setMoreCard] = useState(false);
   const [admissionCard, setAdmissionCard] = useState(false);
   const [admissionSubCard, setAdmissionSubCard] = useState(false);
+  const [userCard, setUserCard] = useState(false);
   const [hamburgerMenu, setHamburgerMenu] = useState(false);
   const { user, logOut } = useAuth();
+
+  const handleLogOut = () => {
+    logOut().then(() => {
+      console.log("Logged out successfully");
+      toast.success("Logged out successfully");
+    });
+  };
 
   return (
     <>
@@ -117,15 +126,39 @@ const Nav = () => {
               </li>
               <li>
                 {user ? (
-                  <button onClick={logOut} className="size-10 rounded-full">
-                    {user.photoURL ? (
-                      <img src="" alt="" />
-                    ) : (
-                      <div className="size-full rounded-full bg-primary-800 flex justify-center items-center">
-                        <span className="text-white">{user.displayName.charAt(0)}</span>
-                      </div>
-                    )}
-                  </button>
+                  <div className="relative">
+                    <button onClick={() => setUserCard(!userCard)} className="size-10 rounded-full">
+                      {user.photoURL ? (
+                        <img src={user.photoURL} alt="User photo" className="size-full rounded-full object-cover" />
+                      ) : (
+                        <div className="size-full rounded-full bg-primary-800 flex justify-center items-center">
+                          <span className="text-white">{user.displayName.charAt(0)}</span>
+                        </div>
+                      )}
+                    </button>
+
+                    <div
+                      className={`absolute top-11 right-0 bg-white px-6 py-3 border duration-300 flex-col ${
+                        userCard ? "animate-open-user-card flex rounded-xl" : "animate-close-user-card hidden"
+                      }`}
+                    >
+                      <Link to="/profile" className="hover:text-primary-800 duration-300 py-2 pr-5 border-b hover:bg-gray-50">
+                        Profile
+                      </Link>
+                      <Link to="/dashboard" className="hover:text-primary-800 duration-300 py-2 pr-5 border-b hover:bg-gray-50">
+                        Dashboard
+                      </Link>
+                      <button
+                        onClick={() => {
+                          handleLogOut();
+                          setUserCard(false);
+                        }}
+                        className="text-red-500 hover:text-red-800 duration-300 py-2 pr-5 hover:bg-gray-50 text-left"
+                      >
+                        Logout
+                      </button>
+                    </div>
+                  </div>
                 ) : (
                   <Link to="/login" className="bg-primary-700 text-white pt-1.5 pb-2 px-3 hover:bg-primary-800 rounded-md duration-300">
                     Login
