@@ -75,6 +75,11 @@
   background-color: transparent !important;
 }
 
+.react-tabs__tab.react-tabs__tab--selected::after {
+  display: none;
+}
+
+
 /* user card animation */
 .animate-open-user-card {
   animation: userCard 250ms ease-in-out;

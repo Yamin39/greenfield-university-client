@@ -19,6 +19,7 @@ import Announcements from "../pages/announcements/Announcements";
 import Blogs from "../pages/blog/Blogs";
 import BlogDetails from "../pages/blog/blogDetails/BlogDetails";
 import Instructors from "../pages/Instructor/Instructors";
+import Gallery from "../pages/Gallery/Gallery";
 
 const router = createBrowserRouter([
   {
@@ -107,6 +108,10 @@ const router = createBrowserRouter([
       {
         path: '/instructors',
         element: <Instructors />
+      },
+      {
+        path: "/gallery",
+        element: <Gallery></Gallery>,
       }
 
     ],
