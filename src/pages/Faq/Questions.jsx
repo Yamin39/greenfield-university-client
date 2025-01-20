@@ -2,52 +2,21 @@ import { useState } from "react";
 
 // icons
 import { FaPlus } from "react-icons/fa6";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
 
 const Questions = () => {
    const [isAccordingOpen, setIsAccordingOpen] = useState(null);
 
-   const faqData = [
-      {
-         title: "What courses are offered in the Computer Science department?",
-         description: "The Computer Science department offers courses such as Programming, Data Structures, Machine Learning, Artificial Intelligence, and Web Development."
-      },
-      {
-         title: "How can I apply for a Master's program?",
-         description: "To apply for a Master's program, you need to submit your application online through the university's admission portal, along with the required documents like transcripts and recommendation letters."
-      },
-      {
-         title: "What is the duration of the undergraduate programs?",
-         description: "Undergraduate programs typically last for 4 years, divided into 8 semesters."
-      },
-      {
-         title: "Are there any scholarships available for students?",
-         description: "Yes, the university offers merit-based, need-based, and special category scholarships for eligible students."
-      },
-      {
-         title: "What facilities are available in the university library?",
-         description: "The university library provides access to a wide range of books, journals, research papers, and digital resources, along with dedicated study areas."
-      },
-      {
-         title: "How can I contact the faculty members?",
-         description: "Faculty members can be contacted through their official university email addresses, which are listed on the department's website."
-      },
-      {
-         title: "Is there any internship or placement support provided by the university?",
-         description: "Yes, the university has a dedicated career services team that helps students find internships and job placements."
-      },
-      {
-         title: "What extracurricular activities are available on campus?",
-         description: "The university offers a variety of extracurricular activities, including sports, cultural clubs, debate societies, and music bands."
-      },
-      {
-         title: "Are there any online courses or distance learning programs available?",
-         description: "Yes, the university provides online courses and distance learning programs for students who prefer flexible learning options."
-      },
-      {
-         title: "How do I change my major or transfer to another department?",
-         description: "To change your major or transfer to another department, you need to submit a formal request to the academic office, and approval is subject to availability and academic performance."
+   const axiosPublic = useAxiosPublic();
+
+   const { data : faqData = [] } = useQuery({
+      queryKey: ['faqs'],
+      queryFn: async () => {
+         const res = await axiosPublic.get('/faqs')
+         return res.data;
       }
-   ];
+   })
 
 
    const handleBorderClick = (index) =>
