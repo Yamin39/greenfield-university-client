@@ -19,6 +19,9 @@ import Announcements from "../pages/announcements/Announcements";
 import Blogs from "../pages/blog/Blogs";
 import BlogDetails from "../pages/blog/blogDetails/BlogDetails";
 import Instructors from "../pages/Instructor/Instructors";
+import Dashboard from "../Dashboard/Dashboard";
+import Statistics from "../Dashboard/Statistics";
+import ManageGallery from "../Dashboard/ManageGallery";
 
 const router = createBrowserRouter([
   {
@@ -111,6 +114,25 @@ const router = createBrowserRouter([
 
     ],
   },
+  {
+    path: '/dashboard',
+    element: <Dashboard />,
+    children: [
+      {
+        index: true,
+        element: <Statistics />
+      },
+      {
+        path: 'statistics',
+        element: <Statistics />
+      },
+      {
+        path: 'manageGallery',
+        element: <ManageGallery />
+      }
+    ]
+  }
+
 ]);
 
 export default router;

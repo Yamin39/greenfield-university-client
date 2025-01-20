@@ -6,8 +6,14 @@
 * {
   font-family: "Outfit", sans-serif;
 }
-.nav > a.active{
+
+.nav>a.active {
   color: #1DBF73;
+}
+
+.dashboard > a.active {
+  color: #06cd70;
+  box-shadow: 0 0 3px 0 rgba(9, 184, 0, 0.8);
 }
 
 /* website custom scrollbar */
@@ -28,27 +34,33 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #555; /* Darker thumb color on hover */
+  background-color: #555;
+  /* Darker thumb color on hover */
 }
 
 /* scrollable-card Scrollbar Styles */
 .scrollable-card::-webkit-scrollbar {
-  width: 8px; /* Adjust the width of the scrollbar */
+  width: 8px;
+  /* Adjust the width of the scrollbar */
 }
 
 .scrollable-card::-webkit-scrollbar-track {
-  background-color: #f1f1f1; /* Light background for the track */
+  background-color: #f1f1f1;
+  /* Light background for the track */
   border-radius: 10px;
 }
 
 .scrollable-card::-webkit-scrollbar-thumb {
-  background-color: #888; /* Dark thumb color */
+  background-color: #888;
+  /* Dark thumb color */
   border-radius: 10px;
-  border: 2px solid #f1f1f1; /* Optional border to make thumb more distinct */
+  border: 2px solid #f1f1f1;
+  /* Optional border to make thumb more distinct */
 }
 
 .scrollable-card::-webkit-scrollbar-thumb:hover {
-  background-color: #555; /* Darker thumb color on hover */
+  background-color: #555;
+  /* Darker thumb color on hover */
 }
 
 /* about Card */
@@ -64,14 +76,15 @@
   border: none !important;
 }
 
-.react-tabs__tab.react-tabs__tab--selected > span {
+.react-tabs__tab.react-tabs__tab--selected>span {
   color: #ef4444 !important;
 }
 
-  .react-tabs__tab.react-tabs__tab--selected > span::after {
-    width: 100%;
-  }
-.react-tabs__tab--selected{
+.react-tabs__tab.react-tabs__tab--selected>span::after {
+  width: 100%;
+}
+
+.react-tabs__tab--selected {
   background-color: transparent !important;
 }
 
@@ -87,6 +100,7 @@
     border-radius: 50%;
     scale: 0;
   }
+
   100% {
     opacity: 1;
     border-radius: 12px;
@@ -105,6 +119,7 @@
     border-radius: 12px;
     scale: 1;
   }
+
   100% {
     display: none;
     opacity: 0;
