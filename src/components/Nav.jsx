@@ -13,7 +13,7 @@ const Nav = () => {
   const [admissionCard, setAdmissionCard] = useState(false);
   const [admissionSubCard, setAdmissionSubCard] = useState(false);
   const [hamburgerMenu, setHamburgerMenu] = useState(false);
-  const { user } = useAuth();
+  const { user, logOut } = useAuth();
 
   return (
     <>
@@ -106,8 +106,8 @@ const Nav = () => {
                 </div>
               </div>
             </div>
-            <ul className="flex gap-10 items-center justify-center lg:border-s border-gray-300 lg:pl-10">
-              <li className="relative inline-block">
+            <ul className="flex gap-4 lg:gap-10 items-center justify-center lg:border-s border-gray-300 lg:pl-10">
+              <li className="relative hidden lg:inline-block">
                 <Link to="/cart" className="relative text-2xl">
                   <BsCart2 className="hover:text-primary-800 duration-300" />
                   <span className="absolute -top-2 -right-2 text-xs flex justify-center items-center size-[18px] rounded-full bg-primary-800 text-white">
@@ -115,9 +115,17 @@ const Nav = () => {
                   </span>
                 </Link>
               </li>
-              <li className="hidden lg:inline-block">
+              <li>
                 {user ? (
-                  <p className="text-gray-600">{user.displayName}</p>
+                  <button onClick={logOut} className="size-10 rounded-full">
+                    {user.photoURL ? (
+                      <img src="" alt="" />
+                    ) : (
+                      <div className="size-full rounded-full bg-primary-800 flex justify-center items-center">
+                        <span className="text-white">{user.displayName.charAt(0)}</span>
+                      </div>
+                    )}
+                  </button>
                 ) : (
                   <Link to="/login" className="bg-primary-700 text-white pt-1.5 pb-2 px-3 hover:bg-primary-800 rounded-md duration-300">
                     Login
@@ -138,11 +146,11 @@ const Nav = () => {
                   <button onClick={() => setHamburgerMenu(!hamburgerMenu)} className="absolute top-2 right-2">
                     <IoCloseOutline className="text-2xl" />
                   </button>
-                  <Link to="/login" className="bg-primary-700 text-white text-center pt-1.5 pb-2 px-3 hover:bg-primary-800 rounded-md duration-300 block mt-4">
-                    Login
-                  </Link>
                   <Link to="/" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50 block">
                     Home
+                  </Link>
+                  <Link to="/cart" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50 block">
+                    Cart
                   </Link>
                   <div>
                     <button
