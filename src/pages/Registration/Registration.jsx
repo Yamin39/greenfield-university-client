@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 import SharedBanner from "../../shared/SharedBanner";
 import StepRegister from "./StepRegister";
 import StepRole from "./StepRole";
@@ -6,6 +8,13 @@ import Steps from "./Steps";
 import StepValidation from "./StepValidation";
 
 const Registration = () => {
+  const { user } = useAuth();
+  const navigate = useNavigate();
+
+  if (user) {
+    navigate("/");
+  }
+
   const [role, setRole] = useState("");
   const [id, setId] = useState("");
   const [currentStep, setCurrentStep] = useState(1);

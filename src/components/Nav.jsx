@@ -1,4 +1,5 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { BsCart2 } from "react-icons/bs";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoCloseOutline } from "react-icons/io5";
@@ -12,8 +13,16 @@ const Nav = () => {
   const [moreCard, setMoreCard] = useState(false);
   const [admissionCard, setAdmissionCard] = useState(false);
   const [admissionSubCard, setAdmissionSubCard] = useState(false);
+  const [userCard, setUserCard] = useState(false);
   const [hamburgerMenu, setHamburgerMenu] = useState(false);
-  const { user } = useAuth();
+  const { user, logOut } = useAuth();
+
+  const handleLogOut = () => {
+    logOut().then(() => {
+      console.log("Logged out successfully");
+      toast.success("Logged out successfully");
+    });
+  };
 
   return (
     <>
@@ -106,8 +115,8 @@ const Nav = () => {
                 </div>
               </div>
             </div>
-            <ul className="flex gap-10 items-center justify-center lg:border-s border-gray-300 lg:pl-10">
-              <li className="relative inline-block">
+            <ul className="flex gap-4 lg:gap-10 items-center justify-center lg:border-s border-gray-300 lg:pl-10">
+              <li className="relative hidden lg:inline-block">
                 <Link to="/cart" className="relative text-2xl">
                   <BsCart2 className="hover:text-primary-800 duration-300" />
                   <span className="absolute -top-2 -right-2 text-xs flex justify-center items-center size-[18px] rounded-full bg-primary-800 text-white">
@@ -115,9 +124,41 @@ const Nav = () => {
                   </span>
                 </Link>
               </li>
-              <li className="hidden lg:inline-block">
+              <li>
                 {user ? (
-                  <p className="text-gray-600">{user.displayName}</p>
+                  <div className="relative">
+                    <button onClick={() => setUserCard(!userCard)} className="size-10 rounded-full">
+                      {user.photoURL ? (
+                        <img src={user.photoURL} alt="User photo" className="size-full rounded-full object-cover" />
+                      ) : (
+                        <div className="size-full rounded-full bg-primary-800 flex justify-center items-center">
+                          <span className="text-white">{user.displayName.charAt(0)}</span>
+                        </div>
+                      )}
+                    </button>
+
+                    <div
+                      className={`absolute top-11 right-0 bg-white px-6 py-3 border duration-300 flex-col ${
+                        userCard ? "animate-open-user-card flex rounded-xl" : "animate-close-user-card hidden"
+                      }`}
+                    >
+                      <Link to="/profile" className="hover:text-primary-800 duration-300 py-2 pr-5 border-b hover:bg-gray-50">
+                        Profile
+                      </Link>
+                      <Link to="/dashboard" className="hover:text-primary-800 duration-300 py-2 pr-5 border-b hover:bg-gray-50">
+                        Dashboard
+                      </Link>
+                      <button
+                        onClick={() => {
+                          handleLogOut();
+                          setUserCard(false);
+                        }}
+                        className="text-red-500 hover:text-red-800 duration-300 py-2 pr-5 hover:bg-gray-50 text-left"
+                      >
+                        Logout
+                      </button>
+                    </div>
+                  </div>
                 ) : (
                   <Link to="/login" className="bg-primary-700 text-white pt-1.5 pb-2 px-3 hover:bg-primary-800 rounded-md duration-300">
                     Login
@@ -138,11 +179,11 @@ const Nav = () => {
                   <button onClick={() => setHamburgerMenu(!hamburgerMenu)} className="absolute top-2 right-2">
                     <IoCloseOutline className="text-2xl" />
                   </button>
-                  <Link to="/login" className="bg-primary-700 text-white text-center pt-1.5 pb-2 px-3 hover:bg-primary-800 rounded-md duration-300 block mt-4">
-                    Login
-                  </Link>
                   <Link to="/" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50 block">
                     Home
+                  </Link>
+                  <Link to="/cart" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50 block">
+                    Cart
                   </Link>
                   <div>
                     <button

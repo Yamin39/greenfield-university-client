@@ -18,6 +18,7 @@ import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Announcements from "../pages/announcements/Announcements";
 import Blogs from "../pages/blog/Blogs";
 import BlogDetails from "../pages/blog/blogDetails/BlogDetails";
+import Instructors from "../pages/Instructor/Instructors";
 
 const router = createBrowserRouter([
   {
@@ -102,6 +103,10 @@ const router = createBrowserRouter([
       {
         path: '/announcements',
         element: <Announcements />
+      },
+      {
+        path: '/instructors',
+        element: <Instructors />
       }
 
     ],

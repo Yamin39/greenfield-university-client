@@ -56,7 +56,10 @@ const StepValidation = ({ props }) => {
         </div>
 
         <div className="w-full">
-          <button className={`w-full p-3 text-lg font-medium text-white rounded-xl bg-primary-700 ${isLoading ? "opacity-70 cursor-not-allowed" : ""}`}>
+          <button
+            className="w-full p-3 text-lg font-medium text-white rounded-xl bg-primary-700 disabled:opacity-70 disabled:cursor-not-allowed"
+            disabled={isLoading}
+          >
             {isLoading ? (
               <span className="flex items-center justify-center gap-3">
                 <FaSpinner className="animate-spin" /> Loading...
@@ -66,7 +69,7 @@ const StepValidation = ({ props }) => {
             )}
           </button>
 
-          <p className="text-xs text-gray-600 mt-4 text-center">
+          <p className="text-gray-600 mt-4 text-center">
             Already have an account?{" "}
             <Link to="/login" className="text-primary-700">
               Login

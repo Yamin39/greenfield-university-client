@@ -60,11 +60,14 @@ const StepRegister = ({ props }) => {
           .patch("/auth/register", info)
           .then((res) => {
             console.log(res.data);
-            if (res.data.modifiedCount) {
+            if (res.data.success) {
               toast.success(res.data?.message);
               setCurrentStep(4);
               setIsLoading(false);
               navigate("/");
+            } else {
+              toast.error(res.data?.message);
+              setIsLoading(false);
             }
           })
           .catch((err) => {
@@ -125,7 +128,10 @@ const StepRegister = ({ props }) => {
               </button>
             </div>
 
-            <button className={`w-full p-3 text-lg font-medium text-white rounded-xl bg-primary-700 ${isLoading ? "opacity-70 cursor-not-allowed" : ""}`}>
+            <button
+              className="w-full p-3 text-lg font-medium text-white rounded-xl bg-primary-700 disabled:opacity-70 disabled:cursor-not-allowed"
+              disabled={isLoading}
+            >
               {isLoading ? (
                 <span className="flex items-center justify-center gap-3">
                   <FaSpinner className="animate-spin" /> Loading...
@@ -136,7 +142,7 @@ const StepRegister = ({ props }) => {
             </button>
           </form>
 
-          <p className="text-xs text-gray-600 mt-4 text-center">
+          <p className="text-sm text-gray-600 mt-4 text-center">
             By registering, you agree to our <span className="text-primary-700">Terms & Conditions</span> and{" "}
             <span className="text-primary-700">Privacy Policy</span>.
           </p>
