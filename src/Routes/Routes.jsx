@@ -19,6 +19,7 @@ import Announcements from "../pages/announcements/Announcements";
 import Blogs from "../pages/blog/Blogs";
 import BlogDetails from "../pages/blog/blogDetails/BlogDetails";
 import Instructors from "../pages/Instructor/Instructors";
+import Shop from "../pages/shop/Shop";
 import Gallery from "../pages/Gallery/Gallery";
 import Dashboard from "../Dashboard/Dashboard";
 import Statistics from "../Dashboard/Statistics";
@@ -65,6 +66,10 @@ const router = createBrowserRouter([
       {
         path: "/blog-details",
         element: <BlogDetails></BlogDetails>,
+      },
+      {
+        path: "/shop",
+        element: <Shop></Shop>,
       },
       {
         path: "/university-overview",
