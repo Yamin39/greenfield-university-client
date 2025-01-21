@@ -158,11 +158,11 @@ const ShopContent = () => {
             <div className="grid grid-cols-1  gap-y-8">
               {bookData.map((item, i) => (
                 <div key={i} className="">
-                  <div className=" bg-gray-50 py-12 px-14 flex flex-col md:flex-row md:justify-center  gap-10">
-                    <div className="w-1/4">
+                  <div className=" bg-gray-50 py-6 md:py-12 px-8 md:px-14 flex flex-col md:flex-row md:justify-center  gap-10">
+                    <div className="w-full  md:w-1/4 sm:py-6 md:py-0 sm:px-8 md:px-0">
                       <img className="  shadow-pic" src={item.pic} alt="" />
                     </div>
-                    <div className="w-3/4">
+                    <div className="w-full md:w-3/4">
                       <div className="flex justify-between items-center">
                         <Link to={"#"}>
                           <p className="text-lg text-[#656561] text-center hover:text-primary-700 transition duration-300">
