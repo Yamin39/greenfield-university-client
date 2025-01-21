@@ -132,3 +132,9 @@
     scale: 0;
   }
 }
+
+/* shop pic */
+.shadow-pic {
+  box-shadow: 8px 8px 3px 0px #1915152f;
+  /* box-shadow: 3px 0px 15px 5px #928f8f2f; */
+}
