@@ -148,6 +148,9 @@ const Nav = () => {
                       <Link to="/dashboard" className="hover:text-primary-800 duration-300 py-2 pr-5 border-b hover:bg-gray-50">
                         Dashboard
                       </Link>
+                      <Link to="/wishlist" className="hover:text-primary-800 duration-300 py-2 pr-5 border-b hover:bg-gray-50">
+                        Wishlist
+                      </Link>
                       <button
                         onClick={() => {
                           handleLogOut();
