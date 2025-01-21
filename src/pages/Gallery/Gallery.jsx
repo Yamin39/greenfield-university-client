@@ -1,9 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
+import { X } from "lucide-react";
+import { useState } from "react";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import SharedBanner from "../../shared/SharedBanner";
 
 const Gallery = () => {
   const axiosPublic = useAxiosPublic();
+  const [selectedImage, setSelectedImage] = useState(null);
 
   const { data: galleryImages = [] } = useQuery({
     queryKey: ["gallery"],
@@ -14,7 +17,7 @@ const Gallery = () => {
   });
 
   const getImageClassName = (size) => {
-    const baseClasses = "group relative overflow-hidden rounded-lg bg-gray-100";
+    const baseClasses = "group relative overflow-hidden rounded-lg bg-gray-100 cursor-pointer";
 
     const sizeClasses = {
       normal: "",
@@ -33,7 +36,7 @@ const Gallery = () => {
       <div className="max-w-7xl mx-auto px-4 pt-20">
         <div className="sm:grid grid-cols-1 md:grid-cols-4 space-y-4 sm:space-y-0 sm:gap-4 auto-rows-[200px]">
           {galleryImages.map((image, idx) => (
-            <div key={idx + 1} className={getImageClassName(image.size)}>
+            <div key={idx + 1} className={getImageClassName(image.size)} onClick={() => setSelectedImage(image)}>
               <img
                 src={image.img}
                 alt={`Gallery image ${idx + 1}`}
@@ -44,6 +47,22 @@ const Gallery = () => {
           ))}
         </div>
       </div>
+
+      {/* Fullscreen Modal */}
+      {selectedImage && (
+        <div className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center top-[76px]">
+          <button
+            onClick={() => setSelectedImage(null)}
+            className="absolute top-4 right-4 text-white bg-black p-2 rounded-full hover:text-gray-300 transition-colors z-50"
+          >
+            <X size={20} />
+          </button>
+
+          <div className="max-w-[90vw] max-h-[90vh] relative">
+            <img src={selectedImage.img} alt="Selected gallery image" className="max-w-full max-h-[90vh] bg-gray-300 object-contain" />
+          </div>
+        </div>
+      )}
     </div>
   );
 };
