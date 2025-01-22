@@ -24,6 +24,7 @@ import Gallery from "../pages/Gallery/Gallery";
 import Dashboard from "../Dashboard/Dashboard";
 import Statistics from "../Dashboard/Statistics";
 import ManageGallery from "../Dashboard/ManageGallery";
+import ShopDetails from "../pages/shop/shopDetails/ShopDetails";
 
 const router = createBrowserRouter([
   {
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
       {
         path: "/shop",
         element: <Shop></Shop>,
+      },
+      {
+        path: "/shop-details",
+        element: <ShopDetails></ShopDetails>, 
       },
       {
         path: "/university-overview",
