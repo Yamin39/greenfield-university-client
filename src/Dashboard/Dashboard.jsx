@@ -5,7 +5,7 @@ import { useState } from "react";
 import { IoCloseOutline } from "react-icons/io5";
 
 const Dashboard = () => {
-   const [sideBar, setSideBar] = useState(false)
+   const [sideBar, setSideBar] = useState(true)
 
    const handleSidebar = () => {
       setSideBar(!sideBar)
