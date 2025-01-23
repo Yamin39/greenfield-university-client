@@ -25,6 +25,8 @@ import Dashboard from "../Dashboard/Dashboard";
 import Statistics from "../Dashboard/Statistics";
 import ManageGallery from "../Dashboard/ManageGallery";
 import ShopDetails from "../pages/shop/shopDetails/ShopDetails";
+import AnnouncementDetails from "../pages/announcements/AnnouncementDetails";
+import InstructorDetails from "../pages/Instructor/InstructorDetails";
 
 const router = createBrowserRouter([
   {
@@ -74,7 +76,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/shop-details",
-        element: <ShopDetails></ShopDetails>, 
+        element: <ShopDetails></ShopDetails>,
       },
       {
         path: "/university-overview",
@@ -117,6 +119,11 @@ const router = createBrowserRouter([
       {
         path: '/announcements',
         element: <Announcements />
+      },
+      {
+        path: '/announcement/:id',
+        element: <AnnouncementDetails />,
+        loader: ({ params }) => fetch(`http://localhost:5000/announcement/${params.id}`)
       },
       {
         path: '/instructors',
