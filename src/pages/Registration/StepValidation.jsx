@@ -18,6 +18,14 @@ const StepValidation = ({ props }) => {
     const id = e.target.id.value;
     console.log(id);
 
+    const rolePrefix = role.slice(0, 2).toUpperCase();
+
+    if (!id.endsWith(rolePrefix)) {
+      setError(`Invalid ${role} ID`);
+      setIsLoading(false);
+      return;
+    }
+
     axiosPublic
       .post("/auth/validate", { id, role })
       .then((res) => {
