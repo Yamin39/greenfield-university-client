@@ -4,18 +4,21 @@ import { IoIosAddCircleOutline, IoIosLogOut } from "react-icons/io";
 import logo from '../assets/images/logo.png'
 import { CgProfile } from "react-icons/cg";
 import { LiaChalkboardTeacherSolid, LiaUserSlashSolid, LiaUserSolid } from "react-icons/lia";
-import { PiChalkboardTeacherFill, PiChalkboardTeacherThin } from "react-icons/pi";
+import { PiChalkboardTeacher, PiChalkboardTeacherFill, PiChalkboardTeacherThin } from "react-icons/pi";
 import { TfiAnnouncement, TfiGallery } from "react-icons/tfi";
 import { MdManageHistory, MdManageSearch, MdOutlineManageHistory } from "react-icons/md";
 import { TbLogs } from "react-icons/tb";
-import { IoAdd } from "react-icons/io5";
+import { IoAdd, IoBookSharp } from "react-icons/io5";
 import { CiSquareCheck } from "react-icons/ci";
 import { FaRegCheckSquare } from "react-icons/fa";
+import { AiOutlineQuestion } from "react-icons/ai";
+import { BsClockHistory } from "react-icons/bs";
+import { SiWikibooks } from "react-icons/si";
 
 
 const DashboardRoute = () => {
 
-   const role = 'instructor';
+   const role = 'student';
 
    return (
       <div className="py-10 px-6 flex flex-col justify-between min-h-screen">
@@ -114,23 +117,20 @@ const DashboardRoute = () => {
                      <span className="font-light">Add Course</span>
                   </NavLink>
 
-                  <NavLink to='/dashboard/myCourse' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
+                  <NavLink to='/dashboard/manageCourse' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
                      <LiaChalkboardTeacherSolid className="text-2xl" />
-                     <span className="font-light">My Course</span>
-                  </NavLink>
-
-                  <NavLink to='/dashboard/manageCourse' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
-                     <MdOutlineManageHistory className="text-2xl" />
-                     <span className="font-light">Manage Course</span>
-                  </NavLink>
-                  
-                  <NavLink to='/dashboard/manageCourse' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
-                     <MdOutlineManageHistory className="text-2xl" />
                      <span className="font-light">Manage Course</span>
                   </NavLink>
 
+                  <NavLink to='/dashboard/addBlog' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
+                     <IoIosAddCircleOutline className="text-2xl" />
+                     <span className="font-light">Add Blog</span>
+                  </NavLink>
 
-
+                  <NavLink to='/dashboard/manageBlog' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
+                     <MdOutlineManageHistory className="text-2xl" />
+                     <span className="font-light">Manage Blog</span>
+                  </NavLink>
                </>
 
             }
@@ -140,6 +140,53 @@ const DashboardRoute = () => {
             {
                role === 'student' &&
                <>
+                  <NavLink to='/dashboard/addBlog' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
+                     <IoIosAddCircleOutline className="text-2xl" />
+                     <span className="font-light">Add Blog</span>
+                  </NavLink>
+
+                  <NavLink to='/dashboard/manageBlog' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
+                     <MdOutlineManageHistory className="text-2xl" />
+                     <span className="font-light">Manage Blog</span>
+                  </NavLink>
+
+                  <NavLink to='/dashboard/postQuery' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
+                     <AiOutlineQuestion className="text-2xl" />
+                     <span className="font-light">Post Query</span>
+                  </NavLink>
+
+                  <NavLink to='/dashboard/manageQuery' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
+                     <AiOutlineQuestion className="text-2xl" />
+                     <span className="font-light">Manage Query</span>
+                  </NavLink>
+
+                  <NavLink to='/dashboard/courses' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
+                     <LiaChalkboardTeacherSolid className="text-2xl" />
+                     <span className="font-light">Courses</span>
+                  </NavLink>
+
+                  <NavLink to='/dashboard/books' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
+                     <SiWikibooks className="text-2xl" />
+                     <span className="font-light">Books</span>
+                  </NavLink>
+
+                  <NavLink to='/dashboard/registeredCourse' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
+                     <PiChalkboardTeacher className="text-2xl" />
+                     <span className="font-light">Registered Course</span>
+                  </NavLink>
+
+                  <NavLink to='/dashboard/purchasedBooks' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
+                     <IoBookSharp className="text-2xl" />
+                     <span className="font-light">Purchased Books</span>
+                  </NavLink>
+
+                  <NavLink to='/dashboard/purchasedHistory' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
+                     <BsClockHistory className="text-2xl" />
+                     <span className="font-light">Purchased History</span>
+                  </NavLink>
+
+                  
+
 
                </>
 
