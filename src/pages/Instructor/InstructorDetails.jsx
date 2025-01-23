@@ -1,7 +1,14 @@
+import { useLoaderData } from "react-router-dom";
+import SharedBanner from "../../shared/SharedBanner";
+
 const InstructorDetails = () => {
+   const {name} = useLoaderData();   
    return (
       <div>
-         details page.         
+         <SharedBanner title="Instructor Details" />
+         <div>
+            <h1>{name}</h1>
+         </div>
       </div>
    );
 };
