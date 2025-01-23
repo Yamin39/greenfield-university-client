@@ -3,10 +3,10 @@ import { GoDependabot } from "react-icons/go";
 import { IoIosAddCircleOutline, IoIosLogOut } from "react-icons/io";
 import logo from '../assets/images/logo.png'
 import { CgProfile } from "react-icons/cg";
-import { LiaUserSlashSolid, LiaUserSolid } from "react-icons/lia";
+import { LiaChalkboardTeacherSolid, LiaUserSlashSolid, LiaUserSolid } from "react-icons/lia";
 import { PiChalkboardTeacherFill, PiChalkboardTeacherThin } from "react-icons/pi";
 import { TfiAnnouncement, TfiGallery } from "react-icons/tfi";
-import { MdManageHistory, MdManageSearch } from "react-icons/md";
+import { MdManageHistory, MdManageSearch, MdOutlineManageHistory } from "react-icons/md";
 import { TbLogs } from "react-icons/tb";
 import { IoAdd } from "react-icons/io5";
 import { CiSquareCheck } from "react-icons/ci";
@@ -15,7 +15,7 @@ import { FaRegCheckSquare } from "react-icons/fa";
 
 const DashboardRoute = () => {
 
-   const role = 'student';
+   const role = 'instructor';
 
    return (
       <div className="py-10 px-6 flex flex-col justify-between min-h-screen">
@@ -109,6 +109,27 @@ const DashboardRoute = () => {
             {
                role === 'instructor' &&
                <>
+                  <NavLink to='/dashboard/addCourse' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
+                     <IoIosAddCircleOutline className="text-2xl" />
+                     <span className="font-light">Add Course</span>
+                  </NavLink>
+
+                  <NavLink to='/dashboard/myCourse' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
+                     <LiaChalkboardTeacherSolid className="text-2xl" />
+                     <span className="font-light">My Course</span>
+                  </NavLink>
+
+                  <NavLink to='/dashboard/manageCourse' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
+                     <MdOutlineManageHistory className="text-2xl" />
+                     <span className="font-light">Manage Course</span>
+                  </NavLink>
+                  
+                  <NavLink to='/dashboard/manageCourse' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
+                     <MdOutlineManageHistory className="text-2xl" />
+                     <span className="font-light">Manage Course</span>
+                  </NavLink>
+
+
 
                </>
 
