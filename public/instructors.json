@@ -1,55 +1,65 @@
 [
-    {
-      "id": 1,
-      "name": "Dr. Sarah Ahmed",
-      "role": "Data Science Instructor",
-      "img": "https://i.ibb.co.com/VCK4CrZ/freepik-the-style-is-candid-image-photography-with-natural-87742.jpg",
-      "rating": 4.8,
-      "bio": "Dr. Sarah Ahmed specializes in machine learning and AI with over 10 years of teaching experience. She is passionate about helping students excel in the field of data science."
-    },
-    {
-      "id": 2,
-      "name": "Mr. John Miller",
-      "role": "Web Development Instructor",
-      "img": "https://i.ibb.co.com/0XV1CFB/freepik-the-style-is-candid-image-photography-with-natural-87741.jpg",
-      "rating": 4.7,
-      "bio": "John Miller is a senior full-stack web developer with expertise in React, Node.js, and Tailwind CSS. He loves mentoring students and building innovative projects."
-    },
-      
-     
-    {
-      "id": 5,
-      "name": "Dr. Davis Carter",
-      "role": "Artificial Intelligence Instructor",
-      "img": "https://i.ibb.co.com/fMGM07H/freepik-the-style-is-candid-image-photography-with-natural-87740.jpg",
-      "rating": 4.9,
-      "bio": "Dr. Davis Carter is a PhD in Artificial Intelligence and a renowned researcher in natural language processing. Her classes are highly interactive and insightful."
-    },
-    {
-      "id": 6,
-      "name": "Mr. Abdul Rahman",
-      "role": "Mobile App Development Instructor",
-      "img": "https://i.ibb.co.com/PmTC4jL/freepik-the-style-is-candid-image-photography-with-natural-87739.jpg",
-      "rating": 4.7,
-      "bio": "Abdul Rahman has developed over 50 apps for Android and iOS. He is a skilled instructor with a knack for simplifying complex concepts for his students."
-    },
-     
-    {
-      "id": 8,
-      "name": "Mr. David Zhang",
-      "role": "Game Development Instructor",
-      "img": "https://i.ibb.co.com/wrSTtRW/freepik-the-style-is-candid-image-photography-with-natural-87738.jpg",
-      "rating": 4.7,
-      "bio": "David Zhang is a game development expert with extensive experience in Unity and Unreal Engine. He loves sharing his passion for creating immersive games."
-    },
-
-    {
-      "id": 9,
-      "name": "Mr. Karin Zhang",
-      "role": "Team Instructor",
-      "img": "https://i.ibb.co.com/YcVtcnz/freepik-the-style-is-candid-image-photography-with-natural-87737.jpg",
-      "rating": 4.7,
-      "bio": "David Zhang is a game development expert with extensive experience in Unity and Unreal Engine. He loves sharing his passion for creating immersive games."
-    }
-  ]
-  
+  {
+    "universityId": "GU0001IN",
+    "name": "Mama",
+    "email": "mama@mami.com",
+    "designation": "Python Instructor",
+    "img": "https://i.ibb.co.com/YcVtcnz/freepik-the-style-is-candid-image-photography-with-natural-87737.jpg",
+    "rating": 4.7,
+    "bio": "Mama is a python expert with extensive experience in Python and Django. She loves sharing her passion for creating immersive games."
+  },
+  {
+    "universityId": "GU0002IN",
+    "name": "Dr. Sarah Ahmed",
+    "email": "dr.sarahahmed@gmail.com",
+    "designation": "Data Science Instructor",
+    "img": "https://i.ibb.co.com/VCK4CrZ/freepik-the-style-is-candid-image-photography-with-natural-87742.jpg",
+    "rating": 4.8,
+    "bio": "Dr. Sarah Ahmed specializes in machine learning and AI with over 10 years of teaching experience. She is passionate about helping students excel in the field of data science."
+  },
+  {
+    "universityId": "GU0003IN",
+    "name": "Mr. John Miller",
+    "email": "mr.johnmiller@gmail.com",
+    "designation": "Web Development Instructor",
+    "img": "https://i.ibb.co.com/0XV1CFB/freepik-the-style-is-candid-image-photography-with-natural-87741.jpg",
+    "rating": 4.7,
+    "bio": "John Miller is a senior full-stack web developer with expertise in React, Node.js, and Tailwind CSS. He loves mentoring students and building innovative projects."
+  },
+  {
+    "universityId": "GU0004IN",
+    "name": "Dr. Davis Carter",
+    "email": "dr.daviscarter@gmail.com",
+    "designation": "Artificial Intelligence Instructor",
+    "img": "https://i.ibb.co.com/fMGM07H/freepik-the-style-is-candid-image-photography-with-natural-87740.jpg",
+    "rating": 4.9,
+    "bio": "Dr. Davis Carter is a PhD in Artificial Intelligence and a renowned researcher in natural language processing. Her classes are highly interactive and insightful."
+  },
+  {
+    "universityId": "GU0005IN",
+    "name": "Mr. Abdul Rahman",
+    "email": "mr.abdulrahman@gmail.com",
+    "designation": "Mobile App Development Instructor",
+    "img": "https://i.ibb.co.com/PmTC4jL/freepik-the-style-is-candid-image-photography-with-natural-87739.jpg",
+    "rating": 4.7,
+    "bio": "Abdul Rahman has developed over 50 apps for Android and iOS. He is a skilled instructor with a knack for simplifying complex concepts for his students."
+  },
+  {
+    "universityId": "GU0006IN",
+    "name": "Mr. David Zhang",
+    "email": "mr.davidzhang@gmail.com",
+    "designation": "Game Development Instructor",
+    "img": "https://i.ibb.co.com/wrSTtRW/freepik-the-style-is-candid-image-photography-with-natural-87738.jpg",
+    "rating": 4.7,
+    "bio": "David Zhang is a game development expert with extensive experience in Unity and Unreal Engine. He loves sharing his passion for creating immersive games."
+  },
+  {
+    "universityId": "GU0007IN",
+    "name": "Mr. Karin Zhang",
+    "email": "mr.karinzhang@gmail.com",
+    "designation": "Team Instructor",
+    "img": "https://i.ibb.co.com/YcVtcnz/freepik-the-style-is-candid-image-photography-with-natural-87737.jpg",
+    "rating": 4.7,
+    "bio": "David Zhang is a game development expert with extensive experience in Unity and Unreal Engine. He loves sharing his passion for creating immersive games."
+  }
+]
