@@ -151,7 +151,7 @@ const DashboardRoute = () => {
                   </NavLink>
 
                   <NavLink to='/dashboard/postQuery' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
-                     <AiOutlineQuestion className="text-2xl" />
+                     <IoAdd className="text-2xl" />
                      <span className="font-light">Post Query</span>
                   </NavLink>
 
