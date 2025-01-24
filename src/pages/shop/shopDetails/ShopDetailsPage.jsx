@@ -58,7 +58,7 @@ const ShopDetailsPage = () => {
                 <span>{count}</span>
                 <button onClick={handleIncrement}>+</button>
               </p>
-              <Link to={""} className="flex-1">
+              <Link to={"/cart"} className="flex-1">
                 <button className=" w-full hover:bg-primary-800  py-2  text-lg px-8  font-semibold rounded-sm hover:text-white bg-white flex justify-center items-center  border border-[#F3F5F6] transition duration-500 text-primary-800">
                   <span>Add to Cart</span>
                 </button>
@@ -70,7 +70,7 @@ const ShopDetailsPage = () => {
               </button>
             </Link>
             <div className=" border-b border-gray-200 pb-5">
-            <Link to={"#"} >
+            <Link to={"/wishlist"} >
                 <p className="text-[16px] mt-5 text-[#656561] flex items-center gap-x-2  hover:text-primary-700 transition duration-300"> <FaRegHeart ></FaRegHeart><span>Add To Wishlist</span>
                 </p>
               </Link>

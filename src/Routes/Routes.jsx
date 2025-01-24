@@ -27,6 +27,8 @@ import ManageGallery from "../Dashboard/ManageGallery";
 import ShopDetails from "../pages/shop/shopDetails/ShopDetails";
 import AnnouncementDetails from "../pages/announcements/AnnouncementDetails";
 import InstructorDetails from '../pages/Instructor/InstructorDetails'
+import ShopCart from "../pages/shop/shopCart/ShopCart";
+import Wishlist from "../pages/shop/wishlist/Wishlist";
 
 const router = createBrowserRouter([
   {
@@ -77,6 +79,14 @@ const router = createBrowserRouter([
       {
         path: "/shop-details",
         element: <ShopDetails></ShopDetails>,
+      },
+      {
+        path: "/cart",
+        element: <ShopCart></ShopCart>,
+      },
+      {
+        path: "/wishlist",
+        element: <Wishlist></Wishlist>,
       },
       {
         path: "/university-overview",
