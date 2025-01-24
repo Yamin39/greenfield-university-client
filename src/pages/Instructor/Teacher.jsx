@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, } from "react-router-dom";
 import { TiSocialFacebook, TiSocialLinkedin } from "react-icons/ti";
 import { RiTwitterXFill } from "react-icons/ri";
 
 const Teacher = ({ instructor }) => {
 
    return (
-      <Link  className="border p-6 rounded-lg group">
+      <Link to={`/instructor/${instructor._id}`} className="border p-6 rounded-lg group">
          <div className="relative h-[400px]">
             <img src={instructor.img} alt="teacher" className="w-full rounded-lg h-full object-cover" />
             <div className="absolute top-0 left-0 right-0 bottom-0 bg-green-600 rounded-lg bg-opacity-0 group-hover:bg-opacity-60 duration-500"></div>
