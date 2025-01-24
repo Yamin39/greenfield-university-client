@@ -26,7 +26,7 @@ import Statistics from "../Dashboard/Statistics";
 import ManageGallery from "../Dashboard/ManageGallery";
 import ShopDetails from "../pages/shop/shopDetails/ShopDetails";
 import AnnouncementDetails from "../pages/announcements/AnnouncementDetails";
-import InstructorDetails from "../pages/Instructor/InstructorDetails";
+import InstructorDetails from '../pages/Instructor/InstructorDetails'
 
 const router = createBrowserRouter([
   {
@@ -128,6 +128,11 @@ const router = createBrowserRouter([
       {
         path: '/instructors',
         element: <Instructors />
+      },
+      {
+        path: '/instructor/:id',
+        element: <InstructorDetails/>,
+        loader: ({ params }) => fetch(`http://localhost:5000/instructor/${params.id}`)
       },
       {
         path: "/gallery",
