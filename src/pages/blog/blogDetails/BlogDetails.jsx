@@ -17,16 +17,11 @@ const BlogDetails = () => {
       return res.data;
     },
   });
-
-  const formatTimestamp = (timestamp) => {
-    const data = new Date(timestamp);
-    return data.toLocaleString();
-  };
   return (
     <div>
       <SharedBanner title={"Blog Details"}></SharedBanner>
-      <BlogDetailsPage data={data} formatTimestamp={formatTimestamp}></BlogDetailsPage>
-      <Comments data={data} formatTimestamp={formatTimestamp}></Comments>
+      <BlogDetailsPage data={data}></BlogDetailsPage>
+      <Comments data={data}></Comments>
       <LeaveForm blogId={id} refetch={refetch}></LeaveForm>
     </div>
   );

@@ -1,7 +1,9 @@
 /* eslint-disable react/prop-types */
 import commenter from "../../../assets/icons/commenter.png";
+import useFormatTimestamp from "../../../hooks/useFormatTimestamp";
 
-const Comments = ({ data, formatTimestamp }) => {
+const Comments = ({ data }) => {
+  const formatTimestamp = useFormatTimestamp;
   return (
     <div className="bg-[#FFFFFF]">
       <div className="max-w-7xl mx-auto pb-12 px-3 mt-24">

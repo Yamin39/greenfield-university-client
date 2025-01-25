@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { Link } from 'react-router-dom'
+import useFormatTimestamp from "../../hooks/useFormatTimestamp";
 
 const AnnouncementsCard = () => {
 
@@ -14,10 +15,7 @@ const AnnouncementsCard = () => {
       }
    })
 
-   const formatTimestamp = (timestamp) => {
-      const data = new Date(timestamp);
-      return data.toLocaleString()
-   }
+   const formatTimestamp = useFormatTimestamp;
 
    return (
       <div className="max-w-7xl mx-auto my-16 bg-gray-50 p-12 space-y-6 border rounded-lg">

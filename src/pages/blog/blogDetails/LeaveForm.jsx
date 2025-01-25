@@ -52,15 +52,17 @@ const LeaveForm = ({ blogId, refetch }) => {
                   type="text"
                   name="name"
                   placeholder="Name*"
+                  required
                 />
-                <input className="w-full shadow-box py-3 px-3 rounded-[3px] outline-primary-800/80" type="email" name="email" placeholder="Email*" />
+                <input className="w-full shadow-box py-3 px-3 rounded-[3px] outline-primary-800/80" type="email" name="email" placeholder="Email*" required />
               </div>
               <textarea
                 name="desc"
                 className="w-full shadow-box py-2 px-3 rounded-[3px] outline-primary-800/80"
-                placeholder="Comment"
+                placeholder="Comment*"
                 cols={50}
                 rows={6}
+                required
               ></textarea>
               <input
                 className="rounded-md py-3 px-6 font-semibold hover:bg-primary-800 flex justify-center items-center text-primary-800 text-lg border hover:border-primary-800 border-primary-800/50 bg-primary-800/5 transition duration-500 hover:text-white cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed"
