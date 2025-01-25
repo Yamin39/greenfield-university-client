@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { IoAdd, IoEyeOutline } from "react-icons/io5";
-import DashboardTitle from "./DashboardTitle";
+import DashboardTitle from "../DashboardTitle";
 import { MdOutlineDelete } from "react-icons/md";
 
 const ManageGallery = () => {

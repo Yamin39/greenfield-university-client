@@ -23,16 +23,16 @@ import Shop from "../pages/shop/Shop";
 import Gallery from "../pages/Gallery/Gallery";
 import Dashboard from "../Dashboard/Dashboard";
 import Statistics from "../Dashboard/Statistics";
-import ManageGallery from "../Dashboard/ManageGallery";
+import ManageGallery from "../Dashboard/admin/ManageGallery";
 import ShopDetails from "../pages/shop/shopDetails/ShopDetails";
 import AnnouncementDetails from "../pages/announcements/AnnouncementDetails";
 import InstructorDetails from '../pages/Instructor/InstructorDetails'
-<<<<<<< HEAD
 import Policy from "../pages/Policy/Policy";
-=======
 import ShopCart from "../pages/shop/shopCart/ShopCart";
 import Wishlist from "../pages/shop/wishlist/Wishlist";
->>>>>>> 62827411850088dadf6e9bab58fd015c2bac53c9
+import ManageAnnouncements from "../Dashboard/admin/ManageAnnouncements";
+import PostAnnouncements from "../Dashboard/admin/PostAnnouncements";
+import AddProduct from "../Dashboard/admin/AddProduct";
 
 const router = createBrowserRouter([
   {
@@ -174,6 +174,18 @@ const router = createBrowserRouter([
       {
         path: 'manageGallery',
         element: <ManageGallery />
+      },
+      {
+        path: 'manageAnnouncements',
+        element: <ManageAnnouncements />
+      },
+      {
+        path: 'postAnnouncements',
+        element: <PostAnnouncements />
+      },
+      {
+        path: 'addProduct',
+        element: <AddProduct />
       }
     ]
   }
