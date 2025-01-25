@@ -6,7 +6,7 @@ import { CgProfile } from "react-icons/cg";
 import { LiaChalkboardTeacherSolid, LiaUserSlashSolid, LiaUserSolid } from "react-icons/lia";
 import { PiChalkboardTeacher, PiChalkboardTeacherFill, PiChalkboardTeacherThin } from "react-icons/pi";
 import { TfiAnnouncement, TfiGallery } from "react-icons/tfi";
-import { MdManageHistory, MdManageSearch, MdOutlineManageHistory } from "react-icons/md";
+import { MdManageHistory, MdManageSearch, MdOutlineAnnouncement, MdOutlineManageHistory } from "react-icons/md";
 import { TbLogs } from "react-icons/tb";
 import { IoAdd, IoBookSharp } from "react-icons/io5";
 import { CiSquareCheck } from "react-icons/ci";
@@ -18,7 +18,7 @@ import { SiWikibooks } from "react-icons/si";
 
 const DashboardRoute = () => {
 
-   const role = 'student';
+   const role = 'admin';
 
    return (
       <div className="py-10 px-6 flex flex-col justify-between min-h-screen">
@@ -65,9 +65,14 @@ const DashboardRoute = () => {
                      <span className="font-light">Post Announcements</span>
                   </NavLink>
 
-                  <NavLink to='/dashboard/addProducts' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
+                  <NavLink to='/dashboard/manageAnnouncements' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
+                     <MdOutlineAnnouncement className="text-2xl" />
+                     <span className="font-light">Manage Announcements</span>
+                  </NavLink>
+
+                  <NavLink to='/dashboard/addProduct' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
                      <IoIosAddCircleOutline className="text-2xl" />
-                     <span className="font-light">Add Products</span>
+                     <span className="font-light">Add Product</span>
                   </NavLink>
 
                   <NavLink to='/dashboard/manageProducts' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
