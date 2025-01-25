@@ -27,7 +27,12 @@ import ManageGallery from "../Dashboard/ManageGallery";
 import ShopDetails from "../pages/shop/shopDetails/ShopDetails";
 import AnnouncementDetails from "../pages/announcements/AnnouncementDetails";
 import InstructorDetails from '../pages/Instructor/InstructorDetails'
+<<<<<<< HEAD
 import Policy from "../pages/Policy/Policy";
+=======
+import ShopCart from "../pages/shop/shopCart/ShopCart";
+import Wishlist from "../pages/shop/wishlist/Wishlist";
+>>>>>>> 62827411850088dadf6e9bab58fd015c2bac53c9
 
 const router = createBrowserRouter([
   {
@@ -68,7 +73,7 @@ const router = createBrowserRouter([
         element: <Blogs></Blogs>,
       },
       {
-        path: "/blog-details",
+        path: "/blog-details/:id",
         element: <BlogDetails></BlogDetails>,
       },
       {
@@ -78,6 +83,14 @@ const router = createBrowserRouter([
       {
         path: "/shop-details",
         element: <ShopDetails></ShopDetails>,
+      },
+      {
+        path: "/cart",
+        element: <ShopCart></ShopCart>,
+      },
+      {
+        path: "/wishlist",
+        element: <Wishlist></Wishlist>,
       },
       {
         path: "/university-overview",
