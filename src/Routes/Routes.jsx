@@ -33,6 +33,7 @@ import Wishlist from "../pages/shop/wishlist/Wishlist";
 import ManageAnnouncements from "../Dashboard/admin/ManageAnnouncements";
 import PostAnnouncements from "../Dashboard/admin/PostAnnouncements";
 import AddProduct from "../Dashboard/admin/AddProduct";
+import Eventspage from "../pages/Eventspage/Eventspage";
 
 const router = createBrowserRouter([
   {
@@ -155,6 +156,11 @@ const router = createBrowserRouter([
       {
         path: '/policy',
         element: <Policy />
+      },
+       
+      {
+        path: '/event/:id',
+        element: <Eventspage />
       }
 
     ],
