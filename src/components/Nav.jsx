@@ -1,17 +1,28 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { BsCart2 } from "react-icons/bs";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoCloseOutline } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";
+import useAuth from "../hooks/useAuth";
 
 const Nav = () => {
   const cartCount = 0;
   const [moreCard, setMoreCard] = useState(false);
   const [admissionCard, setAdmissionCard] = useState(false);
   const [admissionSubCard, setAdmissionSubCard] = useState(false);
+  const [userCard, setUserCard] = useState(false);
   const [hamburgerMenu, setHamburgerMenu] = useState(false);
+  const { user, logOut } = useAuth();
+
+  const handleLogOut = () => {
+    logOut().then(() => {
+      console.log("Logged out successfully");
+      toast.success("Logged out successfully");
+    });
+  };
 
   return (
     <>
@@ -30,11 +41,7 @@ const Nav = () => {
               <Link to="/" className="hover:text-primary-800 duration-300">
                 Home
               </Link>
-              <div
-                className="inline-block relative"
-                onMouseEnter={() => setAdmissionCard(true)}
-                onMouseLeave={() => setAdmissionCard(false)}
-              >
+              <div className="inline-block relative" onMouseEnter={() => setAdmissionCard(true)} onMouseLeave={() => setAdmissionCard(false)}>
                 <button className="hover:text-primary-800 duration-300 flex items-center justify-center gap-1">
                   Admission <IoIosArrowDown className={`duration-300 ${admissionCard ? "rotate-180" : ""}`} />
                 </button>
@@ -58,7 +65,7 @@ const Nav = () => {
                   <Link to="/dates-deadlines" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50">
                     Dates & Deadlines
                   </Link>
-                  <Link to="/schedule-a-tour" className="hover:text-primary-800 duration-300 py-2 hover:bg-gray-50">
+                  <Link to="/tour" className="hover:text-primary-800 duration-300 py-2 hover:bg-gray-50">
                     Schedule a Tour
                   </Link>
                 </div>
@@ -72,11 +79,7 @@ const Nav = () => {
               <Link to="/contact" className="hover:text-primary-800 duration-300">
                 Contact
               </Link>
-              <div
-                className="inline-block relative"
-                onMouseEnter={() => setMoreCard(true)}
-                onMouseLeave={() => setMoreCard(false)}
-              >
+              <div className="inline-block relative" onMouseEnter={() => setMoreCard(true)} onMouseLeave={() => setMoreCard(false)}>
                 <button className="hover:text-primary-800 duration-300 flex items-center justify-center gap-1">
                   More <IoIosArrowDown className={`duration-300 ${moreCard ? "rotate-180" : ""}`} />
                 </button>
@@ -112,8 +115,8 @@ const Nav = () => {
                 </div>
               </div>
             </div>
-            <ul className="flex gap-10 items-center justify-center lg:border-s border-gray-300 lg:pl-10">
-              <li className="relative inline-block">
+            <ul className="flex gap-4 lg:gap-10 items-center justify-center lg:border-s border-gray-300 lg:pl-10">
+              <li className="relative hidden lg:inline-block">
                 <Link to="/cart" className="relative text-2xl">
                   <BsCart2 className="hover:text-primary-800 duration-300" />
                   <span className="absolute -top-2 -right-2 text-xs flex justify-center items-center size-[18px] rounded-full bg-primary-800 text-white">
@@ -121,10 +124,49 @@ const Nav = () => {
                   </span>
                 </Link>
               </li>
-              <li className="hidden lg:inline-block">
-                <Link to="/login" className="bg-primary-700 text-white pt-1.5 pb-2 px-3 hover:bg-primary-800 rounded-md duration-300">
-                  Login
-                </Link>
+              <li>
+                {user ? (
+                  <div className="relative">
+                    <button onClick={() => setUserCard(!userCard)} className="size-10 rounded-full">
+                      {user.photoURL ? (
+                        <img src={user.photoURL} alt="User photo" className="size-full rounded-full object-cover" />
+                      ) : (
+                        <div className="size-full rounded-full bg-primary-800 flex justify-center items-center">
+                          <span className="text-white">{user.displayName.charAt(0)}</span>
+                        </div>
+                      )}
+                    </button>
+
+                    <div
+                      className={`absolute top-11 right-0 bg-white px-6 py-3 border duration-300 flex-col ${
+                        userCard ? "animate-open-user-card flex rounded-xl" : "animate-close-user-card hidden"
+                      }`}
+                    >
+                      <Link to="/profile" className="hover:text-primary-800 duration-300 py-2 pr-5 border-b hover:bg-gray-50">
+                        Profile
+                      </Link>
+                      <Link to="/dashboard" className="hover:text-primary-800 duration-300 py-2 pr-5 border-b hover:bg-gray-50">
+                        Dashboard
+                      </Link>
+                      <Link to="/wishlist" className="hover:text-primary-800 duration-300 py-2 pr-5 border-b hover:bg-gray-50">
+                        Wishlist
+                      </Link>
+                      <button
+                        onClick={() => {
+                          handleLogOut();
+                          setUserCard(false);
+                        }}
+                        className="text-red-500 hover:text-red-800 duration-300 py-2 pr-5 hover:bg-gray-50 text-left"
+                      >
+                        Logout
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <Link to="/login" className="bg-primary-700 text-white pt-1.5 pb-2 px-3 hover:bg-primary-800 rounded-md duration-300">
+                    Login
+                  </Link>
+                )}
               </li>
               <li className="lg:hidden">
                 <button onClick={() => setHamburgerMenu(!hamburgerMenu)}>
@@ -140,11 +182,11 @@ const Nav = () => {
                   <button onClick={() => setHamburgerMenu(!hamburgerMenu)} className="absolute top-2 right-2">
                     <IoCloseOutline className="text-2xl" />
                   </button>
-                  <Link to="/login" className="bg-primary-700 text-white text-center pt-1.5 pb-2 px-3 hover:bg-primary-800 rounded-md duration-300 block mt-4">
-                    Login
-                  </Link>
                   <Link to="/" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50 block">
                     Home
+                  </Link>
+                  <Link to="/cart" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50 block">
+                    Cart
                   </Link>
                   <div>
                     <button
@@ -170,7 +212,7 @@ const Nav = () => {
                       <Link to="/dates-deadlines" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50">
                         Dates & Deadlines
                       </Link>
-                      <Link to="/schedule-a-tour" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50">
+                      <Link to="/tour" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50">
                         Schedule a Tour
                       </Link>
                     </div>

@@ -8,14 +8,31 @@ import HowtoApply from "../pages/Apply/HowtoApply";
 import TuitionFee from "../pages/tuitionFee/TuitionFee";
 import FinancialAid from "../pages/financialAid/FinancialAid";
 import Contact from "../pages/contact/Contact";
+import Tour from "../pages/Tour/Tour";
 import DateDeadline from "../pages/dateDeadline/DateDeadline";
 import Login from "../pages/Login/Login";
 import Registration from "../pages/Registration/Registration";
+import About from "../pages/about/About";
+import Faq from "../pages/Faq/Faq";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import Announcements from "../pages/announcements/Announcements";
+import Blogs from "../pages/blog/Blogs";
+import BlogDetails from "../pages/blog/blogDetails/BlogDetails";
+import Instructors from "../pages/Instructor/Instructors";
+import Shop from "../pages/shop/Shop";
+import Gallery from "../pages/Gallery/Gallery";
+import Dashboard from "../Dashboard/Dashboard";
+import Statistics from "../Dashboard/Statistics";
+import ManageGallery from "../Dashboard/ManageGallery";
+import ShopDetails from "../pages/shop/shopDetails/ShopDetails";
+import AnnouncementDetails from "../pages/announcements/AnnouncementDetails";
+import InstructorDetails from '../pages/Instructor/InstructorDetails'
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
@@ -42,6 +59,26 @@ const router = createBrowserRouter([
         element: <DateDeadline></DateDeadline>,
       },
       {
+        path: "/about",
+        element: <About></About>,
+      },
+      {
+        path: "/blogs",
+        element: <Blogs></Blogs>,
+      },
+      {
+        path: "/blog-details",
+        element: <BlogDetails></BlogDetails>,
+      },
+      {
+        path: "/shop",
+        element: <Shop></Shop>,
+      },
+      {
+        path: "/shop-details",
+        element: <ShopDetails></ShopDetails>,
+      },
+      {
         path: "/university-overview",
         element: <Overview />,
       },
@@ -61,19 +98,68 @@ const router = createBrowserRouter([
 
       {
         path: "/university-apply",
-        element: <HowtoApply/>,
+        element: <HowtoApply />,
+      },
+      {
+        path: '/tour',
+        element: <Tour />
       },
       {
         path: "/login",
-        element: <Login/>,
+        element: <Login />,
       },
       {
         path: "/registration",
-        element: <Registration/>,
+        element: <Registration />,
       },
-      
+      {
+        path: '/faq',
+        element: <Faq />
+      },
+      {
+        path: '/announcements',
+        element: <Announcements />
+      },
+      {
+        path: '/announcement/:id',
+        element: <AnnouncementDetails />,
+        loader: ({ params }) => fetch(`http://localhost:5000/announcement/${params.id}`)
+      },
+      {
+        path: '/instructors',
+        element: <Instructors />
+      },
+      {
+        path: '/instructor/:id',
+        element: <InstructorDetails/>,
+        loader: ({ params }) => fetch(`http://localhost:5000/instructor/${params.id}`)
+      },
+      {
+        path: "/gallery",
+        element: <Gallery></Gallery>,
+      }
+
     ],
   },
+  {
+    path: '/dashboard',
+    element: <Dashboard />,
+    children: [
+      {
+        index: true,
+        element: <Statistics />
+      },
+      {
+        path: 'statistics',
+        element: <Statistics />
+      },
+      {
+        path: 'manageGallery',
+        element: <ManageGallery />
+      }
+    ]
+  }
+
 ]);
 
 export default router;

@@ -1,8 +1,17 @@
+import toast from "react-hot-toast";
+
 /* eslint-disable react/prop-types */
 const StepRole = ({ props }) => {
   const { setCurrentStep, setRole, role } = props;
+  const handleNextBtn = () => {
+    if (role === "") {
+      toast.error("Please select a role");
+    } else {
+      setCurrentStep(2);
+    }
+  };
   return (
-    <div className="w-full text-center pt-6 pb-12">
+    <div className="md:w-fit text-center p-10 rounded-xl mx-auto border">
       <div>
         <h2 className="text-3xl font-bold text-gray-900">Role</h2>
         <p className="mt-2 text-sm text-gray-500">What is your role at the university?</p>
@@ -32,7 +41,7 @@ const StepRole = ({ props }) => {
         </div>
       </div>
 
-      <button onClick={() => setCurrentStep(2)} className="w-full sm:w-[200px] p-3 text-lg font-medium text-white bg-primary-700 rounded-xl">
+      <button onClick={handleNextBtn} className="w-full sm:w-[200px] p-3 text-lg font-medium text-white bg-primary-700 rounded-xl">
         Next
       </button>
     </div>
