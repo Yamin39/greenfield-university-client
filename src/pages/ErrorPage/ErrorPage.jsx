@@ -10,7 +10,6 @@ const ErrorPage = () => {
 
    return (
       <div>
-         <SharedBanner title="404 Page" />
          <h1 className="text-center text-5xl md:text-7xl font-bold py-10">Oops!</h1>
          <div className="w-full flex items-center justify-center px-3">
             <img src={errorImg} alt="errorImage" />
