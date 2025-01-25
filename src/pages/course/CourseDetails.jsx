@@ -9,6 +9,7 @@ import { FaBookOpenReader } from 'react-icons/fa6';
 import { ImBooks } from 'react-icons/im';
 import { GoClock } from 'react-icons/go';
 import { TbWorld } from 'react-icons/tb';
+import YourCourses from './YourCourses';
 
 const CourseDetails = () => {
   const { _id } = useParams();
@@ -59,7 +60,7 @@ const CourseDetails = () => {
           </div>
         </div>
       </div>
-      <div className="max-w-7xl mx-auto pb-12 px-3">
+      <div className="max-w-7xl mx-auto pb-12 px-3  md:mb-56">
         <div className="relative grid grid-cols-1 lg:grid-cols-3 gap-10">
           <div className="h-fit lg:col-span-2">
             <CourseDetailsTab course={course} />
@@ -148,6 +149,7 @@ const CourseDetails = () => {
           </div>
         </div>
       </div>
+      <YourCourses/>
     </div>
   );
 };
