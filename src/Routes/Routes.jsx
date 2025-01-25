@@ -31,6 +31,7 @@ import Policy from "../pages/Policy/Policy";
 import ShopCart from "../pages/shop/shopCart/ShopCart";
 import Wishlist from "../pages/shop/wishlist/Wishlist";
 import Eventspage from "../pages/Eventspage/Eventspage";
+import Events from "../pages/Events/Events";
 
 const router = createBrowserRouter([
   {
@@ -154,6 +155,12 @@ const router = createBrowserRouter([
         path: '/policy',
         element: <Policy />
       },
+       
+      {
+        path: '/events',
+        element: <Events />
+      }
+      ,
        
       {
         path: '/event/:id',
