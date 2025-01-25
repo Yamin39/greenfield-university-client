@@ -56,7 +56,7 @@ const AllBlogs = () => {
                           <span>Com {blog.comments.length}</span>
                         </p>
                       </div>
-                      <p className="text-[#656561] pt-4">{blog.desc}</p>
+                      <p className="text-[#656561] pt-4">{blog.description.slice(0, 200)}...</p>
                       <Link
                         to={`/blog-details/${blog._id}`}
                         className="hover:bg-primary-800 rounded-md py-2 px-5 mt-8 font-semibold hover:bg-primary-800/50 flex justify-center items-center gap-x-2 text-primary-800 border border-primary-800 transition duration-500 hover:text-white"
