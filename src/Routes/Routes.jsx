@@ -30,6 +30,7 @@ import InstructorDetails from '../pages/Instructor/InstructorDetails'
 import Policy from "../pages/Policy/Policy";
 import ShopCart from "../pages/shop/shopCart/ShopCart";
 import Wishlist from "../pages/shop/wishlist/Wishlist";
+import Eventspage from "../pages/Eventspage/Eventspage";
 
 const router = createBrowserRouter([
   {
@@ -152,6 +153,11 @@ const router = createBrowserRouter([
       {
         path: '/policy',
         element: <Policy />
+      },
+       
+      {
+        path: '/event/:id',
+        element: <Eventspage />
       }
 
     ],

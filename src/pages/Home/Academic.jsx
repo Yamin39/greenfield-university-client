@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import   { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Calendar, Clock, MapPin } from "lucide-react";
 
@@ -85,7 +85,7 @@ const Academic = () => {
 
               
               <Link
-                to={`/seminar-details/${seminar.id}`}
+                to={`/event/${seminar._id}`}
                 className="   mt-2 px-4 py-2 bg-red-500 text-white text-center rounded-md hover:bg-yellow-600 transition-colors duration-300"
               >
                 Register Now
