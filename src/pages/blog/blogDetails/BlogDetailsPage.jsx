@@ -2,8 +2,9 @@
 import { FaFacebookF, FaLinkedinIn, FaRegCalendarCheck } from "react-icons/fa6";
 import { IoChatbubblesOutline, IoLogoTwitter } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import useFormatTimestamp from "../../../hooks/useFormatTimestamp";
 
-const BlogDetailsPage = ({ data, formatTimestamp }) => {
+const BlogDetailsPage = ({ data }) => {
   return (
     <div className="bg-[#FFFFFF]">
       <div className="max-w-7xl mx-auto pb-12 px-3 mt-24">
@@ -15,7 +16,7 @@ const BlogDetailsPage = ({ data, formatTimestamp }) => {
           <div className="flex items-center gap-x-5 mb-12 md:mb-20">
             <p className="flex items-center gap-x-2 text-[#656561]">
               <FaRegCalendarCheck size={20} className="text-primary-700"></FaRegCalendarCheck>
-              <span>{formatTimestamp(data?.timestamp)}</span>
+              <span>{useFormatTimestamp(data?.timestamp)}</span>
             </p>
             <span className="w-[2px] h-4 bg-gray-200"></span>
             <p className="flex items-center gap-x-2 text-[#656561]">

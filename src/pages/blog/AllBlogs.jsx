@@ -4,6 +4,7 @@ import { IoChatbubblesOutline, IoSearch } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import sidebar from "../../assets/images/sidebar-ads.png";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import useFormatTimestamp from "../../hooks/useFormatTimestamp";
 
 const AllBlogs = () => {
   const axiosPublic = useAxiosPublic();
@@ -16,10 +17,7 @@ const AllBlogs = () => {
     },
   });
 
-  const formatTimestamp = (timestamp) => {
-    const data = new Date(timestamp);
-    return data.toLocaleString();
-  };
+  const formatTimestamp = useFormatTimestamp;
 
   const tags = blogs.map((blog) => blog.tags).flat();
   return (
