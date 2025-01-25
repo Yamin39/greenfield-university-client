@@ -27,6 +27,7 @@ import ManageGallery from "../Dashboard/ManageGallery";
 import ShopDetails from "../pages/shop/shopDetails/ShopDetails";
 import AnnouncementDetails from "../pages/announcements/AnnouncementDetails";
 import InstructorDetails from '../pages/Instructor/InstructorDetails'
+import Policy from "../pages/Policy/Policy";
 
 const router = createBrowserRouter([
   {
@@ -131,12 +132,16 @@ const router = createBrowserRouter([
       },
       {
         path: '/instructor/:id',
-        element: <InstructorDetails/>,
+        element: <InstructorDetails />,
         loader: ({ params }) => fetch(`http://localhost:5000/instructor/${params.id}`)
       },
       {
         path: "/gallery",
         element: <Gallery></Gallery>,
+      },
+      {
+        path: '/policy',
+        element: <Policy />
       }
 
     ],
