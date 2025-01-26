@@ -1,12 +1,13 @@
-import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
-import { GiCheckMark } from "react-icons/gi";
-import { GrDown } from "react-icons/gr";
+/* eslint-disable react/prop-types */
 import { useState } from "react";
-import { IoDocumentTextOutline } from "react-icons/io5";
-import { Link } from "react-router-dom";
-import { IoLogoTwitter, IoMdCheckmark, IoMdStar } from "react-icons/io";
 import { CiLock } from "react-icons/ci";
 import { FaFacebookF, FaLinkedinIn } from "react-icons/fa6";
+import { GiCheckMark } from "react-icons/gi";
+import { GrDown } from "react-icons/gr";
+import { IoLogoTwitter, IoMdCheckmark, IoMdStar } from "react-icons/io";
+import { IoDocumentTextOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
+import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 
 const CourseDetailsTab = ({ course }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,6 +20,20 @@ const CourseDetailsTab = ({ course }) => {
     setHtmlOpen(!htmlOpen);
   };
 
+  const ratingData = {
+    averageRating: (course?.reviews.reduce((acc, curr) => acc + curr.rating, 0) / course?.reviews.length).toFixed(1),
+    totalRatings: course?.reviews.length,
+    allRatings: [
+      { rating: 5, count: course?.reviews.filter((review) => review.rating === 5).length },
+      { rating: 4, count: course?.reviews.filter((review) => review.rating === 4).length },
+      { rating: 3, count: course?.reviews.filter((review) => review.rating === 3).length },
+      { rating: 2, count: course?.reviews.filter((review) => review.rating === 2).length },
+      { rating: 1, count: course?.reviews.filter((review) => review.rating === 1).length },
+    ],
+  };
+
+  console.log(ratingData);
+
   console.log(course); // Debugging: Check the course prop
 
   return (
@@ -26,22 +41,38 @@ const CourseDetailsTab = ({ course }) => {
       <Tabs>
         <TabList className={"border-b-2 border-gray-200 flex justify-evenly"}>
           <Tab>
-            <span className={"hover:text-[#23B9A1] react-tab-css text-lg md:text-xl font-semibold duration-300 after:w-0 hover:after:w-full after:duration-300 after:h-0.5 after:absolute after:-bottom-3 after:bg-[#23B9A1] after:left-0 relative"}>
+            <span
+              className={
+                "hover:text-[#23B9A1] react-tab-css text-lg md:text-xl font-semibold duration-300 after:w-0 hover:after:w-full after:duration-300 after:h-0.5 after:absolute after:-bottom-3 after:bg-[#23B9A1] after:left-0 relative"
+              }
+            >
               Overview
             </span>
           </Tab>
           <Tab>
-            <span className={"hover:text-[#23B9A1] text-lg md:text-xl font-semibold duration-300 after:w-0 hover:after:w-full after:duration-300 after:h-0.5 after:absolute after:-bottom-3 after:bg-[#23B9A1] after:left-0 relative"}>
+            <span
+              className={
+                "hover:text-[#23B9A1] text-lg md:text-xl font-semibold duration-300 after:w-0 hover:after:w-full after:duration-300 after:h-0.5 after:absolute after:-bottom-3 after:bg-[#23B9A1] after:left-0 relative"
+              }
+            >
               Curriculum
             </span>
           </Tab>
           <Tab>
-            <span className={"hover:text-[#23B9A1] text-lg md:text-xl font-semibold duration-300 after:w-0 hover:after:w-full after:duration-300 after:h-0.5 after:absolute after:-bottom-3 after:bg-[#23B9A1] after:left-0 relative"}>
+            <span
+              className={
+                "hover:text-[#23B9A1] text-lg md:text-xl font-semibold duration-300 after:w-0 hover:after:w-full after:duration-300 after:h-0.5 after:absolute after:-bottom-3 after:bg-[#23B9A1] after:left-0 relative"
+              }
+            >
               Instructor
             </span>
           </Tab>
           <Tab>
-            <span className={"hover:text-[#23B9A1] text-lg md:text-xl font-semibold duration-300 after:w-0 hover:after:w-full after:duration-300 after:h-0.5 after:absolute after:-bottom-3 after:bg-[#23B9A1] after:left-0 relative"}>
+            <span
+              className={
+                "hover:text-[#23B9A1] text-lg md:text-xl font-semibold duration-300 after:w-0 hover:after:w-full after:duration-300 after:h-0.5 after:absolute after:-bottom-3 after:bg-[#23B9A1] after:left-0 relative"
+              }
+            >
               Reviews
             </span>
           </Tab>
@@ -101,12 +132,12 @@ const CourseDetailsTab = ({ course }) => {
         <TabPanel>
           <div className="mt-12">
             <div className="flex flex-col md:flex-row md:justify-between gap-10">
-              <img className="w-fit" src="https://i.ibb.co.com/3c9JHs0/team-1.webp" alt="" />
+              <img className="w-full object-cover md:max-w-[270px]" src={course?.instructorDetails?.img} alt="" />
               <div>
                 <Link to={""} className="hover:text-green-400 duration-500 text-3xl">
                   {course?.instructorDetails?.name}
                 </Link>
-                <h2 className="text-xl pb-3 text-[#888888]">{course?.instructorDetails?.title}</h2>
+                <h2 className="text-xl pb-3 text-[#888888]">{course?.instructorDetails?.designation}</h2>
                 <p className="text-[#888888] text-lg my-6">{course?.instructorDetails?.bio}</p>
                 <div className="flex flex-row items-center gap-5">
                   <span className="w-12 h-12 text-[#888888] border p-3 border-gray-100 rounded-full flex justify-center items-center">
@@ -128,55 +159,27 @@ const CourseDetailsTab = ({ course }) => {
           <div className="mt-12">
             <div className="flex flex-col sm:flex-row justify-between gap-10">
               <div className="bg-white shadow-box rounded-lg py-6 px-10 space-y-3">
-                <h2 className="text-center text-3xl font-semibold text-[#EE4A62]">5</h2>
-                <div className="flex items-center">
-                  {[...Array(5)].map((_, i) => (
+                <h2 className="text-center text-3xl font-semibold text-[#EE4A62]">{ratingData.averageRating}</h2>
+                <div className="flex items-center justify-center">
+                  {[...Array(Math.floor(ratingData.averageRating))].map((_, i) => (
                     <IoMdStar key={i} size={20} className="text-[#F8B81F]"></IoMdStar>
                   ))}
                 </div>
-                <p className="text-[16px] pl-2 text-center text-[#888888]">5 Ratings</p>
+                <p className="text-[16px] pl-2 text-center text-[#888888]">{course?.reviews.length} Ratings</p>
               </div>
               <div>
-                <div className="grid grid-cols-12 gap-5 flex-1 items-center justify-center">
-                  <div className="col-span-1 flex gap-2 text-lg">
-                    <span>5</span>
-                    <IoMdStar size={20} className="text-[#F8B81F]"></IoMdStar>
+                {ratingData.allRatings.map((rating, index) => (
+                  <div key={index} className="grid grid-cols-12 gap-5 flex-1 items-center justify-center">
+                    <div className="col-span-1 flex gap-2 text-lg">
+                      <span>{rating.rating}</span>
+                      <IoMdStar size={20} className="text-[#F8B81F]"></IoMdStar>
+                    </div>
+                    <span className="w-full bg-gray-200 h-2 rounded-lg col-span-10">
+                      <span className="block bg-[#F8B81F] h-full rounded-lg" style={{ width: `${(rating.count / ratingData.totalRatings) * 100}%` }}></span>
+                    </span>
+                    <span className="col-span-1">{rating.count}</span>
                   </div>
-                  <span className="w-full bg-[#F8B81F] h-2 rounded-lg col-span-10"></span>
-                  <span className="col-span-1">3</span>
-                </div>
-                <div className="grid grid-cols-12 gap-5 flex-1 items-center justify-center">
-                  <div className="col-span-1 flex gap-2 text-lg">
-                    <span>4</span>
-                    <IoMdStar size={20} className="text-[#F8B81F]"></IoMdStar>
-                  </div>
-                  <span className="w-full bg-gray-200 h-2 rounded-lg col-span-10"></span>
-                  <span className="col-span-1">0</span>
-                </div>
-                <div className="grid grid-cols-12 gap-5 flex-1 items-center justify-center">
-                  <div className="col-span-1 flex gap-2 text-lg">
-                    <span>3</span>
-                    <IoMdStar size={20} className="text-[#F8B81F]"></IoMdStar>
-                  </div>
-                  <span className="w-full bg-gray-200 h-2 rounded-lg col-span-10"></span>
-                  <span className="col-span-1">0</span>
-                </div>
-                <div className="grid grid-cols-12 gap-5 flex-1 items-center justify-center">
-                  <div className="col-span-1 flex gap-2 text-lg">
-                    <span>2</span>
-                    <IoMdStar size={20} className="text-[#F8B81F]"></IoMdStar>
-                  </div>
-                  <span className="w-full bg-gray-200 h-2 rounded-lg col-span-10"></span>
-                  <span className="col-span-1">0</span>
-                </div>
-                <div className="grid grid-cols-12 gap-5 flex-1 items-center justify-center">
-                  <div className="col-span-1 flex gap-2 text-lg">
-                    <span>1</span>
-                    <IoMdStar size={20} className="text-[#F8B81F]"></IoMdStar>
-                  </div>
-                  <span className="w-full bg-gray-200 h-2 rounded-lg col-span-10"></span>
-                  <span className="col-span-1">0</span>
-                </div>
+                ))}
               </div>
             </div>
             <div className="mt-12 space-y-3">
@@ -184,7 +187,7 @@ const CourseDetailsTab = ({ course }) => {
               {course?.reviews?.map((review, index) => (
                 <div key={index} className="flex gap-6">
                   <div className="">
-                    <img className="w-[100px] rounded-full" src="https://i.ibb.co.com/5WzjYLr/team-2.png" alt="pic" />
+                    <img className="w-[100px] rounded-full" src="https://i.ibb.co.com/mNBVP15/commenter.png" alt="pic" />
                   </div>
                   <div>
                     <div className="flex items-center">
@@ -204,21 +207,6 @@ const CourseDetailsTab = ({ course }) => {
       </Tabs>
     </div>
   );
-};
-
-// Add default props
-CourseDetailsTab.defaultProps = {
-  course: {
-    description: "No description available",
-    whatYouLearn: [],
-    curriculum: [],
-    instructorDetails: {
-      name: "Unknown Instructor",
-      title: "No Title",
-      bio: "No bio available",
-    },
-    reviews: [],
-  },
 };
 
 export default CourseDetailsTab;

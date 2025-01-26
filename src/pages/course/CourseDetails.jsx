@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import CourseDetailsTab from './CourseDetailsTab';
 import { FaAngleRight, FaFacebookF, FaLinkedinIn, FaMoneyCheckAlt, FaPlay } from 'react-icons/fa';
@@ -10,23 +9,23 @@ import { ImBooks } from 'react-icons/im';
 import { GoClock } from 'react-icons/go';
 import { TbWorld } from 'react-icons/tb';
 import YourCourses from './YourCourses';
+import useAxiosPublic from '../../hooks/useAxiosPublic';
+import { useQuery } from '@tanstack/react-query';
 
 const CourseDetails = () => {
-  const { _id } = useParams();
-  console.log(_id)
-  const [course, setCourse] = useState(null);
+  const { id } = useParams();
+  console.log(id)
+  const axiosPublic = useAxiosPublic();
 
-  useEffect(() => {
-    fetch('/courseData.json')
-      .then(response => response.json())
-      .then(data => {  
-        const selectedCourse = data.find(course => course._id == _id);
-        setCourse(selectedCourse);
-      })
-      .catch(error => console.error('Error fetching course details:', error));
-  }, [_id]);
+  const { data: course = [], isLoading } = useQuery({
+    queryKey: ['course'],
+    queryFn: async () => {
+       const res = await axiosPublic.get(`/course/${id}`)
+       return res.data;
+    }
+ })
 
-  if (!course) {
+  if (isLoading) {
     return <div>Loading...</div>;
   }
 
