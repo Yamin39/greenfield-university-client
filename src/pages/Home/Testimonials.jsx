@@ -1,24 +1,27 @@
-import { useEffect, useState } from "react";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Link } from "react-router-dom";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
-import { Link } from "react-router-dom";
 
 const Testimonials = () => {
-  const [testimonials, setTestimonials] = useState([]);
+  const axiosPublic = useAxiosPublic();
 
-  useEffect(() => {
-    fetch("/tesimonials.json")
-      .then((res) => res.json())
-      .then((data) => setTestimonials(data));
-  }, []);
+  const { data: testimonials = [] } = useQuery({
+     queryKey: ['testimonials'],
+     queryFn: async () => {
+        const { data } = await axiosPublic.get('/testimonials')
+        return data;
+     }
+  })
 
   return (
-    <div className="max-w-7xl mx-auto md:flex items-center      mt-28 mb-10 px-5">
+    <div className="max-w-7xl mx-auto md:flex items-center mt-10 sm:mt-28 mb-20 sm:mb-28 px-5">
       <div className="md:min-w-[50%]">
         <p className="text-lg md:text-xl uppercase text-[#808080] font-semibold">
           TESTIMONIALS
@@ -42,12 +45,12 @@ const Testimonials = () => {
           magnam cum quis est. Cupiditate?
         </p>
 
-        <Link to="/testimonials" className="flex items-center gap-1.5 bg-[#1AB69D] rounded mt-2 text-white px-4 py-2.5">
+        <Link to="/testimonials" className="w-fit flex items-center gap-1.5 bg-[#1AB69D] rounded mt-4 text-white px-4 py-2.5">
           View All <FaLongArrowAltRight />
         </Link>
       </div>
 
-      <div className="md:w-1/2">
+      <div className="md:w-1/2 mt-10 md:mt-0">
         <Swiper
           autoplay={{
             delay: 2500,
@@ -84,7 +87,7 @@ const Testimonials = () => {
                 <p className="text-gray-800 text-base font-bold mt-2">
                   {item.name}
                 </p>
-                <p className="text-gray-500 text-sm mt-1">{item.role}</p>
+                <p className="text-gray-500 text-sm mt-1">{item.designation}</p>
               </div>
             </SwiperSlide>
           ))}
