@@ -36,6 +36,7 @@ import AddProduct from "../Dashboard/admin/AddProduct";
 import Eventspage from "../pages/Eventspage/Eventspage";
 import Events from "../pages/Events/Events";
 import Testimonials from "../pages/Testimonials/Testimonials";
+import Chatbot from "../pages/chatbot/Chatbot";
 
 const router = createBrowserRouter([
   {
@@ -174,6 +175,11 @@ const router = createBrowserRouter([
       {
         path: '/testimonials',
         element: <Testimonials />
+      },
+
+      {
+        path: '/chatbot',
+        element: <Chatbot />
       }
 
     ],
