@@ -34,6 +34,7 @@ import ManageAnnouncements from "../Dashboard/admin/ManageAnnouncements";
 import PostAnnouncements from "../Dashboard/admin/PostAnnouncements";
 import AddProduct from "../Dashboard/admin/AddProduct";
 import Eventspage from "../pages/Eventspage/Eventspage";
+import Events from "../pages/Events/Events";
 
 const router = createBrowserRouter([
   {
@@ -157,6 +158,12 @@ const router = createBrowserRouter([
         path: '/policy',
         element: <Policy />
       },
+       
+      {
+        path: '/events',
+        element: <Events />
+      }
+      ,
        
       {
         path: '/event/:id',
