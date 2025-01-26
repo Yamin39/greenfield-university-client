@@ -1,15 +1,14 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { BsCart2 } from "react-icons/bs";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoCloseOutline } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { VscRobot } from "react-icons/vsc";
 import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 import useAuth from "../hooks/useAuth";
 
 const Nav = () => {
-  const cartCount = 0;
   const [moreCard, setMoreCard] = useState(false);
   const [admissionCard, setAdmissionCard] = useState(false);
   const [admissionSubCard, setAdmissionSubCard] = useState(false);
@@ -109,19 +108,22 @@ const Nav = () => {
                   <Link to="/about" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50">
                     About
                   </Link>
+                  <Link to="/testimonials" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50">
+                    Testimonials
+                  </Link>
+                  <Link to="/news" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50">
+                    News
+                  </Link>
                   <Link to="/faq" className="hover:text-primary-800 duration-300 py-2 hover:bg-gray-50">
                     FAQ&apos;s
                   </Link>
                 </div>
               </div>
             </div>
-            <ul className="flex gap-4 lg:gap-10 items-center justify-center lg:border-s border-gray-300 lg:pl-10">
+            <ul className="flex gap-4 lg:gap-8 items-center justify-center lg:border-s border-gray-300 lg:pl-10">
               <li className="relative hidden lg:inline-block">
-                <Link to="/cart" className="relative text-2xl">
-                  <BsCart2 className="hover:text-primary-800 duration-300" />
-                  <span className="absolute -top-2 -right-2 text-xs flex justify-center items-center size-[18px] rounded-full bg-primary-800 text-white">
-                    {cartCount}
-                  </span>
+                <Link to="/chatbot" className="text-3xl">
+                  <VscRobot />
                 </Link>
               </li>
               <li>
@@ -147,6 +149,9 @@ const Nav = () => {
                       </Link>
                       <Link to="/dashboard" className="hover:text-primary-800 duration-300 py-2 pr-5 border-b hover:bg-gray-50">
                         Dashboard
+                      </Link>
+                      <Link to="/cart" className="hover:text-primary-800 duration-300 py-2 pr-5 border-b hover:bg-gray-50">
+                        Cart
                       </Link>
                       <Link to="/wishlist" className="hover:text-primary-800 duration-300 py-2 pr-5 border-b hover:bg-gray-50">
                         Wishlist
@@ -185,8 +190,8 @@ const Nav = () => {
                   <Link to="/" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50 block">
                     Home
                   </Link>
-                  <Link to="/cart" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50 block">
-                    Cart
+                  <Link to="/chatbot" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50 block">
+                    Chatbot
                   </Link>
                   <div>
                     <button
@@ -246,6 +251,12 @@ const Nav = () => {
                   </Link>
                   <Link to="/announcements" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50 block">
                     Announcements
+                  </Link>
+                  <Link to="/testimonials" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50 block">
+                    Testimonials
+                  </Link>
+                  <Link to="/news" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50 block">
+                    News
                   </Link>
                   <Link to="/faq" className="hover:text-primary-800 duration-300 py-2 hover:bg-gray-50 block">
                     FAQ&apos;s

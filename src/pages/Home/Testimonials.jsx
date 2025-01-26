@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import { Link } from "react-router-dom";
 
 const Testimonials = () => {
   const [testimonials, setTestimonials] = useState([]);
@@ -41,9 +42,9 @@ const Testimonials = () => {
           magnam cum quis est. Cupiditate?
         </p>
 
-        <button className="flex items-center gap-1.5 bg-[#1AB69D] rounded mt-2 text-white px-4 py-2.5">
+        <Link to="/testimonials" className="flex items-center gap-1.5 bg-[#1AB69D] rounded mt-2 text-white px-4 py-2.5">
           View All <FaLongArrowAltRight />
-        </button>
+        </Link>
       </div>
 
       <div className="md:w-1/2">
@@ -61,7 +62,7 @@ const Testimonials = () => {
           modules={[Autoplay, Pagination, Navigation]}
           className="mySwiper"
         >
-          {testimonials.map((item, idx) => (
+          {testimonials.slice(0, 4).map((item, idx) => (
             <SwiperSlide
               key={idx}
               className="px-8 py-10 cursor-grab mb-8 h-fit max-w-96 bg-white rounded-lg flex flex-col items-center shadow-lg"
