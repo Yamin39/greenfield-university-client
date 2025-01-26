@@ -35,6 +35,7 @@ import PostAnnouncements from "../Dashboard/admin/PostAnnouncements";
 import AddProduct from "../Dashboard/admin/AddProduct";
 import Eventspage from "../pages/Eventspage/Eventspage";
 import Events from "../pages/Events/Events";
+import Testimonials from "../pages/Testimonials/Testimonials";
 
 const router = createBrowserRouter([
   {
@@ -168,6 +169,11 @@ const router = createBrowserRouter([
       {
         path: '/event/:id',
         element: <Eventspage />
+      },
+
+      {
+        path: '/testimonials',
+        element: <Testimonials />
       }
 
     ],
