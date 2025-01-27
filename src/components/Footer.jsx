@@ -62,7 +62,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-gray-200 pt-6 text-center">
-          <p className="text-[0.9rem] text-gray-600">© 2025, All rights reserved <Link to='/' className="hover:underline hover:text-primary-700">Greenfield University</Link></p>
+          <p className="text-[0.9rem] text-gray-600">© 2025, All rights reserved <Link to='/terms-condition' className="hover:underline hover:text-primary-700">Greenfield University</Link></p>
         </div>
       </div>
     </footer>

@@ -37,6 +37,8 @@ import Eventspage from "../pages/Eventspage/Eventspage";
 import Events from "../pages/Events/Events";
 import Testimonials from "../pages/Testimonials/Testimonials";
 import Chatbot from "../pages/chatbot/Chatbot";
+import PurcheseGuide from "../pages/purcheseGuide/PurcheseGuide";
+import TermsCondition from "../pages/termsCondition/TermsCondition";
 
 const router = createBrowserRouter([
   {
@@ -95,6 +97,14 @@ const router = createBrowserRouter([
       {
         path: "/wishlist",
         element: <Wishlist></Wishlist>,
+      },
+      {
+        path: "/guide",
+        element: <PurcheseGuide></PurcheseGuide>,
+      },
+      {
+        path: "/terms-condition",
+        element: <TermsCondition></TermsCondition>,
       },
       {
         path: "/university-overview",
