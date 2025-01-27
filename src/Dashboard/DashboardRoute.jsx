@@ -85,9 +85,9 @@ const DashboardRoute = () => {
                      <span className="font-light">Manage Events</span>
                   </NavLink>
 
-                  <NavLink to='/dashboard/addBlogs' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
+                  <NavLink to='/dashboard/addBlog' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
                      <IoAdd className="text-2xl" />
-                     <span className="font-light">Add Blogs</span>
+                     <span className="font-light">Add Blog</span>
                   </NavLink>
 
                   <NavLink to='/dashboard/manageBlogs' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">

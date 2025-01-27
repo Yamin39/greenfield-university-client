@@ -37,6 +37,8 @@ import Eventspage from "../pages/Eventspage/Eventspage";
 import Events from "../pages/Events/Events";
 import Testimonials from "../pages/Testimonials/Testimonials";
 import Chatbot from "../pages/chatbot/Chatbot";
+import ManageBlogs from "../Dashboard/admin/ManageBlogs";
+import AddBlog from "../Dashboard/admin/AddBlog";
 
 const router = createBrowserRouter([
   {
@@ -160,13 +162,13 @@ const router = createBrowserRouter([
         path: '/policy',
         element: <Policy />
       },
-       
+
       {
         path: '/events',
         element: <Events />
       }
       ,
-       
+
       {
         path: '/event/:id',
         element: <Eventspage />
@@ -211,6 +213,14 @@ const router = createBrowserRouter([
       {
         path: 'addProduct',
         element: <AddProduct />
+      },
+      {
+        path: 'manageBlogs',
+        element: <ManageBlogs />
+      },
+      {
+        path: 'addBlog',
+        element: <AddBlog />
       }
     ]
   }
