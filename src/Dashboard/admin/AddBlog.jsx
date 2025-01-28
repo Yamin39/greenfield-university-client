@@ -21,6 +21,7 @@ const AddBlog = () => {
 
    const handleAddBlog = async e => {
       e.preventDefault();
+      setLoading(true)
       const form = e.target;
       const title = form.title.value;
       const description = form.description.value;
@@ -29,7 +30,8 @@ const AddBlog = () => {
       const category = form.category.value;
       const comments = []
 
-      if (!currentThumbnail) {
+      if (!currentThumbnail || !currentThumbnail.type.startsWith("image/")) {
+         setLoading(false)
          return toast.error('Please upload a photo.')
       }
 
@@ -42,10 +44,10 @@ const AddBlog = () => {
          }
       })
       const author = {
-         name : user?.displayName,
-         img : user?.photoURL,
-         role : "instructor",
-         email : user?.email
+         name: user?.displayName,
+         img: user?.photoURL,
+         role: "instructor",
+         email: user?.email
       }
 
       const thumbnail = res.data.data.display_url;
@@ -66,13 +68,9 @@ const AddBlog = () => {
          if (res.data.insertedId) {
             toast.success('Blog has been posted successfully!')
             form.reset();
+            setLoading(false)
          }
       }
-
-
-
-
-
    }
    return (
       <div>
