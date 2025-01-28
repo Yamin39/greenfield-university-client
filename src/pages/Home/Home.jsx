@@ -10,6 +10,7 @@ import Testimonials from "./Testimonials";
 import Partners from "./Partners";
 import Academic from "./Academic";
 import ScrollProgress from "./ScrollProgress";
+import AcademicPrograms from "./AcademicPrograms";
 
 const Home = () => {
   return (
@@ -23,6 +24,7 @@ const Home = () => {
       <Instructors />
       <Partners/>
       <Academic/>
+      <AcademicPrograms/>
       <ScrollProgress/>
       <HeadingComp />
       <RecentBlogs />

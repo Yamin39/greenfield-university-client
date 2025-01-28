@@ -9,6 +9,7 @@ const Dashboard = () => {
 
    const handleSidebar = () => {
       setSideBar(!sideBar)
+      console.log(sideBar);
 
    }
    return (
@@ -20,11 +21,12 @@ const Dashboard = () => {
          <div className="w-full pr-10">
             <Outlet />
          </div>
-         <div onClick={handleSidebar} className="absolute top-4 -left-6 cursor-pointer border bg-white text-black">
+
+         <div onClick={handleSidebar} className="absolute top-4 -left-6 cursor-pointer border bg-white text-red-500">
             {
-               sideBar ? <IoCloseOutline className="text-2xl"/> : <MenuIcon />
+               sideBar ? <IoCloseOutline className="text-2xl" /> : <MenuIcon />
             }
-            
+
          </div>
 
       </div>

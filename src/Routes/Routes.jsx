@@ -23,10 +23,24 @@ import Shop from "../pages/shop/Shop";
 import Gallery from "../pages/Gallery/Gallery";
 import Dashboard from "../Dashboard/Dashboard";
 import Statistics from "../Dashboard/Statistics";
-import ManageGallery from "../Dashboard/ManageGallery";
+import ManageGallery from "../Dashboard/admin/ManageGallery";
 import ShopDetails from "../pages/shop/shopDetails/ShopDetails";
 import AnnouncementDetails from "../pages/announcements/AnnouncementDetails";
-import InstructorDetails from "../pages/Instructor/InstructorDetails";
+import InstructorDetails from '../pages/Instructor/InstructorDetails'
+import Policy from "../pages/Policy/Policy";
+import ShopCart from "../pages/shop/shopCart/ShopCart";
+import Wishlist from "../pages/shop/wishlist/Wishlist";
+import ManageAnnouncements from "../Dashboard/admin/ManageAnnouncements";
+import PostAnnouncements from "../Dashboard/admin/PostAnnouncements";
+import AddProduct from "../Dashboard/admin/AddProduct";
+import Eventspage from "../pages/Eventspage/Eventspage";
+import Events from "../pages/Events/Events";
+import Testimonials from "../pages/Testimonials/Testimonials";
+import Chatbot from "../pages/chatbot/Chatbot";
+import ManageBlogs from "../Dashboard/admin/ManageBlogs";
+import AddBlog from "../Dashboard/admin/AddBlog";
+import PurcheseGuide from "../pages/purcheseGuide/PurcheseGuide";
+import TermsCondition from "../pages/termsCondition/TermsCondition";
 
 const router = createBrowserRouter([
   {
@@ -43,7 +57,7 @@ const router = createBrowserRouter([
         element: <OurCourse />,
       },
       {
-        path: "/course-details/:_id",
+        path: "/course-details/:id",
         element: <CourseDetails></CourseDetails>,
       },
       {
@@ -67,7 +81,7 @@ const router = createBrowserRouter([
         element: <Blogs></Blogs>,
       },
       {
-        path: "/blog-details",
+        path: "/blog-details/:id",
         element: <BlogDetails></BlogDetails>,
       },
       {
@@ -77,6 +91,22 @@ const router = createBrowserRouter([
       {
         path: "/shop-details",
         element: <ShopDetails></ShopDetails>,
+      },
+      {
+        path: "/cart",
+        element: <ShopCart></ShopCart>,
+      },
+      {
+        path: "/wishlist",
+        element: <Wishlist></Wishlist>,
+      },
+      {
+        path: "/guide",
+        element: <PurcheseGuide></PurcheseGuide>,
+      },
+      {
+        path: "/terms-condition",
+        element: <TermsCondition></TermsCondition>,
       },
       {
         path: "/university-overview",
@@ -130,8 +160,38 @@ const router = createBrowserRouter([
         element: <Instructors />
       },
       {
+        path: '/instructor/:id',
+        element: <InstructorDetails />,
+        loader: ({ params }) => fetch(`http://localhost:5000/instructor/${params.id}`)
+      },
+      {
         path: "/gallery",
         element: <Gallery></Gallery>,
+      },
+      {
+        path: '/policy',
+        element: <Policy />
+      },
+
+      {
+        path: '/events',
+        element: <Events />
+      }
+      ,
+
+      {
+        path: '/event/:id',
+        element: <Eventspage />
+      },
+
+      {
+        path: '/testimonials',
+        element: <Testimonials />
+      },
+
+      {
+        path: '/chatbot',
+        element: <Chatbot />
       }
 
     ],
@@ -151,6 +211,26 @@ const router = createBrowserRouter([
       {
         path: 'manageGallery',
         element: <ManageGallery />
+      },
+      {
+        path: 'manageAnnouncements',
+        element: <ManageAnnouncements />
+      },
+      {
+        path: 'postAnnouncements',
+        element: <PostAnnouncements />
+      },
+      {
+        path: 'addProduct',
+        element: <AddProduct />
+      },
+      {
+        path: 'manageBlogs',
+        element: <ManageBlogs />
+      },
+      {
+        path: 'addBlog',
+        element: <AddBlog />
       }
     ]
   }

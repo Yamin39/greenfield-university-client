@@ -1,130 +1,322 @@
 [
-    {
-      "_id": "1",
-      "title": "Starting SEO as your Home Based Business",
-      "description": "This is a comprehensive course designed to teach you everything you need to know about SEO. From keyword research to advanced link-building strategies, this course covers it all.",
-      "image_url": "https://i.ibb.co.com/RvM0dkK/about-2.webp",
-      "whatYouLearn": [
-        "Learn the basics of SEO",
-        "Understand keyword research and analysis",
-        "Master on-page and off-page SEO techniques",
-        "Learn to use tools like Google Analytics and Search Console",
-        "Develop a complete SEO strategy for your business"
-      ],
-      "curriculum": [
-        {
-          "section": "Basic Introduction",
-          "lessons": [
-            {
-              "title": "Brush up on SEO concepts",
-              "duration": "10:00",
-              "locked": false
-            },
-            {
-              "title": "Setting Up Your SEO Tools",
-              "duration": "15:00",
-              "locked": true
-            }
-          ]
-        },
-        {
-          "section": "Fundamental Concept of HTML",
-          "lessons": [
-            {
-              "title": "A Note on Semantic HTML",
-              "duration": "12:00",
-              "locked": false
-            },
-            {
-              "title": "Centering our Page",
-              "duration": "20:00",
-              "locked": true
-            }
-          ]
-        }
-      ],
-      "instructorDetails": {
-        "name": "Edward Norton",
-        "title": "Design Expert",
-        "bio": "Edward Norton is a senior web developer with over 10 years of experience in the industry. He has worked on numerous projects ranging from small business websites to large-scale web applications."
+  {
+    "category": "Data Science",
+    "title": "Machine Learning with Python",
+    "description": "Comprehensive course covering machine learning algorithms, data preprocessing, and model deployment using Python and popular libraries.",
+    "image_url": "https://i.ibb.co.com/RvM0dkK/ml-course.webp",
+    "whatYouLearn": [
+      "Understand core machine learning concepts",
+      "Learn supervised and unsupervised learning techniques",
+      "Master data preprocessing and feature engineering",
+      "Implement machine learning models using scikit-learn",
+      "Deploy machine learning solutions"
+    ],
+    "curriculum": [
+      {
+        "section": "Introduction to Machine Learning",
+        "lessons": [
+          {
+            "title": "Machine Learning Fundamentals",
+            "duration": "12:00",
+            "locked": false
+          },
+          {
+            "title": "Setting Up Machine Learning Environment",
+            "duration": "15:00",
+            "locked": true
+          }
+        ]
       },
-      "reviews": [
-        {
-          "user": "Steve Martin",
-          "rating": 5,
-          "comment": "Excellent Course",
-          "review": "Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        },
-        {
-          "user": "Alice",
-          "rating": 4,
-          "comment": "Good content",
-          "review": "The course content is good, but some sections could be more detailed."
-        }
-      ]
+      {
+        "section": "Advanced Modeling Techniques",
+        "lessons": [
+          {
+            "title": "Regression and Classification Algorithms",
+            "duration": "20:00",
+            "locked": false
+          },
+          {
+            "title": "Neural Networks and Deep Learning",
+            "duration": "25:00",
+            "locked": true
+          }
+        ]
+      }
+    ],
+    "instructorDetails": {
+      "name": "Dr. Emma Rodriguez",
+      "title": "Data Science Expert",
+      "bio": "Dr. Rodriguez is a leading data scientist with extensive experience in machine learning research and industry applications."
     },
-    {
-      "_id": "2",
-      "title": "Advanced JavaScript Concepts",
-      "description": "Master advanced JavaScript concepts and build modern web applications.",
-      "image_url": "https://i.ibb.co.com/3c9JHs0/team-1.webp",
-      "whatYouLearn": [
-        "Learn advanced JavaScript concepts",
-        "Understand closures and prototypes",
-        "Master asynchronous programming",
-        "Learn to use modern JavaScript frameworks",
-        "Build real-world applications"
-      ],
-      "curriculum": [
-        {
-          "section": "Introduction to Advanced JavaScript",
-          "lessons": [
-            {
-              "title": "Understanding Closures",
-              "duration": "10:00",
-              "locked": false
-            },
-            {
-              "title": "Prototypes and Inheritance",
-              "duration": "15:00",
-              "locked": true
-            }
-          ]
-        },
-        {
-          "section": "Asynchronous JavaScript",
-          "lessons": [
-            {
-              "title": "Promises and Async/Await",
-              "duration": "12:00",
-              "locked": false
-            },
-            {
-              "title": "Event Loop and Callbacks",
-              "duration": "20:00",
-              "locked": true
-            }
-          ]
-        }
-      ],
-      "instructorDetails": {
-        "name": "John Doe",
-        "title": "Senior JavaScript Developer",
-        "bio": "John Doe is a senior JavaScript developer with over 10 years of experience in building scalable web applications."
+    "reviews": [
+      {
+        "user": "Michael",
+        "rating": 5,
+        "comment": "Excellent Deep Dive",
+        "review": "Comprehensive course that truly demystifies machine learning concepts."
       },
-      "reviews": [
-        {
-          "user": "Bob",
-          "rating": 5,
-          "comment": "Great course!",
-          "review": "This course helped me understand advanced JavaScript concepts clearly."
-        },
-        {
-          "user": "Charlie",
-          "rating": 4,
-          "comment": "Good content",
-          "review": "The course content is well-structured and easy to follow."
-        }
-      ]
-    }
-  ]
+      {
+        "user": "Sarah",
+        "rating": 4,
+        "comment": "Great Learning Path",
+        "review": "Well-structured course with practical examples and clear explanations."
+      }
+    ]
+  },
+  {
+    "category": "Digital Marketing",
+    "title": "Social Media Marketing Mastery",
+    "description": "Learn how to create effective social media strategies, grow your audience, and monetize your online presence across multiple platforms.",
+    "image_url": "https://i.ibb.co.com/3c9JHs0/social-media.webp",
+    "whatYouLearn": [
+      "Develop comprehensive social media strategies",
+      "Understand platform-specific marketing techniques",
+      "Learn content creation and engagement tactics",
+      "Master social media advertising",
+      "Analyze and optimize social media performance"
+    ],
+    "curriculum": [
+      {
+        "section": "Social Media Fundamentals",
+        "lessons": [
+          {
+            "title": "Platform Overview and Strategy",
+            "duration": "10:00",
+            "locked": false
+          },
+          {
+            "title": "Creating Your Social Media Brand",
+            "duration": "15:00",
+            "locked": true
+          }
+        ]
+      },
+      {
+        "section": "Advanced Marketing Techniques",
+        "lessons": [
+          {
+            "title": "Content Marketing Strategies",
+            "duration": "12:00",
+            "locked": false
+          },
+          {
+            "title": "Paid Advertising on Social Platforms",
+            "duration": "20:00",
+            "locked": true
+          }
+        ]
+      }
+    ],
+    "instructorDetails": {
+      "name": "Lisa Chen",
+      "title": "Digital Marketing Strategist",
+      "bio": "Lisa Chen is a renowned digital marketing expert with over 8 years of experience working with global brands."
+    },
+    "reviews": [
+      {
+        "user": "David",
+        "rating": 5,
+        "comment": "Game Changer",
+        "review": "Transformed my understanding of social media marketing completely."
+      },
+      {
+        "user": "Emily",
+        "rating": 4,
+        "comment": "Practical Insights",
+        "review": "Excellent course with real-world marketing strategies."
+      }
+    ]
+  },
+  {
+    "category": "Design",
+    "title": "UX/UI Design Fundamentals",
+    "description": "Comprehensive course covering user experience and user interface design principles, tools, and best practices for creating intuitive digital experiences.",
+    "image_url": "https://i.ibb.co.com/RvM0dkK/ux-design.webp",
+    "whatYouLearn": [
+      "Understand core UX/UI design principles",
+      "Learn industry-standard design tools",
+      "Create user-centric design solutions",
+      "Develop wireframing and prototyping skills",
+      "Conduct user research and usability testing"
+    ],
+    "curriculum": [
+      {
+        "section": "Design Fundamentals",
+        "lessons": [
+          {
+            "title": "Introduction to UX/UI Design",
+            "duration": "10:00",
+            "locked": false
+          },
+          {
+            "title": "Design Thinking Process",
+            "duration": "15:00",
+            "locked": true
+          }
+        ]
+      },
+      {
+        "section": "Advanced Design Techniques",
+        "lessons": [
+          {
+            "title": "Wireframing and Prototyping",
+            "duration": "12:00",
+            "locked": false
+          },
+          {
+            "title": "User Experience Research Methods",
+            "duration": "20:00",
+            "locked": true
+          }
+        ]
+      }
+    ],
+    "instructorDetails": {
+      "name": "Mark Thompson",
+      "title": "Senior UX Designer",
+      "bio": "Mark Thompson is an award-winning UX designer with extensive experience in creating user-centered digital experiences."
+    },
+    "reviews": [
+      {
+        "user": "Alex",
+        "rating": 5,
+        "comment": "Incredible Course",
+        "review": "Comprehensive and practical approach to UX/UI design."
+      },
+      {
+        "user": "Rachel",
+        "rating": 4,
+        "comment": "Great Learning Experience",
+        "review": "Detailed course with hands-on design techniques."
+      }
+    ]
+  },
+  {
+    "category": "Finance",
+    "title": "Personal Finance and Investment Strategies",
+    "description": "Comprehensive course teaching financial planning, investment techniques, retirement planning, and wealth management for individuals.",
+    "image_url": "https://i.ibb.co.com/3c9JHs0/finance-course.webp",
+    "whatYouLearn": [
+      "Understand personal financial planning",
+      "Learn investment strategies",
+      "Master budgeting and saving techniques",
+      "Explore retirement and wealth management",
+      "Develop financial decision-making skills"
+    ],
+    "curriculum": [
+      {
+        "section": "Financial Basics",
+        "lessons": [
+          {
+            "title": "Personal Budgeting Fundamentals",
+            "duration": "10:00",
+            "locked": false
+          },
+          {
+            "title": "Understanding Financial Statements",
+            "duration": "15:00",
+            "locked": true
+          }
+        ]
+      },
+      {
+        "section": "Investment Strategies",
+        "lessons": [
+          {
+            "title": "Stock Market Basics",
+            "duration": "12:00",
+            "locked": false
+          },
+          {
+            "title": "Advanced Investment Techniques",
+            "duration": "20:00",
+            "locked": true
+          }
+        ]
+      }
+    ],
+    "instructorDetails": {
+      "name": "Robert Stevens",
+      "title": "Financial Advisor",
+      "bio": "Robert Stevens is a certified financial planner with over 15 years of experience in personal finance and investment management."
+    },
+    "reviews": [
+      {
+        "user": "Jennifer",
+        "rating": 5,
+        "comment": "Life-Changing Course",
+        "review": "Transformed my understanding of personal finance and investing."
+      },
+      {
+        "user": "Mike",
+        "rating": 4,
+        "comment": "Practical Financial Insights",
+        "review": "Comprehensive course with actionable financial strategies."
+      }
+    ]
+  },
+  {
+    "category": "Finance",
+    "title": "Professional Photography Masterclass",
+    "description": "Comprehensive course covering photography techniques, equipment, post-processing, and professional workflow for aspiring photographers.",
+    "image_url": "https://i.ibb.co.com/RvM0dkK/photo-course.webp",
+    "whatYouLearn": [
+      "Master camera techniques and settings",
+      "Learn composition and lighting principles",
+      "Understand post-processing and editing",
+      "Develop professional photography workflow",
+      "Specialize in various photography genres"
+    ],
+    "curriculum": [
+      {
+        "section": "Photography Fundamentals",
+        "lessons": [
+          {
+            "title": "Camera Settings and Techniques",
+            "duration": "10:00",
+            "locked": false
+          },
+          {
+            "title": "Understanding Light and Composition",
+            "duration": "15:00",
+            "locked": true
+          }
+        ]
+      },
+      {
+        "section": "Advanced Photography Skills",
+        "lessons": [
+          {
+            "title": "Professional Editing Techniques",
+            "duration": "12:00",
+            "locked": false
+          },
+          {
+            "title": "Specialized Photography Genres",
+            "duration": "20:00",
+            "locked": true
+          }
+        ]
+      }
+    ],
+    "instructorDetails": {
+      "name": "Amanda Carter",
+      "title": "Professional Photographer",
+      "bio": "Amanda Carter is an award-winning photographer with international recognition and expertise in multiple photography genres."
+    },
+    "reviews": [
+      {
+        "user": "Thomas",
+        "rating": 5,
+        "comment": "Exceptional Course",
+        "review": "Comprehensive and inspiring photography masterclass."
+      },
+      {
+        "user": "Laura",
+        "rating": 4,
+        "comment": "Great Learning Experience",
+        "review": "Detailed course with practical photography techniques."
+      }
+    ]
+  }
+]
