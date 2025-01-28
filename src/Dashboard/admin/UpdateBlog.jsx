@@ -4,8 +4,9 @@ import DashboardTitle from "../DashboardTitle";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { FaArrowLeft } from "react-icons/fa6";
 import { TbFidgetSpinner } from "react-icons/tb";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 const imageUpload = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_ImgBB_api_key}`;
 
@@ -15,6 +16,7 @@ const UpdateBlog = () => {
    const [loading, setLoading] = useState(false);
    const [tags, setTags] = useState([]); // Tags state
    const { user } = useAuth();
+   const navigate = useNavigate();
 
    // Initialize tags when the component mounts
    useEffect(() => {
@@ -102,7 +104,7 @@ const UpdateBlog = () => {
                   type="file"
                   name="thumbnail"
                   className="border outline-green-500 file:p-2.5 file:border-none cursor-pointer file:cursor-pointer bg-white"
-                  
+
                />
             </div>
 
@@ -201,6 +203,11 @@ const UpdateBlog = () => {
                )}
             </button>
          </form>
+
+         <div onClick={() => navigate(-1)} className="flex items-center space-x-2 bg-red-600 text-white p-1.5 px-4 absolute top-4 right-3 cursor-pointer rounded-lg">
+            <FaArrowLeft  className="mt-1"/>
+            <span>Go Back</span>
+         </div>
       </div>
    );
 };
