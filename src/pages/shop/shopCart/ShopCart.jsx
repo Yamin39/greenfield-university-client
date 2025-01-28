@@ -1,4 +1,5 @@
 
+import { Link } from "react-router-dom";
 import book1 from "../../../assets/images/book1.png";
 import book2 from "../../../assets/images/book2.png";
 
@@ -31,6 +32,7 @@ const ShopCart = () => {
           <div className="lg:col-span-3 h-auto w-full   bg-white ">
             {cartData ? (
               <div className="container  mx-auto p-2 sm:p-4 dark:text-gray-800">
+                <Link to={'/guide'}> <p className="text-xl text-green-600 py-12 text-center">Purchese Guide</p> </Link>
                 <div className="overflow-x-auto">
                   <table className="w-full text-[14px]">
                     <colgroup>
