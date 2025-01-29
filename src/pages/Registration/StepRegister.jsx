@@ -2,7 +2,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { FaSpinner } from "react-icons/fa6";
 import { FiEye, FiEyeOff } from "react-icons/fi";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 
@@ -143,8 +143,8 @@ const StepRegister = ({ props }) => {
           </form>
 
           <p className="text-sm text-gray-600 mt-4 text-center">
-            By registering, you agree to our <span className="text-primary-700">Terms & Conditions</span> and{" "}
-            <span className="text-primary-700">Privacy Policy</span>.
+            By registering, you agree to our <Link to="/terms-condition" className="text-primary-700">Terms & Conditions</Link> and{" "}
+            <Link to="/guide" className="text-primary-700">Privacy Policy</Link>.
           </p>
         </div>
       </div>
