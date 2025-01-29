@@ -58,7 +58,7 @@ const ManageAnnouncements = () => {
               <col />
             </colgroup>
             <thead>
-              <tr className="text-left">
+              <tr className="text-left bg-slate-100">
                 <th className="p-3">SL</th>
                 <th className="p-3">Title</th>
                 <th className="p-3">Date & Time</th>

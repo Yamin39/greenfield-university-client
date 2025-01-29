@@ -20,46 +20,55 @@ const UpdateBlog = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
 
-  // Initialize tags when the component mounts
+  
   useEffect(() => {
     if (blog.tags) {
-      setTags(blog.tags); // Set initial tags from the blog data
+      setTags(blog.tags); 
     }
   }, [blog.tags]);
 
   const handleStoreTags = (e) => {
-    const tag = e.target.value.split(",").map((item) => item.trim()); // Split and trim input
-    setTags(tag); // Update the tags state
+    const tag = e.target.value.split(",").map((item) => item.trim()); 
+    setTags(tag); 
   };
 
   const handleAddBlog = async (e) => {
     e.preventDefault();
     setLoading(true);
+
     const form = e.target;
     const title = form.title.value;
     const description = form.description.value;
-    const currentThumbnail = form.thumbnail.files[0];
-    const timestamp = new Date().toLocaleString();
+    const currentThumbnail = form.thumbnail.files[0]; 
+    const timestamp = new Date().getTime();
     const category = form.category.value;
     const role = form.role.value;
     const comments = [];
+    let thumbnail = blog.thumbnail; 
 
-    const formData = new FormData();
-    formData.append("image", currentThumbnail);
+    // If user uploads a new image, upload it to ImgBB
+    if (currentThumbnail) {
+      const formData = new FormData();
+      formData.append("image", currentThumbnail);
 
-    const res = await axios.post(imageUpload, formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    });
+      try {
+        const res = await axios.post(imageUpload, formData, {
+          headers: { "Content-Type": "multipart/form-data" },
+        });
+        thumbnail = res.data.data.display_url; 
+      } catch (error) {
+        toast.error(error.message || "Image upload failed!");
+        setLoading(false);
+        return;
+      }
+    }
+
     const author = {
       name: user?.displayName,
       img: user?.photoURL,
       role,
       email: user?.email,
     };
-
-    const thumbnail = res.data.data.display_url;
 
     const updatedBlog = {
       title,
@@ -73,9 +82,17 @@ const UpdateBlog = () => {
       author,
     };
 
-    const { data } = await axiosPublic.patch(`/blog/${blog._id}`, updatedBlog);
-    if (data.insertedId) {
-      toast.success("Blog updated successfully!");
+    try {
+      const { data } = await axiosPublic.patch(
+        `/blog/${blog._id}`,
+        updatedBlog
+      );
+      if (data.modifiedCount > 0) {
+        toast.success("Blog updated successfully!");
+      }
+    } catch (error) {
+      toast.error(error.message || "Failed to update blog!");
+    } finally {
       setLoading(false);
     }
   };
@@ -197,10 +214,7 @@ const UpdateBlog = () => {
           ></textarea>
         </div>
 
-        <button
-          disabled
-          className="bg-primary-700 text-white p-2.5 px-8 hover:bg-primary-800 w-48"
-        >
+        <button className="bg-primary-700 text-white p-2.5 px-8 hover:bg-primary-800 w-48">
           {loading ? (
             <TbFidgetSpinner className="text-2xl animate-spin mx-auto " />
           ) : (

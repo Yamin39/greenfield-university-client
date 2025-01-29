@@ -6,15 +6,14 @@ import { toast } from "react-hot-toast";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import axios from "axios";
 
-const imageUpload = `https://api.imgbb.com/1/upload?key=${
-  import.meta.env.VITE_ImgBB_api_key
-}`;
+const imageUpload = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_ImgBB_api_key}`;
 
 const AddBlog = () => {
   const axiosPublic = useAxiosPublic();
   const [loading, setLoading] = useState(false);
   const [tags, setTags] = useState([]);
   const { user } = useAuth();
+  const role = 'admin'
 
   const handleStoreTags = (e) => {
     const tag = e.target.value.split(",");
@@ -28,7 +27,7 @@ const AddBlog = () => {
     const title = form.title.value;
     const description = form.description.value;
     const currentThumbnail = form.thumbnail.files[0];
-    const timestamp = new Date().toLocaleString();
+    const timestamp = new Date().getTime();
     const category = form.category.value;
     const comments = [];
 
@@ -52,6 +51,12 @@ const AddBlog = () => {
       email: user?.email,
     };
 
+    let status = 'approved';
+
+    if (role === "instructor" || role === "student") {
+      status = "pending";
+    }
+
     const thumbnail = res.data.data.display_url;
 
     const blog = {
@@ -63,7 +68,10 @@ const AddBlog = () => {
       category,
       comments,
       author,
+      status
     };
+
+    console.log(blog);
 
     if (res.data.data.display_url) {
       const res = await axiosPublic.post("/blog", blog);
@@ -155,15 +163,18 @@ const AddBlog = () => {
             <input
               type="text"
               name="name"
+              disabled
+              
               defaultValue={user?.displayName}
-              className="border p-2.5 outline-green-500"
+              className="border p-2.5 outline-green-500 bg-white"
               required
             />
             <input
               type="email"
               name="email"
+              disabled
               defaultValue={user?.email}
-              className="border p-2.5 outline-green-500"
+              className="border p-2.5 outline-green-500 bg-white"
               required
             />
           </div>
