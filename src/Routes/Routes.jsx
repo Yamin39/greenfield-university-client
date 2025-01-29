@@ -41,6 +41,7 @@ import ManageBlogs from "../Dashboard/admin/ManageBlogs";
 import AddBlog from "../Dashboard/admin/AddBlog";
 import PurcheseGuide from "../pages/purcheseGuide/PurcheseGuide";
 import TermsCondition from "../pages/termsCondition/TermsCondition";
+import UpdateBlog from "../Dashboard/admin/UpdateBlog";
 
 const router = createBrowserRouter([
   {
@@ -231,6 +232,11 @@ const router = createBrowserRouter([
       {
         path: 'addBlog',
         element: <AddBlog />
+      },
+      {
+        path: 'updateBlog/:id',
+        element: <UpdateBlog />,
+        loader: ({ params }) => fetch(`http://localhost:5000/blogs/${params.id}`)
       }
     ]
   }
