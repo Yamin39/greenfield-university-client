@@ -26,7 +26,7 @@ import Statistics from "../Dashboard/Statistics";
 import ManageGallery from "../Dashboard/admin/ManageGallery";
 import ShopDetails from "../pages/shop/shopDetails/ShopDetails";
 import AnnouncementDetails from "../pages/announcements/AnnouncementDetails";
-import InstructorDetails from '../pages/Instructor/InstructorDetails'
+import InstructorDetails from "../pages/Instructor/InstructorDetails";
 import Policy from "../pages/Policy/Policy";
 import ShopCart from "../pages/shop/shopCart/ShopCart";
 import Wishlist from "../pages/shop/wishlist/Wishlist";
@@ -42,6 +42,7 @@ import AddBlog from "../Dashboard/admin/AddBlog";
 import PurcheseGuide from "../pages/purcheseGuide/PurcheseGuide";
 import TermsCondition from "../pages/termsCondition/TermsCondition";
 import UpdateBlog from "../Dashboard/admin/UpdateBlog";
+import UpdateAnnouncement from "../Dashboard/admin/UpdateAnnouncement";
 
 const router = createBrowserRouter([
   {
@@ -115,12 +116,12 @@ const router = createBrowserRouter([
       },
 
       {
-        path: '/how-to-Apply',
-        element: <HowtoApply />
+        path: "/how-to-Apply",
+        element: <HowtoApply />,
       },
       {
-        path: '/contact',
-        element: <Contact />
+        path: "/contact",
+        element: <Contact />,
       },
       {
         path: "/university-overview",
@@ -132,8 +133,8 @@ const router = createBrowserRouter([
         element: <HowtoApply />,
       },
       {
-        path: '/tour',
-        element: <Tour />
+        path: "/tour",
+        element: <Tour />,
       },
       {
         path: "/login",
@@ -144,103 +145,106 @@ const router = createBrowserRouter([
         element: <Registration />,
       },
       {
-        path: '/faq',
-        element: <Faq />
+        path: "/faq",
+        element: <Faq />,
       },
       {
-        path: '/announcements',
-        element: <Announcements />
+        path: "/announcements",
+        element: <Announcements />,
       },
       {
-        path: '/announcement/:id',
+        path: "/announcement/:id",
         element: <AnnouncementDetails />,
-        loader: ({ params }) => fetch(`http://localhost:5000/announcement/${params.id}`)
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/announcement/${params.id}`),
       },
       {
-        path: '/instructors',
-        element: <Instructors />
+        path: "/instructors",
+        element: <Instructors />,
       },
       {
-        path: '/instructor/:id',
+        path: "/instructor/:id",
         element: <InstructorDetails />,
-        loader: ({ params }) => fetch(`http://localhost:5000/instructor/${params.id}`)
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/instructor/${params.id}`),
       },
       {
         path: "/gallery",
         element: <Gallery></Gallery>,
       },
       {
-        path: '/policy',
-        element: <Policy />
+        path: "/policy",
+        element: <Policy />,
       },
 
       {
-        path: '/events',
-        element: <Events />
-      }
-      ,
-
+        path: "/events",
+        element: <Events />,
+      },
       {
-        path: '/event/:id',
-        element: <Eventspage />
+        path: "/event/:id",
+        element: <Eventspage />,
       },
 
       {
-        path: '/testimonials',
-        element: <Testimonials />
+        path: "/testimonials",
+        element: <Testimonials />,
       },
 
       {
-        path: '/chatbot',
-        element: <Chatbot />
-      }
-
+        path: "/chatbot",
+        element: <Chatbot />,
+      },
     ],
   },
   {
-    path: '/dashboard',
+    path: "/dashboard",
     element: <Dashboard />,
     children: [
       {
         index: true,
-        element: <Statistics />
+        element: <Statistics />,
       },
       {
-        path: 'statistics',
-        element: <Statistics />
+        path: "statistics",
+        element: <Statistics />,
       },
       {
-        path: 'manageGallery',
-        element: <ManageGallery />
+        path: "manageGallery",
+        element: <ManageGallery />,
       },
       {
-        path: 'manageAnnouncements',
-        element: <ManageAnnouncements />
+        path: "manageAnnouncements",
+        element: <ManageAnnouncements />,
       },
       {
-        path: 'postAnnouncements',
-        element: <PostAnnouncements />
+        path: "postAnnouncements",
+        element: <PostAnnouncements />,
       },
       {
-        path: 'addProduct',
-        element: <AddProduct />
+        path: "addProduct",
+        element: <AddProduct />,
       },
       {
-        path: 'manageBlogs',
-        element: <ManageBlogs />
+        path: "manageBlogs",
+        element: <ManageBlogs />,
       },
       {
-        path: 'addBlog',
-        element: <AddBlog />
+        path: "addBlog",
+        element: <AddBlog />,
       },
       {
-        path: 'updateBlog/:id',
+        path: "updateBlog/:id",
         element: <UpdateBlog />,
-        loader: ({ params }) => fetch(`http://localhost:5000/blogs/${params.id}`)
-      }
-    ]
-  }
-
+        loader: ({ params }) => fetch(`http://localhost:5000/blogs/${params.id}`),
+      },
+      {
+        path: "updateAnnouncement/:id",
+        element: <UpdateAnnouncement />,
+        loader : ({ params }) => fetch(`http://localhost:5000/announcement/${params.id}`),
+      },
+    ],
+  },
 ]);
 
 export default router;

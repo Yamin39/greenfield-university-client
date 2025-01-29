@@ -13,7 +13,7 @@ const PostAnnouncements = () => {
       setLoading(true)
       const form = e.target;
       const title = form.title.value;
-      const timestamp = form.timestamp.value;
+      const timestamp = new Date().getTime();
       const description = form.description.value;
 
       const announcement = {
@@ -40,11 +40,6 @@ const PostAnnouncements = () => {
             <div className="*:w-full space-y-1">
                <label>Title :</label>
                <input type="text" name="title" placeholder="Write the title" className="border p-2.5 outline-green-500" />
-            </div>
-
-            <div className="*:w-full space-y-1">
-               <label>Time Stamp :</label>
-               <input type="datetime-local" name="timestamp" placeholder="Write the title" className="border p-2.5 outline-green-500" />
             </div>
 
             <div className=" space-y-1">

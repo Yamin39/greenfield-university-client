@@ -6,14 +6,14 @@ import { CgProfile } from "react-icons/cg";
 import { LiaChalkboardTeacherSolid, LiaUserSlashSolid, LiaUserSolid } from "react-icons/lia";
 import { PiChalkboardTeacher, PiChalkboardTeacherFill, PiChalkboardTeacherThin } from "react-icons/pi";
 import { TfiAnnouncement, TfiGallery } from "react-icons/tfi";
-import { MdManageHistory, MdManageSearch, MdOutlineAnnouncement, MdOutlineManageHistory } from "react-icons/md";
+import { MdManageHistory, MdManageSearch, MdOutlineAnnouncement, MdOutlineEventAvailable, MdOutlineManageHistory, MdOutlinePlaylistAdd } from "react-icons/md";
 import { TbLogs } from "react-icons/tb";
 import { IoAdd, IoBookSharp } from "react-icons/io5";
 import { CiSquareCheck } from "react-icons/ci";
-import { FaRegCheckSquare } from "react-icons/fa";
+import { FaQrcode, FaQuoteLeft, FaRegCheckSquare } from "react-icons/fa";
 import { AiOutlineQuestion } from "react-icons/ai";
 import { BsClockHistory } from "react-icons/bs";
-import { SiWikibooks } from "react-icons/si";
+import { SiGoogletagmanager, SiWikibooks } from "react-icons/si";
 
 
 const DashboardRoute = () => {
@@ -108,6 +108,31 @@ const DashboardRoute = () => {
                   <NavLink to='/dashboard/manageGallery' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
                      <TfiGallery className="text-2xl" />
                      <span className="font-light">Manage Gallery</span>
+                  </NavLink>
+
+                  <NavLink to='/dashboard/addFAQ' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
+                     <FaQuoteLeft className="text-2xl" />
+                     <span className="font-light">Add FAQ</span>
+                  </NavLink>
+
+                  <NavLink to='/dashboard/manageFAQ' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
+                     <FaQrcode className="text-2xl" />
+                     <span className="font-light">Manage FAQ</span>
+                  </NavLink>
+
+                  <NavLink to='/dashboard/addTestimonial' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
+                     <MdOutlinePlaylistAdd className="text-2xl" />
+                     <span className="font-light">Add Testimonial</span>
+                  </NavLink>
+
+                  <NavLink to='/dashboard/manageTestimonials' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
+                     <SiGoogletagmanager className="text-2xl" />
+                     <span className="font-light">Manage Testimonials</span>
+                  </NavLink>
+
+                  <NavLink to='/dashboard/addEvents' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
+                     <MdOutlineEventAvailable className="text-2xl" />
+                     <span className="font-light">Add Events</span>
                   </NavLink>
                </>
             }
