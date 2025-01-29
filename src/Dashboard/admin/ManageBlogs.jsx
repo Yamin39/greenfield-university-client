@@ -3,7 +3,7 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import DashboardTitle from "../DashboardTitle";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
-// import { format } from "date-fns";
+import { format } from "date-fns";
 
 const ManageBlogs = () => {
    const axiosPublic = useAxiosPublic();
@@ -75,12 +75,12 @@ const ManageBlogs = () => {
                                     <td className="p-2">
                                        <img src={blog.thumbnail} alt="" className="w-12 h-8 object-cover rounded-lg hover:scale-105 duration-300"/>
                                     </td>
-                                    {/* <td className="p-2">
+                                    <td className="p-2">
                                        <p>{format(new Date(blog.timestamp), "yyyy-MM-dd hh:mm a")}</p>
-                                    </td> */}
-                                    <td>
-                                       10/04/2025, 10:05 PM
                                     </td>
+                                    {/* <td>
+                                       10/04/2025, 10:05 PM
+                                    </td> */}
                                     <td className="p-2">
                                        <p>{blog?.author?.email}</p>
                                     </td>
