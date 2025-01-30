@@ -6,7 +6,7 @@ const PrivacyPolicy = () => {
     return (
         <div>
             <SharedBanner title={'Privacy Policy'}></SharedBanner>
-            <div className="bg-[#EAECF3]">
+            <div>
             <PrivacyPolicyDoc></PrivacyPolicyDoc>
             </div>
         </div>
