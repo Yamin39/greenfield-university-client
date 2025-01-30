@@ -8,7 +8,7 @@ import { toast } from "react-hot-toast";
 import axios from "axios";
 
 const apiKey = import.meta.env.VITE_ImgBB_api_key;
-const imageUpload = `https://api.imgbb.com/1/upload?key=${apiKey}`
+const imageUpload = `https://api.imgbb.com/1/upload?key=${apiKey}`;
 
 const ManageGallery = () => {
   const axiosPublic = useAxiosPublic();
@@ -43,13 +43,11 @@ const ManageGallery = () => {
     formData.append("image", image);
 
     try {
-      const res = await axios.post(imageUpload, formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const res = await axios.post(imageUpload, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
       const imageUrl = res.data.data.display_url;
 
@@ -64,13 +62,13 @@ const ManageGallery = () => {
   };
 
   const handleDeleteImage = async (id) => {
-    const { data } = await axiosPublic.delete(`/gallery/${id}`)
+    const { data } = await axiosPublic.delete(`/gallery/${id}`);
     console.log(data);
-    if(data.deletedCount > 0){
-      toast.success('Image has been deleted successfully.')
+    if (data.deletedCount > 0) {
+      toast.success("Image has been deleted successfully.");
       refetch();
     }
-  }
+  };
 
   return (
     <div className="max-w-7xl mx-auto">

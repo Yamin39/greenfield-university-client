@@ -111,9 +111,6 @@ const Nav = () => {
                   <Link to="/testimonials" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50">
                     Testimonials
                   </Link>
-                  <Link to="/news" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50">
-                    News
-                  </Link>
                   <Link to="/faq" className="hover:text-primary-800 duration-300 py-2 hover:bg-gray-50">
                     FAQ&apos;s
                   </Link>
@@ -254,9 +251,6 @@ const Nav = () => {
                   </Link>
                   <Link to="/testimonials" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50 block">
                     Testimonials
-                  </Link>
-                  <Link to="/news" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50 block">
-                    News
                   </Link>
                   <Link to="/faq" className="hover:text-primary-800 duration-300 py-2 hover:bg-gray-50 block">
                     FAQ&apos;s
