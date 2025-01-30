@@ -79,7 +79,7 @@ const ShopSideBar = () => {
         <div className="mt-12 md:mt-16">
           <h2 className="text-xl  font-semibold border-b pb-2 border-gray-200">Products</h2>
           <div className="h-[400px] overflow-y-auto grid grid-cols-1 gap-3 mt-3 md:mt-5">
-            {products.map((item, i) => (
+            {products.slice(0, 6).map((item, i) => (
               <div key={i} className="">
                 <div className=" flex flex-row lg:justify-between  gap-3 ">
                   <div className=" ">
@@ -87,7 +87,7 @@ const ShopSideBar = () => {
                   </div>
                   <div className="flex-1">
                     <div>
-                      <Link to={"#"} className="">
+                      <Link to={`/shop-details/${item._id}`} className="">
                         <h2 className="text-lg by-1 font-semibold hover:text-primary-700 transition duration-300">{item.name}</h2>
                       </Link>
                       <p className="text-[16px]  text-[#656561]">${item.price}</p>
