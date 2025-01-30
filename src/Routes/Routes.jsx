@@ -42,6 +42,7 @@ import AddBlog from "../Dashboard/admin/AddBlog";
 import PurcheseGuide from "../pages/purcheseGuide/PurcheseGuide";
 import TermsCondition from "../pages/termsCondition/TermsCondition";
 import UpdateBlog from "../Dashboard/admin/UpdateBlog";
+import ManageTestimonials from "../pages/Testimonials/ManageTestimonials";
 
 const router = createBrowserRouter([
   {
@@ -237,7 +238,11 @@ const router = createBrowserRouter([
         path: 'updateBlog/:id',
         element: <UpdateBlog />,
         loader: ({ params }) => fetch(`http://localhost:5000/blogs/${params.id}`)
-      }
+      },
+      {
+        path: 'manageTestimonials',
+        element: <ManageTestimonials />
+      },
     ]
   }
 

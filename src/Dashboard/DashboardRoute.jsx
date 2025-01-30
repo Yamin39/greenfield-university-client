@@ -109,6 +109,10 @@ const DashboardRoute = () => {
                      <TfiGallery className="text-2xl" />
                      <span className="font-light">Manage Gallery</span>
                   </NavLink>
+                  <NavLink to='/dashboard/manageTestimonials' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
+                     <TfiGallery className="text-2xl" />
+                     <span className="font-light">Manage Testimonials</span>
+                  </NavLink>
                </>
             }
 
