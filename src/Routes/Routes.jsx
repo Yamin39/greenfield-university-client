@@ -46,6 +46,7 @@ import AddFaq from "../Dashboard/admin/AddFaq";
 import ManageFaq from "../Dashboard/admin/ManageFaq";
 import UpdateFaq from "../Dashboard/admin/UpdateFaq";
 import UpdateAnnouncement from "../Dashboard/admin/UpdateAnnouncement";
+import ManageTestimonials from "../pages/Testimonials/ManageTestimonials";
 
 const router = createBrowserRouter([
   {
@@ -248,6 +249,10 @@ const router = createBrowserRouter([
       {
         path: 'manageFaq',
         element: <ManageFaq></ManageFaq>
+      },
+      {
+        path: 'manageTestimonials',
+        element: <ManageTestimonials/>
       },
       {
         path: 'updateFaq/:id',
