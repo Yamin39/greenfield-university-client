@@ -2,6 +2,8 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { GiCheckMark } from "react-icons/gi";
 import AboutCard from "./AboutCard";
+import img_85 from '../../assets/images/img_85.jfif'
+import img_86 from '../../assets/images/img_86.jfif'
 
 const About = () => {
   return (
@@ -136,12 +138,12 @@ const About = () => {
           <div className="relative flex flex-col  lg:items-center">
             <img
               className="rounded-xl w-[390px] h-[390px]"
-              src="https://i.ibb.co.com/prPywNG/about-1.webp"
+              src={img_86}
               alt="pic"
             />
             <img
-              className="absolute hidden md:block  md:translate-x-4 transition  rounded-xl md:right-64 md:-bottom-16 lg:-right-3 lg:-bottom-16"
-              src="https://i.ibb.co.com/RvM0dkK/about-2.webp"
+              className="absolute hidden md:block  md:translate-x-4 transition  rounded-xl md:right-64 md:-bottom-16 lg:-right-3 lg:-bottom-16 max-w-60"
+              src={img_85}
               alt="pic"
             />
           </div>
