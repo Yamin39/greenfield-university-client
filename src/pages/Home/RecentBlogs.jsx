@@ -25,7 +25,7 @@ const RecentBlogs = () => {
 
       {/* Grid Section */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-20 md:gap-8 mt-10 mx-auto">
-        {newses?.slice(0, 4)?.map((news, idx) => (
+        {newses?.map((news, idx) => (
           <div className="relative md:mb-12 mx-auto group" key={idx}>
             <img className="w-72 transition-transform duration-300 group-hover:scale-105 h-64 object-cover rounded" src={news.image} alt={news.title} />
 
