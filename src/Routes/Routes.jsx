@@ -42,6 +42,8 @@ import AddBlog from "../Dashboard/admin/AddBlog";
 import PurcheseGuide from "../pages/purcheseGuide/PurcheseGuide";
 import TermsCondition from "../pages/termsCondition/TermsCondition";
 import UpdateBlog from "../Dashboard/admin/UpdateBlog";
+import AddFaq from "../Dashboard/admin/AddFaq";
+import ManageFaq from "../Dashboard/admin/ManageFaq";
 
 const router = createBrowserRouter([
   {
@@ -237,7 +239,15 @@ const router = createBrowserRouter([
         path: 'updateBlog/:id',
         element: <UpdateBlog />,
         loader: ({ params }) => fetch(`http://localhost:5000/blogs/${params.id}`)
-      }
+      },
+      {
+        path: 'addFaq',
+        element: <AddFaq></AddFaq>
+      },
+      {
+        path: 'manageFaq',
+        element: <ManageFaq></ManageFaq>
+      },
     ]
   }
 
