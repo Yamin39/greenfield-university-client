@@ -7,6 +7,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import TestimonialModal from "./TestimonialModal";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { useTestimonials } from "../../hooks/useTestimonials";
 
 const Testimonials = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -14,19 +15,24 @@ const Testimonials = () => {
   const { user } = useAuth();
   const queryClient = useQueryClient();
   const navigate = useNavigate();
+const { testimonials, refetch } = useTestimonials();
 
-  //get all
-  const { data: testimonials = [] } = useQuery({
-    queryKey: ["testimonials"],
-    queryFn: async () => {
-      const { data } = await axiosPublic.get("/testimonials");
-      return data;
-    },
-  });
+
+  // //get all
+  //  const { data: testimonials = [] } = useQuery({
+  //   queryKey: ["testimonials"],
+  //   queryFn: async () => {
+  //     const { data } = await axiosPublic.get("/testimonials");
+  //     return data; 
+  //   },
+  // });
+
+    // Use the custom hook to fetch testimonials
 
   const isUser = () => {
     if (user) {
       setIsModalOpen(true);
+      
     } else {
       toast.error("Please login to submit a testimonial");
       navigate("/login");
@@ -34,7 +40,7 @@ const Testimonials = () => {
   };
 
   const { data: mytestimonial = [] } = useQuery({
-    queryKey: [" "],
+    queryKey: ["mytestimonial", user?.email],
     queryFn: async () => {
       const { data } = await axiosPublic.get(
         `/mytestimonial?email=${user?.email}`,
