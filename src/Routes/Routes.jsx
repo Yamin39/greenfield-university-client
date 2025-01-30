@@ -42,6 +42,9 @@ import AddBlog from "../Dashboard/admin/AddBlog";
 import PurcheseGuide from "../pages/purcheseGuide/PurcheseGuide";
 import TermsCondition from "../pages/termsCondition/TermsCondition";
 import UpdateBlog from "../Dashboard/admin/UpdateBlog";
+import AddFaq from "../Dashboard/admin/AddFaq";
+import ManageFaq from "../Dashboard/admin/ManageFaq";
+import UpdateFaq from "../Dashboard/admin/UpdateFaq";
 import UpdateAnnouncement from "../Dashboard/admin/UpdateAnnouncement";
 
 const router = createBrowserRouter([
@@ -236,15 +239,29 @@ const router = createBrowserRouter([
       {
         path: "updateBlog/:id",
         element: <UpdateBlog />,
-        loader: ({ params }) => fetch(`http://localhost:5000/blogs/${params.id}`),
+        loader: ({ params }) => fetch(`http://localhost:5000/blogs/${params.id}`)
+      },
+      {
+        path: 'addFaq',
+        element: <AddFaq></AddFaq>
+      },
+      {
+        path: 'manageFaq',
+        element: <ManageFaq></ManageFaq>
+      },
+      {
+        path: 'updateFaq/:id',
+        element: <UpdateFaq></UpdateFaq>,
+        loader: ({ params }) => fetch(`http://localhost:5000/faqs/${params.id}`)
       },
       {
         path: "updateAnnouncement/:id",
         element: <UpdateAnnouncement />,
         loader : ({ params }) => fetch(`http://localhost:5000/announcement/${params.id}`),
       },
-    ],
-  },
+    ]
+  }
+
 ]);
 
 export default router;
