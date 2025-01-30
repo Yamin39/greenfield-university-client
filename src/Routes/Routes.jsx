@@ -44,6 +44,7 @@ import TermsCondition from "../pages/termsCondition/TermsCondition";
 import UpdateBlog from "../Dashboard/admin/UpdateBlog";
 import AddFaq from "../Dashboard/admin/AddFaq";
 import ManageFaq from "../Dashboard/admin/ManageFaq";
+import UpdateFaq from "../Dashboard/admin/UpdateFaq";
 
 const router = createBrowserRouter([
   {
@@ -247,6 +248,11 @@ const router = createBrowserRouter([
       {
         path: 'manageFaq',
         element: <ManageFaq></ManageFaq>
+      },
+      {
+        path: 'updateFaq/:id',
+        element: <UpdateFaq></UpdateFaq>,
+        loader: ({ params }) => fetch(`http://localhost:5000/faqs/${params.id}`)
       },
     ]
   }

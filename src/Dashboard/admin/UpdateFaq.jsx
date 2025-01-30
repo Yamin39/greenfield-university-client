@@ -1,38 +1,37 @@
 import { TbFidgetSpinner } from "react-icons/tb";
 import DashboardTitle from "../DashboardTitle";
+import { useLoaderData} from "react-router-dom";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useState } from "react";
 import toast from "react-hot-toast";
-// import useAuth from "../../hooks/useAuth";
 
-const AddFaq = () => {
-  const axiosPublic = useAxiosPublic();
-  const [loading, setLoading] = useState(false);
-  //    const { user } = useAuth();
 
-  const handleAddFaq = async (e) => {
+const UpdateFaq = () => {
+    const faq = useLoaderData();
+   const axiosPublic = useAxiosPublic();
+   const [loading, setLoading] = useState(false);
+
+   const handleUpdateFaq = async(e) =>{
     e.preventDefault();
-    setLoading(true);
     const form = e.target;
-    const title = form.title.value;
+    const title = form.title.value
     const description = form.description.value;
-    const addFaq = {
-      title,
-      description,
-    };
-
-    const res = await axiosPublic.post("/addFaq", addFaq);
-    if (res.data.insertedId) {
-      toast.success("FAQ has been posted successfully!");
-      setLoading(false);
-      form.reset();
+    const updateFaq = {
+        title, description
     }
-  };
-  return (
-    <div>
-      <DashboardTitle title="Add FAQ" />
+    const {data} = await axiosPublic.patch(`updateFaq/${faq._id}`, updateFaq)
+    if(data.modifiedCount >0){
+        toast.success("Blog updated successfully!");
+        setLoading(false)
+    }
+
+   }
+
+    return (
+        <div>
+            <DashboardTitle title="Update FAQ" />
       <form
-        onSubmit={handleAddFaq}
+        onSubmit={handleUpdateFaq}
         className="  border p-10 bg-slate-50 space-y-6 max-w-3xl mx-auto"
       >
         <div className="*:w-full space-y-1">
@@ -40,6 +39,7 @@ const AddFaq = () => {
           <input
             type="text"
             name="title"
+            defaultValue={faq?.title}
             placeholder="Write the title"
             className="border p-2.5 outline-green-500"
             required
@@ -49,6 +49,7 @@ const AddFaq = () => {
         <div className=" space-y-1">
           <textarea
             name="description"
+            defaultValue={faq?.description}
             className="w-full border outline-green-500 p-2.5"
             rows={5}
             required
@@ -59,12 +60,12 @@ const AddFaq = () => {
           {loading ? (
             <TbFidgetSpinner className="text-2xl animate-spin mx-auto " />
           ) : (
-            <span className="">Post Faq</span>
+            <span className="">Update Faq</span>
           )}
         </button>
       </form>
-    </div>
-  );
+        </div>
+    );
 };
 
-export default AddFaq;
+export default UpdateFaq;
