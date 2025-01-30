@@ -23,7 +23,7 @@ const ShopDetailsPage = ({ product }) => {
     }
   };
 
-  const { data: wishlist = [] } = useQuery({
+  const { data: wishlist = [], refetch } = useQuery({
     queryKey: ["wishlist"],
     queryFn: async () => {
       const res = await axiosPublic.get(`/wishlist?email=${user.email}&productId=${product._id}`);
@@ -51,6 +51,7 @@ const ShopDetailsPage = ({ product }) => {
         console.log(res.data);
         if (res.data.insertedId) {
           toast.success("Added to wishlist");
+          refetch();
         } else if (res.data.message === "Product already in wishlist") {
           toast.error(res.data.message);
         } else {
