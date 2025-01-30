@@ -11,17 +11,53 @@ import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
 const ShopDetailsPage = ({ product }) => {
   const axiosPublic = useAxiosPublic();
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
   const { user } = useAuth();
 
   const handleIncrement = () => {
     setCount(count + 1);
   };
   const handleDecrement = () => {
-    if (count > 0) {
+    if (count > 1) {
       setCount(count - 1);
     }
   };
+
+  const handleAddToCart = () => {
+    const cart = {
+      productId: product._id,
+      name: product.name,
+      pic: product.pic,
+      price: product.price,
+      timestamp: new Date().getTime(),
+      quantity: count,
+      user: {
+        name: user.displayName,
+        email: user.email,
+      },
+    };
+
+    console.log(cart);
+
+    axiosPublic
+      .post(`/cart`, cart)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.insertedId) {
+          toast.success("Added to cart");
+        } else if (res.data.message === "Product already in cart") {
+          toast.error(res.data.message);
+        } else {
+          toast.error("Failed to add to cart");
+          toast.error("Something went wrong! Please try again.");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  // wishlist
 
   const { data: wishlist = [], refetch } = useQuery({
     queryKey: ["wishlist"],
@@ -89,11 +125,12 @@ const ShopDetailsPage = ({ product }) => {
                 <span>{count}</span>
                 <button onClick={handleIncrement}>+</button>
               </p>
-              <Link to={"/cart"} className="flex-1">
-                <button className=" w-full hover:bg-primary-800  py-2  text-lg px-8  font-semibold rounded-sm hover:text-white bg-white flex justify-center items-center  border border-[#F3F5F6] transition duration-500 text-primary-800">
-                  <span>Add to Cart</span>
-                </button>
-              </Link>
+              <button
+                onClick={handleAddToCart}
+                className="flex-1 w-full hover:bg-primary-800  py-2  text-lg px-8  font-semibold rounded-sm hover:text-white bg-white flex justify-center items-center  border border-[#F3F5F6] transition duration-500 text-primary-800"
+              >
+                <span>Add to Cart</span>
+              </button>
             </div>
             <Link to={""} className="">
               <button className="w-full mt-1 hover:bg-primary-800 text-lg py-2  px-8  font-semibold bg-[#319C9A] flex justify-center items-center  border border-primary-800 transition duration-500 text-white">
