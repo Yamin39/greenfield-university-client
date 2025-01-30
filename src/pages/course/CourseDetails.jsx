@@ -54,7 +54,7 @@ const CourseDetails = () => {
               {[...Array(5)].map((_, i) => (
                 <IoMdStar key={i} size={20} className="text-[#F8B81F]" />
               ))}
-              <p className="text-[16px] pl-2">(3 Reviews)</p>
+              <p className="text-[16px] pl-2">({course.reviews.length} Reviews)</p>
             </div>
           </div>
         </div>

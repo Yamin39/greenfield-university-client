@@ -8,208 +8,230 @@ import { FaArrowLeft } from "react-icons/fa6";
 import { TbFidgetSpinner } from "react-icons/tb";
 import { useLoaderData, useNavigate } from "react-router-dom";
 
-const imageUpload = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_ImgBB_api_key}`;
+const imageUpload = `https://api.imgbb.com/1/upload?key=${
+  import.meta.env.VITE_ImgBB_api_key
+}`;
 
 const UpdateBlog = () => {
-   const blog = useLoaderData();
-   const axiosPublic = useAxiosPublic();
-   const [loading, setLoading] = useState(false);
-   const [tags, setTags] = useState([]); // Tags state
-   const { user } = useAuth();
-   const navigate = useNavigate();
+  const blog = useLoaderData();
+  const axiosPublic = useAxiosPublic();
+  const [loading, setLoading] = useState(false);
+  const [tags, setTags] = useState([]); // Tags state
+  const { user } = useAuth();
+  const navigate = useNavigate();
 
-   // Initialize tags when the component mounts
-   useEffect(() => {
-      if (blog.tags) {
-         setTags(blog.tags); // Set initial tags from the blog data
-      }
-   }, [blog.tags]);
+  
+  useEffect(() => {
+    if (blog.tags) {
+      setTags(blog.tags); 
+    }
+  }, [blog.tags]);
 
-   const handleStoreTags = (e) => {
-      const tag = e.target.value.split(",").map((item) => item.trim()); // Split and trim input
-      setTags(tag); // Update the tags state
-   };
+  const handleStoreTags = (e) => {
+    const tag = e.target.value.split(",").map((item) => item.trim()); 
+    setTags(tag); 
+  };
 
-   const handleAddBlog = async (e) => {
-      e.preventDefault();
-      setLoading(true);
-      const form = e.target;
-      const title = form.title.value;
-      const description = form.description.value;
-      const currentThumbnail = form.thumbnail.files[0];
-      const timestamp = new Date().toLocaleString();
-      const category = form.category.value;
-      const role = form.role.value;
-      const comments = [];
+  const handleAddBlog = async (e) => {
+    e.preventDefault();
+    setLoading(true);
 
+    const form = e.target;
+    const title = form.title.value;
+    const description = form.description.value;
+    const currentThumbnail = form.thumbnail.files[0]; 
+    const timestamp = new Date().getTime();
+    const category = form.category.value;
+    const role = form.role.value;
+    const comments = [];
+    let thumbnail = blog.thumbnail; 
+
+    // If user uploads a new image, upload it to ImgBB
+    if (currentThumbnail) {
       const formData = new FormData();
       formData.append("image", currentThumbnail);
 
-      const res = await axios.post(imageUpload, formData, {
-         headers: {
-            "Content-Type": "multipart/form-data",
-         },
-      });
-      const author = {
-         name: user?.displayName,
-         img: user?.photoURL,
-         role,
-         email: user?.email,
-      };
-
-      const thumbnail = res.data.data.display_url;
-
-      const updatedBlog = {
-         title,
-         description,
-         thumbnail,
-         timestamp,
-         tags,
-         role,
-         category,
-         comments,
-         author,
-      };
-
-      const { data } = await axiosPublic.patch(`/blog/${blog._id}`, updatedBlog);
-      if (data.insertedId) {
-         toast.success("Blog updated successfully!");
-         setLoading(false);
+      try {
+        const res = await axios.post(imageUpload, formData, {
+          headers: { "Content-Type": "multipart/form-data" },
+        });
+        thumbnail = res.data.data.display_url; 
+      } catch (error) {
+        toast.error(error.message || "Image upload failed!");
+        setLoading(false);
+        return;
       }
-   };
+    }
 
-   return (
-      <div>
-         <DashboardTitle title="Update Blog" />
+    const author = {
+      name: user?.displayName,
+      img: user?.photoURL,
+      role,
+      email: user?.email,
+    };
 
-         <form
-            onSubmit={handleAddBlog}
-            className="border p-10 bg-slate-50 space-y-6 max-w-3xl mx-auto"
-         >
-            <div className="*:w-full space-y-1">
-               <label>Title :</label>
-               <input
-                  defaultValue={blog.title}
-                  type="text"
-                  name="title"
-                  placeholder="Write the title"
-                  className="border p-2.5 outline-green-500"
-                  required
-               />
-            </div>
+    const updatedBlog = {
+      title,
+      description,
+      thumbnail,
+      timestamp,
+      tags,
+      role,
+      category,
+      comments,
+      author,
+    };
 
-            <div className="*:w-full space-y-1">
-               <label>Thumbnail :</label>
-               <input
-                  type="file"
-                  name="thumbnail"
-                  className="border outline-green-500 file:p-2.5 file:border-none cursor-pointer file:cursor-pointer bg-white"
+    try {
+      const { data } = await axiosPublic.patch(
+        `/blog/${blog._id}`,
+        updatedBlog
+      );
+      if (data.modifiedCount > 0) {
+        toast.success("Blog updated successfully!");
+      }
+    } catch (error) {
+      toast.error(error.message || "Failed to update blog!");
+    } finally {
+      setLoading(false);
+    }
+  };
 
-               />
-            </div>
+  return (
+    <div>
+      <DashboardTitle title="Update Blog" />
 
-            {/* Tags Display */}
-            <div
-               className={`flex flex-wrap gap-2 ${tags.length === 0 ? "hidden" : "mb-4"
-                  }`}
+      <form
+        onSubmit={handleAddBlog}
+        className="border p-10 bg-slate-50 space-y-6 max-w-3xl mx-auto"
+      >
+        <div className="*:w-full space-y-1">
+          <label>Title :</label>
+          <input
+            defaultValue={blog.title}
+            type="text"
+            name="title"
+            placeholder="Write the title"
+            className="border p-2.5 outline-green-500"
+            required
+          />
+        </div>
+
+        <div className="*:w-full space-y-1">
+          <label>Thumbnail :</label>
+          <input
+            type="file"
+            name="thumbnail"
+            className="border outline-green-500 file:p-2.5 file:border-none cursor-pointer file:cursor-pointer bg-white"
+          />
+        </div>
+
+        {/* Tags Display */}
+        <div
+          className={`flex flex-wrap gap-2 ${
+            tags.length === 0 ? "hidden" : "mb-4"
+          }`}
+        >
+          {tags.map((tag, index) => (
+            <span
+              key={index}
+              className="text-primary-700 bg-gray-200 p-1 rounded"
             >
-               {tags.map((tag, index) => (
-                  <span
-                     key={index}
-                     className="text-primary-700 bg-gray-200 p-1 rounded"
-                  >
-                     {tag}
-                  </span>
-               ))}
-            </div>
+              {tag}
+            </span>
+          ))}
+        </div>
 
-            {/* Tags Input */}
+        {/* Tags Input */}
+        <input
+          value={tags.join(",")}
+          id="tags"
+          type="text"
+          name="tags"
+          placeholder="write tags and separate by comma"
+          className="border p-2.5 outline-green-500 w-full"
+          onChange={(e) => handleStoreTags(e)}
+          required
+        />
+
+        <div className="*:w-full space-y-1">
+          <label>Category :</label>
+          <select
+            name="category"
+            className="border p-2.5 outline-green-500"
+            defaultValue={blog.category}
+            required
+          >
+            <option value="Science">Science</option>
+            <option value="Technology">Technology</option>
+            <option value="Development">Development</option>
+            <option value="Mobile Development">Mobile Development</option>
+            <option value="Gaming">Gaming</option>
+          </select>
+        </div>
+
+        <div className="*:w-full space-y-1">
+          <label>Author Information:</label>
+          <div className="flex items-center *:flex-grow gap-5">
             <input
-               value={tags.join(",")}
-               id="tags"
-               type="text"
-               name="tags"
-               placeholder="write tags and separate by comma"
-               className="border p-2.5 outline-green-500 w-full"
-               onChange={(e) => handleStoreTags(e)}
-               required
+              type="text"
+              name="name"
+              defaultValue={user?.displayName}
+              className="border p-2.5 outline-green-500"
+              required
             />
+            <input
+              type="email"
+              name="email"
+              defaultValue={user?.email}
+              className="border p-2.5 outline-green-500"
+              required
+            />
+          </div>
+        </div>
 
-            <div className="*:w-full space-y-1">
-               <label>Category :</label>
-               <select
-                  name="category"
-                  className="border p-2.5 outline-green-500"
-                  defaultValue={blog.category}
-                  required
-               >
-                  <option value="Science">Science</option>
-                  <option value="Technology">Technology</option>
-                  <option value="Development">Development</option>
-                  <option value="Mobile Development">Mobile Development</option>
-                  <option value="Gaming">Gaming</option>
-               </select>
-            </div>
+        <div className="*:w-full space-y-1">
+          <label>Role :</label>
+          <select
+            name="role"
+            className="border p-2.5 outline-green-500"
+            defaultValue={blog.author.role}
+            required
+          >
+            <option value="Admin">Admin</option>
+            <option value="Instructor">Instructor</option>
+            <option value="Student">Student</option>
+          </select>
+        </div>
 
-            <div className="*:w-full space-y-1">
-               <label>Author Information:</label>
-               <div className="flex items-center *:flex-grow gap-5">
-                  <input
-                     type="text"
-                     name="name"
-                     defaultValue={user?.displayName}
-                     className="border p-2.5 outline-green-500"
-                     required
-                  />
-                  <input
-                     type="email"
-                     name="email"
-                     defaultValue={user?.email}
-                     className="border p-2.5 outline-green-500"
-                     required
-                  />
-               </div>
-            </div>
+        <div className="space-y-1">
+          <textarea
+            name="description"
+            defaultValue={blog.description}
+            className="w-full border outline-green-500 p-2.5"
+            rows={5}
+            required
+          ></textarea>
+        </div>
 
-            <div className="*:w-full space-y-1">
-               <label>Role :</label>
-               <select
-                  name="role"
-                  className="border p-2.5 outline-green-500"
-                  defaultValue={blog.author.role}
-                  required
-               >
-                  <option value="Admin">Admin</option>
-                  <option value="Instructor">Instructor</option>
-                  <option value="Student">Student</option>
-               </select>
-            </div>
+        <button className="bg-primary-700 text-white p-2.5 px-8 hover:bg-primary-800 w-48">
+          {loading ? (
+            <TbFidgetSpinner className="text-2xl animate-spin mx-auto " />
+          ) : (
+            <span className="">Update Blog</span>
+          )}
+        </button>
+      </form>
 
-            <div className="space-y-1">
-               <textarea
-                  name="description"
-                  defaultValue={blog.description}
-                  className="w-full border outline-green-500 p-2.5"
-                  rows={5}
-                  required
-               ></textarea>
-            </div>
-
-            <button disabled className="bg-primary-700 text-white p-2.5 px-8 hover:bg-primary-800 w-48">
-               {loading ? (
-                  <TbFidgetSpinner className="text-2xl animate-spin mx-auto " />
-               ) : (
-                  <span className="">Update Blog</span>
-               )}
-            </button>
-         </form>
-
-         <div onClick={() => navigate(-1)} className="flex items-center space-x-2 bg-red-600 text-white p-1.5 px-4 absolute top-4 right-3 cursor-pointer rounded-lg">
-            <FaArrowLeft  className="mt-1"/>
-            <span>Go Back</span>
-         </div>
+      <div
+        onClick={() => navigate(-1)}
+        className="flex items-center space-x-2 bg-red-600 text-white p-1.5 px-4 absolute top-4 right-3 cursor-pointer rounded-lg"
+      >
+        <FaArrowLeft className="mt-1" />
+        <span>Go Back</span>
       </div>
-   );
+    </div>
+  );
 };
 
 export default UpdateBlog;
