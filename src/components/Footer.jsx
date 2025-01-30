@@ -3,7 +3,7 @@ import { TfiEmail } from "react-icons/tfi";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#f2f2ff] mt-20">
+    <footer className="bg-[#F3F7F8] mt-20">
       <div className="rounded-xl w-full py-6 lg:p-9 max-w-7xl mx-auto px-4">
         <div className="flex justify-center md:justify-between gap-8 w-full flex-col md:flex-row text-center md:text-left">
 
