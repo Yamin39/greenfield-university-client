@@ -1,10 +1,14 @@
 /* eslint-disable react/prop-types */
+import toast from "react-hot-toast";
 import { IoMdStar } from "react-icons/io";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import reviewer from "../../../assets/icons/commenter.png";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useFormatTimestamp from "../../../hooks/useFormatTimestamp";
 
-const DescReview = ({ product }) => {
+const DescReview = ({ product, refetch }) => {
+  const axiosPublic = useAxiosPublic();
+
   const ratingData = {
     averageRating: product?.reviews.reduce((acc, review) => acc + review.rating, 0) / product.reviews.length,
     totalRatings: product?.reviews.length,
@@ -37,7 +41,40 @@ const DescReview = ({ product }) => {
     ],
   };
 
-  console.log(ratingData);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const rating = form.rating.value;
+    const desc = form.desc.value;
+    const timestamp = new Date().getTime();
+    const newReview = {
+      name,
+      email,
+      rating: parseInt(rating),
+      desc,
+      timestamp,
+    };
+    console.log(newReview);
+
+    axiosPublic
+      .patch(`/product/${product._id}/review`, newReview)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.modifiedCount > 0) {
+          toast.success("Review added successfully!");
+          form.reset();
+        } else {
+          toast.error("Failed to add the review. Please try again.");
+        }
+        refetch();
+      })
+      .catch((err) => {
+        console.error(err);
+        toast.error("Something went wrong! Please try again.");
+      });
+  };
 
   const formatTimestamp = useFormatTimestamp;
   return (
@@ -104,7 +141,7 @@ const DescReview = ({ product }) => {
                             <span className="flex-1 text-[16px] bg-[#EDEEEE] h-3 rounded-sm">
                               <span className="block h-full bg-[#F8B81F]" style={{ width: `${rating.percentage}%` }}></span>
                             </span>
-                            <p className=" text-[16px] text-[#ACAEB0] ml-[2px]">{rating.percentage}%</p>
+                            <p className=" text-[16px] text-[#ACAEB0] ml-[2px]">{rating.percentage.toFixed(0)}%</p>
                           </div>
                         ))}
                       </div>
@@ -154,7 +191,7 @@ const DescReview = ({ product }) => {
                       Your email address will not be published. Required fields are marked <span className="text-red-500">*</span>
                     </p>
                     <div className="w-full  mt-6 md:mt-10">
-                      <form className="space-y-5">
+                      <form onSubmit={handleSubmit} className="space-y-5">
                         <div>
                           <label htmlFor="">
                             Name <span className="text-red-500">*</span>
@@ -162,8 +199,8 @@ const DescReview = ({ product }) => {
                           <input
                             className="w-full border border-gray-200/80 py-3 outline-gray-100 transition-all duration-500  focus:outline-primary-800/50 px-3 rounded-[3px]"
                             type="text"
-                            name=""
-                            id=""
+                            name="name"
+                            required
                           />
                         </div>
                         <div>
@@ -173,20 +210,29 @@ const DescReview = ({ product }) => {
                           <input
                             className="w-full border border-gray-200/80 py-3 outline-gray-100 transition-all duration-500  focus:outline-primary-800/50 px-3 rounded-[3px]"
                             type="email"
-                            name=""
-                            id=""
+                            name="email"
+                            required
                           />
                         </div>
                         <div>
-                          <div className="flex items-center gap-x-[2px]">
+                          <div className="flex items-center gap-4">
                             <p className="text-[16px]">
-                              Your rating <span className="text-red-500">*</span>
+                              Select a rating <span className="text-red-500">*</span>
                             </p>
-                            <IoMdStar size={18} className="text-[#F8B81F]"></IoMdStar>
-                            <IoMdStar size={18} className="text-[#F8B81F]"></IoMdStar>
-                            <IoMdStar size={18} className="text-[#F8B81F]"></IoMdStar>
-                            <IoMdStar size={18} className="text-[#F8B81F]"></IoMdStar>
-                            <IoMdStar size={18} className="text-[#F8B81F]"></IoMdStar>
+                            <select
+                              name="rating"
+                              className="border border-gray-200/80 px-2.5 py-1.5 outline-gray-100 transition-all duration-500  focus:outline-primary-800/50 rounded-2xl cursor-pointer"
+                              required
+                            >
+                              <option value="" defaultChecked>
+                                Choose
+                              </option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                            </select>
                           </div>
                         </div>
                         <div>
@@ -194,16 +240,16 @@ const DescReview = ({ product }) => {
                             Your review <span className="text-red-500">*</span>
                           </label>
                           <textarea
-                            name=""
-                            id=""
+                            name="desc"
                             className="w-full border border-gray-200/80 py-3 outline-gray-100 transition-all duration-500  focus:outline-primary-800/50 px-3 rounded-[3px]"
                             cols={50}
                             rows={6}
+                            required
                           ></textarea>
                         </div>
 
                         <input
-                          className="rounded-[3px] py-3 px-6 font-semibold hover:bg-primary-800 flex justify-center items-center  text-primary-800 text-lg border hover:border-primary-800 border-primary-800/50  bg-primary-800/5 transition duration-500 hover:text-white"
+                          className="rounded-[3px] py-3 px-6 font-semibold hover:bg-primary-800 flex justify-center items-center  text-primary-800 text-lg border hover:border-primary-800 border-primary-800/50  bg-primary-800/5 transition duration-500 hover:text-white cursor-pointer"
                           type="submit"
                           value="Submit Review"
                         />

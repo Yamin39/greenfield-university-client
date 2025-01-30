@@ -9,7 +9,7 @@ const ShopDetails = () => {
   const { id } = useParams();
   const axiosPublic = useAxiosPublic();
 
-  const { data: product = [], isLoading } = useQuery({
+  const { data: product = [], isLoading, refetch } = useQuery({
     queryKey: ["product"],
     queryFn: async () => {
       const res = await axiosPublic.get(`/product/${id}`);
@@ -22,7 +22,7 @@ const ShopDetails = () => {
     <div className="bg-[#FFFFFF]">
       <div className="max-w-7xl mx-auto pb-12 px-3 mt-24">
         <ShopDetailsPage product={product}></ShopDetailsPage>
-        <DescReview product={product}></DescReview>
+        <DescReview product={product} refetch={refetch}></DescReview>
         <ShopRelatedProduct></ShopRelatedProduct>
       </div>
     </div>
