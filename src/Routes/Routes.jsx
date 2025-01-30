@@ -45,6 +45,7 @@ import UpdateBlog from "../Dashboard/admin/UpdateBlog";
 import AddFaq from "../Dashboard/admin/AddFaq";
 import ManageFaq from "../Dashboard/admin/ManageFaq";
 import UpdateFaq from "../Dashboard/admin/UpdateFaq";
+import PrivacyPolicy from "../pages/privacyPolicy/PrivacyPolicy";
 
 const router = createBrowserRouter([
   {
@@ -111,6 +112,10 @@ const router = createBrowserRouter([
       {
         path: "/terms-condition",
         element: <TermsCondition></TermsCondition>,
+      },
+      {
+        path: "/privacy-policy",
+        element: <PrivacyPolicy></PrivacyPolicy>,
       },
       {
         path: "/university-overview",
