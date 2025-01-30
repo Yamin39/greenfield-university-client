@@ -33,11 +33,11 @@ const ShopRelatedProduct = () => {
                   </p>
                 </div>
                 <div className=" w-full transition-all duration-500   absolute   -bottom-12 group-hover:bottom-4">
-                  <Link to={"/shop-details"}>
+                  <a href={`/shop-details/${item._id}`}>
                     <button className="w-11/12 mx-auto hover:bg-primary-800  py-2 px-3  font-semibold bg-[#319C9A] flex justify-center items-center  text-primary-800 border border-primary-800 transition duration-500 group-hover:text-white">
                       <span>View Details</span>
                     </button>
-                  </Link>
+                  </a>
                 </div>
               </div>
               <div className="mt-4">
@@ -46,11 +46,11 @@ const ShopRelatedProduct = () => {
                     {item.category}
                   </p>
                 </Link>
-                <Link to={"/shop-details"} className="">
+                <a href={`/shop-details/${item._id}`} className="">
                   <h2 className="text-xl md:text-[22px]  by-1  text-center font-semibold hover:text-primary-700 transition duration-300">
                     {item.name}
                   </h2>
-                </Link>
+                </a>
                 <p className="text-lx text-center text-[#656561]">
                   ${item.price}
                 </p>
