@@ -46,6 +46,7 @@ import AddFaq from "../Dashboard/admin/AddFaq";
 import ManageFaq from "../Dashboard/admin/ManageFaq";
 import UpdateFaq from "../Dashboard/admin/UpdateFaq";
 import UpdateAnnouncement from "../Dashboard/admin/UpdateAnnouncement";
+import AddCourse from "../Dashboard/instructor/AddCourse";
 
 const router = createBrowserRouter([
   {
@@ -259,6 +260,10 @@ const router = createBrowserRouter([
         element: <UpdateAnnouncement />,
         loader : ({ params }) => fetch(`http://localhost:5000/announcement/${params.id}`),
       },
+      {
+        path : 'addCourse',
+        element : <AddCourse/>
+      }
     ]
   }
 
