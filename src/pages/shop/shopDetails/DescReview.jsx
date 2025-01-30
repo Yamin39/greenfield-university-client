@@ -1,7 +1,45 @@
+/* eslint-disable react/prop-types */
 import { IoMdStar } from "react-icons/io";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
+import reviewer from "../../../assets/icons/commenter.png";
+import useFormatTimestamp from "../../../hooks/useFormatTimestamp";
 
-const DescReview = () => {
+const DescReview = ({ product }) => {
+  const ratingData = {
+    averageRating: product?.reviews.reduce((acc, review) => acc + review.rating, 0) / product.reviews.length,
+    totalRatings: product?.reviews.length,
+    allRatings: [
+      {
+        rating: 5,
+        count: product?.reviews.filter((review) => review.rating === 5).length,
+        percentage: (product?.reviews.filter((review) => review.rating === 5).length / product.reviews.length) * 100,
+      },
+      {
+        rating: 4,
+        count: product?.reviews.filter((review) => review.rating === 4).length,
+        percentage: (product?.reviews.filter((review) => review.rating === 4).length / product.reviews.length) * 100,
+      },
+      {
+        rating: 3,
+        count: product?.reviews.filter((review) => review.rating === 3).length,
+        percentage: (product?.reviews.filter((review) => review.rating === 3).length / product.reviews.length) * 100,
+      },
+      {
+        rating: 2,
+        count: product?.reviews.filter((review) => review.rating === 2).length,
+        percentage: (product?.reviews.filter((review) => review.rating === 2).length / product.reviews.length) * 100,
+      },
+      {
+        rating: 1,
+        count: product?.reviews.filter((review) => review.rating === 1).length,
+        percentage: (product?.reviews.filter((review) => review.rating === 1).length / product.reviews.length) * 100,
+      },
+    ],
+  };
+
+  console.log(ratingData);
+
+  const formatTimestamp = useFormatTimestamp;
   return (
     <div className="max-w-7xl mx-auto bg-[#FFFFFF]  mt-28 mb-10 px-5">
       <div>
@@ -23,7 +61,7 @@ const DescReview = () => {
                     "hover:text-red-500 text-xl font-semibold duration-300 after:w-0 hover:after:w-full after:duration-300 after:h-0.5 after:absolute after:-bottom-1 after:bg-red-500 after:left-0 relative"
                   }
                 >
-                  Reviews (0)
+                  Reviews ({product.reviews.length})
                 </span>
               </Tab>
             </TabList>
@@ -31,19 +69,7 @@ const DescReview = () => {
             <TabPanel>
               <div className="mt-10">
                 <h1 className="text-3xl font-semibold">Description</h1>
-                <p className="text-[#888888] text-lg my-3">
-                  “The Castle” invites readers into a world of mystery and
-                  intrigue. Follow protagonist Amelia as she unravels the
-                  secrets hidden within the ancient fortress’s walls,
-                  confronting her own past along the way. This captivating tale
-                  weaves together history, suspense, and painting a vivid
-                  picture of love, loss, and the power of resilience. Prepare to
-                  be transported to a realm where the echoes of the past shape
-                  the present in ways. For years, rumours of the ‘Marsh Girl’
-                  have haunted Barkley Cove, a quiet town on the North Carolina
-                  coast. So in late 1969, when handsome Chase Andrews is found
-                  dead.
-                </p>
+                <p className="text-[#888888] text-lg my-3">{product.desc}</p>
               </div>
             </TabPanel>
             <TabPanel>
@@ -51,64 +77,81 @@ const DescReview = () => {
                 <div className="flex flex-col lg:flex-row lg:justify-between gap-10 lg:gap-x-20">
                   <div className="lg:w-1/2  ">
                     <div className="sm:w-[380px] md:w-[425px] border border-gray-200 p-8">
-                    <h2 className="my-2 ">
-                      <span className="text-xl font-semibold px-2 pb-2  text-[#161613] ">
-                      Customer reviews
-                      </span>
-                    </h2>
-                    <div className="flex items-center flex-wrap gap-2">
-                        <span className="text-3xl md:text-4xl font-semibold">0.0</span>
-                    <div className="flex items-center mt">
-                      <IoMdStar size={18} className="text-[#F8B81F]"></IoMdStar>
-                      <IoMdStar size={18} className="text-[#F8B81F]"></IoMdStar>
-                      <IoMdStar size={18} className="text-[#F8B81F]"></IoMdStar>
-                      <IoMdStar size={18} className="text-[#F8B81F]"></IoMdStar>
-                      <IoMdStar size={18} className="text-[#F8B81F]"></IoMdStar>
-                      <p className="text-[16px] text-[#57595F] pl-2">(0 Review)</p>
-                    </div>
-                    </div>
-                    <div className="mt-3">
-                    <div className="flex items-center gap-x-2 gap-y-4">
-                        <p className=" text-[16px] text-[#ACAEB0]">5 Star</p>
-                        <span className="flex-1 text-[16px] bg-[#EDEEEE] py-[6px] rounded-sm"></span>
-                        <p className=" text-[16px] text-[#ACAEB0] ml-[2px]">0%</p>
-                    </div>
-                    <div className="flex items-center gap-x-2">
-                        <p className=" text-[16px] text-[#ACAEB0]">4 Star</p>
-                        <span className="flex-1 text-[16px] bg-[#EDEEEE] py-[6px] rounded-sm"></span>
-                        <p className=" text-[16px] text-[#ACAEB0] ml-[2px]">0%</p>
-                    </div>
-                    <div className="flex items-center gap-x-2">
-                        <p className=" text-[16px] text-[#ACAEB0]">3 Star</p>
-                        <span className="flex-1 text-[16px] bg-[#EDEEEE] py-[6px] rounded-sm"></span>
-                        <p className=" text-[16px] text-[#ACAEB0] ml-[2px]">0%</p>
-                    </div>
-                    <div className="flex items-center gap-x-2">
-                        <p className=" text-[16px] text-[#ACAEB0]">2 Star</p>
-                        <span className="flex-1 text-[16px] bg-[#EDEEEE] py-[6px] rounded-sm"></span>
-                        <p className=" text-[16px] text-[#ACAEB0] ml-[2px]">0%</p>
-                    </div>
-                    <div className="flex items-center gap-x-2">
-                        <p className=" text-[16px] text-[#ACAEB0]">1 Star</p>
-                        <span className="flex-1 text-[16px] bg-[#EDEEEE] py-[6px] rounded-sm"></span>
-                        <p className=" text-[16px] text-[#ACAEB0] ml-[2px]">0%</p>
-                    </div>
-                    
-                    </div>
+                      <h2 className="my-2 ">
+                        <span className="text-xl font-semibold px-2 pb-2  text-[#161613] ">Customer reviews</span>
+                      </h2>
+                      <div className="flex items-center flex-wrap gap-2">
+                        <span className="text-3xl md:text-4xl font-semibold">{ratingData?.averageRating?.toFixed(1)}</span>
+                        <div className="flex items-center mt">
+                          {ratingData?.averageRating === 0 ? (
+                            <p className="text-[16px] text-[#ACAEB0]">No rating yet</p>
+                          ) : (
+                            Array.from({ length: ratingData?.averageRating.toFixed(0) }).map((_, i) => (
+                              <IoMdStar
+                                key={i}
+                                size={18}
+                                className={`text-[#F8B81F] ${i < ratingData?.averageRating ? "text-[#F8B81F]" : "text-gray-300"}`}
+                              ></IoMdStar>
+                            ))
+                          )}
+                          <p className="text-[16px] text-[#57595F] pl-2">({product.reviews.length} Review)</p>
+                        </div>
+                      </div>
+                      <div className="mt-3">
+                        {ratingData.allRatings.map((rating, index) => (
+                          <div key={index} className="flex items-center gap-x-2 gap-y-4">
+                            <p className=" text-[16px] text-[#ACAEB0]">{rating.rating} Star</p>
+                            <span className="flex-1 text-[16px] bg-[#EDEEEE] h-3 rounded-sm">
+                              <span className="block h-full bg-[#F8B81F]" style={{ width: `${rating.percentage}%` }}></span>
+                            </span>
+                            <p className=" text-[16px] text-[#ACAEB0] ml-[2px]">{rating.percentage}%</p>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                     <div className="mt-12">
-                        <h2 className="text-2xl font-medium">Reviews</h2>
-                        <p className=" text-[16px] text-[#ACAEB0] mt-3">There are no reviews yet.</p>
+                      <h2 className="text-2xl font-medium">Reviews</h2>
+
+                      <div className="mt-3">
+                        {product.reviews.length === 0 ? (
+                          <p className="text-[16px] text-[#ACAEB0]">No reviews yet</p>
+                        ) : (
+                          product.reviews.map((review, index) => (
+                            <div key={index} className="border border-gray-200 p-4 mt-4 flex gap-5">
+                              <div className="hidden sm:block min-w-[60px]">
+                                <img src={reviewer} className="size-[60px]" alt="Reviewer" />
+                              </div>
+
+                              <div>
+                                <div className="flex items-center gap-0.5">
+                                  {Array.from({ length: review.rating }).map((_, i) => (
+                                    <IoMdStar
+                                      key={i}
+                                      size={18}
+                                      className={`text-[#F8B81F] ${i < ratingData?.averageRating ? "text-[#F8B81F]" : "text-gray-300"}`}
+                                    ></IoMdStar>
+                                  ))}
+                                </div>
+
+                                <div className="mt-1 mb-2 flex flex-col sm:flex-row sm:items-center gap-2">
+                                  <h5 className="font-medium">{review.name}</h5>
+                                  <span className="hidden sm:block size-1.5 bg-gray-400 rounded-full"></span>
+                                  <p className="text-sm text-[#57595f]">{formatTimestamp(review.timestamp)}</p>
+                                </div>
+
+                                <p className="text-sm text-[#57595f]">{review.desc}</p>
+                              </div>
+                            </div>
+                          ))
+                        )}
+                      </div>
                     </div>
                   </div>
                   {/* form */}
                   <div className="lg:w-1/2 ">
-                    <h2 className="text-xl md:text-2xl font-bold">
-                      Be the first to review “Emelie Schepp Vita”
-                    </h2>
+                    <h2 className="text-xl md:text-2xl font-bold">Be the first to review “Emelie Schepp Vita”</h2>
                     <p className="text-[16px] text-[#888888]">
-                      Your email address will not be published. Required fields
-                      are marked <span className="text-red-500">*</span>
+                      Your email address will not be published. Required fields are marked <span className="text-red-500">*</span>
                     </p>
                     <div className="w-full  mt-6 md:mt-10">
                       <form className="space-y-5">
@@ -136,12 +179,14 @@ const DescReview = () => {
                         </div>
                         <div>
                           <div className="flex items-center gap-x-[2px]">
-                            <p className="text-[16px]">Your rating <span className="text-red-500">*</span></p>
+                            <p className="text-[16px]">
+                              Your rating <span className="text-red-500">*</span>
+                            </p>
                             <IoMdStar size={18} className="text-[#F8B81F]"></IoMdStar>
                             <IoMdStar size={18} className="text-[#F8B81F]"></IoMdStar>
                             <IoMdStar size={18} className="text-[#F8B81F]"></IoMdStar>
                             <IoMdStar size={18} className="text-[#F8B81F]"></IoMdStar>
-                            <IoMdStar size={18} className="text-[#F8B81F]"></IoMdStar>  
+                            <IoMdStar size={18} className="text-[#F8B81F]"></IoMdStar>
                           </div>
                         </div>
                         <div>

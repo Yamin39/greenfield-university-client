@@ -1,40 +1,24 @@
 import { Link } from "react-router-dom";
-import book1 from "../../../assets/images/book1.png";
-import book2 from "../../../assets/images/book2.png";
-import book3 from "../../../assets/images/book3.png";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
 
 const ShopRelatedProduct = () => {
-  const bookData = [
-    {
-      category: "Novel",
-      name: " The Adventures of Huckleberry Finn",
-      pic: book1,
-      price: "160.00",
-      discount: "-10",
-      desc: "The story begins in fictional St. Petersburg, Missouri, and with a nineteenth-century boy from a River town. Throughout the book he recounts his adventures as he travels down the Mississippi river with another boy who is a runaway slave.",
+  const axiosPublic = useAxiosPublic();
+
+  const { data: products = [], isLoading } = useQuery({
+    queryKey: ["products"],
+    queryFn: async () => {
+      const res = await axiosPublic.get("/products");
+      return res.data;
     },
-    {
-      category: "Novel",
-      name: "Great Expectations",
-      pic: book2,
-      price: "110.00",
-      discount: "-15",
-      desc: "Great Expectations is the thirteenth novel by Charles Dickens and was first published as a series of stories in Dickens`s weekly periodical from 1 December 1860 to August 1861.",
-    },
-    {
-      category: "Epic",
-      name: " Lord Of The Rings Trilogy",
-      pic: book3,
-      price: "190.00",
-      discount: "-10",
-      desc: "The Lord of the Rings is an high fantasy novel, written between 1937-1949 by the English author and scholar J. R. R. Tolkien.All three parts of the masterpiece are steeped in magic and otherworldliness. The epic story centres around Frodo Baggins, who is forced to leave his hometown of the Shire to make a perilous journey across the realms of Middle-earth to destroy a powerful ring, deep inside the territories of the Dark Lord. ",
-    },
-  ];
+  });
+  
+  if (isLoading) return <div>Loading...</div>;
   return (
     <div className="mt-20">
       <h1 className="text-4xl font-semibold pb-8 text-center border-t border-gray-200 pt-20">Related Products</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-5 gap-y-8">
-        {bookData.map((item, i) => (
+        {products.slice(0, 3).map((item, i) => (
           <div key={i} className="">
             <div className="group group ">
               <div className="relative overflow-hidden ">

@@ -91,7 +91,7 @@ const router = createBrowserRouter([
         element: <Shop></Shop>,
       },
       {
-        path: "/shop-details",
+        path: "/shop-details/:id",
         element: <ShopDetails></ShopDetails>,
       },
       {
