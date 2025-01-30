@@ -48,6 +48,7 @@ import UpdateFaq from "../Dashboard/admin/UpdateFaq";
 import UpdateAnnouncement from "../Dashboard/admin/UpdateAnnouncement";
 import ManageTestimonials from "../pages/Testimonials/ManageTestimonials";
 import PrivacyPolicy from "../pages/privacyPolicy/PrivacyPolicy";
+import AddCourse from "../Dashboard/instructor/AddCourse";
 
 const router = createBrowserRouter([
   {
@@ -269,6 +270,10 @@ const router = createBrowserRouter([
         element: <UpdateAnnouncement />,
         loader : ({ params }) => fetch(`http://localhost:5000/announcement/${params.id}`),
       },
+      {
+        path : 'addCourse',
+        element : <AddCourse/>
+      }
     ]
   }
 

@@ -18,7 +18,7 @@ import { SiGoogletagmanager, SiWikibooks } from "react-icons/si";
 
 const DashboardRoute = () => {
 
-   const role = 'admin';
+   const role = 'instructor';
 
    return (
       <div className="py-10 px-6 flex flex-col justify-between min-h-screen">
