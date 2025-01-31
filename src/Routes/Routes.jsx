@@ -49,6 +49,7 @@ import UpdateAnnouncement from "../Dashboard/admin/UpdateAnnouncement";
 import ManageTestimonials from "../pages/Testimonials/ManageTestimonials";
 import PrivacyPolicy from "../pages/privacyPolicy/PrivacyPolicy";
 import AddCourse from "../Dashboard/instructor/AddCourse";
+import InstructorsProfile from "../Dashboard/instructor/InstructorsProfile";
 
 const router = createBrowserRouter([
   {
@@ -273,6 +274,10 @@ const router = createBrowserRouter([
       {
         path : 'addCourse',
         element : <AddCourse/>
+      },
+      {
+        path: "instructor/my-profile",
+        element: <InstructorsProfile />,
       }
     ]
   }
