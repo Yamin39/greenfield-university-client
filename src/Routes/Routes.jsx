@@ -46,6 +46,8 @@ import AddFaq from "../Dashboard/admin/AddFaq";
 import ManageFaq from "../Dashboard/admin/ManageFaq";
 import UpdateFaq from "../Dashboard/admin/UpdateFaq";
 import PrivacyPolicy from "../pages/privacyPolicy/PrivacyPolicy";
+import ManageProducts from "../Dashboard/admin/ManageProducts";
+import UpdateProduct from "../Dashboard/admin/UpdateProduct";
 
 const router = createBrowserRouter([
   {
@@ -232,6 +234,15 @@ const router = createBrowserRouter([
       {
         path: 'addProduct',
         element: <AddProduct />
+      },
+      {
+        path: 'manageProducts',
+        element: <ManageProducts></ManageProducts>
+      },
+      {
+        path: 'updateProduct/:id',
+        element: <UpdateProduct></UpdateProduct>,
+        loader: ({ params }) => fetch(`http://localhost:5000/product/${params.id}`)
       },
       {
         path: 'manageBlogs',
