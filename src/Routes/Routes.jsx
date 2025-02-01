@@ -53,6 +53,8 @@ import InstructorsProfile from "../Dashboard/instructor/InstructorsProfile";
 import StudentProfile from "../Dashboard/student/StudentProfile";
 import ManageProducts from "../Dashboard/admin/ManageProducts";
 import UpdateProduct from "../Dashboard/admin/UpdateProduct";
+import ContactRequests from "../Dashboard/admin/ContactRequests";
+import Queries from "../pages/Queries/Queries";
 
 const router = createBrowserRouter([
   {
@@ -209,6 +211,10 @@ const router = createBrowserRouter([
         path: "/chatbot",
         element: <Chatbot />,
       },
+      {
+        path: "/queries",
+        element: <Queries />,
+      },
     ],
   },
   {
@@ -303,7 +309,11 @@ const router = createBrowserRouter([
       {
         path: "student/my-profile",
         element: <StudentProfile />,
-      }
+      },
+      {
+        path : 'contactRequests',
+        element : <ContactRequests/>
+      },
     ]
   }
 
