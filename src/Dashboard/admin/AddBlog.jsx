@@ -5,6 +5,7 @@ import { TbFidgetSpinner } from "react-icons/tb";
 import { toast } from "react-hot-toast";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import axios from "axios";
+import useRole from "../../hooks/useRole";
 
 const imageUpload = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_ImgBB_api_key}`;
 
@@ -13,7 +14,7 @@ const AddBlog = () => {
   const [loading, setLoading] = useState(false);
   const [tags, setTags] = useState([]);
   const { user } = useAuth();
-  const role = 'admin'
+  const role = useRole(user?.email);
 
   const handleStoreTags = (e) => {
     const tag = e.target.value.split(",");

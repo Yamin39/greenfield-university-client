@@ -23,7 +23,7 @@ const { testimonials, refetch } = useTestimonials();
   //   queryKey: ["testimonials"],
   //   queryFn: async () => {
   //     const { data } = await axiosPublic.get("/testimonials");
-  //     return data;
+  //     return data; 
   //   },
   // });
 
@@ -32,6 +32,7 @@ const { testimonials, refetch } = useTestimonials();
   const isUser = () => {
     if (user) {
       setIsModalOpen(true);
+      
     } else {
       toast.error("Please login to submit a testimonial");
       navigate("/login");

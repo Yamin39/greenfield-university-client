@@ -48,6 +48,12 @@ const Wishlist = () => {
       <SharedBanner title={"Wishlist"}></SharedBanner>
 
       <div className="max-w-7xl mx-auto py-12 px-3 mt-24">
+        {wishlist.length === 0 && (
+          <div className="flex justify-center items-center h-[300px]">
+            <h1 className="text-2xl">No items in wishlist</h1>
+          </div>
+        )}
+
         <div className="grid grid-cols-1 ">
           <div className="overflow-x-auto">
             <table className="w-full  ">

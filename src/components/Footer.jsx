@@ -43,9 +43,9 @@ const Footer = () => {
               <NavLink to='/instructors' className="text-[0.9rem] text-text hover:text-primary cursor-pointer transition-all duration-200">Instructors</NavLink>
               <NavLink to='/events' className="text-[0.9rem] text-text hover:text-primary cursor-pointer transition-all duration-200">Events</NavLink>
               <NavLink to='/shop' className="text-[0.9rem] text-text hover:text-primary cursor-pointer transition-all duration-200">Shop</NavLink>
-              <NavLink to='/announcement' className="text-[0.9rem] text-text hover:text-primary cursor-pointer transition-all duration-200">Announcement</NavLink>
-              <NavLink to='/queries' className="text-[0.9rem] text-text hover:text-primary cursor-pointer transition-all duration-200">Queries</NavLink>
-              <NavLink to='/tour' className="text-[0.9rem] text-text hover:text-primary cursor-pointer transition-all duration-200">Schedule a Tour</NavLink>
+              <NavLink to='/privacy-policy' className="text-[0.9rem] text-text hover:text-primary cursor-pointer transition-all duration-200">Privacy Policy</NavLink>
+              <NavLink to='/terms-condition' className="text-[0.9rem] text-text hover:text-primary cursor-pointer transition-all duration-200">Terms & Conditions</NavLink>
+              <NavLink to='/guide' className="text-[0.9rem] text-text hover:text-primary cursor-pointer transition-all duration-200">Purchase Guide</NavLink>
 
             </div>
           </div>

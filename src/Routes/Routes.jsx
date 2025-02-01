@@ -46,7 +46,13 @@ import AddFaq from "../Dashboard/admin/AddFaq";
 import ManageFaq from "../Dashboard/admin/ManageFaq";
 import UpdateFaq from "../Dashboard/admin/UpdateFaq";
 import UpdateAnnouncement from "../Dashboard/admin/UpdateAnnouncement";
+import ManageTestimonials from "../pages/Testimonials/ManageTestimonials";
+import PrivacyPolicy from "../pages/privacyPolicy/PrivacyPolicy";
 import AddCourse from "../Dashboard/instructor/AddCourse";
+import InstructorsProfile from "../Dashboard/instructor/InstructorsProfile";
+import StudentProfile from "../Dashboard/student/StudentProfile";
+import ManageProducts from "../Dashboard/admin/ManageProducts";
+import UpdateProduct from "../Dashboard/admin/UpdateProduct";
 
 const router = createBrowserRouter([
   {
@@ -113,6 +119,10 @@ const router = createBrowserRouter([
       {
         path: "/terms-condition",
         element: <TermsCondition></TermsCondition>,
+      },
+      {
+        path: "/privacy-policy",
+        element: <PrivacyPolicy></PrivacyPolicy>,
       },
       {
         path: "/university-overview",
@@ -230,7 +240,25 @@ const router = createBrowserRouter([
         element: <AddProduct />,
       },
       {
-        path: "manageBlogs",
+        path: 'manageProducts',
+        element: <ManageProducts></ManageProducts>
+      },
+      {
+        path: 'updateProduct/:id',
+        element: <UpdateProduct></UpdateProduct>,
+        loader: ({ params }) => fetch(`http://localhost:5000/product/${params.id}`)
+      },
+      {
+        path: 'manageProducts',
+        element: <ManageProducts></ManageProducts>
+      },
+      {
+        path: 'updateProduct/:id',
+        element: <UpdateProduct></UpdateProduct>,
+        loader: ({ params }) => fetch(`http://localhost:5000/product/${params.id}`)
+      },
+      {
+        path: 'manageBlogs',
         element: <ManageBlogs />,
       },
       {
@@ -251,6 +279,10 @@ const router = createBrowserRouter([
         element: <ManageFaq></ManageFaq>
       },
       {
+        path: 'manageTestimonials',
+        element: <ManageTestimonials/>
+      },
+      {
         path: 'updateFaq/:id',
         element: <UpdateFaq></UpdateFaq>,
         loader: ({ params }) => fetch(`http://localhost:5000/faqs/${params.id}`)
@@ -263,6 +295,14 @@ const router = createBrowserRouter([
       {
         path : 'addCourse',
         element : <AddCourse/>
+      },
+      {
+        path: "instructor/my-profile",
+        element: <InstructorsProfile />,
+      },
+      {
+        path: "student/my-profile",
+        element: <StudentProfile />,
       }
     ]
   }
