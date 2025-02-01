@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoCloseOutline } from "react-icons/io5";
@@ -17,13 +17,32 @@ const Nav = () => {
   const [hamburgerMenu, setHamburgerMenu] = useState(false);
   const { user, logOut } = useAuth();
   const role = useRole(user?.email);
+  const sidebarRef = useRef(null);
 
   const handleLogOut = () => {
     logOut().then(() => {
-      console.log("Logged out successfully");
       toast.success("Logged out successfully");
     });
   };
+
+  // Close sidebar on outside click
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+        setHamburgerMenu(false);
+      }
+    };
+
+    if (hamburgerMenu) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [hamburgerMenu]);
 
   return (
     <>
@@ -47,9 +66,8 @@ const Nav = () => {
                   Admission <IoIosArrowDown className={`duration-300 ${admissionCard ? "rotate-180" : ""}`} />
                 </button>
                 <div
-                  className={`text-gray-600 w-max flex-col absolute -right-10 bg-white hidden lg:flex p-6 duration-300 border rounded-lg after:w-full after:h-20 after:absolute after:-top-20 after:left-0 ${
-                    admissionCard ? "top-10 opacity-100" : "-top-[20rem] opacity-0"
-                  }`}
+                  className={`text-gray-600 w-max flex-col absolute -right-10 bg-white hidden lg:flex p-6 duration-300 border rounded-lg after:w-full after:h-20 after:absolute after:-top-20 after:left-0 ${admissionCard ? "top-10 opacity-100" : "-top-[20rem] opacity-0"
+                    }`}
                 >
                   <Link to="/university-overview" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50">
                     Overview
@@ -85,9 +103,8 @@ const Nav = () => {
                   More <IoIosArrowDown className={`duration-300 ${moreCard ? "rotate-180" : ""}`} />
                 </button>
                 <div
-                  className={`text-gray-600 flex-col absolute -right-10 bg-white hidden lg:flex p-6 duration-300 border rounded-lg after:w-full after:h-20 after:absolute after:-top-20 after:left-0 ${
-                    moreCard ? "top-10 opacity-100" : "-top-[30rem] opacity-0"
-                  }`}
+                  className={`text-gray-600 flex-col absolute -right-10 bg-white hidden lg:flex p-6 duration-300 border rounded-lg after:w-full after:h-20 after:absolute after:-top-20 after:left-0 ${moreCard ? "top-10 opacity-100" : "-top-[30rem] opacity-0"
+                    }`}
                 >
                   <Link to="/instructors" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50">
                     Instructors
@@ -139,15 +156,14 @@ const Nav = () => {
                     </button>
 
                     <div
-                      className={`absolute top-11 right-0 bg-white px-6 py-3 border duration-300 flex-col ${
-                        userCard ? "animate-open-user-card flex rounded-xl" : "animate-close-user-card hidden"
-                      }`}
+                      className={`absolute top-11 right-0 bg-white px-6 py-3 border duration-300 flex-col ${userCard ? "animate-open-user-card flex rounded-xl" : "animate-close-user-card hidden"
+                        }`}
                     >
                       {
                         role !== "admin" &&
                         <Link to={`/dashboard/${role}/my-profile`} className="hover:text-primary-800 duration-300 py-2 pr-5 border-b hover:bg-gray-50">
                           Profile
-                        </Link> 
+                        </Link>
                       }
                       <Link to="/dashboard" className="hover:text-primary-800 duration-300 py-2 pr-5 border-b hover:bg-gray-50">
                         Dashboard
@@ -181,12 +197,12 @@ const Nav = () => {
                 </button>
 
                 {/* hamburgerMenu */}
+
                 <div
-                  className={`scrollable-card absolute h-screen top-0 bg-white p-6 border-l ${
-                    hamburgerMenu ? "right-0" : "-right-full"
-                  } duration-500 shadow-lg ${admissionSubCard ? "overflow-y-scroll" : ""}`}
+                  ref={sidebarRef}
+                  className={`fixed top-0 right-0 h-screen w-64 bg-white p-6 border-l shadow-lg transform transition-transform duration-700 ease-in-out ${hamburgerMenu ? "translate-x-0" : "translate-x-full"}`}
                 >
-                  <button onClick={() => setHamburgerMenu(!hamburgerMenu)} className="absolute top-2 right-2">
+                  <button onClick={() => setHamburgerMenu(false)} className="absolute top-2 right-2">
                     <IoCloseOutline className="text-2xl" />
                   </button>
                   <Link to="/" className="hover:text-primary-800 duration-300 py-2 border-b hover:bg-gray-50 block">
