@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { formatDistanceToNow } from "date-fns";
-import { ArrowRight, MessageSquare, ThumbsDown, ThumbsUp } from "lucide-react";
+import { ArrowRight, MessageSquare, ThumbsUp } from "lucide-react";
 import { useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { IoMdCloseCircle } from "react-icons/io";
@@ -73,7 +73,6 @@ const Queries = () => {
       },
       tags: tags,
       upVotes: [],
-      downVotes: [],
       comments: [],
       timestamp: new Date().getTime(),
     };
@@ -261,12 +260,6 @@ const Queries = () => {
                           <div className="w-4 h-4 bg-gray-200 rounded animate-pulse" />
                         </div>
 
-                        {/* Downvotes */}
-                        <div className="flex items-center space-x-2">
-                          <div className="w-9 h-9 bg-gray-200 rounded-full animate-pulse" />
-                          <div className="w-4 h-4 bg-gray-200 rounded animate-pulse" />
-                        </div>
-
                         {/* Comments */}
                         <div className="flex items-center space-x-2">
                           <div className="w-9 h-9 bg-gray-200 rounded-full animate-pulse" />
@@ -310,12 +303,6 @@ const Queries = () => {
                             )}
                           </button>
                           <span className="text-gray-600">{query.upVotes.length}</span>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <button className="p-2 hover:bg-gray-100 rounded-full">
-                            <ThumbsDown className="w-5 h-5 text-gray-600" />
-                          </button>
-                          <span className="text-gray-600">{query.downVotes.length}</span>
                         </div>
                         <div className="flex items-center space-x-2">
                           <button className="p-2 cursor-auto rounded-full">
