@@ -51,6 +51,8 @@ import PrivacyPolicy from "../pages/privacyPolicy/PrivacyPolicy";
 import AddCourse from "../Dashboard/instructor/AddCourse";
 import InstructorsProfile from "../Dashboard/instructor/InstructorsProfile";
 import StudentProfile from "../Dashboard/student/StudentProfile";
+import ManageProducts from "../Dashboard/admin/ManageProducts";
+import UpdateProduct from "../Dashboard/admin/UpdateProduct";
 
 const router = createBrowserRouter([
   {
@@ -238,7 +240,25 @@ const router = createBrowserRouter([
         element: <AddProduct />,
       },
       {
-        path: "manageBlogs",
+        path: 'manageProducts',
+        element: <ManageProducts></ManageProducts>
+      },
+      {
+        path: 'updateProduct/:id',
+        element: <UpdateProduct></UpdateProduct>,
+        loader: ({ params }) => fetch(`http://localhost:5000/product/${params.id}`)
+      },
+      {
+        path: 'manageProducts',
+        element: <ManageProducts></ManageProducts>
+      },
+      {
+        path: 'updateProduct/:id',
+        element: <UpdateProduct></UpdateProduct>,
+        loader: ({ params }) => fetch(`http://localhost:5000/product/${params.id}`)
+      },
+      {
+        path: 'manageBlogs',
         element: <ManageBlogs />,
       },
       {
