@@ -132,11 +132,6 @@ const ShopDetailsPage = ({ product }) => {
                 <span>Add to Cart</span>
               </button>
             </div>
-            <Link to={""} className="">
-              <button className="w-full mt-1 hover:bg-primary-800 text-lg py-2  px-8  font-semibold bg-[#319C9A] flex justify-center items-center  border border-primary-800 transition duration-500 text-white">
-                <span>Buy Now</span>
-              </button>
-            </Link>
             <div className=" border-b border-gray-200 pb-5">
               {wishlist.length ? (
                 <p className="text-[16px] mt-5 text-[#656561]">
