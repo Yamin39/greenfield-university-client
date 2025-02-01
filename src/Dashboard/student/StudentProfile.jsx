@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import LoadingModal from "../../components/LoadingModal";
 import useAuth from "../../hooks/useAuth";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import DashboardTitle from "../DashboardTitle";
-import LoadingModal from "./LoadingModal";
 
 const StudentProfile = () => {
   const { user, loading: userLoading, updateUserNameAndPhoto } = useAuth();
@@ -86,7 +86,7 @@ const StudentProfile = () => {
     <div>
       <DashboardTitle title="Student Profile" />
 
-      {isUpdating && <LoadingModal></LoadingModal>}
+      {isUpdating && <LoadingModal text={"Updating profile..."}></LoadingModal>}
 
       {isProfileLoading || userLoading ? (
         <div className="max-w-2xl mx-auto p-4 space-y-6">
