@@ -55,6 +55,7 @@ import ManageProducts from "../Dashboard/admin/ManageProducts";
 import UpdateProduct from "../Dashboard/admin/UpdateProduct";
 import ContactRequests from "../Dashboard/admin/ContactRequests";
 import Queries from "../pages/Queries/Queries";
+import Payment from "../pages/Payment/Payment";
 
 const router = createBrowserRouter([
   {
@@ -214,7 +215,10 @@ const router = createBrowserRouter([
       {
         path: "/queries",
         element: <Queries />,
-      },
+      },{
+        path:'payment',
+        element:<Payment/>
+      }
     ],
   },
   {
@@ -314,6 +318,14 @@ const router = createBrowserRouter([
         path : 'contactRequests',
         element : <ContactRequests/>
       },
+      {
+        path: "purchasedBooks",
+        element: <purchasedBooks />,
+      },
+      {
+        path : 'purchasedHistory',
+        element : <purchasedHistory/>
+      }
     ]
   }
 
