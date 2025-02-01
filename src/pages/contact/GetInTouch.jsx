@@ -20,6 +20,7 @@ const GetInTouch = () => {
       email,
       subject,
       message,
+      timestamp: new Date().getTime(),
     };
     console.table(postedMessage);
 

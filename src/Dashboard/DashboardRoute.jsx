@@ -6,7 +6,7 @@ import { CgProfile } from "react-icons/cg";
 import { LiaChalkboardTeacherSolid, LiaUserSlashSolid, LiaUserSolid } from "react-icons/lia";
 import { PiChalkboardTeacher, PiChalkboardTeacherFill, PiChalkboardTeacherThin } from "react-icons/pi";
 import { TfiAnnouncement, TfiGallery } from "react-icons/tfi";
-import { MdManageHistory, MdManageSearch, MdOutlineAnnouncement, MdOutlineEventAvailable, MdOutlineManageHistory, MdOutlinePlaylistAdd } from "react-icons/md";
+import { MdManageHistory, MdManageSearch, MdOutlineAnnouncement, MdOutlineEventAvailable, MdOutlineManageHistory, MdOutlinePlaylistAdd, MdOutlineSms } from "react-icons/md";
 import { TbLogs } from "react-icons/tb";
 import { IoAdd, IoBookSharp } from "react-icons/io5";
 import { CiSquareCheck } from "react-icons/ci";
@@ -160,6 +160,11 @@ const DashboardRoute = () => {
                   <NavLink to='/dashboard/manageGallery' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
                      <TfiGallery className="text-2xl" />
                      <span className="font-light">Manage Gallery</span>
+                  </NavLink>
+
+                  <NavLink to='/dashboard/contactRequests' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
+                     <MdOutlineSms className="text-2xl" />
+                     <span className="font-light">Contact Requests</span>
                   </NavLink>
                </>
             }
