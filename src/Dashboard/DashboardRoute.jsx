@@ -14,11 +14,14 @@ import { FaQrcode, FaQuoteLeft, FaRegCheckSquare } from "react-icons/fa";
 import { AiOutlineQuestion } from "react-icons/ai";
 import { BsClockHistory } from "react-icons/bs";
 import { SiGoogletagmanager, SiWikibooks } from "react-icons/si";
+import useRole from "../hooks/useRole";
+import useAuth from "../hooks/useAuth";
 
 
 const DashboardRoute = () => {
+   const { user } = useAuth();
 
-   const role = 'instructor';
+   const role = useRole(user?.email);
 
    return (
       <div className="py-10 px-6 flex flex-col justify-between min-h-screen">

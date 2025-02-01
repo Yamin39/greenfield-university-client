@@ -7,6 +7,7 @@ import { VscRobot } from "react-icons/vsc";
 import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 import useAuth from "../hooks/useAuth";
+import useRole from "../hooks/useRole";
 
 const Nav = () => {
   const [moreCard, setMoreCard] = useState(false);
@@ -15,7 +16,7 @@ const Nav = () => {
   const [userCard, setUserCard] = useState(false);
   const [hamburgerMenu, setHamburgerMenu] = useState(false);
   const { user, logOut } = useAuth();
-  const role = "instructor";
+  const role = useRole(user?.email);
 
   const handleLogOut = () => {
     logOut().then(() => {
