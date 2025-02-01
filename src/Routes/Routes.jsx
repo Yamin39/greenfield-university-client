@@ -55,6 +55,7 @@ import ManageProducts from "../Dashboard/admin/ManageProducts";
 import UpdateProduct from "../Dashboard/admin/UpdateProduct";
 import ContactRequests from "../Dashboard/admin/ContactRequests";
 import Queries from "../pages/Queries/Queries";
+import QueryDetails from "../pages/Queries/QueryDetails/QueryDetails";
 
 const router = createBrowserRouter([
   {
@@ -214,6 +215,10 @@ const router = createBrowserRouter([
       {
         path: "/queries",
         element: <Queries />,
+      },
+      {
+        path: "/query-details/:id",
+        element: <QueryDetails />,
       },
     ],
   },

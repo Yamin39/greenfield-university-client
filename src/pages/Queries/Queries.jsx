@@ -103,6 +103,10 @@ const Queries = () => {
   };
 
   const handleUpVote = (query) => {
+    if (!user) {
+      toast.error("Please login to upvote");
+      return;
+    }
     console.log(user.email, query._id);
 
     // check if user has already upvoted
@@ -183,7 +187,7 @@ const Queries = () => {
                       name="title"
                       required
                     />
-                    <div className="mt-3 flex justify-between items-center">
+                    <div className="mt-3 flex flex-col sm:flex-row justify-between sm:items-center gap-y-4 ">
                       <div className="flex gap-3 flex-wrap">
                         {tags.map((tag, index) => (
                           <span key={index} className="px-3 py-1 text-sm bg-primary-700/5 text-primary-800 rounded-full flex justify-center items-center gap-1">
@@ -294,7 +298,11 @@ const Queries = () => {
                         ))}
                       </div>
                       <div className="mt-4 flex items-center space-x-6">
-                        <div className="flex items-center space-x-2">
+                        <div
+                          className={`flex items-center space-x-2 p-2 rounded-lg transition-colors ${
+                            query.upVotes.includes(user?.email) ? "bg-primary-700/5" : "text-gray-600"
+                          }`}
+                        >
                           <button onClick={() => handleUpVote(query)} className="p-2 hover:bg-gray-100 rounded-full">
                             {query.upVotes.includes(user?.email) ? (
                               <ThumbsUp className="w-5 h-5 text-primary-700" />
