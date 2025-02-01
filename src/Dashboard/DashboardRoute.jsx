@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { GoDependabot } from "react-icons/go";
 import { IoIosAddCircleOutline, IoIosLogOut } from "react-icons/io";
 import logo from '../assets/images/logo.png'
@@ -13,16 +13,24 @@ import { CiSquareCheck } from "react-icons/ci";
 import { FaQrcode, FaQuoteLeft, FaRegCheckSquare } from "react-icons/fa";
 import { AiOutlineQuestion } from "react-icons/ai";
 import { BsClockHistory } from "react-icons/bs";
-import { SiGoogletagmanager, SiWikibooks } from "react-icons/si";
+import { SiGoogletagmanager } from "react-icons/si";
 import useRole from "../hooks/useRole";
 import useAuth from "../hooks/useAuth";
+import toast from "react-hot-toast";
 
 
 const DashboardRoute = () => {
-   const { user } = useAuth();
-
+   const { user, logOut } = useAuth();
+   const navigate = useNavigate();
    const role = useRole(user?.email);
 
+   const handleLogOut = () => {
+      logOut().then(() => {
+        console.log("Logged out successfully");
+        navigate("/login");
+        toast.success("Logged out successfully");
+      });
+    };
    return (
       <div className="py-10 px-6 flex flex-col justify-between min-h-screen">
 
@@ -43,6 +51,8 @@ const DashboardRoute = () => {
             {
                role === 'admin' &&
                <>
+                  <p className="font-light text-gray-600">Registration</p>
+
                   <NavLink to='/dashboard/registeredStudents' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
                      <LiaUserSolid className="text-2xl" />
                      <span className="font-light">Registered Students</span>
@@ -63,6 +73,8 @@ const DashboardRoute = () => {
                      <span className="font-light">Unregistered Instructors</span>
                   </NavLink>
 
+                  <p className="font-light text-gray-600">Announcements</p>
+
                   <NavLink to='/dashboard/postAnnouncements' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
                      <TfiAnnouncement className="text-2xl" />
                      <span className="font-light">Post Announcements</span>
@@ -72,6 +84,8 @@ const DashboardRoute = () => {
                      <MdOutlineAnnouncement className="text-2xl" />
                      <span className="font-light">Manage Announcements</span>
                   </NavLink>
+
+                  <p className="font-light text-gray-600">Products</p>
 
                   <NavLink to='/dashboard/addProduct' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
                      <IoIosAddCircleOutline className="text-2xl" />
@@ -83,10 +97,19 @@ const DashboardRoute = () => {
                      <span className="font-light">Manage Products</span>
                   </NavLink>
 
+                  <p className="font-light text-gray-600">Events</p>
+
+                  <NavLink to='/dashboard/addEvents' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
+                     <MdOutlineEventAvailable className="text-2xl" />
+                     <span className="font-light">Add Events</span>
+                  </NavLink>
+
                   <NavLink to='/dashboard/manageEvents' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
                      <MdManageHistory className="text-2xl" />
                      <span className="font-light">Manage Events</span>
                   </NavLink>
+
+                  <p className="font-light text-gray-600">Blogs</p>
 
                   <NavLink to='/dashboard/addBlog' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
                      <IoAdd className="text-2xl" />
@@ -103,15 +126,7 @@ const DashboardRoute = () => {
                      <span className="font-light">Approve Blogs</span>
                   </NavLink>
 
-                  <NavLink to='/dashboard/approveCourses' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
-                     <FaRegCheckSquare className="text-2xl" />
-                     <span className="font-light">Approve Courses</span>
-                  </NavLink>
-
-                  <NavLink to='/dashboard/manageGallery' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
-                     <TfiGallery className="text-2xl" />
-                     <span className="font-light">Manage Gallery</span>
-                  </NavLink>
+                  <p className="font-light text-gray-600">FAQ&apos;s</p>
 
                   <NavLink to='/dashboard/addFAQ' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
                      <FaQuoteLeft className="text-2xl" />
@@ -123,6 +138,8 @@ const DashboardRoute = () => {
                      <span className="font-light">Manage FAQ</span>
                   </NavLink>
 
+                  <p className="font-light text-gray-600">Testimonials</p>
+
                   <NavLink to='/dashboard/addTestimonial' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
                      <MdOutlinePlaylistAdd className="text-2xl" />
                      <span className="font-light">Add Testimonial</span>
@@ -133,9 +150,16 @@ const DashboardRoute = () => {
                      <span className="font-light">Manage Testimonials</span>
                   </NavLink>
 
-                  <NavLink to='/dashboard/addEvents' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
-                     <MdOutlineEventAvailable className="text-2xl" />
-                     <span className="font-light">Add Events</span>
+                  <p className="font-light text-gray-600">Others</p>
+
+                  <NavLink to='/dashboard/approveCourses' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
+                     <FaRegCheckSquare className="text-2xl" />
+                     <span className="font-light">Approve Courses</span>
+                  </NavLink>
+
+                  <NavLink to='/dashboard/manageGallery' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
+                     <TfiGallery className="text-2xl" />
+                     <span className="font-light">Manage Gallery</span>
                   </NavLink>
                </>
             }
@@ -145,6 +169,8 @@ const DashboardRoute = () => {
             {
                role === 'instructor' &&
                <>
+                  <p className="font-light text-gray-600">Courses</p>
+
                   <NavLink to='/dashboard/addCourse' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
                      <IoIosAddCircleOutline className="text-2xl" />
                      <span className="font-light">Add Course</span>
@@ -154,6 +180,8 @@ const DashboardRoute = () => {
                      <LiaChalkboardTeacherSolid className="text-2xl" />
                      <span className="font-light">Manage Course</span>
                   </NavLink>
+
+                  <p className="font-light text-gray-600">Blogs</p>
 
                   <NavLink to='/dashboard/addBlog' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
                      <IoIosAddCircleOutline className="text-2xl" />
@@ -173,6 +201,8 @@ const DashboardRoute = () => {
             {
                role === 'student' &&
                <>
+                  <p className="font-light text-gray-600">Blogs</p>
+
                   <NavLink to='/dashboard/addBlog' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
                      <IoIosAddCircleOutline className="text-2xl" />
                      <span className="font-light">Add Blog</span>
@@ -182,6 +212,8 @@ const DashboardRoute = () => {
                      <MdOutlineManageHistory className="text-2xl" />
                      <span className="font-light">Manage Blog</span>
                   </NavLink>
+
+                  <p className="font-light text-gray-600">Query</p>
 
                   <NavLink to='/dashboard/postQuery' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
                      <IoAdd className="text-2xl" />
@@ -193,15 +225,7 @@ const DashboardRoute = () => {
                      <span className="font-light">Manage Query</span>
                   </NavLink>
 
-                  <NavLink to='/dashboard/courses' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
-                     <LiaChalkboardTeacherSolid className="text-2xl" />
-                     <span className="font-light">Courses</span>
-                  </NavLink>
-
-                  <NavLink to='/dashboard/books' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
-                     <SiWikibooks className="text-2xl" />
-                     <span className="font-light">Books</span>
-                  </NavLink>
+                  <p className="font-light text-gray-600">Purchases</p>
 
                   <NavLink to='/dashboard/registeredCourse' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
                      <PiChalkboardTeacher className="text-2xl" />
@@ -228,15 +252,22 @@ const DashboardRoute = () => {
 
          <div className="space-y-4">
 
-            <NavLink to={`/dashboard/${role}/my-profile`} className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
-               <CgProfile className="text-2xl" />
-               <span className="font-light">My Profile</span>
-            </NavLink>
+            {
+               role !== "admin" &&
+               <NavLink to={`/dashboard/${role}/my-profile`} className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
+                  <CgProfile className="text-2xl" />
+                  <span className="font-light">My Profile</span>
+               </NavLink>
+            }
 
-            <span className="flex items-center space-x-2 p-2 bg-[#f8071f] text-white cursor-pointer justify-center">
+            <button
+            onClick={() => {
+               handleLogOut();
+            }}
+            className="w-full flex items-center space-x-2 p-2 bg-[#f8071f] text-white cursor-pointer justify-center">
                <IoIosLogOut className="text-2xl" />
                <span className="font-light ">Log Out</span>
-            </span>
+            </button>
          </div>
 
 
