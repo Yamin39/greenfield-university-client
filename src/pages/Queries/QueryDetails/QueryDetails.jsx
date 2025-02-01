@@ -240,7 +240,7 @@ const QueryDetails = () => {
 
           {/* New Comment Input */}
           <form onSubmit={handleSubmitComment} className="flex items-start space-x-4 mb-8">
-            <img src={user.photoURL} alt="Current user" className="w-10 h-10 rounded-full" />
+            <img src={user.photoURL} alt="Current user" className="w-10 h-10 rounded-full object-cover" />
             <div className="flex-1">
               <textarea
                 className="w-full p-4 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-700/50 focus:outline-none resize-none"
