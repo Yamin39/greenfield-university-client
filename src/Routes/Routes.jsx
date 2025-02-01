@@ -50,6 +50,9 @@ import ManageTestimonials from "../pages/Testimonials/ManageTestimonials";
 import PrivacyPolicy from "../pages/privacyPolicy/PrivacyPolicy";
 import AddCourse from "../Dashboard/instructor/AddCourse";
 import InstructorsProfile from "../Dashboard/instructor/InstructorsProfile";
+import ManageEvent from "../pages/Events/ManageEvent";
+import AddEvents from "../pages/Events/AddEvents";
+ 
 
 const router = createBrowserRouter([
   {
@@ -247,41 +250,51 @@ const router = createBrowserRouter([
       {
         path: "updateBlog/:id",
         element: <UpdateBlog />,
-        loader: ({ params }) => fetch(`http://localhost:5000/blogs/${params.id}`)
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/blogs/${params.id}`),
       },
       {
-        path: 'addFaq',
-        element: <AddFaq></AddFaq>
+        path: "addFaq",
+        element: <AddFaq></AddFaq>,
       },
       {
-        path: 'manageFaq',
-        element: <ManageFaq></ManageFaq>
+        path: "manageFaq",
+        element: <ManageFaq></ManageFaq>,
       },
       {
-        path: 'manageTestimonials',
-        element: <ManageTestimonials/>
+        path: "manageTestimonials",
+        element: <ManageTestimonials />,
       },
       {
-        path: 'updateFaq/:id',
+        path: "manageEvents",
+        element: <ManageEvent/>,
+      },
+      {
+        path: "addEvents",
+        element: <AddEvents/>,
+      },
+      {
+        path: "updateFaq/:id",
         element: <UpdateFaq></UpdateFaq>,
-        loader: ({ params }) => fetch(`http://localhost:5000/faqs/${params.id}`)
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/faqs/${params.id}`),
       },
       {
         path: "updateAnnouncement/:id",
         element: <UpdateAnnouncement />,
-        loader : ({ params }) => fetch(`http://localhost:5000/announcement/${params.id}`),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/announcement/${params.id}`),
       },
       {
-        path : 'addCourse',
-        element : <AddCourse/>
+        path: "addCourse",
+        element: <AddCourse />,
       },
       {
         path: "instructor/my-profile",
         element: <InstructorsProfile />,
-      }
-    ]
-  }
-
+      },
+    ],
+  },
 ]);
 
 export default router;
