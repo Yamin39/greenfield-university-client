@@ -4,14 +4,20 @@ import DashboardTitle from "../DashboardTitle";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { format } from "date-fns";
+import useAuth from "../../hooks/useAuth";
+import useRole from "../../hooks/useRole";
 
 const ManageBlogs = () => {
   const axiosPublic = useAxiosPublic();
+  const { user } = useAuth();
+  const role = useRole(user?.email);
+
+  console.log(role);
 
   const { data: blogs = [], refetch } = useQuery({
     queryKey: ["blogs"],
     queryFn: async () => {
-      const res = await axiosPublic.get("/blogs");
+      const res = await axiosPublic.get(`/blogs?email=${user.email}&role=${role}`);
       return res.data;
     },
   });

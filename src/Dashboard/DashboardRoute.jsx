@@ -193,9 +193,9 @@ const DashboardRoute = () => {
                      <span className="font-light">Add Blog</span>
                   </NavLink>
 
-                  <NavLink to='/dashboard/manageBlog' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
+                  <NavLink to='/dashboard/manageBlogs' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
                      <MdOutlineManageHistory className="text-2xl" />
-                     <span className="font-light">Manage Blog</span>
+                     <span className="font-light">Manage Blogs</span>
                   </NavLink>
                </>
 
@@ -213,9 +213,9 @@ const DashboardRoute = () => {
                      <span className="font-light">Add Blog</span>
                   </NavLink>
 
-                  <NavLink to='/dashboard/manageBlog' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
+                  <NavLink to='/dashboard/manageBlogs' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
                      <MdOutlineManageHistory className="text-2xl" />
-                     <span className="font-light">Manage Blog</span>
+                     <span className="font-light">Manage Blogs</span>
                   </NavLink>
 
                   <p className="font-light text-gray-600">Query</p>
