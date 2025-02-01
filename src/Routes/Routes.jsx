@@ -56,6 +56,7 @@ import AddEvents from "../pages/Events/AddEvents";
 import StudentProfile from "../Dashboard/student/StudentProfile";
 import ManageProducts from "../Dashboard/admin/ManageProducts";
 import UpdateProduct from "../Dashboard/admin/UpdateProduct";
+import ManageCourse from "../Dashboard/instructor/ManageCourse";
 import ContactRequests from "../Dashboard/admin/ContactRequests";
 import Queries from "../pages/Queries/Queries";
 import QueryDetails from "../pages/Queries/QueryDetails/QueryDetails";
@@ -301,7 +302,7 @@ const router = createBrowserRouter([
       },
       {
         path: "manageTestimonials",
-        element: <ManageTestimonials />,
+        element: <ManageTestimonials  />,
       },
       {
         path: "manageEvents",
@@ -320,12 +321,15 @@ const router = createBrowserRouter([
       {
         path: "updateAnnouncement/:id",
         element: <UpdateAnnouncement />,
-        loader: ({ params }) =>
-          fetch(`http://localhost:5000/announcement/${params.id}`),
+        loader: ({ params }) => fetch(`http://localhost:5000/announcement/${params.id}`),
       },
       {
-        path: "addCourse",
-        element: <AddCourse />,
+        path: 'addCourse',
+        element: <AddCourse />
+      },
+      {
+        path: 'manageCourse',
+        element: <ManageCourse />
       },
       {
         path: "instructor/my-profile",
