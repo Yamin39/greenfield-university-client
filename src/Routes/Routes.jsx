@@ -63,6 +63,7 @@ import QueryDetails from "../pages/Queries/QueryDetails/QueryDetails";
 import Payment from "../pages/Payment/Payment";
 import PurchasedBooks from "../pages/shop/purchased/PurchasedBooks";
 import PurchasedHistory from "../pages/shop/purchased/PurchasedHistory";
+import AdminProfile from "../Dashboard/admin/AdminProfile";
 
 const router = createBrowserRouter([
   {
@@ -338,6 +339,10 @@ const router = createBrowserRouter([
       {
         path: "student/my-profile",
         element: <StudentProfile />,
+      },
+      {
+        path: "admin/my-profile",
+        element: <AdminProfile />,
       },
       {
         path : 'contactRequests',

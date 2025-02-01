@@ -185,12 +185,9 @@ const Nav = () => {
                       ref={userCardRef}
                       className={`text-gray-600 flex-col absolute right-7 top-9 bg-white hidden sm:flex p-6 duration-500 transform origin-top-right border *:py-2 *:border-b hover:*:bg-gray-50 ${!user && 'scale-0'}  rounded-lg ${userCard ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}
                     >
-                      {
-                        role !== "admin" &&
-                        <Link to={`/dashboard/${role}/my-profile`} className="hover:text-primary-800 duration-300 py-2 pr-5 border-b hover:bg-gray-50">
-                          Profile
-                        </Link>
-                      }
+                      <Link to={`/dashboard/${role}/my-profile`} className="hover:text-primary-800 duration-300 py-2 pr-5 border-b hover:bg-gray-50">
+                        Profile
+                      </Link>
                       <Link to="/dashboard" className="hover:text-primary-800 duration-300 py-2 pr-5 border-b hover:bg-gray-50">
                         Dashboard
                       </Link>

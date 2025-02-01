@@ -252,13 +252,11 @@ const DashboardRoute = () => {
 
          <div className="space-y-4">
 
-            {
-               role !== "admin" &&
-               <NavLink to={`/dashboard/${role}/my-profile`} className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
-                  <CgProfile className="text-2xl" />
-                  <span className="font-light">My Profile</span>
-               </NavLink>
-            }
+            <NavLink to={`/dashboard/${role}/my-profile`} className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
+               <CgProfile className="text-2xl" />
+               <span className="font-light">My Profile</span>
+            </NavLink>
+           
 
             <button
             onClick={() => {
