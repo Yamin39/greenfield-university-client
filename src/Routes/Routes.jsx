@@ -53,6 +53,12 @@ import InstructorsProfile from "../Dashboard/instructor/InstructorsProfile";
 import ManageEvent from "../pages/Events/ManageEvent";
 import AddEvents from "../pages/Events/AddEvents";
  
+import StudentProfile from "../Dashboard/student/StudentProfile";
+import ManageProducts from "../Dashboard/admin/ManageProducts";
+import UpdateProduct from "../Dashboard/admin/UpdateProduct";
+import ContactRequests from "../Dashboard/admin/ContactRequests";
+import Queries from "../pages/Queries/Queries";
+import Payment from "../pages/Payment/Payment";
 
 const router = createBrowserRouter([
   {
@@ -209,6 +215,13 @@ const router = createBrowserRouter([
         path: "/chatbot",
         element: <Chatbot />,
       },
+      {
+        path: "/queries",
+        element: <Queries />,
+      },{
+        path:'payment',
+        element:<Payment/>
+      }
     ],
   },
   {
@@ -240,7 +253,25 @@ const router = createBrowserRouter([
         element: <AddProduct />,
       },
       {
-        path: "manageBlogs",
+        path: 'manageProducts',
+        element: <ManageProducts></ManageProducts>
+      },
+      {
+        path: 'updateProduct/:id',
+        element: <UpdateProduct></UpdateProduct>,
+        loader: ({ params }) => fetch(`http://localhost:5000/product/${params.id}`)
+      },
+      {
+        path: 'manageProducts',
+        element: <ManageProducts></ManageProducts>
+      },
+      {
+        path: 'updateProduct/:id',
+        element: <UpdateProduct></UpdateProduct>,
+        loader: ({ params }) => fetch(`http://localhost:5000/product/${params.id}`)
+      },
+      {
+        path: 'manageBlogs',
         element: <ManageBlogs />,
       },
       {
@@ -293,8 +324,25 @@ const router = createBrowserRouter([
         path: "instructor/my-profile",
         element: <InstructorsProfile />,
       },
-    ],
-  },
+      {
+        path: "student/my-profile",
+        element: <StudentProfile />,
+      },
+      {
+        path : 'contactRequests',
+        element : <ContactRequests/>
+      },
+      {
+        path: "purchasedBooks",
+        element: <purchasedBooks />,
+      },
+      {
+        path : 'purchasedHistory',
+        element : <purchasedHistory/>
+      }
+    ]
+  }
+
 ]);
 
 export default router;
