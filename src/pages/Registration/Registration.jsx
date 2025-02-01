@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
-import SharedBanner from "../../shared/SharedBanner";
 import StepRegister from "./StepRegister";
 import StepRole from "./StepRole";
 import Steps from "./Steps";
@@ -28,8 +27,7 @@ const Registration = () => {
     setCurrentStep,
   };
   return (
-    <div>
-      <SharedBanner title={"Registration"}></SharedBanner>
+    <div className="pt-14 sm:pt-28">
       <div className="mt-12">
         <div className="w-11/12 max-w-7xl mx-auto">
           <Steps props={props} />
