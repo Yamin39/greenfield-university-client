@@ -58,12 +58,12 @@ const CartData = ({ item, refetch }) => {
   return (
     <tr className="">
       <td className="p-3">
-        <Link to={""}>
+        <Link to={`/shop-details/${item.productId}`}>
           <img className="max-w-[70px] bg-gray-50 p-[10px]" src={item.pic} alt="pic" />
         </Link>
       </td>
       <td className="p-3">
-        <Link to={""} className="hover:text-primary-700 transition duration-300">
+        <Link to={`/shop-details/${item.productId}`} className="hover:text-primary-700 transition duration-300">
           <p>{item.name}</p>
         </Link>
       </td>

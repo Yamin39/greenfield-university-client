@@ -40,6 +40,38 @@ const Wishlist = () => {
       });
   };
 
+  const handleAddToCart = (item) => {
+    const cart = {
+      productId: item.productId,
+      name: item.name,
+      pic: item.pic,
+      price: item.price,
+      timestamp: new Date().getTime(),
+      quantity: 1,
+      user: {
+        name: user.displayName,
+        email: user.email,
+      },
+    };
+
+    axiosPublic
+      .post(`/cart`, cart)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.insertedId) {
+          toast.success("Added to cart");
+        } else if (res.data.message === "Product already in cart") {
+          toast.error(res.data.message);
+        } else {
+          toast.error("Failed to add to cart");
+          toast.error("Something went wrong! Please try again.");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   if (isLoading) {
     return <div className="flex justify-center items-center h-screen    w-full bg-white">Loading...</div>;
   }
@@ -83,12 +115,15 @@ const Wishlist = () => {
                       </div>
                     </td>
                     <td className="p-3  h-auto  ">
-                      <Link to={""}>
-                        {" "}
-                        <span className="flex justify-center items-center">
-                          <IoCartOutline className="hover:text-primary-700 transition duration-300" size={20}></IoCartOutline>
-                        </span>{" "}
-                      </Link>
+                      <button
+                        onClick={() => {
+                          handleAddToCart(item);
+                          handleRemove(item._id);
+                        }}
+                        className="flex justify-center items-center"
+                      >
+                        <IoCartOutline className="hover:text-primary-700 transition duration-300" size={20}></IoCartOutline>
+                      </button>
                     </td>
                   </tr>
                 ))}
