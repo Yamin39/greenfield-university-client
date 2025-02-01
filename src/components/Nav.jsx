@@ -7,6 +7,7 @@ import { VscRobot } from "react-icons/vsc";
 import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 import useAuth from "../hooks/useAuth";
+import useRole from "../hooks/useRole";
 
 const Nav = () => {
   const [moreCard, setMoreCard] = useState(false);
@@ -15,6 +16,7 @@ const Nav = () => {
   const [userCard, setUserCard] = useState(false);
   const [hamburgerMenu, setHamburgerMenu] = useState(false);
   const { user, logOut } = useAuth();
+  const role = useRole(user?.email);
 
   const handleLogOut = () => {
     logOut().then(() => {
@@ -141,7 +143,7 @@ const Nav = () => {
                         userCard ? "animate-open-user-card flex rounded-xl" : "animate-close-user-card hidden"
                       }`}
                     >
-                      <Link to="/profile" className="hover:text-primary-800 duration-300 py-2 pr-5 border-b hover:bg-gray-50">
+                      <Link to={`/dashboard/${role}/my-profile`} className="hover:text-primary-800 duration-300 py-2 pr-5 border-b hover:bg-gray-50">
                         Profile
                       </Link>
                       <Link to="/dashboard" className="hover:text-primary-800 duration-300 py-2 pr-5 border-b hover:bg-gray-50">

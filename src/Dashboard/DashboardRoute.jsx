@@ -14,11 +14,14 @@ import { FaQrcode, FaQuoteLeft, FaRegCheckSquare } from "react-icons/fa";
 import { AiOutlineQuestion } from "react-icons/ai";
 import { BsClockHistory } from "react-icons/bs";
 import { SiGoogletagmanager, SiWikibooks } from "react-icons/si";
+import useRole from "../hooks/useRole";
+import useAuth from "../hooks/useAuth";
 
 
 const DashboardRoute = () => {
+   const { user } = useAuth();
 
-   const role = 'instructor';
+   const role = useRole(user?.email);
 
    return (
       <div className="py-10 px-6 flex flex-col justify-between min-h-screen">
@@ -225,7 +228,7 @@ const DashboardRoute = () => {
 
          <div className="space-y-4">
 
-            <NavLink to='/dashboard/my-profile' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
+            <NavLink to={`/dashboard/${role}/my-profile`} className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
                <CgProfile className="text-2xl" />
                <span className="font-light">My Profile</span>
             </NavLink>

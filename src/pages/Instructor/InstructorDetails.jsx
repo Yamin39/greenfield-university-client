@@ -5,7 +5,7 @@ import { IoLogoTwitter, IoMdStar } from "react-icons/io";
 import FamousCourse from "./FamousCourse";
 
 const InstructorDetails = () => {
-  const { _id, universityId, name, phone, email,address, designation, img, rating, bio } =
+  const { name, phoneNumber, email,address, designation, img, rating, bio } =
     useLoaderData();
   return (
     <div>
@@ -96,7 +96,7 @@ const InstructorDetails = () => {
                   className="hover:text-primary-700 transition duration-300"
                   to={""}
                 >
-                  {phone ?  phone:'Not given'}
+                  {phoneNumber ?  phoneNumber:'Not given'}
                 </Link>
               </p>
             </div>
