@@ -166,6 +166,11 @@ const DashboardRoute = () => {
                      <MdOutlineSms className="text-2xl" />
                      <span className="font-light">Contact Requests</span>
                   </NavLink>
+
+                  <NavLink to='/dashboard/purchasedHistory' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
+                     <BsClockHistory className="text-2xl" />
+                     <span className="font-light">Purchased History</span>
+                  </NavLink>
                </>
             }
 
@@ -220,11 +225,6 @@ const DashboardRoute = () => {
 
                   <p className="font-light text-gray-600">Query</p>
 
-                  <NavLink to='/dashboard/postQuery' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
-                     <IoAdd className="text-2xl" />
-                     <span className="font-light">Post Query</span>
-                  </NavLink>
-
                   <NavLink to='/dashboard/manageQuery' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
                      <AiOutlineQuestion className="text-2xl" />
                      <span className="font-light">Manage Query</span>
@@ -240,11 +240,6 @@ const DashboardRoute = () => {
                   <NavLink to='/dashboard/purchasedBooks' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
                      <IoBookSharp className="text-2xl" />
                      <span className="font-light">My Purchased Books</span>
-                  </NavLink>
-
-                  <NavLink to='/dashboard/purchasedHistory' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
-                     <BsClockHistory className="text-2xl" />
-                     <span className="font-light">Purchased History</span>
                   </NavLink>
 
                   

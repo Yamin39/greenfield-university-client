@@ -14,7 +14,7 @@ const InstructorDetails = () => {
         <div className="grid grid-cols-1 justify-center lg:justify-between lg:grid-cols-3 gap-12">
           <div className="col-span-1 flex flex-col  items-center p-5  space-y-5">
             <img
-              className="w-[340px] h-[340px] rounded-full"
+              className="w-[340px] h-[340px] rounded-full object-cover shadow-lg"
               src={img}
               alt=""
             />
