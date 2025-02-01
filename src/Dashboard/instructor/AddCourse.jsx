@@ -38,6 +38,7 @@ const AddCourse = () => {
          });
 
          const image_url = res.data.data.display_url;
+         const reviews = []
 
 
          const courseData = {
@@ -90,24 +91,23 @@ const AddCourse = () => {
                email: form.instructor_email.value,
                img: user?.photoURL,
                bio: form.instructor_bio.value
-            }
+            },
+            reviews            
          };
 
          const { data } = await axiosPublic.post('/course', courseData)
-         if (data.insertedId > 0) {
+         if (data.insertedId) {
+            console.log(data);
             toast.success('Course has been uploaded.')
             form.reset()
+            setLoading(false)
+
          }
 
       } catch (error) {
          console.error("Image upload failed:", error);
          toast.error("Image upload failed!");
-      } finally {
-         setLoading(false);
       }
-
-
-
 
    };
 
@@ -297,6 +297,7 @@ const AddCourse = () => {
                            <input
                               type="text"
                               name="instructor_name"
+                              defaultValue={user?.displayName}
                               placeholder="Instructor Name"
                               className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-700"
                               required
@@ -319,15 +320,13 @@ const AddCourse = () => {
                         <input
                            type="email"
                            name="instructor_email"
+                           defaultValue={user?.email}
                            placeholder="Email"
                            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-700"
                            required
                         />
                         <MdOutlineMailOutline className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
                      </div>
-
-
-
 
                      <textarea
                         name="instructor_bio"
@@ -338,7 +337,7 @@ const AddCourse = () => {
                      />
                   </div>
 
-                  <button className="bg-primary-700 text-white p-2.5 px-8 hover:bg-primary-800 w-60">
+                  <button disabled={loading} className="bg-primary-700 text-white p-2.5 px-8 hover:bg-primary-800 w-60 ">
                      {
                         loading ? <TbFidgetSpinner className="text-2xl animate-spin mx-auto " /> : <span className="">Post Course</span>
                      }

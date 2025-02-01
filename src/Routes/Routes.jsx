@@ -53,6 +53,7 @@ import InstructorsProfile from "../Dashboard/instructor/InstructorsProfile";
 import StudentProfile from "../Dashboard/student/StudentProfile";
 import ManageProducts from "../Dashboard/admin/ManageProducts";
 import UpdateProduct from "../Dashboard/admin/UpdateProduct";
+import ManageCourse from "../Dashboard/instructor/ManageCourse";
 
 const router = createBrowserRouter([
   {
@@ -280,7 +281,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'manageTestimonials',
-        element: <ManageTestimonials/>
+        element: <ManageTestimonials />
       },
       {
         path: 'updateFaq/:id',
@@ -290,11 +291,15 @@ const router = createBrowserRouter([
       {
         path: "updateAnnouncement/:id",
         element: <UpdateAnnouncement />,
-        loader : ({ params }) => fetch(`http://localhost:5000/announcement/${params.id}`),
+        loader: ({ params }) => fetch(`http://localhost:5000/announcement/${params.id}`),
       },
       {
-        path : 'addCourse',
-        element : <AddCourse/>
+        path: 'addCourse',
+        element: <AddCourse />
+      },
+      {
+        path: 'manageCourse',
+        element: <ManageCourse />
       },
       {
         path: "instructor/my-profile",
