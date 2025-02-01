@@ -45,7 +45,7 @@ const DashboardRoute = () => {
                <GoDependabot className="text-2xl" />
                <span className="font-light">Statistics</span>
             </NavLink>
-
+ 
             {/* navigation menu for admin */}
 
             {
@@ -239,7 +239,7 @@ const DashboardRoute = () => {
 
                   <NavLink to='/dashboard/purchasedBooks' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
                      <IoBookSharp className="text-2xl" />
-                     <span className="font-light">Purchased Books</span>
+                     <span className="font-light">My Purchased Books</span>
                   </NavLink>
 
                   <NavLink to='/dashboard/purchasedHistory' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
