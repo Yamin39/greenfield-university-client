@@ -19,6 +19,7 @@ const Queries = () => {
   const tagRef = useRef(null);
   const [tags, setTags] = useState([]);
 
+  // get queries
   const {
     data: queries = [],
     refetch,
@@ -32,28 +33,37 @@ const Queries = () => {
   });
   console.log(queries);
 
+  // store tags
   const handleStoreTags = () => {
     const tag = tagRef.current.value;
 
+    // check if tag is empty
     if (!tag) return;
 
+    // check if tag already exists
     if (tags.includes(tag)) {
       return toast.error("Tag already added");
     }
 
+    // store tag
     setTags([...tags, tag]);
+
+    // clear input
     tagRef.current.value = "";
   };
 
+  // post query
   const handlePostQuery = (e) => {
     e.preventDefault();
     setIsQueryPosting(true);
 
+    // check if tags are empty
     if (!tags.length) {
       setIsQueryPosting(false);
       return toast.error("Please add at least one tag");
     }
 
+    // create query object
     const query = {
       title: e.target.title.value,
       author: {
@@ -70,6 +80,7 @@ const Queries = () => {
 
     console.log(query);
 
+    // post query
     axiosPublic
       .post("/query", query)
       .then((res) => {
@@ -89,6 +100,34 @@ const Queries = () => {
         console.log(err);
         toast.error("Failed to post query");
         setIsQueryPosting(false);
+      });
+  };
+
+  const handleUpVote = (query) => {
+    console.log(user.email, query._id);
+
+    // check if user has already upvoted
+    if (query.upVotes.includes(user.email)) {
+      axiosPublic
+        .patch(`/query/upvote/remove/${query._id}`, { email: user.email })
+        .then((res) => {
+          console.log(res.data);
+          refetch();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      return;
+    }
+
+    axiosPublic
+      .patch(`/query/upvote/add/${query._id}`, { email: user.email })
+      .then((res) => {
+        console.log(res.data);
+        refetch();
+      })
+      .catch((err) => {
+        console.log(err);
       });
   };
   return (
@@ -164,6 +203,7 @@ const Queries = () => {
                           <input
                             type="text"
                             ref={tagRef}
+                            placeholder="Enter tag"
                             className="px-3 py-1 text-sm text-gray-600 border border-gray-200 rounded-full focus:ring-2 focus:ring-primary-700 focus:outline-none"
                           />
                           <button
@@ -262,8 +302,12 @@ const Queries = () => {
                       </div>
                       <div className="mt-4 flex items-center space-x-6">
                         <div className="flex items-center space-x-2">
-                          <button className="p-2 hover:bg-gray-100 rounded-full">
-                            <ThumbsUp className="w-5 h-5 text-gray-600" />
+                          <button onClick={() => handleUpVote(query)} className="p-2 hover:bg-gray-100 rounded-full">
+                            {query.upVotes.includes(user?.email) ? (
+                              <ThumbsUp className="w-5 h-5 text-primary-700" />
+                            ) : (
+                              <ThumbsUp className="w-5 h-5 text-gray-600" />
+                            )}
                           </button>
                           <span className="text-gray-600">{query.upVotes.length}</span>
                         </div>
@@ -274,7 +318,7 @@ const Queries = () => {
                           <span className="text-gray-600">{query.downVotes.length}</span>
                         </div>
                         <div className="flex items-center space-x-2">
-                          <button className="p-2 hover:bg-gray-100 rounded-full">
+                          <button className="p-2 cursor-auto rounded-full">
                             <MessageSquare className="w-5 h-5 text-gray-600" />
                           </button>
                           <span className="text-gray-600">{query.comments.length}</span>
