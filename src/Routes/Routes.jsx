@@ -59,6 +59,8 @@ import UpdateProduct from "../Dashboard/admin/UpdateProduct";
 import ContactRequests from "../Dashboard/admin/ContactRequests";
 import Queries from "../pages/Queries/Queries";
 import Payment from "../pages/Payment/Payment";
+import PurchasedBooks from "../pages/shop/purchased/PurchasedBooks";
+import PurchasedHistory from "../pages/shop/purchased/PurchasedHistory";
 
 const router = createBrowserRouter([
   {
@@ -334,11 +336,11 @@ const router = createBrowserRouter([
       },
       {
         path: "purchasedBooks",
-        element: <purchasedBooks />,
+        element: <PurchasedBooks/>,
       },
       {
         path : 'purchasedHistory',
-        element : <purchasedHistory/>
+        element : <PurchasedHistory/>
       }
     ]
   }
