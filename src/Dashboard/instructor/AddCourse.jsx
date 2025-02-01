@@ -1,72 +1,114 @@
-import { FaLock, FaClock, FaUser, FaEnvelope, FaImage, FaGraduationCap } from 'react-icons/fa';
+import { FaLock, FaClock, FaUser, FaGraduationCap } from 'react-icons/fa';
 import DashboardTitle from '../DashboardTitle';
 import { useState } from 'react';
 import { TbFidgetSpinner } from 'react-icons/tb';
+import { toast } from 'react-hot-toast'
+import axios from 'axios'
+import useAxiosPublic from '../../hooks/useAxiosPublic';
+import useAuth from '../../hooks/useAuth';
+import { MdOutlineMailOutline } from 'react-icons/md';
+const imageUpload = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_ImgBB_api_key}`
 
 const AddCourse = () => {
    const [loading, setLoading] = useState(false)
+   const axiosPublic = useAxiosPublic()
+   const { user } = useAuth();
 
-   const handleSubmit = async(e) => {
+   const handleSubmit = async (e) => {
       e.preventDefault();
       const form = e.target;
       setLoading(true)
 
-      const courseData = {
-         category: form.category.value,
-         title: form.title.value,
-         description: form.description.value,
-         image_url: form.image_url.value,
-         whatYouLearn: [
-            form.learn1.value,
-            form.learn2.value,
-            form.learn3.value,
-            form.learn4.value,
-            form.learn5.value
-         ],
-         curriculum: [
-            {
-               section: form.section1.value,
-               lessons: [
-                  {
-                     title: form.lesson1_1.value,
-                     duration: form.duration1_1.value,
-                     locked: form.locked1_1.checked
-                  },
-                  {
-                     title: form.lesson1_2.value,
-                     duration: form.duration1_2.value,
-                     locked: form.locked1_2.checked
-                  }
-               ]
-            },
-            {
-               section: form.section2.value,
-               lessons: [
-                  {
-                     title: form.lesson2_1.value,
-                     duration: form.duration2_1.value,
-                     locked: form.locked2_1.checked
-                  },
-                  {
-                     title: form.lesson2_2.value,
-                     duration: form.duration2_2.value,
-                     locked: form.locked2_2.checked
-                  }
-               ]
-            }
-         ],
-         instructorDetails: {
-            name: form.instructor_name.value,
-            designation: form.instructor_designation.value,
-            email: form.instructor_email.value,
-            img: form.instructor_img.value,
-            bio: form.instructor_bio.value
-         }
-      };
 
-      console.table(courseData);
-      // Handle form submission here
-      
+
+      const currentPhoto = form.image_url?.files?.[0];
+
+      if (!currentPhoto) {
+         toast.error("Please upload a photo");
+         setLoading(false);
+         return;
+      }
+
+      const formData = new FormData();
+      formData.append("image", currentPhoto);
+
+      try {
+         const res = await axios.post(imageUpload, formData, {
+            headers: { "Content-Type": "multipart/form-data" }
+         });
+
+         const image_url = res.data.data.display_url;
+
+
+         const courseData = {
+            category: form.category.value,
+            title: form.title.value,
+            description: form.description.value,
+            image_url,
+            whatYouLearn: [
+               form.learn1.value,
+               form.learn2.value,
+               form.learn3.value,
+               form.learn4.value,
+               form.learn5.value
+            ],
+            curriculum: [
+               {
+                  section: form.section1.value,
+                  lessons: [
+                     {
+                        title: form.lesson1_1.value,
+                        duration: form.duration1_1.value,
+                        locked: form.locked1_1.checked
+                     },
+                     {
+                        title: form.lesson1_2.value,
+                        duration: form.duration1_2.value,
+                        locked: form.locked1_2.checked
+                     }
+                  ]
+               },
+               {
+                  section: form.section2.value,
+                  lessons: [
+                     {
+                        title: form.lesson2_1.value,
+                        duration: form.duration2_1.value,
+                        locked: form.locked2_1.checked
+                     },
+                     {
+                        title: form.lesson2_2.value,
+                        duration: form.duration2_2.value,
+                        locked: form.locked2_2.checked
+                     }
+                  ]
+               }
+            ],
+            instructorDetails: {
+               name: form.instructor_name.value,
+               designation: form.instructor_designation.value,
+               email: form.instructor_email.value,
+               img: user?.photoURL,
+               bio: form.instructor_bio.value
+            }
+         };
+
+         const { data } = await axiosPublic.post('/course', courseData)
+         if (data.insertedId > 0) {
+            toast.success('Course has been uploaded.')
+            form.reset()
+         }
+
+      } catch (error) {
+         console.error("Image upload failed:", error);
+         toast.error("Image upload failed!");
+      } finally {
+         setLoading(false);
+      }
+
+
+
+
    };
 
    return (
@@ -121,7 +163,7 @@ const AddCourse = () => {
                                  className="w-full  border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-700 file:p-2 file:border-none cursor-pointer file:cursor-pointer"
                                  required
                               />
-                              
+
                            </div>
                         </div>
                      </div>
@@ -273,28 +315,19 @@ const AddCourse = () => {
                            <FaGraduationCap className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
                         </div>
 
-                        <div className="relative">
-                           <input
-                              type="email"
-                              name="instructor_email"
-                              placeholder="Email"
-                              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-700"
-                              required
-                           />
-                           <FaEnvelope className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-                        </div>
 
-                        <div className="relative">
-                           <input
-                              type="text"
-                              name="instructor_img"
-                              placeholder="Profile Image URL"
-                              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-700"
-                              required
-                           />
-                           <FaImage className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-                        </div>
+                        <input
+                           type="email"
+                           name="instructor_email"
+                           placeholder="Email"
+                           className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-700"
+                           required
+                        />
+                        <MdOutlineMailOutline className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
                      </div>
+
+
+
 
                      <textarea
                         name="instructor_bio"
