@@ -115,7 +115,7 @@ const QueryDetails = () => {
         {/* Main Query Card */}
         <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
           <div className="flex items-start justify-between">
-            <div className="flex items-center space-x-4">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4">
               <img src={queries.author.avatar} alt={queries.author.name} className="w-12 h-12 rounded-full" />
               <div>
                 <h3 className="font-semibold text-lg">{queries.author.name}</h3>
@@ -239,7 +239,7 @@ const QueryDetails = () => {
           <h2 className="text-xl font-semibold mb-6">Discussion</h2>
 
           {/* New Comment Input */}
-          <form onSubmit={handleSubmitComment} className="flex items-start space-x-4 mb-8">
+          <form onSubmit={handleSubmitComment} className="flex flex-col sm:flex-row sm:items-start gap-4 mb-8">
             <img src={user.photoURL} alt="Current user" className="w-10 h-10 rounded-full object-cover" />
             <div className="flex-1">
               <textarea
@@ -250,8 +250,8 @@ const QueryDetails = () => {
                 id="comment"
                 required
               />
-              <div className="mt-3 flex justify-end">
-                <button className="px-6 py-2 bg-primary-700 text-white rounded-lg hover:bg-primary-800 transition-colors flex items-center space-x-2">
+              <div className="mt-3 sm:flex justify-end">
+                <button className="w-full sm:w-auto px-6 py-2 bg-primary-700 text-white rounded-lg hover:bg-primary-800 transition-colors flex items-center justify-center gap-2">
                   <Send className="w-4 h-4" />
                   <span>Comment</span>
                 </button>
