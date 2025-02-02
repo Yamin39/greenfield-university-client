@@ -67,6 +67,8 @@ import AddEvents from "../Dashboard/admin/AddEvents";
 import ManageEvents from "../Dashboard/admin/ManageEvents";
 import PrivateRoute from "./PrivateRoute";
 import ManageQuery from "../Dashboard/student/ManageQuery";
+import RegisteredStudents from "../Dashboard/admin/RegisteredStudents";
+import RegisteredInstructors from "../Dashboard/admin/RegisteredInstructors";
 
 const router = createBrowserRouter([
   {
@@ -247,6 +249,14 @@ const router = createBrowserRouter([
       {
         path: "statistics",
         element: <Statistics />,
+      },
+      {
+        path: "registeredStudents",
+        element: <RegisteredStudents></RegisteredStudents>,
+      },
+      {
+        path: "registeredInstructors",
+        element: <RegisteredInstructors></RegisteredInstructors>,
       },
       {
         path: "manageGallery",
