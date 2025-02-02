@@ -345,17 +345,14 @@ const router = createBrowserRouter([
         element: <StudentProfile />,
       },
       {
-<<<<<<< HEAD
         path: 'contactRequests',
         element: <ContactRequests />
-=======
         path: "admin/my-profile",
         element: <AdminProfile />,
       },
       {
         path : 'contactRequests',
         element : <ContactRequests/>
->>>>>>> 303383663798b1bbebb17243fb4001ad513923e9
       },
       {
         path: "purchasedBooks",
