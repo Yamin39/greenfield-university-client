@@ -66,6 +66,7 @@ import ApproveCourse from "../Dashboard/admin/ApproveCourses";
 import AddEvents from "../Dashboard/admin/AddEvents";
 import ManageEvents from "../Dashboard/admin/ManageEvents";
 import PrivateRoute from "./PrivateRoute";
+import ManageQuery from "../Dashboard/student/ManageQuery";
 
 const router = createBrowserRouter([
   {
@@ -369,6 +370,10 @@ const router = createBrowserRouter([
       {
         path: 'manageEvents',
         element: <ManageEvents />
+      },
+      {
+        path: 'manageQuery',
+        element: <ManageQuery />
       }
     ]
   }

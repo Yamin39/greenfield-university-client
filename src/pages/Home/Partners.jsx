@@ -8,7 +8,7 @@ const Partners = () => {
         <p className="text-lg md:text-xl uppercase text-[#808080] font-semibold tracking-widest">Our Partners</p>
 
         <h1 className="text-4xl md:text-5xl text-[#181818] font-bold mt-6 leading-tight">
-          Learn with <br /> <span className="text-[#1AB69D]">Our Trusted Partners</span>
+          Learn with <br /> <span className="text-primary-700">Our Trusted Partners</span>
         </h1>
 
         <img className="w-28 mt-2 mb-7" src="https://i.ibb.co/hH8Jpm2/about-Style.png" alt="style" />
