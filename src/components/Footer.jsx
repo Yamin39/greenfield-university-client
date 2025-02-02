@@ -14,7 +14,10 @@ const Footer = () => {
     console.log("Email submitted successfully");
 
     axiosPublic
-      .post("/newsletter", { email })
+      .post("/newsletter", { 
+        email,
+        timestamp: new Date().getTime(),
+       })
       .then(() => {
         toast.success("Email submitted successfully");
         form.reset();
