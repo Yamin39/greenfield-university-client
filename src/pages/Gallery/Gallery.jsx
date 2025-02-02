@@ -35,30 +35,12 @@ const Gallery = () => {
   }, [selectedImage, currentIndex, galleryImages]);
 
   const navigateImage = (direction) => {
-    if (direction === "next") {
-      setCurrentIndex((prev) => 
-        prev === galleryImages.length - 1 ? 0 : prev + 1
-      );
-      setSelectedImage(galleryImages[currentIndex === galleryImages.length - 1 ? 0 : currentIndex + 1]);
-    } else {
-      setCurrentIndex((prev) => 
-        prev === 0 ? galleryImages.length - 1 : prev - 1
-      );
-      setSelectedImage(galleryImages[currentIndex === 0 ? galleryImages.length - 1 : currentIndex - 1]);
-    }
-  };
-
-  const getImageClassName = (size) => {
-    const baseClasses = "group relative overflow-hidden rounded-lg bg-gray-100 cursor-pointer";
-
-    const sizeClasses = {
-      normal: "",
-      large: "col-span-2 row-span-2",
-      tall: "col-span-1 row-span-2",
-      wide: "col-span-2 row-span-1",
-    };
-
-    return `${baseClasses} ${sizeClasses[size] || ""}`;
+    const newIndex = direction === "next"
+      ? (currentIndex + 1) % galleryImages.length
+      : (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+    
+    setCurrentIndex(newIndex);
+    setSelectedImage(galleryImages[newIndex]);
   };
 
   const openImage = (image, idx) => {
@@ -70,20 +52,22 @@ const Gallery = () => {
     <div>
       <SharedBanner title="University Gallery" />
 
-      <div className="max-w-7xl mx-auto px-4 pt-20">
-        <div className="sm:grid grid-cols-1 md:grid-cols-4 space-y-4 sm:space-y-0 sm:gap-4 auto-rows-[200px]">
+      <div className="max-w-7xl mx-auto px-4 pt-20 relative">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
           {galleryImages.map((image, idx) => (
             <div 
-              key={idx + 1} 
-              className={getImageClassName(image.size)} 
+              key={idx} 
+              className="group relative overflow-hidden rounded-lg cursor-pointer"
               onClick={() => openImage(image, idx)}
             >
-              <img
-                src={image.img}
-                alt={`Gallery image ${idx + 1}`}
-                className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-opacity-0 transition-opacity duration-300 group-hover:bg-opacity-30" />
+              <div className="aspect-square overflow-hidden">
+                <img
+                  src={image.img}
+                  alt={`Gallery image ${idx + 1}`}
+                  className="w-full h-full object-cover transition-all duration-300 transform group-hover:scale-105"
+                />
+              </div>
+              <div className="absolute inset-0 bg-black opacity-0 transition-opacity duration-300 group-hover:opacity-20" />
             </div>
           ))}
         </div>
@@ -92,19 +76,19 @@ const Gallery = () => {
       {/* Fullscreen Modal */}
       {selectedImage && (
         <div 
-          className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center top-[76px] animate-fadeIn"
-          onClick={(e) => {
-            if (e.target === e.currentTarget) setSelectedImage(null);
-          }}
+          className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center animate-fadeIn"
+          onClick={() => setSelectedImage(null)}
         >
           <button
-            onClick={() => setSelectedImage(null)}
+            onClick={(e) => {
+              e.stopPropagation();
+              setSelectedImage(null);
+            }}
             className="absolute top-4 right-4 text-white bg-black p-2 rounded-full hover:text-gray-300 hover:bg-gray-800 transition-all duration-300 z-50"
           >
             <X size={20} />
           </button>
 
-          {/* Navigation Buttons */}
           <button
             onClick={(e) => {
               e.stopPropagation();
@@ -129,7 +113,7 @@ const Gallery = () => {
             <img 
               src={selectedImage.img} 
               alt="Selected gallery image" 
-              className="max-w-full max-h-[90vh] bg-gray-300 object-contain animate-scaleIn"
+              className="max-w-full max-h-[90vh] object-contain animate-scaleIn"
             />
           </div>
         </div>

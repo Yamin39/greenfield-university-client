@@ -12,7 +12,7 @@ const useRole = (email) => {
         setUserRole(res.data.role);
       });
     }
-  }, [email]);
+  }, [email, axiosPublic]);
 
   return userRole;
 };

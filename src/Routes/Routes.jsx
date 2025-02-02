@@ -52,7 +52,7 @@ import AddCourse from "../Dashboard/instructor/AddCourse";
 import InstructorsProfile from "../Dashboard/instructor/InstructorsProfile";
 import ManageEvent from "../pages/Events/ManageEvent";
 import AddEvents from "../pages/Events/AddEvents";
- 
+
 import StudentProfile from "../Dashboard/student/StudentProfile";
 import ManageProducts from "../Dashboard/admin/ManageProducts";
 import UpdateProduct from "../Dashboard/admin/UpdateProduct";
@@ -63,6 +63,7 @@ import QueryDetails from "../pages/Queries/QueryDetails/QueryDetails";
 import Payment from "../pages/Payment/Payment";
 import PurchasedBooks from "../pages/shop/purchased/PurchasedBooks";
 import PurchasedHistory from "../pages/shop/purchased/PurchasedHistory";
+import ApproveBlogs from "../Dashboard/admin/approveBlogs";
 
 const router = createBrowserRouter([
   {
@@ -222,9 +223,9 @@ const router = createBrowserRouter([
       {
         path: "/queries",
         element: <Queries />,
-      },{
-        path:'payment',
-        element:<Payment/>
+      }, {
+        path: 'payment',
+        element: <Payment />
       },
       {
         path: "/query-details/:id",
@@ -302,15 +303,15 @@ const router = createBrowserRouter([
       },
       {
         path: "manageTestimonials",
-        element: <ManageTestimonials  />,
+        element: <ManageTestimonials />,
       },
       {
         path: "manageEvents",
-        element: <ManageEvent/>,
+        element: <ManageEvent />,
       },
       {
         path: "addEvents",
-        element: <AddEvents/>,
+        element: <AddEvents />,
       },
       {
         path: "updateFaq/:id",
@@ -340,16 +341,20 @@ const router = createBrowserRouter([
         element: <StudentProfile />,
       },
       {
-        path : 'contactRequests',
-        element : <ContactRequests/>
+        path: 'contactRequests',
+        element: <ContactRequests />
       },
       {
         path: "purchasedBooks",
-        element: <PurchasedBooks/>,
+        element: <PurchasedBooks />,
       },
       {
-        path : 'purchasedHistory',
-        element : <PurchasedHistory/>
+        path: 'purchasedHistory',
+        element: <PurchasedHistory />
+      },
+      {
+        path: 'approveBlogs',
+        element: <ApproveBlogs />
       }
     ]
   }
