@@ -47,7 +47,7 @@ const ManageFaq = () => {
             </thead>
             <tbody>
               {faqs.map((item, i) => (
-                <tr key={i} className="border">
+                <tr key={i} className="border *:py-3">
                   <td className="p-2">
                     <p>{i + 1}</p>
                   </td>
