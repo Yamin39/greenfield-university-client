@@ -6,7 +6,7 @@ import { CgProfile } from "react-icons/cg";
 import { LiaChalkboardTeacherSolid, LiaUserSlashSolid, LiaUserSolid } from "react-icons/lia";
 import { PiChalkboardTeacher, PiChalkboardTeacherFill, PiChalkboardTeacherThin } from "react-icons/pi";
 import { TfiAnnouncement, TfiGallery } from "react-icons/tfi";
-import { MdManageHistory, MdManageSearch, MdOutlineAnnouncement, MdOutlineEventAvailable, MdOutlineManageHistory, MdOutlinePlaylistAdd, MdOutlineSms } from "react-icons/md";
+import { MdManageHistory, MdManageSearch, MdOutlineAnnouncement, MdOutlineEventAvailable, MdOutlineManageHistory, MdOutlineSms } from "react-icons/md";
 import { TbLogs } from "react-icons/tb";
 import { IoAdd, IoBookSharp } from "react-icons/io5";
 import { CiSquareCheck } from "react-icons/ci";
@@ -140,11 +140,6 @@ const DashboardRoute = () => {
 
                   <p className="font-light text-gray-600">Testimonials</p>
 
-                  <NavLink to='/dashboard/addTestimonial' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
-                     <MdOutlinePlaylistAdd className="text-2xl" />
-                     <span className="font-light">Add Testimonial</span>
-                  </NavLink>
-
                   <NavLink to='/dashboard/manageTestimonials' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
                      <SiGoogletagmanager className="text-2xl" />
                      <span className="font-light">Manage Testimonials</span>
@@ -252,13 +247,11 @@ const DashboardRoute = () => {
 
          <div className="space-y-4">
 
-            {
-               role !== "admin" &&
-               <NavLink to={`/dashboard/${role}/my-profile`} className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
-                  <CgProfile className="text-2xl" />
-                  <span className="font-light">My Profile</span>
-               </NavLink>
-            }
+            <NavLink to={`/dashboard/${role}/my-profile`} className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
+               <CgProfile className="text-2xl" />
+               <span className="font-light">My Profile</span>
+            </NavLink>
+           
 
             <button
             onClick={() => {

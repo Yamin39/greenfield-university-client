@@ -63,7 +63,11 @@ import QueryDetails from "../pages/Queries/QueryDetails/QueryDetails";
 import Payment from "../pages/Payment/Payment";
 import PurchasedBooks from "../pages/shop/purchased/PurchasedBooks";
 import PurchasedHistory from "../pages/shop/purchased/PurchasedHistory";
+<<<<<<< HEAD
 import ApproveBlogs from "../Dashboard/admin/approveBlogs";
+=======
+import AdminProfile from "../Dashboard/admin/AdminProfile";
+>>>>>>> 303383663798b1bbebb17243fb4001ad513923e9
 
 const router = createBrowserRouter([
   {
@@ -341,8 +345,17 @@ const router = createBrowserRouter([
         element: <StudentProfile />,
       },
       {
+<<<<<<< HEAD
         path: 'contactRequests',
         element: <ContactRequests />
+=======
+        path: "admin/my-profile",
+        element: <AdminProfile />,
+      },
+      {
+        path : 'contactRequests',
+        element : <ContactRequests/>
+>>>>>>> 303383663798b1bbebb17243fb4001ad513923e9
       },
       {
         path: "purchasedBooks",
