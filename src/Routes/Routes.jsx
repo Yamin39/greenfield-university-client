@@ -65,6 +65,7 @@ import PurchasedBooks from "../pages/shop/purchased/PurchasedBooks";
 import PurchasedHistory from "../pages/shop/purchased/PurchasedHistory";
 import ApproveBlogs from "../Dashboard/admin/approveBlogs";
 import AdminProfile from "../Dashboard/admin/AdminProfile";
+import ApproveCourse from "../Dashboard/admin/ApproveCourses";
 
 const router = createBrowserRouter([
   {
@@ -364,6 +365,10 @@ const router = createBrowserRouter([
       {
         path: 'approveBlogs',
         element: <ApproveBlogs />
+      },
+      {
+        path: 'approveCourses',
+        element: <ApproveCourse />
       }
     ]
   }

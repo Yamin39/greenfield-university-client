@@ -6,6 +6,10 @@ import { Link } from "react-router-dom";
 import { format } from "date-fns";
 import useAuth from "../../hooks/useAuth";
 import useRole from "../../hooks/useRole";
+import { BsThreeDots } from "react-icons/bs";
+import { FcApproval } from "react-icons/fc";
+import { CiCircleRemove } from "react-icons/ci";
+import Swal from "sweetalert2";
 
 const ManageBlogs = () => {
   const axiosPublic = useAxiosPublic();
@@ -15,9 +19,9 @@ const ManageBlogs = () => {
   console.log(role);
 
   const { data: blogs = [], refetch } = useQuery({
-    queryKey: ["blogs", user?.email, role], 
+    queryKey: ["blogs", user?.email, role],
     queryFn: async () => {
-      if (!user?.email || !role) return []; 
+      if (!user?.email || !role) return [];
       const res = await axiosPublic.get(`/blogs?email=${user.email}&role=${role}`);
       return res.data;
     },
@@ -25,10 +29,27 @@ const ManageBlogs = () => {
   });
 
   const handleDelete = async (id) => {
-    const res = await axiosPublic.delete(`/blog/${id}`);
-    if (res.data.deletedCount > 0) {
-      toast.success("Blog has been deleted.");
-      refetch();
+    const result = await Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    });
+
+    if (result.isConfirmed) {
+      try {
+        const res = await axiosPublic.delete(`/blog/${id}`);
+        if (res.data.deletedCount > 0) {
+          toast.success("Blog has been deleted.");
+          refetch();
+        }
+      } catch (error) {
+        toast.error(error.message || "Something went wrong!");
+        console.log(error);
+      }
     }
   };
 
@@ -60,6 +81,7 @@ const ManageBlogs = () => {
                 <th className="p-3">Date & Time</th>
                 <th className="p-3">Email</th>
                 <th className="p-3">Role</th>
+                <th className="p-3">Status</th>
                 <th className="p-3">Update</th>
                 <th className="p-3">Delete</th>
               </tr>
@@ -108,6 +130,15 @@ const ManageBlogs = () => {
                   </td>
 
                   <td className="p-2">
+
+                    {blog.status === 'pending' && <BsThreeDots className="animate-ping mx-auto text-lg text-blue-500" />}
+
+                    {blog.status === 'approved' && <FcApproval className="mx-auto text-lg " />}
+
+                    {blog.status === 'rejected' && <CiCircleRemove className="mx-auto text-lg text-red-500" />}
+                  </td>
+
+                  <td className="p-2">
                     <Link
                       to={`/dashboard/updateBlog/${blog._id}`}
                       className="px-3 py-1 font-semibold rounded-md bg-green-500 text-white cursor-pointer"
@@ -115,10 +146,10 @@ const ManageBlogs = () => {
                       <span>Update</span>
                     </Link>
                   </td>
-                  <td onClick={() => handleDelete(blog._id)} className="p-2">
-                    <span className="px-3 py-1 font-semibold rounded-md bg-red-500 text-white cursor-pointer">
+                  <td className="p-2">
+                    <button onClick={() => handleDelete(blog._id)} className={`px-3 py-1 font-semibold rounded-md bg-red-500 text-white cursor-pointer $`}>
                       <span>Delete</span>
-                    </span>
+                    </button>
                   </td>
                 </tr>
               ))}
