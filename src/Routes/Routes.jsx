@@ -64,6 +64,8 @@ import Payment from "../pages/Payment/Payment";
 import PurchasedBooks from "../pages/shop/purchased/PurchasedBooks";
 import PurchasedHistory from "../pages/shop/purchased/PurchasedHistory";
 import AdminProfile from "../Dashboard/admin/AdminProfile";
+import RegisteredStudents from "../Dashboard/admin/RegisteredStudents";
+import RegisteredInstructors from "../Dashboard/admin/RegisteredInstructors";
 
 const router = createBrowserRouter([
   {
@@ -244,6 +246,14 @@ const router = createBrowserRouter([
       {
         path: "statistics",
         element: <Statistics />,
+      },
+      {
+        path: "registeredStudents",
+        element: <RegisteredStudents></RegisteredStudents>,
+      },
+      {
+        path: "registeredInstructors",
+        element: <RegisteredInstructors></RegisteredInstructors>,
       },
       {
         path: "manageGallery",
