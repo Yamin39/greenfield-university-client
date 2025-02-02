@@ -69,6 +69,8 @@ import PrivateRoute from "./PrivateRoute";
 import ManageQuery from "../Dashboard/student/ManageQuery";
 import RegisteredStudents from "../Dashboard/admin/RegisteredStudents";
 import RegisteredInstructors from "../Dashboard/admin/RegisteredInstructors";
+import UnregisteredStudents from "../pages/Instructor/unregisteredStudents";
+import UnregisteredInstructors from "../pages/Instructor/unregisteredInstructors";
 
 const router = createBrowserRouter([
   {
@@ -384,7 +386,16 @@ const router = createBrowserRouter([
       {
         path: 'manageQuery',
         element: <ManageQuery />
-      }
+      },
+       
+      {
+        path: 'unregisteredStudents',
+        element: <UnregisteredStudents />
+      },
+      {
+        path: 'unregisteredInstructors',
+        element: <UnregisteredInstructors />
+      },
     ]
   }
 
