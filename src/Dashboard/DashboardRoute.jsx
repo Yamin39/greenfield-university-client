@@ -6,7 +6,7 @@ import { CgProfile } from "react-icons/cg";
 import { LiaChalkboardTeacherSolid, LiaUserSlashSolid, LiaUserSolid } from "react-icons/lia";
 import { PiChalkboardTeacher, PiChalkboardTeacherFill, PiChalkboardTeacherThin } from "react-icons/pi";
 import { TfiAnnouncement, TfiGallery } from "react-icons/tfi";
-import { MdManageHistory, MdManageSearch, MdOutlineAnnouncement, MdOutlineEventAvailable, MdOutlineManageHistory, MdOutlinePlaylistAdd, MdOutlineSms } from "react-icons/md";
+import { MdManageHistory, MdManageSearch, MdOutlineAnnouncement, MdOutlineEventAvailable, MdOutlineManageHistory, MdOutlineSms } from "react-icons/md";
 import { TbLogs } from "react-icons/tb";
 import { IoAdd, IoBookSharp } from "react-icons/io5";
 import { CiSquareCheck } from "react-icons/ci";
@@ -45,7 +45,7 @@ const DashboardRoute = () => {
                <GoDependabot className="text-2xl" />
                <span className="font-light">Statistics</span>
             </NavLink>
-
+ 
             {/* navigation menu for admin */}
 
             {
@@ -140,11 +140,6 @@ const DashboardRoute = () => {
 
                   <p className="font-light text-gray-600">Testimonials</p>
 
-                  <NavLink to='/dashboard/addTestimonial' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
-                     <MdOutlinePlaylistAdd className="text-2xl" />
-                     <span className="font-light">Add Testimonial</span>
-                  </NavLink>
-
                   <NavLink to='/dashboard/manageTestimonials' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
                      <SiGoogletagmanager className="text-2xl" />
                      <span className="font-light">Manage Testimonials</span>
@@ -165,6 +160,11 @@ const DashboardRoute = () => {
                   <NavLink to='/dashboard/contactRequests' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
                      <MdOutlineSms className="text-2xl" />
                      <span className="font-light">Contact Requests</span>
+                  </NavLink>
+
+                  <NavLink to='/dashboard/purchasedHistory' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
+                     <BsClockHistory className="text-2xl" />
+                     <span className="font-light">Purchased History</span>
                   </NavLink>
                </>
             }
@@ -193,9 +193,9 @@ const DashboardRoute = () => {
                      <span className="font-light">Add Blog</span>
                   </NavLink>
 
-                  <NavLink to='/dashboard/manageBlog' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
+                  <NavLink to='/dashboard/manageBlogs' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
                      <MdOutlineManageHistory className="text-2xl" />
-                     <span className="font-light">Manage Blog</span>
+                     <span className="font-light">Manage Blogs</span>
                   </NavLink>
                </>
 
@@ -213,17 +213,12 @@ const DashboardRoute = () => {
                      <span className="font-light">Add Blog</span>
                   </NavLink>
 
-                  <NavLink to='/dashboard/manageBlog' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
+                  <NavLink to='/dashboard/manageBlogs' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
                      <MdOutlineManageHistory className="text-2xl" />
-                     <span className="font-light">Manage Blog</span>
+                     <span className="font-light">Manage Blogs</span>
                   </NavLink>
 
                   <p className="font-light text-gray-600">Query</p>
-
-                  <NavLink to='/dashboard/postQuery' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
-                     <IoAdd className="text-2xl" />
-                     <span className="font-light">Post Query</span>
-                  </NavLink>
 
                   <NavLink to='/dashboard/manageQuery' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
                      <AiOutlineQuestion className="text-2xl" />
@@ -239,12 +234,7 @@ const DashboardRoute = () => {
 
                   <NavLink to='/dashboard/purchasedBooks' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
                      <IoBookSharp className="text-2xl" />
-                     <span className="font-light">Purchased Books</span>
-                  </NavLink>
-
-                  <NavLink to='/dashboard/purchasedHistory' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
-                     <BsClockHistory className="text-2xl" />
-                     <span className="font-light">Purchased History</span>
+                     <span className="font-light">My Purchased Books</span>
                   </NavLink>
 
                   
@@ -257,13 +247,11 @@ const DashboardRoute = () => {
 
          <div className="space-y-4">
 
-            {
-               role !== "admin" &&
-               <NavLink to={`/dashboard/${role}/my-profile`} className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
-                  <CgProfile className="text-2xl" />
-                  <span className="font-light">My Profile</span>
-               </NavLink>
-            }
+            <NavLink to={`/dashboard/${role}/my-profile`} className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
+               <CgProfile className="text-2xl" />
+               <span className="font-light">My Profile</span>
+            </NavLink>
+           
 
             <button
             onClick={() => {

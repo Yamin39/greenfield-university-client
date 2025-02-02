@@ -50,11 +50,21 @@ import ManageTestimonials from "../pages/Testimonials/ManageTestimonials";
 import PrivacyPolicy from "../pages/privacyPolicy/PrivacyPolicy";
 import AddCourse from "../Dashboard/instructor/AddCourse";
 import InstructorsProfile from "../Dashboard/instructor/InstructorsProfile";
+import ManageEvent from "../pages/Events/ManageEvent";
+import AddEvents from "../pages/Events/AddEvents";
+
 import StudentProfile from "../Dashboard/student/StudentProfile";
 import ManageProducts from "../Dashboard/admin/ManageProducts";
 import UpdateProduct from "../Dashboard/admin/UpdateProduct";
+import ManageCourse from "../Dashboard/instructor/ManageCourse";
 import ContactRequests from "../Dashboard/admin/ContactRequests";
 import Queries from "../pages/Queries/Queries";
+import QueryDetails from "../pages/Queries/QueryDetails/QueryDetails";
+import Payment from "../pages/Payment/Payment";
+import PurchasedBooks from "../pages/shop/purchased/PurchasedBooks";
+import PurchasedHistory from "../pages/shop/purchased/PurchasedHistory";
+import ApproveBlogs from "../Dashboard/admin/approveBlogs";
+import AdminProfile from "../Dashboard/admin/AdminProfile";
 
 const router = createBrowserRouter([
   {
@@ -214,6 +224,13 @@ const router = createBrowserRouter([
       {
         path: "/queries",
         element: <Queries />,
+      }, {
+        path: 'payment',
+        element: <Payment />
+      },
+      {
+        path: "/query-details/:id",
+        element: <QueryDetails />,
       },
     ],
   },
@@ -274,33 +291,47 @@ const router = createBrowserRouter([
       {
         path: "updateBlog/:id",
         element: <UpdateBlog />,
-        loader: ({ params }) => fetch(`http://localhost:5000/blogs/${params.id}`)
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/blogs/${params.id}`),
       },
       {
-        path: 'addFaq',
-        element: <AddFaq></AddFaq>
+        path: "addFaq",
+        element: <AddFaq></AddFaq>,
       },
       {
-        path: 'manageFaq',
-        element: <ManageFaq></ManageFaq>
+        path: "manageFaq",
+        element: <ManageFaq></ManageFaq>,
       },
       {
-        path: 'manageTestimonials',
-        element: <ManageTestimonials/>
+        path: "manageTestimonials",
+        element: <ManageTestimonials />,
       },
       {
-        path: 'updateFaq/:id',
+        path: "manageEvents",
+        element: <ManageEvent />,
+      },
+      {
+        path: "addEvents",
+        element: <AddEvents />,
+      },
+      {
+        path: "updateFaq/:id",
         element: <UpdateFaq></UpdateFaq>,
-        loader: ({ params }) => fetch(`http://localhost:5000/faqs/${params.id}`)
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/faqs/${params.id}`),
       },
       {
         path: "updateAnnouncement/:id",
         element: <UpdateAnnouncement />,
-        loader : ({ params }) => fetch(`http://localhost:5000/announcement/${params.id}`),
+        loader: ({ params }) => fetch(`http://localhost:5000/announcement/${params.id}`),
       },
       {
-        path : 'addCourse',
-        element : <AddCourse/>
+        path: 'addCourse',
+        element: <AddCourse />
+      },
+      {
+        path: 'manageCourse',
+        element: <ManageCourse />
       },
       {
         path: "instructor/my-profile",
@@ -311,9 +342,29 @@ const router = createBrowserRouter([
         element: <StudentProfile />,
       },
       {
-        path : 'contactRequests',
-        element : <ContactRequests/>
+        path: 'contactRequests',
+        element: <ContactRequests />
       },
+      {
+        path: "admin/my-profile",
+        element: <AdminProfile />
+      },
+      {
+        path: 'contactRequests',
+        element: <ContactRequests />
+      },
+      {
+        path: "purchasedBooks",
+        element: <PurchasedBooks />,
+      },
+      {
+        path: 'purchasedHistory',
+        element: <PurchasedHistory />
+      },
+      {
+        path: 'approveBlogs',
+        element: <ApproveBlogs />
+      }
     ]
   }
 

@@ -22,7 +22,7 @@ const AddProduct = () => {
       const currentPic = form.pic.files[0]
       const timestamp = new Date().toLocaleString();
       const category = form.category.value;
-      const review = []
+      const reviews = []
 
       if (!currentPic || !currentPic.type.startsWith("image/")) {
          setLoading(false)
@@ -49,7 +49,7 @@ const AddProduct = () => {
          desc,
          summary,
          timestamp,
-         review
+         reviews
       }
 
       if (res.data.data.display_url) {

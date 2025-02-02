@@ -4,6 +4,7 @@ import useAuth from "../../../hooks/useAuth";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import SharedBanner from "../../../shared/SharedBanner";
 import CartData from "./CartData";
+import { Link } from "react-router-dom";
 
 const ShopCart = () => {
   const axiosPublic = useAxiosPublic();
@@ -36,7 +37,11 @@ const ShopCart = () => {
   }, [cartData]);
 
   if (isLoading) {
-    return <div className="flex justify-center items-center h-screen    w-full bg-white">Loading...</div>;
+    return (
+      <div className="flex justify-center items-center h-screen    w-full bg-white">
+        Loading...
+      </div>
+    );
   }
   return (
     <div className="bg-[#FFFFFF]">
@@ -68,7 +73,11 @@ const ShopCart = () => {
                     </thead>
                     <tbody>
                       {cartData.map((item, i) => (
-                        <CartData key={i} item={item} refetch={refetch}></CartData>
+                        <CartData
+                          key={i}
+                          item={item}
+                          refetch={refetch}
+                        ></CartData>
                       ))}
                     </tbody>
                   </table>
@@ -77,7 +86,11 @@ const ShopCart = () => {
             ) : (
               <div>
                 <div className="flex justify-center items-center relative">
-                  <img className="max-w-[400px]" src="https://i.ibb.co.com/7G91cmr/Error.jpg" alt="pic" />
+                  <img
+                    className="max-w-[400px]"
+                    src="https://i.ibb.co.com/7G91cmr/Error.jpg"
+                    alt="pic"
+                  />
                   <p className="text-3xl  absolute bottom-0 mx-auto font-bold text-[#FF735E] text-center bg-primary-700/10 py-2 px-6 rounded-lg ">
                     Data is not found
                   </p>
@@ -95,9 +108,12 @@ const ShopCart = () => {
                 </p>
               </div>
               <div className="mt-6">
-                <button className="py-[10px] w-full px-6 border bg-primary-700 hover:bg-primary-800 transition duration-300 text-white">
+                <Link
+                  to={`/payment?total=${total}`}
+                  className="py-[10px] w-full px-6 border bg-primary-700 hover:bg-primary-800 transition duration-300 text-white"
+                >
                   Proceed to Checkout
-                </button>
+                </Link>
               </div>
             </div>
           </div>
