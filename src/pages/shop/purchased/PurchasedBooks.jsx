@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
-import SharedBanner from "../../../shared/SharedBanner";
 import useAuth from "../../../hooks/useAuth";
+import DashboardTitle from "../../../Dashboard/DashboardTitle";
 
 const PurchasedBooks = () => {
     const { user } = useAuth();
@@ -37,9 +37,9 @@ const PurchasedBooks = () => {
 
     return (
         <div className="bg-[#FFFFFF]">
-            <SharedBanner title="Purchase History"></SharedBanner>
+            <DashboardTitle title="Purchase History"></DashboardTitle>
 
-            <div className="max-w-7xl mx-auto py-12 px-3 mt-24">
+            <div className="max-w-7xl mx-auto pb-12 px-3">
                 {purchasedBooks.length ? (
                     <div className="container mx-auto p-2 sm:p-4 dark:text-gray-800">
                         <div className="overflow-x-auto">
