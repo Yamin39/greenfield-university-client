@@ -1,10 +1,12 @@
-import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import DashboardTitle from "../DashboardTitle";
 import { useQuery } from '@tanstack/react-query'
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
+import { BsThreeDots } from "react-icons/bs";
+import { FcApproval } from "react-icons/fc";
+import { CiCircleRemove } from "react-icons/ci";
 
 const ManageCourse = () => {
    const axiosPublic = useAxiosPublic();
@@ -70,7 +72,7 @@ const ManageCourse = () => {
                         <th className="p-3">Name</th>
                         <th className="p-3 text-center">Email</th>
                         <th className="p-3 text-center">category</th>
-                        {/* <th className="p-3">Update</th> */}
+                        <th className="p-3">Status</th>
                         <th className="p-3">Delete</th>
                      </tr>
                   </thead>
@@ -97,13 +99,13 @@ const ManageCourse = () => {
                            <td className="p-2">
                               <p className="text-center"><span className="bg-pink-50 border border-pink-200 text-center p-1 rounded-lg text-pink-600">{course.category}</span></p>
                            </td>
-                           {/* <td
-                              className="p-2"
-                           >
-                              <Link to={`/dashboard/updateCourse/${course._id}`} className="px-3 py-1 font-semibold rounded-md bg-primary-700 text-white cursor-pointer">
-                                 <span>Update</span>
-                              </Link>
-                           </td> */}
+                           <td  className="p-2">
+                              {course.status === 'pending' && <BsThreeDots className="animate-ping mx-auto text-lg text-blue-500" />}
+
+                              {course.status === 'approved' && <FcApproval className="mx-auto text-lg " />}
+
+                              {course.status === 'rejected' && <CiCircleRemove className="mx-auto text-lg text-red-500" />}
+                           </td>
                            <td
                               onClick={() => handleDelete(course._id)}
                               className="p-2"

@@ -175,7 +175,7 @@ const Queries = () => {
           </div>
         ) : (
           <>
-            {role === "student" && (
+            {role === "student" ? (
               <form onSubmit={handlePostQuery} className="bg-white rounded-xl shadow-sm p-6">
                 <div className="flex items-start space-x-4">
                   <img src={user.photoURL} alt="User avatar" className="w-10 h-10 rounded-full" />
@@ -225,6 +225,10 @@ const Queries = () => {
                   </div>
                 </div>
               </form>
+            ) : (
+              <div className="bg-white rounded-xl border shadow-sm p-6">
+                <h2 className="text-lg font-semibold">Only students can post queries</h2>
+              </div>
             )}
           </>
         )}

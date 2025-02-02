@@ -50,9 +50,6 @@ import ManageTestimonials from "../pages/Testimonials/ManageTestimonials";
 import PrivacyPolicy from "../pages/privacyPolicy/PrivacyPolicy";
 import AddCourse from "../Dashboard/instructor/AddCourse";
 import InstructorsProfile from "../Dashboard/instructor/InstructorsProfile";
-import ManageEvent from "../pages/Events/ManageEvent";
-import AddEvents from "../pages/Events/AddEvents";
-
 import StudentProfile from "../Dashboard/student/StudentProfile";
 import ManageProducts from "../Dashboard/admin/ManageProducts";
 import UpdateProduct from "../Dashboard/admin/UpdateProduct";
@@ -65,6 +62,15 @@ import PurchasedBooks from "../pages/shop/purchased/PurchasedBooks";
 import PurchasedHistory from "../pages/shop/purchased/PurchasedHistory";
 import ApproveBlogs from "../Dashboard/admin/approveBlogs";
 import AdminProfile from "../Dashboard/admin/AdminProfile";
+import ApproveCourse from "../Dashboard/admin/ApproveCourses";
+import AddEvents from "../Dashboard/admin/AddEvents";
+import ManageEvents from "../Dashboard/admin/ManageEvents";
+import PrivateRoute from "./PrivateRoute";
+import ManageQuery from "../Dashboard/student/ManageQuery";
+import RegisteredStudents from "../Dashboard/admin/RegisteredStudents";
+import RegisteredInstructors from "../Dashboard/admin/RegisteredInstructors";
+import UnregisteredStudents from "../pages/Instructor/unregisteredStudents";
+import UnregisteredInstructors from "../pages/Instructor/unregisteredInstructors";
 
 const router = createBrowserRouter([
   {
@@ -231,12 +237,12 @@ const router = createBrowserRouter([
       {
         path: "/query-details/:id",
         element: <QueryDetails />,
-      },
+      }
     ],
   },
   {
     path: "/dashboard",
-    element: <Dashboard />,
+    element: <PrivateRoute><Dashboard /></PrivateRoute>,
     children: [
       {
         index: true,
@@ -245,6 +251,14 @@ const router = createBrowserRouter([
       {
         path: "statistics",
         element: <Statistics />,
+      },
+      {
+        path: "registeredStudents",
+        element: <RegisteredStudents></RegisteredStudents>,
+      },
+      {
+        path: "registeredInstructors",
+        element: <RegisteredInstructors></RegisteredInstructors>,
       },
       {
         path: "manageGallery",
@@ -307,14 +321,6 @@ const router = createBrowserRouter([
         element: <ManageTestimonials />,
       },
       {
-        path: "manageEvents",
-        element: <ManageEvent />,
-      },
-      {
-        path: "addEvents",
-        element: <AddEvents />,
-      },
-      {
         path: "updateFaq/:id",
         element: <UpdateFaq></UpdateFaq>,
         loader: ({ params }) =>
@@ -364,7 +370,32 @@ const router = createBrowserRouter([
       {
         path: 'approveBlogs',
         element: <ApproveBlogs />
-      }
+      },
+      {
+        path: 'approveCourses',
+        element: <ApproveCourse />
+      },
+      {
+        path: 'addEvents',
+        element: <AddEvents />
+      },
+      {
+        path: 'manageEvents',
+        element: <ManageEvents />
+      },
+      {
+        path: 'manageQuery',
+        element: <ManageQuery />
+      },
+       
+      {
+        path: 'unregisteredStudents',
+        element: <UnregisteredStudents />
+      },
+      {
+        path: 'unregisteredInstructors',
+        element: <UnregisteredInstructors />
+      },
     ]
   }
 

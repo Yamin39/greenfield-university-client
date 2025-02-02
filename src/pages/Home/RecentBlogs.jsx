@@ -18,7 +18,7 @@ const RecentBlogs = () => {
       <div>
         <p className="text-lg md:text-xl uppercase text-[#808080] font-semibold">ARTICLES</p>
         <h1 className="text-3xl md:text-[42px] text-[#181818] font-bold mt-6 leading-tight">
-          Get News with <span className="text-[#1AB69D]">Greenfield</span>
+          Get News with <span className="text-primary-700">Greenfield</span>
         </h1>
         <img className="w-28 mt-2 mb-7 mx-auto" src="https://i.ibb.co/hH8Jpm2/aboutStyle.png" alt="style" />
       </div>

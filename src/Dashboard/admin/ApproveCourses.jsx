@@ -2,18 +2,17 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import DashboardTitle from "../DashboardTitle";
 import { FcApproval } from "react-icons/fc";
-import { format } from "date-fns";
 import { CiCircleRemove } from "react-icons/ci";
 import { BsThreeDots } from "react-icons/bs";
 import toast from "react-hot-toast";
 
-const ApproveBlogs = () => {
+const ApproveCourses = () => {
    const axiosPublic = useAxiosPublic();
 
-   const { data: blogs = [], refetch } = useQuery({
-      queryKey: ["blogs"],
+   const { data: courses = [], refetch } = useQuery({
+      queryKey: ["courses"],
       queryFn: async () => {
-         const res = await axiosPublic.get(`/blogs`);
+         const res = await axiosPublic.get(`/courses`);
          return res.data;
       },
    });
@@ -22,14 +21,17 @@ const ApproveBlogs = () => {
       const status = value;
       console.log(status);
       try {
-         await axiosPublic.patch(`/approveBlog/${id}`, { status })
+         const { data } = await axiosPublic.patch(`/approveCourse/${id}`, { status })
          refetch()
+         console.log(data);
          toast.success('Status updated successfully')
       } catch (error) {
          console.log(error)
          toast.error(error.message || 'Something went wrong.')
       }
    }
+
+   console.log(courses);
 
    return (
       <div>
@@ -47,7 +49,6 @@ const ApproveBlogs = () => {
                      <col />
                      <col />
                      <col />
-                     <col />
                   </colgroup>
                   <thead>
                      <tr className="text-left bg-slate-100">
@@ -55,28 +56,26 @@ const ApproveBlogs = () => {
                         <th className="p-3">Author Name</th>
                         <th className="p-3">Photo</th>
                         <th className="p-3">Title</th>
-                        <th className="p-3">Thumbnail</th>
-                        <th className="p-3">Date & Time</th>
+                        <th className="p-3">Banner</th>
                         <th className="p-3">Email</th>
-                        <th className="p-3">Role</th>
                         <th className="p-3">Status</th>
                         <th className="p-3">Change Status</th>
                      </tr>
                   </thead>
                   <tbody>
-                     {blogs.map((blog, i) => (
+                     {courses.map((course, i) => (
                         <tr key={i} className="border">
                            <td className="p-2">
                               <p>{i + 1}</p>
                            </td>
                            <td className="p-2">
-                              <p>{blog?.author?.name}</p>
+                              <p>{course?.instructorDetails?.name}</p>
                            </td>
                            <td className="p-2">
                               <img
                                  src={
-                                    blog?.author?.img
-                                       ? blog.author?.img
+                                    course?.instructorDetails?.img
+                                       ? course.instructorDetails?.img
                                        : "https://greenfield-university.netlify.app/assets/banner_66-Bq6KXLtZ.png"
                                  }
                                  alt=""
@@ -84,38 +83,39 @@ const ApproveBlogs = () => {
                               />
                            </td>
                            <td className="p-2">
-                              <p>{blog.title.slice(0, 20)}...</p>
+                              <p>{course.title}</p>
                            </td>
+
                            <td className="p-2">
-                              <img
-                                 src={blog.thumbnail}
-                                 alt=""
-                                 className="w-12 h-8 object-cover rounded-lg hover:scale-105 duration-300"
-                              />
+                              <p>
+                                 <img
+                                    src={
+                                       course?.image_url
+                                          ? course.image_url : "https://greenfield-university.netlify.app/assets/banner_66-Bq6KXLtZ.png"
+                                    }
+                                    alt=""
+                                    className="w-12 h-8 object-cover rounded-lg hover:scale-105 duration-300"
+                                 />
+                              </p>
                            </td>
                            <td className="p-2">
                               <p>
-                                 {format(new Date(blog.timestamp), "hh:mm a , dd-MM-yyyy")}
+                                 {
+                                    course.instructorDetails.email
+                                 }
                               </p>
                            </td>
 
                            <td className="p-2">
-                              <p>{blog?.author?.email}</p>
-                           </td>
-                           <td className="p-2 text-center">
-                              <p className={`px-2 py-0.5 border  rounded-lg ${blog?.author?.role === 'Admin' && 'text-green-600 border-green-200 bg-green-50 '} ${blog?.author?.role === 'Instructor' && 'text-pink-600 bg-pink-50 border-pink-200'} ${blog?.author?.role === 'Student' && 'text-blue-600 bg-blue-50 border-blue-200'} `}>{blog?.author?.role} </p>
-                           </td>
 
-                           <td className="p-2">
+                              {course.status === 'pending' && <BsThreeDots className="animate-ping mx-auto text-lg text-blue-500" />}
 
-                              {blog.status === 'pending' && <BsThreeDots className="animate-ping mx-auto text-lg text-blue-500" />}
+                              {course.status === 'approved' && <FcApproval className="mx-auto text-lg " />}
 
-                              {blog.status === 'approved' && <FcApproval className="mx-auto text-lg " />}
-
-                              {blog.status === 'rejected' && <CiCircleRemove className="mx-auto text-lg text-red-500" />}
+                              {course.status === 'rejected' && <CiCircleRemove className="mx-auto text-lg text-red-500" />}
                            </td>
                            <td className="p-2">
-                              <select defaultValue={blog.status} onChange={(e) => handleUpdateStatus(blog._id, e.target.value)} className="border py-0.5 border-green-600 rounded-sm">
+                              <select defaultValue={course.status} onChange={(e) => handleUpdateStatus(course._id, e.target.value)} className="border py-0.5 border-green-600 rounded-sm">
                                  <option value="pending">Pending</option>
                                  <option value="approved">approved</option>
                                  <option value="rejected">Rejected</option>
@@ -132,4 +132,4 @@ const ApproveBlogs = () => {
    );
 };
 
-export default ApproveBlogs;
+export default ApproveCourses;

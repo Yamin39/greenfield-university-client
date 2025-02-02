@@ -161,22 +161,22 @@ const ShopDetailsPage = ({ product }) => {
               <div className="flex flex-row flex-wrap items-center mt-6 gap-1 sm:gap-2">
                 <h2 className="text-[16px]">Share On:</h2>
                 <a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${location}`}>
-                  <span className="w-10 h-10 text-[#888888] border border-gray-100 hover:bg-[#1AB69D] hover:text-white rounded-full flex justify-center transition duration-300 items-center">
+                  <span className="w-10 h-10 text-[#888888] border border-gray-100 hover:bg-primary-700 hover:text-white rounded-full flex justify-center transition duration-300 items-center">
                     <FaFacebookF size={20} />
                   </span>
                 </a>
                 <a target="_blank" href={`https://twitter.com/share?url=${location}`}>
-                  <span className="w-10 h-10 text-[#888888] transition duration-300 border border-gray-100 hover:bg-[#1AB69D] hover:text-white rounded-full flex justify-center items-center">
+                  <span className="w-10 h-10 text-[#888888] transition duration-300 border border-gray-100 hover:bg-primary-700 hover:text-white rounded-full flex justify-center items-center">
                     <IoLogoTwitter size={20} />
                   </span>
                 </a>
                 <a target="_blank" href={`https://www.linkedin.com/shareArticle?mini=true&url=${location}`}>
-                  <span className="w-10 h-10 text-[#888888] border border-gray-100 transition duration-300 hover:bg-[#1AB69D] hover:text-white rounded-full flex justify-center items-center">
+                  <span className="w-10 h-10 text-[#888888] border border-gray-100 transition duration-300 hover:bg-primary-700 hover:text-white rounded-full flex justify-center items-center">
                     <FaLinkedinIn size={20} />
                   </span>
                 </a>
                 <a target="_blank" href={`https://vimeo.com/share?url=${location}`}>
-                  <span className="w-10 h-10 text-[#888888] border border-gray-100 transition duration-300 hover:bg-[#1AB69D] hover:text-white rounded-full flex justify-center items-center">
+                  <span className="w-10 h-10 text-[#888888] border border-gray-100 transition duration-300 hover:bg-primary-700 hover:text-white rounded-full flex justify-center items-center">
                     <GrVimeo size={20} />
                   </span>
                 </a>
