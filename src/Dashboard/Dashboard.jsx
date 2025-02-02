@@ -5,11 +5,13 @@ import { useState, useRef, useEffect } from "react";
 import { IoCloseOutline } from "react-icons/io5";
 import { CiMenuBurger } from "react-icons/ci";
 import { RiCloseLargeFill } from "react-icons/ri";
+import useAuth from "../hooks/useAuth";
 
 const Dashboard = () => {
   const [sideBar, setSideBar] = useState(false);
   const sidebarRef = useRef(null);
   const menuButtonRef = useRef(null);
+  const { loading } = useAuth();
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -32,6 +34,14 @@ const Dashboard = () => {
   const handleSidebar = () => {
     setSideBar(!sideBar);
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <p className="text-lg font-semibold text-gray-600">Loading...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="flex lg:space-x-10 relative">
