@@ -66,6 +66,8 @@ import PurchasedHistory from "../pages/shop/purchased/PurchasedHistory";
 import ApproveBlogs from "../Dashboard/admin/approveBlogs";
 import AdminProfile from "../Dashboard/admin/AdminProfile";
 import ApproveCourse from "../Dashboard/admin/ApproveCourses";
+import UnregisteredStudents from "../pages/Instructor/unregisteredStudents";
+import UnregisteredInstructors from "../pages/Instructor/unregisteredInstructors";
 
 const router = createBrowserRouter([
   {
@@ -369,7 +371,16 @@ const router = createBrowserRouter([
       {
         path: 'approveCourses',
         element: <ApproveCourse />
-      }
+      },
+       
+      {
+        path: 'unregisteredStudents',
+        element: <UnregisteredStudents />
+      },
+      {
+        path: 'unregisteredInstructors',
+        element: <UnregisteredInstructors />
+      },
     ]
   }
 
