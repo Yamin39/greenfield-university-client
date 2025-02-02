@@ -11,14 +11,11 @@ import toast from "react-hot-toast";
 
 const ApproveBlogs = () => {
    const axiosPublic = useAxiosPublic();
-   const { user } = useAuth();
-   const role = useRole(user?.email);
-
 
    const { data: blogs = [], refetch } = useQuery({
       queryKey: ["blogs"],
       queryFn: async () => {
-         const res = await axiosPublic.get(`/blogs?email=${user.email}&role=${role}`);
+         const res = await axiosPublic.get(`/blogs`);
          return res.data;
       },
    });

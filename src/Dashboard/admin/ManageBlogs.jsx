@@ -15,11 +15,13 @@ const ManageBlogs = () => {
   console.log(role);
 
   const { data: blogs = [], refetch } = useQuery({
-    queryKey: ["blogs"],
+    queryKey: ["blogs", user?.email, role], 
     queryFn: async () => {
+      if (!user?.email || !role) return []; 
       const res = await axiosPublic.get(`/blogs?email=${user.email}&role=${role}`);
       return res.data;
     },
+    enabled: !!user?.email && !!role,
   });
 
   const handleDelete = async (id) => {
