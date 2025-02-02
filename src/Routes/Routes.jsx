@@ -347,12 +347,14 @@ const router = createBrowserRouter([
       {
         path: 'contactRequests',
         element: <ContactRequests />
-        path: "admin/my-profile",
-        element: <AdminProfile />,
       },
       {
-        path : 'contactRequests',
-        element : <ContactRequests/>
+        path: "admin/my-profile",
+        element: <AdminProfile />
+      },
+      {
+        path: 'contactRequests',
+        element: <ContactRequests />
       },
       {
         path: "purchasedBooks",
