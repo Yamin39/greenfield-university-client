@@ -16,7 +16,7 @@ const Events = () => {
   })
 
   return (
-   <div className="max-w-7xl mx-auto bg-[#FFFFFF] p-4 text-center">
+   <div>
 
     <SharedBanner title="Events" />
 

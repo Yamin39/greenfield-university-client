@@ -71,6 +71,7 @@ import RegisteredStudents from "../Dashboard/admin/RegisteredStudents";
 import RegisteredInstructors from "../Dashboard/admin/RegisteredInstructors";
 import UnregisteredStudents from "../pages/Instructor/unregisteredStudents";
 import UnregisteredInstructors from "../pages/Instructor/unregisteredInstructors";
+import NewsletterRequests from "../Dashboard/admin/NewsletterRequests";
 
 const router = createBrowserRouter([
   {
@@ -395,6 +396,10 @@ const router = createBrowserRouter([
       {
         path: 'unregisteredInstructors',
         element: <UnregisteredInstructors />
+      },
+      {
+        path: 'newsletterRequests',
+        element: <NewsletterRequests />
       },
     ]
   }
