@@ -72,6 +72,7 @@ import RegisteredInstructors from "../Dashboard/admin/RegisteredInstructors";
 import UnregisteredStudents from "../pages/Instructor/unregisteredStudents";
 import UnregisteredInstructors from "../pages/Instructor/unregisteredInstructors";
 import NewsletterRequests from "../Dashboard/admin/NewsletterRequests";
+import UpdateEvent from "../Dashboard/admin/UpdateEvent";
 
 const router = createBrowserRouter([
   {
@@ -383,6 +384,10 @@ const router = createBrowserRouter([
       {
         path: 'manageEvents',
         element: <ManageEvents />
+      },
+      {
+        path: 'manageEvents/edit/:id',
+        element: <UpdateEvent />
       },
       {
         path: 'manageQuery',
