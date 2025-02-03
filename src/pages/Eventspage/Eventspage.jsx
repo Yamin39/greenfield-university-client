@@ -69,7 +69,7 @@ const EventsPage = () => {
                     <span className="font-semibold">
                       {item?.time} - {item?.title}
                     </span>
-                    <span className="text-gray-600">{item?.duration}</span>
+                    <span className="text-gray-600">{item?.duration} mins</span>
                   </div>
                   {item?.speaker && <p className="text-gray-500">Speaker: {item?.speaker}</p>}
                 </div>
