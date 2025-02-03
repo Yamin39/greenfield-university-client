@@ -183,7 +183,7 @@ const Nav = () => {
 
                     <div
                       ref={userCardRef}
-                      className={`text-gray-600 flex-col absolute right-7 top-9 bg-white hidden sm:flex p-6 duration-500 transform origin-top-right border *:py-2 *:border-b hover:*:bg-gray-50 ${
+                      className={`text-gray-600 flex-col absolute right-7 top-9 bg-white flex p-6 duration-500 transform origin-top-right border *:py-2 *:border-b hover:*:bg-gray-50 ${
                         !user && "scale-0"
                       }  rounded-lg ${userCard ? "scale-100 opacity-100" : "scale-0 opacity-0"}`}
                     >
