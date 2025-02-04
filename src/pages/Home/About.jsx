@@ -25,7 +25,7 @@ const About = () => {
                       "hover:text-red-500 text-xl font-semibold duration-300 after:w-0 hover:after:w-full after:duration-300 after:h-0.5 after:absolute after:-bottom-1 after:bg-red-500 after:left-0 relative"
                     }
                   >
-                    About EduBlink
+                    About Greenfield University
                   </span>
                 </Tab>
                 <Tab>
