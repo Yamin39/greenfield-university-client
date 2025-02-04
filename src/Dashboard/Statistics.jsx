@@ -18,7 +18,7 @@ const Statistics = () => {
 
   return (
     <div>
-      <DashboardTitle title="Statistics" />
+      {role !== "admin" && <DashboardTitle title="Statistics" />}
 
       {role === "admin" && <AdminStatistics />}
 
