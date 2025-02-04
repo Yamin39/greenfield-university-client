@@ -29,7 +29,7 @@ const Testimonials = () => {
           What <span className="text-primary-700">Our Students</span> <br /> Have To Say
         </h1>
 
-        <img className="w-28 mt-2 mb-7" src="https://i.ibb.co/hH8Jpm2/about-Style.png" alt="style" />
+        <img className="w-28 mt-2 mb-7" src="https://i.ibb.co.com/9kQWLt0S/images-removebg-preview.png" alt="style" />
 
         <p className="text-gray-600 md:w-[500px]">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, mollitia cupiditate. Laborum repellendus quibusdam, voluptates eius, cumque

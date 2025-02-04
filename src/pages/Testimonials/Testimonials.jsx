@@ -84,7 +84,7 @@ const Testimonials = () => {
           <h1 className="text-3xl md:text-[42px] text-[#181818] font-bold mt-6 leading-tight">
             What <span className="text-primary-700">Our Students</span> <br /> Have To Say
           </h1>
-          <img className="w-28 mt-2 mb-7" src="https://i.ibb.co/hH8Jpm2/about-Style.png" alt="style" />
+          <img className="w-28 mt-2 mb-7" src="https://i.ibb.co.com/9kQWLt0S/images-removebg-preview.png" alt="style" />
           <button className="p-2 bg-primary-700 text-white rounded-md hover:bg-primary-800" onClick={isUser}>
             {mytestimonial?.length === 0 ? "Add Testimonial" : "Manage Testimonial"}
           </button>

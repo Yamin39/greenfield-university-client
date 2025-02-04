@@ -11,7 +11,7 @@ const Partners = () => {
           Learn with <br /> <span className="text-primary-700">Our Trusted Partners</span>
         </h1>
 
-        <img className="w-28 mt-2 mb-7" src="https://i.ibb.co/hH8Jpm2/about-Style.png" alt="style" />
+        <img className="w-28 mt-2 mb-7" src="https://i.ibb.co.com/9kQWLt0S/images-removebg-preview.png" alt="style" />
 
         <p className="text-gray-600 md:w-[500px] text-lg leading-relaxed">
           We collaborate with industry leaders and innovators to bring you the best learning experiences. Our partners share our commitment to excellence and

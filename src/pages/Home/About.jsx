@@ -14,7 +14,7 @@ const About = () => {
           <h1 className="text-3xl md:text-[42px]  text-[#181818] font-bold mt-6 leading-tight">
             We Provide Best <span className="text-primary-700">Education</span> Services For You
           </h1>
-          <img className="w-[130px] h-[15px] mt-4" src="https://i.ibb.co.com/hH8Jpm2/about-Style.png" alt="" />
+          <img className="w-[130px] h-[15px] mt-4" src="https://i.ibb.co.com/9kQWLt0S/images-removebg-preview.png" alt="" />
           <div className="mt-12">
             <Tabs>
               <TabList>
