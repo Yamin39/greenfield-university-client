@@ -1,79 +1,56 @@
 import { useQuery } from "@tanstack/react-query";
 import { format } from "date-fns";
 import { ArrowDownRight, ArrowRight, ArrowUpRight, GraduationCap, MoreHorizontal, NotepadText } from "lucide-react";
-import { useCallback, useState } from "react";
 import { Link } from "react-router-dom";
-import { Bar, BarChart, Pie, PieChart, ResponsiveContainer, Sector, XAxis, YAxis } from "recharts";
-import useAuth from "../../hooks/useAuth";
+import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
+import LoadingModal from "../../components/LoadingModal";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 
-const data = [
-  { name: "Web Development", value: 400 },
-  { name: "Data Science", value: 300 },
-  { name: "UI/UX Design", value: 300 },
-  { name: "Cybersecurity", value: 200 },
-];
-
-const renderActiveShape = (props) => {
-  const RADIAN = Math.PI / 180;
-  const { cx, cy, midAngle, innerRadius, outerRadius, startAngle, endAngle, fill, payload, percent, value } = props;
-  const sin = Math.sin(-RADIAN * midAngle);
-  const cos = Math.cos(-RADIAN * midAngle);
-  const sx = cx + (outerRadius + 10) * cos;
-  const sy = cy + (outerRadius + 10) * sin;
-  const mx = cx + (outerRadius + 30) * cos;
-  const my = cy + (outerRadius + 30) * sin;
-  const ex = mx + (cos >= 0 ? 1 : -1) * 22;
-  const ey = my;
-  const textAnchor = cos >= 0 ? "start" : "end";
-
-  return (
-    <g>
-      <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>
-        {payload.name}
-      </text>
-      <Sector cx={cx} cy={cy} innerRadius={innerRadius} outerRadius={outerRadius} startAngle={startAngle} endAngle={endAngle} fill={fill} />
-      <Sector cx={cx} cy={cy} startAngle={startAngle} endAngle={endAngle} innerRadius={outerRadius + 6} outerRadius={outerRadius + 10} fill={fill} />
-      <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={fill} fill="none" />
-      <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none" />
-      <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="#333">{`PV ${value}`}</text>
-      <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} dy={18} textAnchor={textAnchor} fill="#999">
-        {`(Rate ${(percent * 100).toFixed(2)}%)`}
-      </text>
-    </g>
-  );
-};
-
 const AdminStatistics = () => {
-  const { user } = useAuth();
-  const email = user?.email;
   const axiosPublic = useAxiosPublic();
 
-  const [activeIndex, setActiveIndex] = useState(0);
-  const onPieEnter = useCallback(
-    (_, index) => {
-      setActiveIndex(index);
-    },
-    [setActiveIndex]
-  );
-
-  const { data: purchasedItems = [] } = useQuery({
-    queryKey: ["purchasedHistory", user?.email],
+  const { data: adminStatistics = {}, isLoading } = useQuery({
+    queryKey: ["adminStatistics"],
     queryFn: async () => {
-      const res = await axiosPublic.get("/paidCart", { email }); // Send email in the body
+      const res = await axiosPublic.get(`/adminStatistics`);
       return res.data;
     },
   });
 
-  const { data: blogs = [] } = useQuery({
-    queryKey: ["blogs", user?.email],
-    queryFn: async () => {
-      const res = await axiosPublic.get("/blogs");
-      return res.data;
-    },
-  });
+  const {
+    revenue,
+    totalBooksSold,
+    totalApprovedCourses,
+    totalApprovedBlogs,
+    purchasedItems,
+    registeredStudents,
+    registeredInstructors,
+    unregisteredStudents,
+    unregisteredInstructors,
+    announcements,
+    faqs,
+    galleryImages,
+    testimonials,
+    contactRequests,
+    newsletterSubscribers,
+    events,
+  } = adminStatistics;
 
-  console.log(blogs);
+  const statsArray = [
+    { name: "Registered Students", value: registeredStudents },
+    { name: "Registered Instructors", value: registeredInstructors },
+    { name: "Unregistered Students", value: unregisteredStudents },
+    { name: "Unregistered Instructors", value: unregisteredInstructors },
+    { name: "Announcements", value: announcements },
+    { name: "FAQs", value: faqs },
+    { name: "Gallery Images", value: galleryImages },
+    { name: "Testimonials", value: testimonials },
+    { name: "Contact Requests", value: contactRequests },
+    { name: "Newsletter Subscribers", value: newsletterSubscribers },
+    { name: "Events", value: events },
+  ];
+
+  console.log("adminStatistics", adminStatistics);
 
   const queryData = [
     { month: "Jan", posted: 400, answers: 240 },
@@ -85,6 +62,8 @@ const AdminStatistics = () => {
   ];
 
   console.log(queryData);
+
+  if (isLoading) return <LoadingModal text={"Loading..."} />;
 
   const transactions = purchasedItems.slice(0, 5).map((item, idx) => ({
     id: idx + 1,
@@ -99,7 +78,8 @@ const AdminStatistics = () => {
     <div className="p-6 bg-gray-50 min-h-screen my-8 rounded-lg max-w-7xl mx-auto">
       <div className="mb-6">
         <h1 className="text-2xl font-bold mb-2">Statistics</h1>
-        <p className="text-gray-600">An any way to manage sales with care and precision.</p>
+
+        <p className="text-gray-600">Welcome back! Here&apos;s a quick overview of Greenfield University&apos;s Webs stats.</p>
       </div>
 
       {/* Date Filter */}
@@ -141,7 +121,7 @@ const AdminStatistics = () => {
 
           <div>
             <p className="text-sm text-gray-500">Total revenue by selling books</p>
-            <h2 className="text-3xl font-bold">$193,000</h2>
+            <h2 className="text-3xl font-bold">${revenue}</h2>
             <p className="flex items-center text-green-600 text-sm">
               <ArrowUpRight className="w-4 h-4 mr-1" />
               +35% from last month
@@ -160,7 +140,7 @@ const AdminStatistics = () => {
 
           <div>
             <p className="text-sm text-gray-500">Total quantity of sold books</p>
-            <h2 className="text-3xl font-bold">32</h2>
+            <h2 className="text-3xl font-bold">{totalBooksSold}</h2>
             <p className="flex items-center text-green-600 text-sm">
               <ArrowUpRight className="w-4 h-4 mr-1" />
               +24% from last month
@@ -248,7 +228,7 @@ const AdminStatistics = () => {
                   <GraduationCap className="w-6 h-6 text-orange-500" />
                 </div>
                 <div>
-                  <h2 className="text-3xl font-bold">{0}</h2>
+                  <h2 className="text-3xl font-bold">{totalApprovedCourses}</h2>
                   <p className="text-gray-500">Live Courses</p>
                 </div>
               </div>
@@ -261,7 +241,7 @@ const AdminStatistics = () => {
                   <NotepadText className="w-6 h-6 text-blue-500" />
                 </div>
                 <div>
-                  <h2 className="text-3xl font-bold">{0}</h2>
+                  <h2 className="text-3xl font-bold">{totalApprovedBlogs}</h2>
                   <p className="text-gray-500">Blogs Published</p>
                 </div>
               </div>
@@ -270,20 +250,28 @@ const AdminStatistics = () => {
         </div>
       </div>
 
-      <PieChart width={400} height={400}>
-        <Pie
-          activeIndex={activeIndex}
-          activeShape={renderActiveShape}
-          data={data}
-          cx={200}
-          cy={200}
-          innerRadius={60}
-          outerRadius={80}
-          fill="#8884d8"
-          dataKey="value"
-          onMouseEnter={onPieEnter}
-        />
-      </PieChart>
+      <div className="mt-6 bg-white p-6 rounded-lg">
+        <div className="overflow-x-auto bg-white rounded-lg shadow">
+          <table className="min-w-full table-auto">
+            <thead className="bg-gray-100">
+              <tr>
+                <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">No.</th>
+                <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Name</th>
+                <th className="px-6 py-3 text-left text-sm font-semibold text-gray-600">Total Count</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-200">
+              {statsArray.map((state, index) => (
+                <tr key={index} className=" even:bg-gray-50">
+                  <td className="px-6 py-4 text-sm text-gray-800">{index + 1}</td>
+                  <td className="px-6 py-4 text-sm text-gray-800">{state.name}</td>
+                  <td className="px-6 py-4 text-sm text-gray-800">{state.value}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 };
