@@ -16,7 +16,7 @@ const AllBlogs = () => {
     queryFn: async () => {
       const res = await axiosPublic.get("/blogs");
       setTags([...new Set(res.data.map((blog) => blog.category))]);
-      return res.data;
+      return res.data.filter((blog) => blog.status === "approved");
     },
   });
 

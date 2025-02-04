@@ -19,7 +19,7 @@ const OurCourse = () => {
     queryKey: ['courses'],
     queryFn: async () => {
        const res = await axiosPublic.get('/courses')
-       return res.data;
+       return res.data.filter((course) => course.status === "approved")
     }
  })
 
