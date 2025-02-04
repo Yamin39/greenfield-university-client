@@ -30,7 +30,7 @@ const InstructorStatistics = () => {
               <GraduationCap className="w-6 h-6 text-orange-500" />
             </div>
             <div>
-              <h2 className="text-3xl font-bold mb-1">9</h2>
+              <h2 className="text-3xl font-bold mb-1">{instructorStatistics?.coursesCreated}</h2>
               <p className="text-gray-500">Courses Created</p>
             </div>
           </div>
@@ -50,7 +50,7 @@ const InstructorStatistics = () => {
               <CircleCheckBig className="w-6 h-6 text-emerald-500" />
             </div>
             <div>
-              <h2 className="text-3xl font-bold mb-1">2,231</h2>
+              <h2 className="text-3xl font-bold mb-1">{instructorStatistics?.coursesApproved}</h2>
               <p className="text-gray-500">Courses Approved</p>
             </div>
           </div>
@@ -70,7 +70,7 @@ const InstructorStatistics = () => {
               <NotepadText className="w-6 h-6 text-blue-500" />
             </div>
             <div>
-              <h2 className="text-3xl font-bold mb-1">2</h2>
+              <h2 className="text-3xl font-bold mb-1">{instructorStatistics?.blogs}</h2>
               <p className="text-gray-500">Blogs Written</p>
             </div>
           </div>
