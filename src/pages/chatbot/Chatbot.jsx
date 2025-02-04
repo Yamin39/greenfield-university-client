@@ -31,10 +31,10 @@ const StudyChat = () => {
         </div>
 
         <div className="flex-grow overflow-y-auto p-4 space-y-4">
-          <div className="flex justify-start">
+          <div className="flex justify-start ">
             <div className="bg-emerald-50 p-3 rounded-lg max-w-[80%] flex items-center space-x-2">
               <Bot className="w-8 h-8 text-emerald-600" />
-              <p className="text-slate-700">{response}</p>
+              <p className="text-slate-700">Welcome to Greenfield University Study Assistant! Ask about assignments, research, or academic topics.</p>
             </div>
           </div>
 

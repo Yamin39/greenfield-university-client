@@ -22,7 +22,7 @@ const AcademicPrograms = () => {
   const filteredCourses = (category) => (category === "Data Science" ? courses : courses.filter((course) => course.category === category));
 
   return (
-    <div className="max-w-7xl mx-auto bg-[#FFFFFF] p-4 text-center">
+    <div className="max-w-7xl mx-auto bg-[#FFFFFF] p-4 text-center mt-20 mb-28">
       {/* Heading Section */}
       <div>
         <p className="text-lg md:text-xl uppercase text-[#808080] font-semibold">POPULAR COURSES</p>
@@ -34,7 +34,7 @@ const AcademicPrograms = () => {
 
       {/* Tabs and Courses */}
       <Tabs>
-        <TabList className="flex justify-center mb-8 border-b">
+        <TabList className="flex justify-center mb-14 border-b">
           {categories.map((category) => (
             <Tab
               key={category}
