@@ -21,7 +21,7 @@ const Instructors = () => {
         <h1 className="text-3xl md:text-[42px] text-[#181818] font-bold mt-6 leading-tight">
           Course <span className="text-primary-700">Instructors</span>
         </h1>
-        <img className="w-28 mt-2 mb-7 mx-auto" src="https://i.ibb.co/hH8Jpm2/about-Style.png" alt="style" />
+        <img className="w-28 mt-2 mb-7 mx-auto" src="https://i.ibb.co.com/9kQWLt0S/images-removebg-preview.png" alt="style" />
       </div>
 
       {/* Instructors Section */}

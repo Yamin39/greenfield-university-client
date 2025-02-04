@@ -23,7 +23,7 @@ const Events = () => {
         <div>
           <p className="text-lg md:text-xl uppercase text-[#808080] font-semibold">Events</p>
           <h1 className="text-3xl md:text-[42px] text-[#181818] font-bold mt-6 leading-tight">Popular Events & News</h1>
-          <img className="w-28 mt-2 mb-7 mx-auto" src="https://i.ibb.co/hH8Jpm2/about-Style.png" alt="style" />
+          <img className="w-28 mt-2 mb-7 mx-auto" src="https://i.ibb.co.com/9kQWLt0S/images-removebg-preview.png" alt="style" />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-center justify-center">

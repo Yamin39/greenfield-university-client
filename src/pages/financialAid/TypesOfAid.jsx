@@ -4,12 +4,12 @@ const TypesOfAid = () => {
     {
       title: 'Scholarships',
       photo: 'https://wp.themepure.net/acadia/wp-content/uploads/2024/08/financial-thumb-1.jpg.webp',
-      desc:'Acadias commitment to student success important scholarship and creative activity apart from other colleges.'
+      desc:'Greenfield University commitment to student success important scholarship and creative activity apart from other colleges.'
     },
     {
       title: 'Grants',
       photo: 'https://wp.themepure.net/acadia/wp-content/uploads/2024/08/financial-thumb-2.jpg.webp',
-      desc:'Your FAFSA will determine what grants you qualify for—both from The Acadia University & from federal and state government.'
+      desc:'Your FAFSA will determine what grants you qualify for—both from The Greenfield University & from federal and state government.'
     },
     {
       title: 'Loans',

@@ -2,13 +2,13 @@ import { FaLongArrowAltRight } from "react-icons/fa";
 
 const HeadingComp = () => {
   return (
-    <div className="h-60 flex flex-col text-center items-center justify-center  bg-primary-700/5">
-      <p className=" text-2xl md:text-4xl font-semibold   ">
+    <div className="h-[400px] flex flex-col text-center items-center justify-center  bg-primary-700/5 mb-28">
+      <p className=" text-2xl md:text-4xl font-semibold" style={{lineHeight: "50px"}}>
         Get Your Quality <span className="text-primary-700">Certificate</span> <br />
-        Through EduBlink
+        Through Greenfield University
       </p>
 
-      <button className="flex items-center gap-1.5  bg-primary-700 rounded mt-4 text-white px-4 py-2.5">
+      <button className="flex items-center gap-1.5  bg-primary-700 rounded mt-6 text-white px-4 py-2.5">
         Get Started Now <FaLongArrowAltRight />
       </button>
 

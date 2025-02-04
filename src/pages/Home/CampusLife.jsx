@@ -15,7 +15,7 @@ const CampusLife = () => {
         <div className="shadow-box basis-1/2 border relative z-20 bg-white w-full p-12 rounded-xl">
           <h2 className="text-lg md:text-xl  uppercase text-[#808080]  font-semibold">CAMPUS</h2>
           <h1 className="text-3xl md:text-[42px]  text-[#181818] font-bold mt-6 leading-tight">Campus Life</h1>
-          <img className="w-[100px] h-[15px] mt-4" src="https://i.ibb.co.com/hH8Jpm2/about-Style.png" alt="" />
+          <img className="w-[100px] h-[15px] mt-4" src="https://i.ibb.co.com/9kQWLt0S/images-removebg-preview.png" alt="" />
           <div className="mt-12 space-y-2">
             <div className="flex items-center gap-5 group">
               <span className="group-hover:bg-[#EE4A62] bg-[#ee4a631a] p-2 rounded-full text-[#EE4A62] group-hover:text-white ">
