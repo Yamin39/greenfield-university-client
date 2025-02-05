@@ -1,12 +1,13 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import SharedBanner from "../../shared/SharedBanner";
-import { GoSearch } from "react-icons/go";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
+import { Clock, Star, Users } from "lucide-react";
+import { useState } from "react";
+import { GoSearch } from "react-icons/go";
+import { Link } from "react-router-dom";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import SharedBanner from "../../shared/SharedBanner";
 
 const OurCourse = () => {
- const axiosPublic = useAxiosPublic();
+  const axiosPublic = useAxiosPublic();
 
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -16,98 +17,135 @@ const OurCourse = () => {
   };
 
   const { data: courses = [] } = useQuery({
-    queryKey: ['courses'],
+    queryKey: ["courses"],
     queryFn: async () => {
-       const res = await axiosPublic.get('/courses')
-       return res.data.filter((course) => course.status === "approved")
-    }
- })
+      const res = await axiosPublic.get("/courses");
+      return res.data.filter((course) => course.status === "approved");
+    },
+  });
 
   return (
     <div className=" bg-[#FFFFFF] p-4 text-center">
       <SharedBanner title="Our Courses" />
- 
-      <div className="flex  justify-between  items-center max-w-6xl mt-2 mx-auto">
+
+      <div className="flex  justify-between  items-center max-w-7xl mt-14 mx-auto">
         <div>
           <p>
-            Showing <span  className="text-primary-700"> 1</span> - <span  className="text-primary-700">9 </span>of<span className="text-primary-700"> 69 </span>Results</p>
+            Showing <span className="text-primary-700"> 1</span> - <span className="text-primary-700">9 </span>of<span className="text-primary-700"> 69 </span>
+            Results
+          </p>
         </div>
         <div className="py-2 px-6 w-56 text-black gap-4 bg-gray-200 flex justify-between items-center rounded-md">
-          <input
-            type="text"
-            placeholder="Search Course"
-            value={searchTerm}
-            onChange={handleSearchChange}
-            className="bg-transparent outline-none w-full pr-2"
-          />
+          <input type="text" placeholder="Search Course" value={searchTerm} onChange={handleSearchChange} className="bg-transparent outline-none w-full pr-2" />
           <GoSearch className="text-gray-500" />
         </div>
       </div>
 
-      <div className="flex flex-col items-center justify-center max-w-7xl mx-auto mt-5">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-center justify-center">
-          {courses.map((course) => (
-            <div
-              className="group flex bg-[#F7F5F2] flex-col h-96 w-80 border border-gray-200 rounded shadow-md overflow-hidden transition-transform duration-300 hover:shadow-lg hover:scale-105"
-              key={course._id}
-            >
-              {/* Image Section */}
-              <div className="h-[60%]">
-                <img
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                  src={course.image_url}
-                  alt={course.title}
-                />
-              </div>
+      <div className="max-w-7xl mx-auto mt-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {courses.map((course) => {
+            const averageRating = course.reviews?.reduce((acc, review) => acc + review.rating, 0) / course.reviews?.length || 0;
+            const totalLessons = course.curriculum?.reduce((acc, section) => acc + section.lessons.length, 0) || 0;
 
-              {/* Text Section */}
-              <div className="relative translate-y-[1px] bg-[#F7F5F2] pb-40 duration-500 group-hover:translate-y-[-65px] flex flex-col p-4">
-                {/* Category */}
-                <h2 className="px-2.5 py-0.5 text-xs text-center w-fit rounded-sm bg-green-400 text-teal-900">
-                  {course.category || "General"}{" "}
-                  {/* Fallback if category is missing */}
-                </h2>
+            const renderStars = (rating) => {
+              return [...Array(5)].map((_, index) => (
+                <Star key={index} className={`w-5 h-5 ${index < rating ? "text-yellow-400 fill-current" : "text-gray-300"}`} />
+              ));
+            };
 
-                {/* Title */}
-                <h3 className="text-xl font-bold  ">{course.title}</h3>
+            return (
+              <div key={course._id} className="relative text-left group h-[450px] rounded-xl border shadow overflow-hidden">
+                {/* Default Card */}
+                <div className="absolute inset-0 bg-white shadow-lg transition-all duration-300 ease-in-out group-hover:opacity-0">
+                  <div className="relative">
+                    <img src={course.image_url} alt={course.title} className="w-full h-48 object-cover" />
+                    <div className="absolute top-4 right-4 bg-orange-400 text-white px-3 py-1 rounded-lg flex items-center gap-1">
+                      <Clock className="w-4 h-4" />
+                      <span>12 Hours</span>
+                    </div>
+                  </div>
 
-                {/* Description */}
-                <p className="text-sm text-gray-500 mt-2">
-                  {course.description.slice(0, 50)}
-                </p>
+                  <div className="p-6">
+                    <div className="mb-4">
+                      <span className="text-emerald-500 font-medium">Expert</span>
+                    </div>
 
-                {/* Rating */}
-                <div className="flex items-center mt-2">
-                  {[...Array(5)].map((_, index) => (
-                    <svg
-                      key={index}
-                      className={`w-4 h-4 ${
-                        index < Math.floor(course.rating || 0)
-                          ? "text-yellow-500"
-                          : "text-gray-300"
-                      }`}
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
-                  <p className="ml-2 text-sm text-gray-500">
-                    ({course.reviews?.length || 0} Reviews)
-                  </p>
+                    <Link to={`/course-details/${course._id}`}>
+                      <h2 className="text-xl font-semibold mb-2 line-clamp-2">{course.title}</h2>
+                    </Link>
+
+                    <div className="flex items-center gap-1 mb-4">
+                      {renderStars(averageRating)}
+                      <span className="text-gray-600 ml-2">({averageRating.toFixed(1)}/3 Rating)</span>
+                    </div>
+
+                    <div className="text-2xl font-bold text-red-500 mb-4">{course.price ? `$${course.price}` : "Free"}</div>
+
+                    <div className="flex items-center gap-6 text-gray-600">
+                      <div className="flex items-center gap-2">
+                        <Clock className="w-5 h-5" />
+                        <span>{totalLessons} Lessons</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Users className="w-5 h-5" />
+                        <span>72 Students</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                {/* Enroll Button */}
-                <Link
-                  to={`/course-details/${course._id}`}
-                  className="mt-4 w-32 px-4 py-1 bg-red-500 text-white text-center rounded-md hover:bg-yellow-600 transition-colors duration-300"
-                >
-                  Enroll Now
-                </Link>
+                {/* Hover Card */}
+                <div className="absolute inset-0 bg-emerald-500 p-6 text-white opacity-0 transition-all duration-300 ease-in-out group-hover:opacity-100">
+                  <button className="absolute top-4 right-4 bg-white/20 p-2 rounded-full hover:bg-white/30 transition-colors">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                      />
+                    </svg>
+                  </button>
+
+                  <div className="mb-4">
+                    <span className="bg-white text-emerald-500 px-3 py-1 rounded-full text-sm font-medium">Expert</span>
+                  </div>
+
+                  <h2 className="text-2xl font-semibold mb-2">{course.title}</h2>
+
+                  <div className="flex items-center gap-1 mb-2">
+                    {renderStars(averageRating)}
+                    <span className="ml-2">({averageRating.toFixed(1)}/3 Rating)</span>
+                  </div>
+
+                  <div className="text-3xl font-bold mb-4">{course.price ? `$${course.price}` : "Free"}</div>
+
+                  <p className="mb-6 text-white/90 line-clamp-3">
+                    {course.description.slice(0, 116)}
+                    {course.description.length > 116 ? "..." : ""}
+                  </p>
+
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="flex items-center gap-2">
+                      <Clock className="w-5 h-5" />
+                      <span>{totalLessons} Lessons</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Users className="w-5 h-5" />
+                      <span>72 Students</span>
+                    </div>
+                  </div>
+
+                  <Link
+                    to={`/course-details/${course._id}`}
+                    className="block text-center bg-red-500 hover:bg-red-600 text-white py-3 px-6 rounded-lg font-medium transition-colors"
+                  >
+                    Enroll Now →
+                  </Link>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>

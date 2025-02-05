@@ -14,7 +14,7 @@ const CampusIntro = () => {
   };
   return (
     <>
-      <div className="bg-[url('https://i.ibb.co.com/5179YXW/intro-banner.jpg')] bg-cover bg-center bg-no-repeat ">
+      <div className="bg-[url('https://i.ibb.co.com/mVTDztkX/architecture-3372897-1920.jpg')] bg-cover bg-center bg-no-repeat ">
         <div className="bg-black/50  ">
           <div className="py-32 md:py-40 lg:py-56 space-y-16">
             <div className="flex justify-center items-center relative z-20">
