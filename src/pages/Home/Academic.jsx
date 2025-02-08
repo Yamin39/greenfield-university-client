@@ -83,7 +83,7 @@ const Academic = () => {
 
             
               <div className="mt-4 text-lg text-start font-semibold text-gray-900">
-                ${seminar.price.amount} {seminar.price.currency}
+                ${seminar?.price?.amount} {seminar.price?.currency}
               </div>
 
               
