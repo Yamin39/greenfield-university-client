@@ -1,6 +1,7 @@
 import { X } from "lucide-react";
 import { useState } from "react";
 import { FaPlay } from "react-icons/fa";
+import img56 from '../../assets/homeImages/gu56.jpg'
 
 const CampusIntro = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +15,7 @@ const CampusIntro = () => {
   };
   return (
     <>
-      <div className="bg-[url('https://i.ibb.co.com/5179YXW/intro-banner.jpg')] bg-cover bg-center bg-no-repeat ">
+      <div style={{ backgroundImage: `url(${img56})` }} className="bg-cover bg-center bg-no-repeat">
         <div className="bg-black/50  ">
           <div className="py-32 md:py-40 lg:py-56 space-y-16">
             <div className="flex justify-center items-center relative z-20">
