@@ -110,16 +110,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-gray-200 pt-6 text-center">
-<<<<<<< HEAD
           <p className="text-[0.9rem] text-gray-600">© {new Date().getFullYear()}, All rights reserved <Link to='/terms-condition' className="hover:underline hover:text-primary-700">Greenfield University</Link></p>
-=======
-          <p className="text-[0.9rem] text-gray-600">
-            © 2025, All rights reserved{" "}
-            <Link to="/terms-condition" className="hover:underline hover:text-primary-700">
-              Greenfield University
-            </Link>
-          </p>
->>>>>>> fafff3b668cc3bcf43a6472bb7af33153d62c306
         </div>
       </div>
     </footer>
