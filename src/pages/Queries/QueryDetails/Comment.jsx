@@ -135,7 +135,7 @@ const Comment = ({ comment, query, refetch }) => {
 
   return (
     <div>
-      <div className="flex space-x-4">
+      <div className="flex flex-col sm:flex-row gap-4">
         <img src={comment.author.avatar} alt={comment.author.name} className="w-10 h-10 rounded-full object-cover" />
         <div className="flex-1">
           <div className="bg-gray-50 rounded-lg p-4">
@@ -194,7 +194,7 @@ const Comment = ({ comment, query, refetch }) => {
           {comment.replies && (
             <div className="ml-6 mt-4 space-y-4">
               {comment.replies.map((reply, index) => (
-                <div key={index} className="flex space-x-4">
+                <div key={index} className="flex flex-col sm:flex-row gap-4">
                   <img src={reply.author.avatar} alt={reply.author.name} className="w-8 h-8 rounded-full object-cover" />
                   <div className="w-full">
                     <div className="w-full bg-gray-50 rounded-lg p-4">

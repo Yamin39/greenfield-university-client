@@ -15,7 +15,7 @@ const Campuses = () => {
             <div>
               <h1 className="text-4xl md:text-6xl text-[#031F42] font-medium pb-5">Campuses</h1>
               <p className="text-lg pb-8 text-[#57585E]">
-                Acadia University has five campuses, which are located in the most exclusive areas of Moscow, Saint Petersburg and Tashkent.
+                Greenfield University has five campuses, which are located in the most exclusive areas of Moscow, Saint Petersburg and Tashkent.
               </p>
             </div>
             {/* Tab section */}

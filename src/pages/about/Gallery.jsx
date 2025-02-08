@@ -13,7 +13,7 @@ const Gallery = () => {
             or she becomes a well-rounded tomorrow individual.
           </h2>
           <button className="bg-primary-800/80 hover:bg-primary-800 py-3 md:py-4 px-7 rounded-lg text-white font-semibold text-lg">
-            Why Choose Acadia
+            Why Choose GU
           </button>
         </div>
         <div className="flex flex-col sm:flex-row sm:items-center flex-wrap  sm:justify-between   gap-8 mt-16 md:mt-24">

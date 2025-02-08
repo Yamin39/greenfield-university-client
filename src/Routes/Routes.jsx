@@ -67,6 +67,13 @@ import AddEvents from "../Dashboard/admin/AddEvents";
 import ManageEvents from "../Dashboard/admin/ManageEvents";
 import PrivateRoute from "./PrivateRoute";
 import ManageQuery from "../Dashboard/student/ManageQuery";
+import RegisteredStudents from "../Dashboard/admin/RegisteredStudents";
+import RegisteredInstructors from "../Dashboard/admin/RegisteredInstructors";
+import UnregisteredStudents from "../pages/Instructor/unregisteredStudents";
+import UnregisteredInstructors from "../pages/Instructor/unregisteredInstructors";
+import NewsletterRequests from "../Dashboard/admin/NewsletterRequests";
+import UpdateEvent from "../Dashboard/admin/UpdateEvent";
+import PurchasedCourses from "../Dashboard/student/PurchasedCourses";
 
 const router = createBrowserRouter([
   {
@@ -249,6 +256,14 @@ const router = createBrowserRouter([
         element: <Statistics />,
       },
       {
+        path: "registeredStudents",
+        element: <RegisteredStudents></RegisteredStudents>,
+      },
+      {
+        path: "registeredInstructors",
+        element: <RegisteredInstructors></RegisteredInstructors>,
+      },
+      {
         path: "manageGallery",
         element: <ManageGallery />,
       },
@@ -372,9 +387,30 @@ const router = createBrowserRouter([
         element: <ManageEvents />
       },
       {
+        path: 'manageEvents/edit/:id',
+        element: <UpdateEvent />
+      },
+      {
         path: 'manageQuery',
         element: <ManageQuery />
-      }
+      },
+       
+      {
+        path: 'unregisteredStudents',
+        element: <UnregisteredStudents />
+      },
+      {
+        path: 'unregisteredInstructors',
+        element: <UnregisteredInstructors />
+      },
+      {
+        path: 'newsletterRequests',
+        element: <NewsletterRequests />
+      },
+      {
+        path: 'registeredCourse',
+        element: <PurchasedCourses />
+      },
     ]
   }
 

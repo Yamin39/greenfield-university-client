@@ -1,46 +1,32 @@
+import useAuth from "../hooks/useAuth";
+import useRole from "../hooks/useRole";
+import AdminStatistics from "./admin/AdminStatistics";
 import DashboardTitle from "./DashboardTitle";
-import { GiProfit } from "react-icons/gi";
-import { FaBlogger, FaBook, FaUsers } from "react-icons/fa";
+import InstructorStatistics from "./instructor/InstructorStatistics";
+import StudentStatistics from "./student/StudentStatistics";
 
 const Statistics = () => {
-   return (
-      <div>
-         <DashboardTitle title='Statistics' />
-         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+  const { user } = useAuth();
+  const role = useRole(user?.email);
 
-            <div className="flex items-center space-x-3 bg-gradient-to-r from-gray-600 to-pink-100 text-white p-8 rounded-lg justify-center">
-               <GiProfit className="text-5xl" />
-               <div>
-                  <h3 className="text-4xl font-semibold">1000</h3>
-                  <p>Revenue</p>
-               </div>
-            </div>
-            <div className="flex items-center space-x-3 bg-gradient-to-r from-blue-600 to-pink-100 text-white p-8 rounded-lg justify-center">
-               <FaUsers className="text-5xl" />
-               <div>
-                  <h3 className="text-4xl font-semibold">50</h3>
-                  <p>Users</p>
-               </div>
-            </div>
-            <div className="flex items-center space-x-3 bg-gradient-to-r from-cyan-600 to-pink-100 text-white p-8 rounded-lg justify-center">
-               <FaBook className="text-5xl" />
-               <div>
-                  <h3 className="text-4xl font-semibold">600</h3>
-                  <p>Total Jobs</p>
-               </div>
-            </div>
-            <div className="flex items-center space-x-3 bg-gradient-to-r from-yellow-600 to-pink-100 text-white p-8 rounded-lg justify-center">
-               <FaBlogger className="text-5xl" />
-               <div>
-                  <h3 className="text-4xl font-semibold">255</h3>
-                  <p>Total Blogs</p>
-               </div>
-            </div>
-
-         </div>
-
+  if (!role)
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <p className="text-lg font-semibold text-gray-600">Loading...</p>
       </div>
-   );
+    );
+
+  return (
+    <div>
+      {role !== "admin" && <DashboardTitle title="Statistics" />}
+
+      {role === "admin" && <AdminStatistics />}
+
+      {role === "instructor" && <InstructorStatistics />}
+
+      {role === "student" && <StudentStatistics />}
+    </div>
+  );
 };
 
 export default Statistics;
