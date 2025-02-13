@@ -20,8 +20,6 @@ const Apply = () => {
               <IoIosArrowRoundForward className="text-2xl -mb-1 group-hover:right-4 transition-all duration-300 absolute right-6" />
             </Link>
           </div>
-
-
          </div>
 
       </div>

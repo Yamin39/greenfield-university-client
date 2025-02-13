@@ -58,6 +58,12 @@ const Academic = () => {
                 </div>
               </div>
 
+            
+              <div className="mt-4 text-lg text-start font-semibold text-gray-900">
+                ${seminar?.price?.amount} {seminar.price?.currency}
+              </div>
+
+              
               <Link
                 to={`/event/${seminar._id}`}
                 className="   mt-2 px-4 py-2 bg-red-500 text-white text-center rounded-md hover:bg-yellow-600 transition-colors duration-300"

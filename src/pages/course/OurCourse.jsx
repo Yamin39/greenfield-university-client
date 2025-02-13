@@ -25,7 +25,7 @@ const OurCourse = () => {
   });
 
   return (
-    <div className=" bg-[#FFFFFF] p-4 text-center">
+    <div className=" bg-[#FFFFFF] text-center">
       <SharedBanner title="Our Courses" />
 
       <div className="flex  justify-between  items-center max-w-7xl mt-14 mx-auto">
