@@ -190,7 +190,7 @@ const router = createBrowserRouter([
       {
         path: "/announcement/:id",
         element: <AnnouncementDetails />,
-        loader: ({ params }) => fetch(`http://localhost:5000/announcement/${params.id}`),
+        loader: ({ params }) => fetch(`https://greenfield-university-server.vercel.app/announcement/${params.id}`),
       },
       {
         path: "/instructors",
@@ -199,7 +199,7 @@ const router = createBrowserRouter([
       {
         path: "/instructor/:id",
         element: <InstructorDetails />,
-        loader: ({ params }) => fetch(`http://localhost:5000/instructor/${params.id}`),
+        loader: ({ params }) => fetch(`https://greenfield-university-server.vercel.app/instructor/${params.id}`),
       },
       {
         path: "/gallery",
@@ -289,7 +289,7 @@ const router = createBrowserRouter([
       {
         path: "updateProduct/:id",
         element: <UpdateProduct></UpdateProduct>,
-        loader: ({ params }) => fetch(`http://localhost:5000/product/${params.id}`),
+        loader: ({ params }) => fetch(`https://greenfield-university-server.vercel.app/product/${params.id}`),
       },
       {
         path: "manageProducts",
@@ -298,7 +298,7 @@ const router = createBrowserRouter([
       {
         path: "updateProduct/:id",
         element: <UpdateProduct></UpdateProduct>,
-        loader: ({ params }) => fetch(`http://localhost:5000/product/${params.id}`),
+        loader: ({ params }) => fetch(`https://greenfield-university-server.vercel.app/product/${params.id}`),
       },
       {
         path: "manageBlogs",
@@ -311,7 +311,7 @@ const router = createBrowserRouter([
       {
         path: "updateBlog/:id",
         element: <UpdateBlog />,
-        loader: ({ params }) => fetch(`http://localhost:5000/blogs/${params.id}`),
+        loader: ({ params }) => fetch(`https://greenfield-university-server.vercel.app/blogs/${params.id}`),
       },
       {
         path: "addFaq",
@@ -328,12 +328,12 @@ const router = createBrowserRouter([
       {
         path: "updateFaq/:id",
         element: <UpdateFaq></UpdateFaq>,
-        loader: ({ params }) => fetch(`http://localhost:5000/faqs/${params.id}`),
+        loader: ({ params }) => fetch(`https://greenfield-university-server.vercel.app/faqs/${params.id}`),
       },
       {
         path: "updateAnnouncement/:id",
         element: <UpdateAnnouncement />,
-        loader: ({ params }) => fetch(`http://localhost:5000/announcement/${params.id}`),
+        loader: ({ params }) => fetch(`https://greenfield-university-server.vercel.app/announcement/${params.id}`),
       },
       {
         path: "addCourse",
