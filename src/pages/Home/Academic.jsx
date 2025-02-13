@@ -57,12 +57,6 @@ const Academic = () => {
                   <span>{seminar.location.venue}</span>
                 </div>
               </div>
-
-            
-              <div className="mt-4 text-lg text-start font-semibold text-gray-900">
-                ${seminar?.price?.amount} {seminar.price?.currency}
-              </div>
-
               
               <Link
                 to={`/event/${seminar._id}`}
