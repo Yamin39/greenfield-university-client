@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { Facebook, Linkedin, MessageSquare, MoreHorizontal, Send, Share2, ThumbsUp, Twitter } from "lucide-react";
-import { useState } from "react";
+import { Facebook, Linkedin, LoaderCircle, MessageSquare, MoreHorizontal, Send, Share2, ThumbsUp, Twitter } from "lucide-react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { GrVimeo } from "react-icons/gr";
 import { useNavigate, useParams } from "react-router-dom";
@@ -14,6 +14,8 @@ const QueryDetails = () => {
   const { user, loading } = useAuth();
   const [isShareOpen, setIsShareOpen] = useState(false);
   const [isMoreOpen, setIsMoreOpen] = useState(false);
+  const [isUpVoteLoading, setIsUpVoteLoading] = useState(false);
+  const [localUpvoteState, setLocalUpvoteState] = useState(null); // Track local upvote state
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
 
@@ -47,32 +49,39 @@ const QueryDetails = () => {
     });
   };
 
-  const handleUpVote = (query) => {
-    console.log(user.email, query._id);
-
-    // check if user has already upvoted
-    if (query.upVotes.includes(user.email)) {
-      axiosPublic
-        .patch(`/query/upvote/remove/${query._id}`, { email: user.email })
-        .then((res) => {
-          console.log(res.data);
-          refetch();
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-      return;
+  // Update local upvote state when query data is loaded
+  useEffect(() => {
+    if (queries && user) {
+      setLocalUpvoteState(queries.upVotes?.includes(user.email) || false);
     }
+  }, [queries, user]);
 
-    axiosPublic
-      .patch(`/query/upvote/add/${query._id}`, { email: user.email })
-      .then((res) => {
-        console.log(res.data);
-        refetch();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  const handleUpVote = async (query) => {
+    if (isUpVoteLoading) return;
+    setIsUpVoteLoading(true);
+
+    // Use our local state instead of checking the query directly
+    const hasUpvoted = localUpvoteState;
+
+    // Update local state immediately (optimistic update)
+    setLocalUpvoteState(!hasUpvoted);
+
+    try {
+      if (hasUpvoted) {
+        await axiosPublic.patch(`/query/upvote/remove/${query._id}`, { email: user.email });
+      } else {
+        await axiosPublic.patch(`/query/upvote/add/${query._id}`, { email: user.email });
+      }
+      // Refetch to ensure server state is synced
+      refetch();
+    } catch (err) {
+      console.log(err);
+      toast.error("Failed to update vote");
+      // Revert optimistic update if API call fails
+      setLocalUpvoteState(hasUpvoted);
+    } finally {
+      setIsUpVoteLoading(false);
+    }
   };
 
   // Submit new comment
@@ -160,9 +169,10 @@ const QueryDetails = () => {
                   onClick={() => handleUpVote(queries)}
                   className={`flex items-center space-x-2 p-2 rounded-lg transition-colors ${
                     queries.upVotes.includes(user?.email) ? "text-primary-800 bg-primary-700/5" : "text-gray-600 hover:bg-gray-50"
-                  }`}
+                  } disabled:cursor-not-allowed disabled:bg-gray-50`}
+                  disabled={isUpVoteLoading}
                 >
-                  <ThumbsUp className="w-5 h-5" />
+                  {isUpVoteLoading ? <LoaderCircle className="w-5 h-5 animate-spin" /> : <ThumbsUp className="w-5 h-5" />}
                   <span>{queries.upVotes.length}</span>
                 </button>
                 <button
