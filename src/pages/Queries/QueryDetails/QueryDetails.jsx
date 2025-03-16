@@ -6,6 +6,7 @@ import { GrVimeo } from "react-icons/gr";
 import { useNavigate, useParams } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import useOptimisticUpdate from "../../../hooks/useOptimisticUpdate";
 import SharedBanner from "../../../shared/SharedBanner";
 import Comment from "./Comment";
 
@@ -14,8 +15,6 @@ const QueryDetails = () => {
   const { user, loading } = useAuth();
   const [isShareOpen, setIsShareOpen] = useState(false);
   const [isMoreOpen, setIsMoreOpen] = useState(false);
-  const [isUpVoteLoading, setIsUpVoteLoading] = useState(false);
-  const [localUpvoteState, setLocalUpvoteState] = useState(null); // Track local upvote state
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
 
@@ -49,39 +48,28 @@ const QueryDetails = () => {
     });
   };
 
-  // Update local upvote state when query data is loaded
+  // Use the optimistic update hook for upvotes
+  const {
+    isLoading: isUpVoteLoading,
+    state: localUpvoteState,
+    toggleState: toggleUpvote,
+    setState: setLocalUpvoteState,
+  } = useOptimisticUpdate(
+    () => axiosPublic.patch(`/query/upvote/add/${queries._id}`, { email: user.email }),
+    () => axiosPublic.patch(`/query/upvote/remove/${queries._id}`, { email: user.email }),
+    false,
+    () => refetch()
+  );
+
+  // Initialize upvote state from query data
   useEffect(() => {
     if (queries && user) {
       setLocalUpvoteState(queries.upVotes?.includes(user.email) || false);
     }
-  }, [queries, user]);
+  }, [queries, user, setLocalUpvoteState]);
 
-  const handleUpVote = async (query) => {
-    if (isUpVoteLoading) return;
-    setIsUpVoteLoading(true);
-
-    // Use our local state instead of checking the query directly
-    const hasUpvoted = localUpvoteState;
-
-    // Update local state immediately (optimistic update)
-    setLocalUpvoteState(!hasUpvoted);
-
-    try {
-      if (hasUpvoted) {
-        await axiosPublic.patch(`/query/upvote/remove/${query._id}`, { email: user.email });
-      } else {
-        await axiosPublic.patch(`/query/upvote/add/${query._id}`, { email: user.email });
-      }
-      // Refetch to ensure server state is synced
-      refetch();
-    } catch (err) {
-      console.log(err);
-      toast.error("Failed to update vote");
-      // Revert optimistic update if API call fails
-      setLocalUpvoteState(hasUpvoted);
-    } finally {
-      setIsUpVoteLoading(false);
-    }
+  const handleUpVote = () => {
+    toggleUpvote();
   };
 
   // Submit new comment
@@ -166,14 +154,14 @@ const QueryDetails = () => {
             <div className="flex items-center justify-between pt-6 border-t">
               <div className="flex space-x-6">
                 <button
-                  onClick={() => handleUpVote(queries)}
+                  onClick={() => handleUpVote()}
                   className={`flex items-center space-x-2 p-2 rounded-lg transition-colors ${
-                    queries.upVotes.includes(user?.email) ? "text-primary-800 bg-primary-700/5" : "text-gray-600 hover:bg-gray-50"
+                    localUpvoteState ? "text-primary-800 bg-primary-700/5" : "text-gray-600 hover:bg-gray-50"
                   } disabled:cursor-not-allowed disabled:bg-gray-50`}
                   disabled={isUpVoteLoading}
                 >
                   {isUpVoteLoading ? <LoaderCircle className="w-5 h-5 animate-spin" /> : <ThumbsUp className="w-5 h-5" />}
-                  <span>{queries.upVotes.length}</span>
+                  <span>{queries.upVotes?.length || 0}</span>
                 </button>
                 <button
                   onClick={() => document.getElementById("comment").focus()}
