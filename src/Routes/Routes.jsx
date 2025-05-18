@@ -26,7 +26,7 @@ import Statistics from "../Dashboard/Statistics";
 import ManageGallery from "../Dashboard/admin/ManageGallery";
 import ShopDetails from "../pages/shop/shopDetails/ShopDetails";
 import AnnouncementDetails from "../pages/announcements/AnnouncementDetails";
-import InstructorDetails from '../pages/Instructor/InstructorDetails'
+import InstructorDetails from "../pages/Instructor/InstructorDetails";
 import Policy from "../pages/Policy/Policy";
 import ShopCart from "../pages/shop/shopCart/ShopCart";
 import Wishlist from "../pages/shop/wishlist/Wishlist";
@@ -37,6 +37,37 @@ import Eventspage from "../pages/Eventspage/Eventspage";
 import Events from "../pages/Events/Events";
 import Testimonials from "../pages/Testimonials/Testimonials";
 import Chatbot from "../pages/chatbot/Chatbot";
+import ManageBlogs from "../Dashboard/admin/ManageBlogs";
+import AddBlog from "../Dashboard/admin/AddBlog";
+import PurcheseGuide from "../pages/purcheseGuide/PurcheseGuide";
+import TermsCondition from "../pages/termsCondition/TermsCondition";
+import UpdateBlog from "../Dashboard/admin/UpdateBlog";
+import AddFaq from "../Dashboard/admin/AddFaq";
+import ManageFaq from "../Dashboard/admin/ManageFaq";
+import UpdateFaq from "../Dashboard/admin/UpdateFaq";
+import UpdateAnnouncement from "../Dashboard/admin/UpdateAnnouncement";
+import ManageTestimonials from "../pages/Testimonials/ManageTestimonials";
+import PrivacyPolicy from "../pages/privacyPolicy/PrivacyPolicy";
+import AddCourse from "../Dashboard/instructor/AddCourse";
+import InstructorsProfile from "../Dashboard/instructor/InstructorsProfile";
+import ManageEvent from "../pages/Events/ManageEvent";
+import AddEvents from "../pages/Events/AddEvents";
+
+import StudentProfile from "../Dashboard/student/StudentProfile";
+import ManageProducts from "../Dashboard/admin/ManageProducts";
+import UpdateProduct from "../Dashboard/admin/UpdateProduct";
+import ManageCourse from "../Dashboard/instructor/ManageCourse";
+import ContactRequests from "../Dashboard/admin/ContactRequests";
+import Queries from "../pages/Queries/Queries";
+import QueryDetails from "../pages/Queries/QueryDetails/QueryDetails";
+import Payment from "../pages/Payment/Payment";
+import PurchasedBooks from "../pages/shop/purchased/PurchasedBooks";
+import PurchasedHistory from "../pages/shop/purchased/PurchasedHistory";
+import ApproveBlogs from "../Dashboard/admin/approveBlogs";
+import AdminProfile from "../Dashboard/admin/AdminProfile";
+import ApproveCourse from "../Dashboard/admin/ApproveCourses";
+import UnregisteredStudents from "../pages/Instructor/unregisteredStudents";
+import UnregisteredInstructors from "../pages/Instructor/unregisteredInstructors";
 
 const router = createBrowserRouter([
   {
@@ -53,7 +84,7 @@ const router = createBrowserRouter([
         element: <OurCourse />,
       },
       {
-        path: "/course-details/:_id",
+        path: "/course-details/:id",
         element: <CourseDetails></CourseDetails>,
       },
       {
@@ -85,7 +116,7 @@ const router = createBrowserRouter([
         element: <Shop></Shop>,
       },
       {
-        path: "/shop-details",
+        path: "/shop-details/:id",
         element: <ShopDetails></ShopDetails>,
       },
       {
@@ -97,17 +128,29 @@ const router = createBrowserRouter([
         element: <Wishlist></Wishlist>,
       },
       {
+        path: "/guide",
+        element: <PurcheseGuide></PurcheseGuide>,
+      },
+      {
+        path: "/terms-condition",
+        element: <TermsCondition></TermsCondition>,
+      },
+      {
+        path: "/privacy-policy",
+        element: <PrivacyPolicy></PrivacyPolicy>,
+      },
+      {
         path: "/university-overview",
         element: <Overview />,
       },
 
       {
-        path: '/how-to-Apply',
-        element: <HowtoApply />
+        path: "/how-to-Apply",
+        element: <HowtoApply />,
       },
       {
-        path: '/contact',
-        element: <Contact />
+        path: "/contact",
+        element: <Contact />,
       },
       {
         path: "/university-overview",
@@ -119,8 +162,8 @@ const router = createBrowserRouter([
         element: <HowtoApply />,
       },
       {
-        path: '/tour',
-        element: <Tour />
+        path: "/tour",
+        element: <Tour />,
       },
       {
         path: "/login",
@@ -131,87 +174,213 @@ const router = createBrowserRouter([
         element: <Registration />,
       },
       {
-        path: '/faq',
-        element: <Faq />
+        path: "/faq",
+        element: <Faq />,
       },
       {
-        path: '/announcements',
-        element: <Announcements />
+        path: "/announcements",
+        element: <Announcements />,
       },
       {
-        path: '/announcement/:id',
+        path: "/announcement/:id",
         element: <AnnouncementDetails />,
-        loader: ({ params }) => fetch(`http://localhost:5000/announcement/${params.id}`)
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/announcement/${params.id}`),
       },
       {
-        path: '/instructors',
-        element: <Instructors />
+        path: "/instructors",
+        element: <Instructors />,
       },
       {
-        path: '/instructor/:id',
+        path: "/instructor/:id",
         element: <InstructorDetails />,
-        loader: ({ params }) => fetch(`http://localhost:5000/instructor/${params.id}`)
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/instructor/${params.id}`),
       },
       {
         path: "/gallery",
         element: <Gallery></Gallery>,
       },
       {
-        path: '/policy',
-        element: <Policy />
-      },
-       
-      {
-        path: '/events',
-        element: <Events />
-      }
-      ,
-       
-      {
-        path: '/event/:id',
-        element: <Eventspage />
+        path: "/policy",
+        element: <Policy />,
       },
 
       {
-        path: '/testimonials',
-        element: <Testimonials />
+        path: "/events",
+        element: <Events />,
+      },
+      {
+        path: "/event/:id",
+        element: <Eventspage />,
       },
 
       {
-        path: '/chatbot',
-        element: <Chatbot />
-      }
+        path: "/testimonials",
+        element: <Testimonials />,
+      },
 
+      {
+        path: "/chatbot",
+        element: <Chatbot />,
+      },
+      {
+        path: "/queries",
+        element: <Queries />,
+      }, {
+        path: 'payment',
+        element: <Payment />
+      },
+      {
+        path: "/query-details/:id",
+        element: <QueryDetails />,
+      },
     ],
   },
   {
-    path: '/dashboard',
+    path: "/dashboard",
     element: <Dashboard />,
     children: [
       {
         index: true,
-        element: <Statistics />
+        element: <Statistics />,
       },
       {
-        path: 'statistics',
-        element: <Statistics />
+        path: "statistics",
+        element: <Statistics />,
       },
       {
-        path: 'manageGallery',
-        element: <ManageGallery />
+        path: "manageGallery",
+        element: <ManageGallery />,
       },
       {
-        path: 'manageAnnouncements',
-        element: <ManageAnnouncements />
+        path: "manageAnnouncements",
+        element: <ManageAnnouncements />,
       },
       {
-        path: 'postAnnouncements',
-        element: <PostAnnouncements />
+        path: "postAnnouncements",
+        element: <PostAnnouncements />,
       },
       {
-        path: 'addProduct',
-        element: <AddProduct />
-      }
+        path: "addProduct",
+        element: <AddProduct />,
+      },
+      {
+        path: 'manageProducts',
+        element: <ManageProducts></ManageProducts>
+      },
+      {
+        path: 'updateProduct/:id',
+        element: <UpdateProduct></UpdateProduct>,
+        loader: ({ params }) => fetch(`http://localhost:5000/product/${params.id}`)
+      },
+      {
+        path: 'manageProducts',
+        element: <ManageProducts></ManageProducts>
+      },
+      {
+        path: 'updateProduct/:id',
+        element: <UpdateProduct></UpdateProduct>,
+        loader: ({ params }) => fetch(`http://localhost:5000/product/${params.id}`)
+      },
+      {
+        path: 'manageBlogs',
+        element: <ManageBlogs />,
+      },
+      {
+        path: "addBlog",
+        element: <AddBlog />,
+      },
+      {
+        path: "updateBlog/:id",
+        element: <UpdateBlog />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/blogs/${params.id}`),
+      },
+      {
+        path: "addFaq",
+        element: <AddFaq></AddFaq>,
+      },
+      {
+        path: "manageFaq",
+        element: <ManageFaq></ManageFaq>,
+      },
+      {
+        path: "manageTestimonials",
+        element: <ManageTestimonials />,
+      },
+      {
+        path: "manageEvents",
+        element: <ManageEvent />,
+      },
+      {
+        path: "addEvents",
+        element: <AddEvents />,
+      },
+      {
+        path: "updateFaq/:id",
+        element: <UpdateFaq></UpdateFaq>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/faqs/${params.id}`),
+      },
+      {
+        path: "updateAnnouncement/:id",
+        element: <UpdateAnnouncement />,
+        loader: ({ params }) => fetch(`http://localhost:5000/announcement/${params.id}`),
+      },
+      {
+        path: 'addCourse',
+        element: <AddCourse />
+      },
+      {
+        path: 'manageCourse',
+        element: <ManageCourse />
+      },
+      {
+        path: "instructor/my-profile",
+        element: <InstructorsProfile />,
+      },
+      {
+        path: "student/my-profile",
+        element: <StudentProfile />,
+      },
+      {
+        path: 'contactRequests',
+        element: <ContactRequests />
+      },
+      {
+        path: "admin/my-profile",
+        element: <AdminProfile />
+      },
+      {
+        path: 'contactRequests',
+        element: <ContactRequests />
+      },
+      {
+        path: "purchasedBooks",
+        element: <PurchasedBooks />,
+      },
+      {
+        path: 'purchasedHistory',
+        element: <PurchasedHistory />
+      },
+      {
+        path: 'approveBlogs',
+        element: <ApproveBlogs />
+      },
+      {
+        path: 'approveCourses',
+        element: <ApproveCourse />
+      },
+       
+      {
+        path: 'unregisteredStudents',
+        element: <UnregisteredStudents />
+      },
+      {
+        path: 'unregisteredInstructors',
+        element: <UnregisteredInstructors />
+      },
     ]
   }
 

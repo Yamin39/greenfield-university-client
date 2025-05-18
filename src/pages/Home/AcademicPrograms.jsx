@@ -1,16 +1,19 @@
-import React, { useEffect, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { Link } from "react-router-dom";
 import "react-tabs/style/react-tabs.css";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const AcademicPrograms = () => {
-  const [courses, setCourses] = useState([]);
-  
-  useEffect(() => {
-    fetch("/courseData.json")
-      .then((res) => res.json())
-      .then((data) => setCourses(data));
-  }, []);
+const axiosPublic = useAxiosPublic();
+
+  const { data: courses = [] } = useQuery({
+    queryKey: ['courses'],
+    queryFn: async () => {
+       const res = await axiosPublic.get('/courses')
+       return res.data;
+    }
+ })
 
   // Get unique categories
   const categories = [

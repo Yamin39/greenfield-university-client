@@ -1,6 +1,7 @@
 import { IoIosFitness } from "react-icons/io";
 import { TiTime } from "react-icons/ti";
 import { HiOutlineDesktopComputer } from "react-icons/hi";
+import img_87 from '../../assets/images/img_87.jfif'
 
 const CampusLife = () => {
   return (
@@ -9,7 +10,7 @@ const CampusLife = () => {
             <div className="basis-1/2 relative sm:-top-20 sm:-right-20">
                <img
                   className="w-full rounded-xl"
-                  src="https://i.ibb.co.com/Sy9MPKY/campus-3.webp"
+                  src={img_87}
                   alt="pic"
                />
             </div>

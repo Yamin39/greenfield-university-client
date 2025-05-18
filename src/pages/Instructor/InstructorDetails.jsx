@@ -5,7 +5,7 @@ import { IoLogoTwitter, IoMdStar } from "react-icons/io";
 import FamousCourse from "./FamousCourse";
 
 const InstructorDetails = () => {
-  const { _id, universityId, name, phone, email,address, designation, img, rating, bio } =
+  const { name, phoneNumber, email,address, designation, img, rating, bio } =
     useLoaderData();
   return (
     <div>
@@ -14,7 +14,7 @@ const InstructorDetails = () => {
         <div className="grid grid-cols-1 justify-center lg:justify-between lg:grid-cols-3 gap-12">
           <div className="col-span-1 flex flex-col  items-center p-5  space-y-5">
             <img
-              className="w-[340px] h-[340px] rounded-full"
+              className="w-[340px] h-[340px] rounded-full object-cover shadow-lg"
               src={img}
               alt=""
             />
@@ -96,7 +96,7 @@ const InstructorDetails = () => {
                   className="hover:text-primary-700 transition duration-300"
                   to={""}
                 >
-                  {phone ?  phone:'Not given'}
+                  {phoneNumber ?  phoneNumber:'Not given'}
                 </Link>
               </p>
             </div>

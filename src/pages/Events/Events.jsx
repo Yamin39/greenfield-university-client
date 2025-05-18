@@ -1,16 +1,19 @@
-import   { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Calendar, Clock, MapPin } from "lucide-react";
 import SharedBanner from "../../shared/SharedBanner";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
 
 const Events = () => {
-  const [seminars, setSeminars] = useState([]);
+  const axiosPublic = useAxiosPublic();
 
-  useEffect(() => {
-    fetch("./events.json")
-      .then((res) => res.json())
-      .then((data) => setSeminars(data));
-  }, []);
+  const { data: seminars = [] } = useQuery({
+     queryKey: ['events'],
+     queryFn: async () => {
+        const res = await axiosPublic.get('/events')
+        return res.data;
+     }
+  })
 
   return (
    <div className="max-w-7xl mx-auto bg-[#FFFFFF] p-4 text-center">
@@ -35,7 +38,7 @@ const Events = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-center justify-center">
         {seminars.map((seminar) => (
           <div
-            key={seminar.id}
+            key={seminar._id}
             className="group flex bg-[#F7F5F2] flex-col h-[32rem] w-80 border border-gray-200 rounded shadow-md overflow-hidden transition-transform duration-300 hover:shadow-lg hover:scale-105"
           >
           

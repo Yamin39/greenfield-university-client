@@ -1,6 +1,5 @@
 [
   {
-    "_id": "3",
     "category": "Data Science",
     "title": "Machine Learning with Python",
     "description": "Comprehensive course covering machine learning algorithms, data preprocessing, and model deployment using Python and popular libraries.",
@@ -65,7 +64,6 @@
     ]
   },
   {
-    "_id": "4",
     "category": "Digital Marketing",
     "title": "Social Media Marketing Mastery",
     "description": "Learn how to create effective social media strategies, grow your audience, and monetize your online presence across multiple platforms.",
@@ -130,7 +128,6 @@
     ]
   },
   {
-    "_id": "5",
     "category": "Design",
     "title": "UX/UI Design Fundamentals",
     "description": "Comprehensive course covering user experience and user interface design principles, tools, and best practices for creating intuitive digital experiences.",
@@ -195,7 +192,6 @@
     ]
   },
   {
-    "_id": "6",
     "category": "Finance",
     "title": "Personal Finance and Investment Strategies",
     "description": "Comprehensive course teaching financial planning, investment techniques, retirement planning, and wealth management for individuals.",
@@ -260,7 +256,6 @@
     ]
   },
   {
-    "_id": "7",
     "category": "Finance",
     "title": "Professional Photography Masterclass",
     "description": "Comprehensive course covering photography techniques, equipment, post-processing, and professional workflow for aspiring photographers.",

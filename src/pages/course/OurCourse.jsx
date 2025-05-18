@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import SharedBanner from "../../shared/SharedBanner";
 import { GoSearch } from "react-icons/go";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
 
 const OurCourse = () => {
-  const [courses, setCourses] = useState([]);
+ const axiosPublic = useAxiosPublic();
 
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -13,11 +15,13 @@ const OurCourse = () => {
     setSearchTerm(value);
   };
 
-  useEffect(() => {
-    fetch("/courseData.json")
-      .then((res) => res.json())
-      .then((data) => setCourses(data));
-  }, []);
+  const { data: courses = [] } = useQuery({
+    queryKey: ['courses'],
+    queryFn: async () => {
+       const res = await axiosPublic.get('/courses')
+       return res.data;
+    }
+ })
 
   return (
     <div className=" bg-[#FFFFFF] p-4 text-center">

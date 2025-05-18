@@ -4,7 +4,6 @@ import { FaSpinner } from "react-icons/fa6";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
-import SharedBanner from "../../shared/SharedBanner";
 
 const Login = () => {
   const { user, logIn } = useAuth();
@@ -44,8 +43,7 @@ const Login = () => {
       });
   };
   return (
-    <div>
-      <SharedBanner title={"Login"}></SharedBanner>
+    <div className="pt-28">
       <div className="mt-12">
         <div className="w-11/12 max-w-7xl mx-auto">
           <div className="flex flex-col justify-center items-center">
