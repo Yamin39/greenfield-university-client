@@ -175,11 +175,11 @@ const Queries = () => {
           </div>
         ) : (
           <>
-            {role === "student" && (
+            {role === "student" ? (
               <form onSubmit={handlePostQuery} className="bg-white rounded-xl shadow-sm p-6">
-                <div className="flex items-start space-x-4">
+                <div className="flex flex-col sm:flex-row items-start gap-4">
                   <img src={user.photoURL} alt="User avatar" className="w-10 h-10 rounded-full" />
-                  <div className="flex-1">
+                  <div className="w-full sm:w-auto sm:flex-1">
                     <textarea
                       className="w-full p-4 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-700 focus:outline-none resize-none"
                       placeholder="What's on your mind? Share your question..."
@@ -202,7 +202,7 @@ const Queries = () => {
                             </button>
                           </span>
                         ))}
-                        <div className="flex items-center gap-2">
+                        <div className="w-full flex flex-col sm:flex-row sm:items-center gap-2">
                           <input
                             type="text"
                             ref={tagRef}
@@ -225,6 +225,10 @@ const Queries = () => {
                   </div>
                 </div>
               </form>
+            ) : (
+              <div className="bg-white rounded-xl border shadow-sm p-6">
+                <h2 className="text-lg font-semibold">Only students can post queries</h2>
+              </div>
             )}
           </>
         )}
@@ -282,7 +286,7 @@ const Queries = () => {
             <>
               {queries.map((query) => (
                 <div key={query._id} className="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow">
-                  <div className="flex items-start space-x-4">
+                  <div className="flex flex-col sm:flex-row items-start gap-4">
                     <img src={query.author.avatar} alt={query.author.name} className="w-10 h-10 rounded-full" />
                     <div className="flex-1">
                       <div className="flex items-center space-x-2">
@@ -297,7 +301,7 @@ const Queries = () => {
                           </span>
                         ))}
                       </div>
-                      <div className="mt-4 flex items-center space-x-6">
+                      <div className="mt-4 flex flex-wrap sm:flex-nowrap items-center space-x-6">
                         <div
                           className={`flex items-center space-x-2 p-2 rounded-lg transition-colors ${
                             query.upVotes.includes(user?.email) ? "bg-primary-700/5" : "text-gray-600"

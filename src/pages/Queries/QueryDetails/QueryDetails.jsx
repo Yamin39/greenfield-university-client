@@ -1,11 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import { Facebook, Linkedin, MessageSquare, MoreHorizontal, Send, Share2, ThumbsUp, Twitter } from "lucide-react";
-import { useState } from "react";
+import { Facebook, Linkedin, LoaderCircle, MessageSquare, MoreHorizontal, Send, Share2, ThumbsUp, Twitter } from "lucide-react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { GrVimeo } from "react-icons/gr";
 import { useNavigate, useParams } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import useOptimisticUpdate from "../../../hooks/useOptimisticUpdate";
 import SharedBanner from "../../../shared/SharedBanner";
 import Comment from "./Comment";
 
@@ -47,32 +48,28 @@ const QueryDetails = () => {
     });
   };
 
-  const handleUpVote = (query) => {
-    console.log(user.email, query._id);
+  // Use the optimistic update hook for upvotes
+  const {
+    isLoading: isUpVoteLoading,
+    state: localUpvoteState,
+    toggleState: toggleUpvote,
+    setState: setLocalUpvoteState,
+  } = useOptimisticUpdate(
+    () => axiosPublic.patch(`/query/upvote/add/${queries._id}`, { email: user.email }),
+    () => axiosPublic.patch(`/query/upvote/remove/${queries._id}`, { email: user.email }),
+    false,
+    () => refetch()
+  );
 
-    // check if user has already upvoted
-    if (query.upVotes.includes(user.email)) {
-      axiosPublic
-        .patch(`/query/upvote/remove/${query._id}`, { email: user.email })
-        .then((res) => {
-          console.log(res.data);
-          refetch();
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-      return;
+  // Initialize upvote state from query data
+  useEffect(() => {
+    if (queries && user) {
+      setLocalUpvoteState(queries.upVotes?.includes(user.email) || false);
     }
+  }, [queries, user, setLocalUpvoteState]);
 
-    axiosPublic
-      .patch(`/query/upvote/add/${query._id}`, { email: user.email })
-      .then((res) => {
-        console.log(res.data);
-        refetch();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  const handleUpVote = () => {
+    toggleUpvote();
   };
 
   // Submit new comment
@@ -115,7 +112,7 @@ const QueryDetails = () => {
         {/* Main Query Card */}
         <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
           <div className="flex items-start justify-between">
-            <div className="flex items-center space-x-4">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4">
               <img src={queries.author.avatar} alt={queries.author.name} className="w-12 h-12 rounded-full" />
               <div>
                 <h3 className="font-semibold text-lg">{queries.author.name}</h3>
@@ -157,13 +154,14 @@ const QueryDetails = () => {
             <div className="flex items-center justify-between pt-6 border-t">
               <div className="flex space-x-6">
                 <button
-                  onClick={() => handleUpVote(queries)}
+                  onClick={() => handleUpVote()}
                   className={`flex items-center space-x-2 p-2 rounded-lg transition-colors ${
-                    queries.upVotes.includes(user?.email) ? "text-primary-800 bg-primary-700/5" : "text-gray-600 hover:bg-gray-50"
-                  }`}
+                    localUpvoteState ? "text-primary-800 bg-primary-700/5" : "text-gray-600 hover:bg-gray-50"
+                  } disabled:cursor-not-allowed disabled:bg-gray-50`}
+                  disabled={isUpVoteLoading}
                 >
-                  <ThumbsUp className="w-5 h-5" />
-                  <span>{queries.upVotes.length}</span>
+                  {isUpVoteLoading ? <LoaderCircle className="w-5 h-5 animate-spin" /> : <ThumbsUp className="w-5 h-5" />}
+                  <span>{queries.upVotes?.length || 0}</span>
                 </button>
                 <button
                   onClick={() => document.getElementById("comment").focus()}
@@ -239,7 +237,7 @@ const QueryDetails = () => {
           <h2 className="text-xl font-semibold mb-6">Discussion</h2>
 
           {/* New Comment Input */}
-          <form onSubmit={handleSubmitComment} className="flex items-start space-x-4 mb-8">
+          <form onSubmit={handleSubmitComment} className="flex flex-col sm:flex-row sm:items-start gap-4 mb-8">
             <img src={user.photoURL} alt="Current user" className="w-10 h-10 rounded-full object-cover" />
             <div className="flex-1">
               <textarea
@@ -250,8 +248,8 @@ const QueryDetails = () => {
                 id="comment"
                 required
               />
-              <div className="mt-3 flex justify-end">
-                <button className="px-6 py-2 bg-primary-700 text-white rounded-lg hover:bg-primary-800 transition-colors flex items-center space-x-2">
+              <div className="mt-3 sm:flex justify-end">
+                <button className="w-full sm:w-auto px-6 py-2 bg-primary-700 text-white rounded-lg hover:bg-primary-800 transition-colors flex items-center justify-center gap-2">
                   <Send className="w-4 h-4" />
                   <span>Comment</span>
                 </button>

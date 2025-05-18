@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
 import { FaArrowRightLong, FaRegCalendarCheck } from "react-icons/fa6";
 import { IoChatbubblesOutline, IoSearch } from "react-icons/io5";
 import { Link } from "react-router-dom";
@@ -8,18 +9,22 @@ import useFormatTimestamp from "../../hooks/useFormatTimestamp";
 
 const AllBlogs = () => {
   const axiosPublic = useAxiosPublic();
+  const [tags, setTags] = useState([]);
 
-  const { data: blogs = [] } = useQuery({
+  const { data: blogs = [], isLoading } = useQuery({
     queryKey: ["blogs"],
     queryFn: async () => {
       const res = await axiosPublic.get("/blogs");
-      return res.data;
+      setTags([...new Set(res.data.map((blog) => blog.category))]);
+      return res.data.filter((blog) => blog.status === "approved");
     },
   });
 
   const formatTimestamp = useFormatTimestamp;
 
-  const tags = blogs.map((blog) => blog.tags).flat();
+  if (isLoading) return <div>Loading...</div>;
+
+  console.log(blogs);
   return (
     <div className="bg-[#FFFFFF]">
       <div className="max-w-7xl mx-auto pb-12 px-3 mt-24">

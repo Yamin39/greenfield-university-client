@@ -10,7 +10,7 @@ import { MdManageHistory, MdManageSearch, MdOutlineAnnouncement, MdOutlineEventA
 import { TbLogs } from "react-icons/tb";
 import { IoAdd, IoBookSharp } from "react-icons/io5";
 import { CiSquareCheck } from "react-icons/ci";
-import { FaQrcode, FaQuoteLeft, FaRegCheckSquare } from "react-icons/fa";
+import { FaQrcode, FaQuoteLeft, FaRegCheckSquare, FaRegNewspaper } from "react-icons/fa";
 import { AiOutlineQuestion } from "react-icons/ai";
 import { BsClockHistory } from "react-icons/bs";
 import { SiGoogletagmanager } from "react-icons/si";
@@ -145,6 +145,18 @@ const DashboardRoute = () => {
                      <span className="font-light">Manage Testimonials</span>
                   </NavLink>
 
+                  <p className="font-light text-gray-600">Requests</p>
+
+                  <NavLink to='/dashboard/contactRequests' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
+                     <MdOutlineSms className="text-2xl" />
+                     <span className="font-light">Contact Requests</span>
+                  </NavLink>
+
+                  <NavLink to='/dashboard/newsletterRequests' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
+                     <FaRegNewspaper className="text-2xl" />
+                     <span className="font-light">Newsletter Requests</span>
+                  </NavLink>
+
                   <p className="font-light text-gray-600">Others</p>
 
                   <NavLink to='/dashboard/approveCourses' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
@@ -155,11 +167,6 @@ const DashboardRoute = () => {
                   <NavLink to='/dashboard/manageGallery' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
                      <TfiGallery className="text-2xl" />
                      <span className="font-light">Manage Gallery</span>
-                  </NavLink>
-
-                  <NavLink to='/dashboard/contactRequests' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">
-                     <MdOutlineSms className="text-2xl" />
-                     <span className="font-light">Contact Requests</span>
                   </NavLink>
 
                   <NavLink to='/dashboard/purchasedHistory' className="flex items-center space-x-2 p-2 shadow-[0_0_3px_0] shadow-gray-300">

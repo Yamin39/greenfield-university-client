@@ -1,25 +1,22 @@
-import { useParams } from 'react-router-dom';
-import { 
-  FaFacebookF, 
-  FaLinkedinIn, 
-  FaMoneyCheckAlt, 
-} from 'react-icons/fa';
-import { 
-  IoIosPerson, 
-  IoLogoTwitter, 
-} from 'react-icons/io';
-import { TbWorld } from 'react-icons/tb';
-import { CiGlobe } from 'react-icons/ci';
-import { GoClock } from 'react-icons/go';
-import { useQuery } from '@tanstack/react-query';
-import useAxiosPublic from '../../hooks/useAxiosPublic';
+import { useQuery } from "@tanstack/react-query";
+import { CiGlobe } from "react-icons/ci";
+import { FaFacebookF, FaLinkedinIn } from "react-icons/fa";
+import { GoClock } from "react-icons/go";
+import { IoIosPerson, IoLogoTwitter } from "react-icons/io";
+import { TbWorld } from "react-icons/tb";
+import { useParams } from "react-router-dom";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const EventsPage = () => {
   const { id } = useParams();
 
   const axiosPublic = useAxiosPublic();
 
-  const { data: event = [], isPending, isFetching } = useQuery({
+  const {
+    data: event = [],
+    isPending,
+    isFetching,
+  } = useQuery({
     queryKey: ["event", id],
     queryFn: async () => {
       const res = await axiosPublic.get(`/event/${id}`);
@@ -56,11 +53,7 @@ const EventsPage = () => {
 
       <div className="max-w-7xl mx-auto pb-12 px-3 mt-5">
         <div className="w-full mb-10">
-          <img 
-            src={event?.thumbnail} 
-            alt={event?.title} 
-            className="w-full rounded-xl"
-          />
+          <img src={event?.thumbnail} alt={event?.title} className="w-full rounded-xl" />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
@@ -73,8 +66,10 @@ const EventsPage = () => {
               {event?.agenda?.map((item, index) => (
                 <div key={index} className="mb-4 pb-4 border-b">
                   <div className="flex justify-between">
-                    <span className="font-semibold">{item?.time} - {item?.title}</span>
-                    <span className="text-gray-600">{item?.duration}</span>
+                    <span className="font-semibold">
+                      {item?.time} - {item?.title}
+                    </span>
+                    <span className="text-gray-600">{item?.duration} mins</span>
                   </div>
                   {item?.speaker && <p className="text-gray-500">Speaker: {item?.speaker}</p>}
                 </div>
@@ -83,7 +78,9 @@ const EventsPage = () => {
               <h3 className="text-2xl font-bold mb-4">Learning Outcomes</h3>
               <ul className="list-disc pl-5">
                 {event?.learningOutcomes?.map((outcome, index) => (
-                  <li key={index} className="mb-2">{outcome}</li>
+                  <li key={index} className="mb-2">
+                    {outcome}
+                  </li>
                 ))}
               </ul>
             </div>
@@ -93,15 +90,6 @@ const EventsPage = () => {
             <div className="bg-white p-5 shadow-box rounded-xl">
               <h1 className="text-2xl py-6">Event Info</h1>
               <div className="space-y-4">
-                <div className="flex justify-between items-center border-b border-gray-200 pb-3">
-                  <p className="text-xl flex items-center text-[#323232] gap-x-2">
-                    <FaMoneyCheckAlt size={20} />
-                    <span>Price</span>
-                  </p>
-                  <p className="text-xl text-[#EE4A62] font-semibold">
-                    ${event?.price.amount} {event?.price.currency}
-                  </p>
-                </div>
                 <div className="flex justify-between items-center border-b border-gray-200 pb-3">
                   <p className="text-[#323232] text-xl flex items-center gap-x-2">
                     <IoIosPerson size={20} />
@@ -114,31 +102,41 @@ const EventsPage = () => {
                     <GoClock size={20} />
                     <span>Time</span>
                   </p>
-                  <p className="text-[16px]">{event?.time.start} - {event?.time.end}</p>
+                  <p className="text-[16px]">
+                    {event?.time.start} - {event?.time.end}
+                  </p>
                 </div>
                 <div className="flex justify-between items-center border-b border-gray-200 pb-3">
                   <p className="text-[#323232] text-xl flex items-center gap-x-2">
                     <CiGlobe size={20} />
-                    <span>Location</span>
+                    <span>Venue</span>
                   </p>
-                  <p className="text-[16px]">{event?.location.type}</p>
+                  <p className="text-[16px]">{event?.location.venue}</p>
                 </div>
-                <div className="pt-5 lg:pt-8">
-                  <button className="text-xl text-center py-4 transition duration-300 bg-[#1AB69D] text-white w-full rounded-md hover:bg-[#31B978]">
-                    Register Now
-                  </button>
-                  
-                  <h2 className="text-2xl mt-6">Share Event:</h2>
+                <div>
+                  <h2 className="text-2xl">Share Event:</h2>
                   <div className="flex flex-row items-center mt-6 gap-5">
-                    <span className="w-10 h-10 text-[#888888] border border-gray-100 hover:bg-[#1AB69D] hover:text-white rounded-full flex justify-center transition duration-300 items-center">
+                    <a
+                      href={`https://www.facebook.com/sharer/sharer.php?u=${location}`}
+                      target="_blank"
+                      className="w-10 h-10 text-[#888888] border border-gray-100 hover:bg-primary-700 hover:text-white rounded-full flex justify-center transition duration-300 items-center"
+                    >
                       <FaFacebookF size={20} />
-                    </span>
-                    <span className="w-10 h-10 text-[#888888] transition duration-300 border border-gray-100 hover:bg-[#1AB69D] hover:text-white rounded-full flex justify-center items-center">
+                    </a>
+                    <a
+                      href={`https://twitter.com/share?url=${location}`}
+                      target="_blank"
+                      className="w-10 h-10 text-[#888888] transition duration-300 border border-gray-100 hover:bg-primary-700 hover:text-white rounded-full flex justify-center items-center"
+                    >
                       <IoLogoTwitter size={20} />
-                    </span>
-                    <span className="w-10 h-10 text-[#888888] border border-gray-100 transition duration-300 hover:bg-[#1AB69D] hover:text-white rounded-full flex justify-center items-center">
+                    </a>
+                    <a
+                      href={`https://www.linkedin.com/shareArticle?mini=true&url=${location}`}
+                      target="_blank"
+                      className="w-10 h-10 text-[#888888] border border-gray-100 transition duration-300 hover:bg-primary-700 hover:text-white rounded-full flex justify-center items-center"
+                    >
                       <FaLinkedinIn size={20} />
-                    </span>
+                    </a>
                   </div>
                 </div>
               </div>

@@ -19,9 +19,9 @@ const Instructors = () => {
       <div>
         <p className="text-lg md:text-xl uppercase text-[#808080] font-semibold">Instructors</p>
         <h1 className="text-3xl md:text-[42px] text-[#181818] font-bold mt-6 leading-tight">
-          Course <span className="text-[#1AB69D]">Instructors</span>
+          Course <span className="text-primary-700">Instructors</span>
         </h1>
-        <img className="w-28 mt-2 mb-7 mx-auto" src="https://i.ibb.co/hH8Jpm2/about-Style.png" alt="style" />
+        <img className="w-28 mt-2 mb-7 mx-auto" src="https://i.ibb.co.com/9kQWLt0S/images-removebg-preview.png" alt="style" />
       </div>
 
       {/* Instructors Section */}
@@ -43,7 +43,7 @@ const Instructors = () => {
               <div className="absolute  rounded-2xl   inset-0 bg-black bg-opacity-70 text-white flex flex-col items-center justify-center   opacity-0 hover:opacity-100 transition-opacity duration-700">
                 <p className="text-sm w-[80%] font-semibold text-start mb-2">{instructor.bio}</p>
                 <p className="text-sm ">Rating: {instructor.rating}/5</p>
-                <div className=" h-full rounded-2xl  absolute opacity-20 w-full bg-[#1AB69D] "></div>
+                <div className=" h-full rounded-2xl  absolute opacity-20 w-full bg-primary-700 "></div>
               </div>
             </div>
 

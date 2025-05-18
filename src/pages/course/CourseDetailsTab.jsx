@@ -21,7 +21,7 @@ const CourseDetailsTab = ({ course }) => {
   };
 
   const ratingData = {
-    averageRating: (course?.reviews.reduce((acc, curr) => acc + curr.rating, 0) / course?.reviews.length).toFixed(1),
+    averageRating: course?.reviews?.length ? (course?.reviews.reduce((acc, curr) => acc + curr.rating, 0) / course?.reviews.length).toFixed(1) : 0,
     totalRatings: course?.reviews.length,
     allRatings: [
       { rating: 5, count: course?.reviews.filter((review) => review.rating === 5).length },
@@ -32,7 +32,7 @@ const CourseDetailsTab = ({ course }) => {
     ],
   };
 
-  console.log(ratingData);
+  console.log(ratingData.allRatings);
 
   console.log(course); // Debugging: Check the course prop
 
@@ -175,7 +175,10 @@ const CourseDetailsTab = ({ course }) => {
                       <IoMdStar size={20} className="text-[#F8B81F]"></IoMdStar>
                     </div>
                     <span className="w-full bg-gray-200 h-2 rounded-lg col-span-10">
-                      <span className="block bg-[#F8B81F] h-full rounded-lg" style={{ width: `${(rating.count / ratingData.totalRatings) * 100}%` }}></span>
+                      <span
+                        className="block bg-[#F8B81F] h-full rounded-lg"
+                        style={{ width: `${(rating.count / ratingData.totalRatings) * 100 || 0}%` }}
+                      ></span>
                     </span>
                     <span className="col-span-1">{rating.count}</span>
                   </div>

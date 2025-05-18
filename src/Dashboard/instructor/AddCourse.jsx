@@ -6,13 +6,26 @@ import { toast } from 'react-hot-toast'
 import axios from 'axios'
 import useAxiosPublic from '../../hooks/useAxiosPublic';
 import useAuth from '../../hooks/useAuth';
-import { MdOutlineMailOutline } from 'react-icons/md';
+import { MdOutlineEmail } from 'react-icons/md';
+import { useQuery } from '@tanstack/react-query';
 const imageUpload = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_ImgBB_api_key}`
 
 const AddCourse = () => {
    const [loading, setLoading] = useState(false)
    const axiosPublic = useAxiosPublic()
    const { user } = useAuth();
+
+   const {
+      data: instructorProfile = {},
+    } = useQuery({
+      queryKey: ["instructorProfile", user?.email],
+      queryFn: async () => {
+        const res = await axiosPublic.get(`/instructors?email=${user?.email}`);
+        return res.data;
+      },
+    });
+
+    console.log(instructorProfile);
 
    const handleSubmit = async (e) => {
       e.preventDefault();
@@ -173,7 +186,7 @@ const AddCourse = () => {
                   <div className="space-y-4">
                      <h3 className="text-lg font-semibold text-gray-700 flex items-center gap-2">
                         <FaGraduationCap className="text-primary-700" />
-                        What You'll Learn
+                        What You&apos;ll Learn
                      </h3>
                      {[1, 2, 3, 4, 5].map((num) => (
                         <input
@@ -301,6 +314,7 @@ const AddCourse = () => {
                               placeholder="Instructor Name"
                               className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-700"
                               required
+                              disabled
                            />
                            <FaUser className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
                         </div>
@@ -310,22 +324,27 @@ const AddCourse = () => {
                               type="text"
                               name="instructor_designation"
                               placeholder="Designation"
+                              defaultValue={instructorProfile?.designation}
                               className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-700"
                               required
+                              disabled
                            />
                            <FaGraduationCap className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
                         </div>
 
 
-                        <input
-                           type="email"
-                           name="instructor_email"
-                           defaultValue={user?.email}
-                           placeholder="Email"
-                           className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-700"
-                           required
-                        />
-                        <MdOutlineMailOutline className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                        <div className='relative'>
+                           <input
+                              type="email"
+                              name="instructor_email"
+                              defaultValue={user?.email}
+                              placeholder="Email"
+                              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-700"
+                              required
+                              disabled
+                           />
+                           <MdOutlineEmail className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                        </div>
                      </div>
 
                      <textarea
@@ -333,7 +352,9 @@ const AddCourse = () => {
                         placeholder="Instructor Bio"
                         className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-700"
                         rows="3"
+                        defaultValue={instructorProfile?.bio}
                         required
+                        disabled
                      />
                   </div>
 
