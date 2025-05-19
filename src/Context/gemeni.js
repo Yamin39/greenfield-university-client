@@ -26,7 +26,7 @@ import {
     });
   
     const result = await chatSession.sendMessage(prompt);
-    console.log("Model response:", result.response.text());
+    // console.log("Model response:", result.response.text());
     
     return result.response.text();
   }
