@@ -23,7 +23,7 @@ import UpdateBlog from "../Dashboard/admin/UpdateBlog";
 import UpdateEvent from "../Dashboard/admin/UpdateEvent";
 import UpdateFaq from "../Dashboard/admin/UpdateFaq";
 import UpdateProduct from "../Dashboard/admin/UpdateProduct";
-import ApproveBlogs from "../Dashboard/admin/approveBlogs";
+import ApproveBlogs from "../Dashboard/admin/ApproveBlogs";
 import AddCourse from "../Dashboard/instructor/AddCourse";
 import InstructorsProfile from "../Dashboard/instructor/InstructorsProfile";
 import ManageCourse from "../Dashboard/instructor/ManageCourse";
